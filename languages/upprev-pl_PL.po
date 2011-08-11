@@ -1,0 +1,162 @@
+# Copyright (C) 2010 upPrev Previous Post Animated Notification
+# This file is distributed under the same license as the upPrev Previous Post Animated Notification package.
+msgid ""
+msgstr ""
+"Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
+"POT-Creation-Date: 2011-08-03 10:25:26+00:00\n"
+"PO-Revision-Date: 2011-08-03 13:39+0100\n"
+"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+
+#: upprev_settings.php:5
+msgid "upPrev"
+msgstr ""
+
+#: upprev_settings.php:23
+msgid "upPrev options saved."
+msgstr "Zapisano konfiguracja upPrev."
+
+#: upprev_settings.php:64
+msgid "Just like the NYTimes button, upPrev allows WordPress site admins to provide the same functionality for their readers. When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right corner, allowing the reader to select the next available post in the single post’s category (the category is also clickable to access an archive page). If no next post exists, no button is displayed."
+msgstr ""
+
+#: upprev_settings.php:67
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev_settings.php:68
+msgid "FAQs"
+msgstr "FAQ"
+
+#: upprev_settings.php:74
+msgid "Appearance"
+msgstr "Wygląd"
+
+#: upprev_settings.php:77
+msgid "Animation Style:"
+msgstr "Styl animacji"
+
+#: upprev_settings.php:80
+msgid "Flyout"
+msgstr "Wysuwane"
+
+#: upprev_settings.php:82
+msgid "Fade In/Out"
+msgstr "Wygaszane"
+
+#: upprev_settings.php:87
+msgid "Offset:"
+msgstr "Przesunięcie"
+
+#: upprev_settings.php:92
+msgid "Percentage of the page required to be scrolled to display a box."
+msgstr "Ustaw kiedy ma się pojawić odnośnik do innego artykułu."
+
+#: upprev_settings.php:96
+msgid "Before HTML element."
+msgstr "Ustawia wyświetlanie w momencie pojawienia się konkretnego elementu strony"
+
+#: upprev_settings.php:97
+msgid "Element selector:"
+msgstr ""
+
+#: upprev_settings.php:98
+msgid "If not selected, all page length is taken for calculation. If selected, make sure to use the ID or class of an existing element. Put # \"hash\" before the ID, or . \"dot\" before a class name."
+msgstr ""
+
+#: upprev_settings.php:103
+msgid "Position:"
+msgstr "Pozycja:"
+
+#: upprev_settings.php:106
+msgid "Right"
+msgstr "Wysuwaj od prawej"
+
+#: upprev_settings.php:108
+msgid "Left"
+msgstr "Wysuwaj od lewej"
+
+#: upprev_settings.php:113
+msgid "Content"
+msgstr "Treść"
+
+#: upprev_settings.php:118
+msgid "Excerpt."
+msgstr "Streszczenie."
+
+#: upprev_settings.php:118
+msgid "Word limit:"
+msgstr "Liczba słów:"
+
+#: upprev_settings.php:120
+msgid "Thumbnail"
+msgstr "Miniaturka"
+
+#: upprev_settings.php:127
+msgid "Save Changes"
+msgstr ""
+
+#: upprev_settings.php:132
+msgid "Where can I customize fonts, colors, etc.?"
+msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
+
+#: upprev_settings.php:133
+msgid "You can modify all css properties by edditing %1$s"
+msgstr "Poprzez modyfikacje pliku %1$s."
+
+#: upprev_settings.php:134
+msgid "How to add some space after upPrev?"
+msgstr "Jak dodać więcej światła po upPrev?"
+
+#: upprev_settings.php:135
+msgid "You can edit %1$s and change bottom:0px; to different value, e.g. bottom:30px;"
+msgstr ""
+
+#: upprev_settings.php:136
+msgid "How to add upPrev for pages?"
+msgstr ""
+
+#: upprev_settings.php:137
+msgid "You can display a custom text by adding a shortcode to your page: <em>[upprev]Sample HTML Text[/upprev]</em>. When added to post it will replace a default content."
+msgstr ""
+
+#: upprev.php:45
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:48
+msgid "%1$d of %2$d articles"
+msgstr "%1$d z %2$d artykułów"
+
+#: upprev.php:62
+#: upprev.php:70
+msgid "Close"
+msgstr "Zamknij"
+
+#. Plugin Name of the plugin/theme
+msgid "upPrev Previous Post Animated Notification"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://item-9.com/upPrev/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. <a href=\"options-general.php?page=upprev\">Options configuration panel</a>"
+msgstr "W czasie przewijania pokazuje odnośnik do poprzedniego wpisu z tej samej kategorii. <a href=\"options-general.php?page=upprev\">Opcje</a>"
+
+#. Author of the plugin/theme
+msgid "Jason Pelker, Grzegorz Krzyminski"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://item-9.com/"
+msgstr ""
+

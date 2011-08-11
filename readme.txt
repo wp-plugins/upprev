@@ -1,0 +1,27 @@
+=== upPrev ===
+
+Contributors:      iworks
+Plugin Name:       upPrev
+Plugin URI:        http://iworks.pl/upPrev/
+Tags:              next post, previous post, notification, related
+Author URI:        http://iworks.pl/
+Author:            Marcin Pietrzak, Grzegorz Krzyminski
+Donate link:       http://iworks.pl/donate/upprev.php
+Requires at least: 2.0
+Tested up to:      3.2
+Stable tag:        trunk
+Version:           trunk
+
+== Description ==
+
+When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right corner, allowing the reader to select the next available post in the selected configuration.
+Plugin based on "upPrev Previous Post Animated Notification"
+
+== Installation ==
+
+1. Upload upPrev to your plugins directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Configure upPrev plugin.
+
+== Changelog ==
+
