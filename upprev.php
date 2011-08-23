@@ -9,29 +9,6 @@ Author URI: http://iworks.pl/
 Licence: BSD
 */
 
-if ( !function_exists( 'd' ) ) {
-    function d( $array, $params = null )
-    {
-        $www = isset ( $_SERVER['HTTP_HOST'] );
-        if ($www) {
-            print '<hr /><pre>';
-        }
-        print_r( $array );
-        if ( isset( $params ) and count ( $params ) ) {
-            foreach ( $params as $one ) {
-                if ( preg_match ( '/^\d+$/', $one ) ) {
-                    $array = preg_replace ( '/\?/', $one, $array, 1 );
-                } else {
-                    $array = preg_replace ( '/\?/', "'".$one."'", $array, 1 );
-                }
-            }
-            print ($www)? '<hr />':"\n";
-            print_r( $array );
-        }
-        print ($www)? '</pre><hr />':"\n\n";
-    }
-}
-
 /**
  * static options
  */
@@ -182,9 +159,11 @@ function iworks_upprev_box()
         _e('Read next post:', 'iworks_upprev' );
     }
     echo '</h6>';
+    $i = 1;
+    $number_of_posts = get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 );
     while ( $query->have_posts() ) {
         $query->the_post();
-        echo '<div class="upprev_excerpt">';
+        printf( '<div class="upprev_excerpt%s">', $i++ < $number_of_posts? ' upprev_space':'' );
         if ( $display_thumb ) {
             printf(
                 '<a href="%s" title="%s">%s</a>',
