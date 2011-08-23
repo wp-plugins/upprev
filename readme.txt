@@ -21,16 +21,16 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 1. Upload upPrev to your plugins directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure upPrev plugin.
+3. Configure upPrev plugin using Apperance -> upPrev
 
 == Changelog ==
 
 = 1.0.1 - 2011-08-23 =
 
-# BUGFIX: add post_date as parametr, to get real previous post
-# BUGFIX: javascript error
-# IMPROVMENT: add header for simple method
+* BUGFIX: add post_date as parametr, to get real previous post
+* BUGFIX: javascript error
+* IMPROVMENT: add header for simple method
 
 = 1.0 - 2011-08-23 =
 
-# init
+* INIT: copy and massive refactoring of plugin "upPrev Previous Post Animated Notification
