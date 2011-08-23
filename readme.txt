@@ -5,12 +5,12 @@ Plugin Name:       upPrev
 Plugin URI:        http://iworks.pl/upPrev/
 Tags:              next post, previous post, notification, related
 Author URI:        http://iworks.pl/
-Author:            Marcin Pietrzak, Grzegorz Krzyminski
+Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 2.0
 Tested up to:      3.2
-Stable tag:        trunk
-Version:           trunk
+Stable tag:        1.0
+Version:           1.0
 
 == Description ==
 
@@ -25,3 +25,6 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 1.0 - 2011-08-23 =
+
+# init

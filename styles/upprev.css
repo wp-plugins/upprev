@@ -1,0 +1,75 @@
+#upprev_box
+{
+    text-align: left;
+    background-color: #fff;
+    bottom:0px;
+    position:fixed;
+    z-index:10000000;
+    width: 360px;
+    padding: 10px 20px 10px 10px;
+    border-top: 2px solid #000;
+    border-left: 1px solid #f0f0f0;
+    -moz-box-shadow: 0 4px 10px #666;
+    -webkit-box-shadow: 0 4px 10px #666;
+    box-shadow: 0 4px 10px #666;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7)";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7);
+    _position: absolute;
+    _top: 0;
+}
+
+#upprev_box.animation_fade  { display:none;  }
+#upprev_box.animation_flyout{ display:block; }
+
+#upprev_box.position_left.animation_fade   { left:0; }
+#upprev_box.position_left.animation_flyout { left:-400px; }
+#upprev_box.position_right.animation_fade  { right:0; }
+#upprev_box.position_right.animation_flyout{ right:-400px; }
+
+
+#upprev_box h6
+{
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: arial,helvetica,sans-serif;
+    color: inherit;
+    margin:0 0 5px 0;
+    padding:0;
+}
+
+#upprev_box h6 .num
+{
+    font-size: inherit;
+    font-weight:normal;
+    font-family: inherit;
+    color:#888;
+}
+
+#upprev_box .upprev_excerpt p
+{
+    overflow:hidden;
+    margin:0
+}
+
+#upprev_box .upprev_thumb
+{
+    float:left;
+    margin:5px 20px 0 0;
+    border: 0;
+}
+
+#upprev_box button
+{
+    background: #fff url(close.gif) no-repeat 0;
+    border: none;
+    height: 13px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 5px;
+    text-indent: -999em;
+    top: 5px;
+    width: 13px;
+}
+

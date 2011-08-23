@@ -1,11 +1,12 @@
 <?php
 /*
-Plugin Name: upPrev Previous Post Animated Notification
-Plugin URI: http://item-9.com/upPrev/
-Description: When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. <a href="options-general.php?page=upprev">Options configuration panel</a>
-Author: Jason Pelker, Grzegorz Krzyminski
-Version: 1.4.0
-Author URI: http://item-9.com/
+Plugin Name: upPrev
+Plugin URI: http://iworks.pl/upprev/
+Description: When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. Based on upPrev Previous Post Animated Notification by Jason Pelker, Grzegorz Krzyminski
+Version: trunk
+Author: Marcin Pietrzak
+Author URI: http://iworks.pl/
+Licence: BSD
 */
 
 if ( !function_exists( 'd' ) ) {
@@ -31,29 +32,110 @@ if ( !function_exists( 'd' ) ) {
     }
 }
 
-load_plugin_textdomain('upprev', false, dirname( plugin_basename( __FILE__) ).'/languages');
+/**
+ * static options
+ */
+define( 'IWORKS_UPPREV_VERSION', 'trunk' );
+define( 'IWORKS_UPPREV_PREFIX',  'iworks_upprev_' );
 
-include('upprev_settings.php');
+/**
+ * i18n
+ */
+load_plugin_textdomain('iworks_upprev', false, dirname( plugin_basename( __FILE__) ).'/languages');
 
-function upprev_box()
+require_once dirname(__FILE__).'/includes/options.php';
+require_once dirname(__FILE__).'/includes/common.php';
+
+/**
+ * install
+ */
+#register_activation_hook( __FILE__, 'iworks_upprev_activate' );
+
+/**
+ * init
+ */
+add_action( 'init', 'iworks_upprev_init' );
+
+
+function iworks_upprev_init()
 {
-    //rewind posts;
+    add_action( 'admin_menu', 'iworks_upprev_add_pages' );
+    add_action( 'admin_init', 'iworks_upprev_options_init' );
+    add_action( 'wp_footer',  'iworks_upprev_box');
+    add_action( 'wp_enqueue_scripts',   'iworks_upprev_enqueue_scripts' );
+    add_action( 'wp_print_scripts',     'iworks_upprev_print_scripts' );
+}
+
+function iworks_upprev_enqueue_scripts()
+{
+    if ( !is_single()) {
+        return;
+    }
+    wp_enqueue_script( 'iworks_upprev-js', plugins_url('/scripts/upprev.js', __FILE__), array('jquery'), IWORKS_UPPREV_VERSION );
+    $plugin_path = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
+    wp_enqueue_style("upprev-css",$plugin_path.'styles/upprev.css');
+}
+
+function iworks_upprev_print_scripts()
+{
+    if ( !is_single()) {
+        return;
+    }
+    global $iworks_upprev_options;
+    $data = '';
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element' ) as $key ) {
+        if ( $data ) {
+            $data .= ','."\n";
+        }
+        $default = isset($iworks_upprev_options['index']['options'][IWORKS_UPPREV_PREFIX.$key]['default'])? $iworks_upprev_options['index']['options'][IWORKS_UPPREV_PREFIX.$key]['default']:'';
+        $value   = get_option(IWORKS_UPPREV_PREFIX.$key, $default );
+        $data .= sprintf(
+            '%s: %s',
+            $key,
+            is_numeric($value)? $value:(sprintf("'%s'", $value))
+        );
+    }
+    if ( empty($data) ) {
+        return;
+    }
+    echo '<script type="text/javascript">'."\n";
+    echo 'var iworks_upprev = {'."\n";
+    echo $data;
+    echo "\n".'};'."\n";
+    echo '</script>'."\n";
+}
+
+function iworks_upprev_add_pages()
+{
+    if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
+        add_theme_page(
+            __('upPrev', 'iworks_upprev'),
+            __('upPrev', 'iworks_upprev'),
+            'manage_options',
+            'upprev/admin/index.php'
+        );
+    }
+}
+
+function iworks_upprev_box()
+{
+    if ( !is_single() ) {
+        return;
+    }
     global $post;
-    if ( is_single() && get_adjacent_post(true, '', true) ) {
-        $options = get_option('upprev-settings-group');
-        $display_excerpt = $options['upprev_content_excerpt'];
-        $display_thumb = $options['upprev_content_thumb'];
-        $compare_by = $options['upprev_compare'];
+
+        $excerpt_length = get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 2 );
+        $display_thumb  = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 );
+        $compare_by     = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
+        $show_taxonomy  = true;
+
         $args = array(
             'orderby'        => 'date',
             'order'          => 'DESC',
             'post__not_in'   => array( $post->ID ),
-            'posts_per_page' => 1
+            'posts_per_page' => get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 )
         );
-        $number_of_posts = 0;
-        $count_args = array();
-        $ids = array();
-        $siblings = array();
+
         if ( $compare_by == 'category' ) {
             foreach((get_the_category()) as $one) {
                 $siblings[ get_category_link( $one->term_id ) ] = $one->name;
@@ -61,44 +143,45 @@ function upprev_box()
             }
             $args['cat'] = implode(',',$ids);
             $count_args = array ( 'include' => $args['cat'] );
-        } else {
+        } else if ( $compare_by == 'category' ) {
             foreach((get_the_tags()) as $one) {
                 $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
                 $ids[] = $one->term_id;
             }
             $args['tag__in'] = $ids;
             $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
+        } else {
+            $show_taxonomy   = false;
         }
-        $taxonomies = get_categories( $count_args  );
-        foreach( $taxonomies as $one ) {
-            $number_of_posts += $one->count;
-        }
-        add_filter('excerpt_more',   'upprev_excerpt_more', 10, 1 );
-        add_filter('excerpt_length', 'upprev_excerpt_length', 10, 1);
+
+        add_filter('excerpt_more',   'iworks_upprev_excerpt_more', 10, 1 );
+        add_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1);
+
         $query = new WP_Query( $args );
+        printf(
+            '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
+            get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
+            get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
+            get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
+        );
         while ( $query->have_posts() ) {
             $query->the_post();
-
-            echo '<div id="upprev_box">';
-            echo '<h6>';
+            echo '<div class="entry"><h6>';
             if ( count( $siblings ) ) {
-                printf ( '%s ', __('More in', 'upprev' ) );
+                printf ( '%s ', __('More in', 'iworks_upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
                     $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
                 }
                 echo implode( ', ', $a);
             }
-            echo '<span class="num"> (';
-            printf(_n('One article', '%1$d articles', $number_of_posts, 'upprev' ), $number_of_posts);
-            echo ')</span>';
             echo '</h6><div class="upprev_excerpt">';
             if ( $display_thumb ) {
                 printf(
                     '<a href="%s" title="%s">%s</a>',
                     get_permalink(),
                     wptexturize(get_the_title()),
-                    get_the_post_thumbnail( get_the_ID(), array( 48, 48),array('title'=>get_the_title(),'class'=>'upprev_thumb')  )
+                    get_the_post_thumbnail( get_the_ID(), array( 48, 48),array('title'=>get_the_title(),'class'=>'iworks_upprev_thumb')  )
                 );
             }
             printf(
@@ -106,48 +189,23 @@ function upprev_box()
                 get_permalink(),
                 get_the_title()
             );
-
-            if ($display_excerpt) {
+            if ( $excerpt_length > 0 ) {
                 the_excerpt( $excerpt_length );
             }
-            printf( '</div><button id="upprev_close" type="button">%s</button></div>', __('Close', 'upprev') );
+            echo '</div>';
         }
+        printf( '</div><button id="upprev_close" type="button">%s</button></div>', __('Close', 'iworks_upprev') );
         wp_reset_postdata();
-        remove_filter('excerpt_more',   'upprev_excerpt_more', 10, 1 );
-        remove_filter('excerpt_length', 'upprev_excerpt_length', 10, 1);
-    }
+        remove_filter('excerpt_more',   'iworks_upprev_excerpt_more', 10, 1 );
+        remove_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1);
 }
 
-add_action('wp_footer', 'upprev_box');
-
-function upprev_init()
-{
-    $plugin_path = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-    wp_enqueue_script("jquery");
-    wp_enqueue_script("upprev-js",$plugin_path.'upprev_js.php'); //wp_enqueue_script("upprev-js",$plugin_path.'upprev_js.php',array(),'1.4.0',true);
-    wp_enqueue_style("upprev-css",$plugin_path.'upprev.css');
-}
-add_action('init', 'upprev_init');
-
-function upprev_styles()
-{
-    $options = get_option("upprev-settings-group");
-    $position = $options['upprev_position'] != 'left' ? "right" : "left";
-    if ($options['upprev_animation'] == "fade") {
-        echo "<style type='text/css'>#upprev_box {display:none;$position: 0px;}</style>\n";
-    } else {
-        echo "<style type='text/css'>#upprev_box {display:block;$position: -400px;}</style>\n";
-    }
-}
-add_action('wp_print_styles', 'upprev_styles');
-
-function upprev_excerpt_more($more)
+function iworks_upprev_excerpt_more($more)
 {
     return '...';
 }
-function upprev_excerpt_length($length)
+function iworks_upprev_excerpt_length($length)
 {
-    $options = get_option('upprev-settings-group');
-    return isset($options['upprev_excerpt_length']) && $options['upprev_excerpt_length'] != '' ? $options['upprev_excerpt_length'] : 20;
+    return get_option(IWORKS_UPPREV_PREFIX.'excerpt_length', 20);
 }
 
