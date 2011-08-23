@@ -147,19 +147,3 @@ function iworks_upprev_options_init()
     }
 }
 
-/**
- * admin
- */
-function iworks_upprev_admin_notices()
-{
-    $notices = array();
-    if ( current_user_can('manage_options') && get_option('iworks_upprev_on', 0) == 0 ) {
-        $notices[] = sprintf(__('Blomedia HUBS plugin is turned on, but not activated. <a href="%s">Activate HUBs</a>.', 'iworks_upprev'), get_admin_url(null, 'admin.php?page=blomedia-hubs/admin/index.php' ) );
-    }
-    /**
-     * Show messages
-     */
-    foreach ($notices as $notice ) {
-        printf('<div class="error"><p>%s</p></div>', $notice);
-    }
-}
