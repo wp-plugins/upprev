@@ -3,14 +3,14 @@
 Contributors:      iworks
 Plugin Name:       upPrev
 Plugin URI:        http://iworks.pl/upPrev/
-Tags:              next post, previous post, notification, related
+Tags:              next post, previous post, notification, related, upPrev
 Author URI:        http://iworks.pl/
 Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
-Requires at least: 2.0
+Requires at least: 3.0
 Tested up to:      3.2
-Stable tag:        1.0
-Version:           1.0
+Stable tag:        1.0.1
+Version:           1.0.1
 
 == Description ==
 
@@ -24,6 +24,12 @@ Plugin based on "upPrev Previous Post Animated Notification"
 3. Configure upPrev plugin.
 
 == Changelog ==
+
+= 1.0.1 - 2011-08-23 =
+
+# BUGFIX: add post_date as parametr, to get real previous post
+# BUGFIX: javascript error
+# IMPROVMENT: add header for simple method
 
 = 1.0 - 2011-08-23 =
 

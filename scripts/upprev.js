@@ -17,7 +17,7 @@ jQuery(function($){
         var lastScreen = false;
         if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
             if ($(iworks_upprev.offset_element).length > 0) {
-                lastScreen = getScrollY() + $(window).height() < $(iworks_upprev.element_selector).offset().top * iworks_upprev.offset_percent / 100 ? false : true;
+                lastScreen = getScrollY() + $(window).height() < $(iworks_upprev.offset_element).offset().top * iworks_upprev.offset_percent / 100 ? false : true;
             } else {
                 lastScreen = getScrollY() + $(window).height() < $(document).height() * iworks_upprev.offset_percent / 100 ? false : true;
             }

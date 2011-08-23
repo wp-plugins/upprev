@@ -124,88 +124,105 @@ function iworks_upprev_box()
     }
     global $post;
 
-        $excerpt_length = get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 2 );
-        $display_thumb  = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 );
-        $compare_by     = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
-        $show_taxonomy  = true;
+    $excerpt_length = get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 2 );
+    $display_thumb  = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 );
+    $compare_by     = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
+    $show_taxonomy  = true;
 
-        $args = array(
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-            'post__not_in'   => array( $post->ID ),
-            'posts_per_page' => get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 )
-        );
+    $args = array(
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+        'post__not_in'   => array( $post->ID ),
+        'posts_per_page' => get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 )
+    );
 
-        if ( $compare_by == 'category' ) {
-            foreach((get_the_category()) as $one) {
-                $siblings[ get_category_link( $one->term_id ) ] = $one->name;
-                $ids[] = $one->cat_ID;
-            }
-            $args['cat'] = implode(',',$ids);
-            $count_args = array ( 'include' => $args['cat'] );
-        } else if ( $compare_by == 'category' ) {
-            foreach((get_the_tags()) as $one) {
-                $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
-                $ids[] = $one->term_id;
-            }
-            $args['tag__in'] = $ids;
-            $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
-        } else {
-            $show_taxonomy   = false;
+    if ( $compare_by == 'category' ) {
+        foreach((get_the_category()) as $one) {
+            $siblings[ get_category_link( $one->term_id ) ] = $one->name;
+            $ids[] = $one->cat_ID;
         }
+        $args['cat'] = implode(',',$ids);
+        $count_args = array ( 'include' => $args['cat'] );
+    } else if ( $compare_by == 'category' ) {
+        foreach((get_the_tags()) as $one) {
+            $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
+            $ids[] = $one->term_id;
+        }
+        $args['tag__in'] = $ids;
+        $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
+    } else {
+        $show_taxonomy   = false;
+    }
 
-        add_filter('excerpt_more',   'iworks_upprev_excerpt_more', 10, 1 );
-        add_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1);
+    add_filter( 'posts_where',   'iworks_upprev_filter_where',   99, 1 );
+    add_filter('excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    add_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
 
-        $query = new WP_Query( $args );
-        printf(
-            '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
-            get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
-            get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
-            get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
-        );
-        while ( $query->have_posts() ) {
-            $query->the_post();
-            echo '<div class="entry"><h6>';
-            if ( count( $siblings ) ) {
-                printf ( '%s ', __('More in', 'iworks_upprev' ) );
-                $a = array();
-                foreach ( $siblings as $url => $name ) {
-                    $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
-                }
-                echo implode( ', ', $a);
-            }
-            echo '</h6><div class="upprev_excerpt">';
-            if ( $display_thumb ) {
-                printf(
-                    '<a href="%s" title="%s">%s</a>',
-                    get_permalink(),
-                    wptexturize(get_the_title()),
-                    get_the_post_thumbnail( get_the_ID(), array( 48, 48),array('title'=>get_the_title(),'class'=>'iworks_upprev_thumb')  )
-                );
-            }
+    $query = new WP_Query( $args );
+
+    if (!$query->have_posts()) {
+        return;
+    }
+
+    printf(
+        '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
+        get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
+        get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
+        get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
+    );
+    echo '<h6>';
+    if ( count( $siblings ) ) {
+        printf ( '%s ', __('More in', 'iworks_upprev' ) );
+        $a = array();
+        foreach ( $siblings as $url => $name ) {
+            $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
+        }
+        echo implode( ', ', $a);
+    } else {
+        _e('Read next post:', 'iworks_upprev' );
+    }
+    echo '</h6>';
+    while ( $query->have_posts() ) {
+        $query->the_post();
+        echo '<div class="upprev_excerpt">';
+        if ( $display_thumb ) {
             printf(
-                '<a href="%s">%s</a>',
+                '<a href="%s" title="%s">%s</a>',
                 get_permalink(),
-                get_the_title()
+                wptexturize(get_the_title()),
+                get_the_post_thumbnail( get_the_ID(), array( 48, 48),array('title'=>get_the_title(),'class'=>'iworks_upprev_thumb')  )
             );
-            if ( $excerpt_length > 0 ) {
-                the_excerpt( $excerpt_length );
-            }
-            echo '</div>';
         }
-        printf( '</div><button id="upprev_close" type="button">%s</button></div>', __('Close', 'iworks_upprev') );
-        wp_reset_postdata();
-        remove_filter('excerpt_more',   'iworks_upprev_excerpt_more', 10, 1 );
-        remove_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1);
+        printf(
+            '<a href="%s">%s</a>',
+            get_permalink(),
+            get_the_title()
+        );
+        if ( $excerpt_length > 0 ) {
+            the_excerpt( $excerpt_length );
+        }
+        echo '</div>';
+    }
+    printf( '</div><button id="upprev_close" type="button">%s</button></div>', __('Close', 'iworks_upprev') );
+    wp_reset_postdata();
+    remove_filter('excerpt_more',   'iworks_upprev_filter_where',   99, 1 );
+    remove_filter('excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    remove_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
 }
 
 function iworks_upprev_excerpt_more($more)
 {
     return '...';
 }
+
 function iworks_upprev_excerpt_length($length)
 {
     return get_option(IWORKS_UPPREV_PREFIX.'excerpt_length', 20);
 }
 
+function iworks_upprev_filter_where( $where = '' )
+{
+    global $post;
+    $where .= " AND post_date < '" . $post->post_date . "'";
+    return $where;
+}
