@@ -41,6 +41,12 @@ function iworks_upprev_init()
     add_action( 'wp_footer',  'iworks_upprev_box');
     add_action( 'wp_enqueue_scripts',   'iworks_upprev_enqueue_scripts' );
     add_action( 'wp_print_scripts',     'iworks_upprev_print_scripts' );
+    add_image_size(
+        'upPrev',
+        get_option( IWORKS_UPPREV_PREFIX.'thumb_width',  48 ),
+        get_option( IWORKS_UPPREV_PREFIX.'thumb_height', 48 ),
+        true
+    );
 }
 
 function iworks_upprev_enqueue_scripts()
@@ -101,18 +107,30 @@ function iworks_upprev_box()
     }
     global $post;
 
-    $excerpt_length = get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 2 );
-    $display_thumb  = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 );
-    $compare_by     = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
-    $show_taxonomy  = true;
+    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+
+    if ( $use_cache ) {
+        $cache_key = IWORKS_UPPREV_PREFIX.'cache_'.get_the_ID();
+        if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
+            print $value;
+            return;
+        }
+    }
+
+    $excerpt_length  = get_option( IWORKS_UPPREV_PREFIX.'excerpt_show', 1 )? get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 20 ):0;
+    $display_thumb   = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 ) && current_theme_supports( 'post-thumbnails' );
+    $compare_by      = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
+    $number_of_posts = get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 );
+
+    $show_taxonomy   = true;
+    $siblings = array();
 
     $args = array(
         'orderby'        => 'date',
         'order'          => 'DESC',
         'post__not_in'   => array( $post->ID ),
-        'posts_per_page' => get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 )
+        'posts_per_page' => $number_of_posts
     );
-
     if ( $compare_by == 'category' ) {
         foreach((get_the_category()) as $one) {
             $siblings[ get_category_link( $one->term_id ) ] = $one->name;
@@ -131,9 +149,11 @@ function iworks_upprev_box()
         $show_taxonomy   = false;
     }
 
-    add_filter( 'posts_where',   'iworks_upprev_filter_where',   99, 1 );
-    add_filter('excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
-    add_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+    add_filter( 'posts_where',    'iworks_upprev_filter_where',   99, 1 );
+    add_filter( 'excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    if ( $excerpt_length > 0 ) {
+        add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+    }
 
     $query = new WP_Query( $args );
 
@@ -141,52 +161,79 @@ function iworks_upprev_box()
         return;
     }
 
-    printf(
+    $value = sprintf(
         '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
         get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
         get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
         get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
     );
-    echo '<h6>';
+    $value .= '<h6>';
     if ( count( $siblings ) ) {
-        printf ( '%s ', __('More in', 'iworks_upprev' ) );
+        $value .= sprintf ( '%s ', __('More in', 'iworks_upprev' ) );
         $a = array();
         foreach ( $siblings as $url => $name ) {
             $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
         }
-        echo implode( ', ', $a);
+        $value .= implode( ', ', $a);
     } else {
-        _e('Read next post:', 'iworks_upprev' );
+        $value .= __('Read next post:', 'iworks_upprev' );
     }
-    echo '</h6>';
+    $value .= '</h6>';
     $i = 1;
-    $number_of_posts = get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 );
     while ( $query->have_posts() ) {
         $query->the_post();
-        printf( '<div class="upprev_excerpt%s">', $i++ < $number_of_posts? ' upprev_space':'' );
-        if ( $display_thumb ) {
-            printf(
-                '<a href="%s" title="%s">%s</a>',
+        $item_class = 'upprev_excerpt';
+        if ( $i > $number_of_posts ) {
+            break;
+        }
+        if ( $i++ < $number_of_posts ) {
+            $item_class .= ' upprev_space';
+        }
+        $image = '';
+        if ( $display_thumb && has_post_thumbnail( get_the_ID() ) ) {
+            $item_class .= ' upprev_thumbnail';
+            $image = sprintf(
+                '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
                 get_permalink(),
                 wptexturize(get_the_title()),
-                get_the_post_thumbnail( get_the_ID(), array( 48, 48),array('title'=>get_the_title(),'class'=>'iworks_upprev_thumb')  )
+                get_the_post_thumbnail(
+                    get_the_ID(),
+                    array(
+                        get_option( IWORKS_UPPREV_PREFIX.'thumb_width',  48 ),
+                        9999
+                    ),
+                    array(
+                        'title'=>get_the_title(),
+                        'class'=>'iworks_upprev_thumb'
+                    )
+                )
             );
         }
-        printf(
-            '<a href="%s">%s</a>',
+        $value .= sprintf( '<div class="%s">%s', $item_class, $image );
+        $value .= sprintf(
+            '<h5><a href="%s">%s</a></h5>',
             get_permalink(),
             get_the_title()
         );
         if ( $excerpt_length > 0 ) {
-            the_excerpt( $excerpt_length );
+            $value .= get_the_excerpt();
         }
-        echo '</div>';
+        if ( $image ) {
+            $value .= '<br />';
+        }
+        $value .= '</div>';
     }
-    printf( '</div><button id="upprev_close" type="button">%s</button></div>', __('Close', 'iworks_upprev') );
+    $value .= sprintf( '<a id="upprev_close" href="#">%s</a></div>', __('Close', 'iworks_upprev') );
     wp_reset_postdata();
-    remove_filter('excerpt_more',   'iworks_upprev_filter_where',   99, 1 );
-    remove_filter('excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
-    remove_filter('excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+    remove_filter( 'excerpt_more',   'iworks_upprev_filter_where',   99, 1 );
+    remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    if ( $excerpt_length > 0 ) {
+        remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+    }
+    if ( $use_cache ) {
+        set_site_transient( $cache_key, $value, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+    }
+    echo $value;
 }
 
 function iworks_upprev_excerpt_more($more)

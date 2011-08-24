@@ -8,24 +8,8 @@ $iworks_upprev_options = array();
 $iworks_upprev_options['index'] = array(
     'options' => array(
         array(
-            'name'              => IWORKS_UPPREV_PREFIX.'number_of_posts',
-            'type'              => 'text',
-            'class'             => 'small-text',
-            'th'                => __('Number of posts to show ', 'iworks_upprev' ),
-            'default'           => 1,
-            'sanitize_callback' => 'absint'
-        ),
-        array(
-            'name'              => IWORKS_UPPREV_PREFIX.'compare',
-            'type'              => 'radio',
-            'th'                => __('Next post choose method', 'upprev' ),
-            'default'           => 'simple',
-            'radio'             => array(
-                'simple'   => __('Just next.', 'iworks_upprev'),
-                'category' => __('Next in category.', 'iworks_upprev'),
-                'tag'      => __('Next in tag.', 'iworks_upprev')
-            ),
-            'sanitize_callback' => 'esc_html'
+            'type'              => 'heading',
+            'label'             => __('Apperance', 'iworks_upprev' )
         ),
         array(
             'name'              => IWORKS_UPPREV_PREFIX.'animation',
@@ -66,22 +50,95 @@ $iworks_upprev_options['index'] = array(
             'default'           => '#comments',
             'sanitize_callback' => 'esc_html'
         ),
-
+        /**
+         * content
+         */
+        array(
+            'type'              => 'heading',
+            'label'             => __('Content', 'iworks_upprev' )
+        ),
+        array(
+            'name'              => IWORKS_UPPREV_PREFIX.'number_of_posts',
+            'type'              => 'text',
+            'class'             => 'small-text',
+            'th'                => __('Number of posts to show ', 'iworks_upprev' ),
+            'default'           => 1,
+            'sanitize_callback' => 'absint'
+        ),
+        array(
+            'name'              => IWORKS_UPPREV_PREFIX.'compare',
+            'type'              => 'radio',
+            'th'                => __('Next post choose method', 'upprev' ),
+            'default'           => 'simple',
+            'radio'             => array(
+                'simple'   => __('Just next.', 'iworks_upprev'),
+                'category' => __('Next in category.', 'iworks_upprev'),
+                'tag'      => __('Next in tag.', 'iworks_upprev')
+            ),
+            'sanitize_callback' => 'esc_html'
+        ),
+        /**
+         * excerpt
+         */
+        array(
+            'name'              => IWORKS_UPPREV_PREFIX.'excerpt_show',
+            'type'              => 'checkbox',
+            'th'                => __('Excerpt', 'iworks_upprev' ),
+            'label'             => __('Show excerpt.', 'iworks_upprev'),
+            'checked'           => get_option(IWORKS_UPPREV_PREFIX.'excerpt_show', 1) == 1,
+            'sanitize_callback' => 'absint'
+        ),
         array(
             'name'              => IWORKS_UPPREV_PREFIX.'excerpt_length',
             'type'              => 'text',
             'class'             => 'small-text',
-            'th'                => __('Content', 'iworks_upprev' ),
             'default'           => 20,
             'label'             => __('Number of words to show.', 'iworks_upprev' ),
             'sanitize_callback' => 'absint'
         ),
+        /**
+         * Featured image
+         */
         array
         (
             'name'              => IWORKS_UPPREV_PREFIX.'show_thumb',
             'type'              => 'checkbox',
-            'label'             => __('Show featured image', 'iworks_upprev'),
-            'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 0) == 1,
+            'th'                => __('Featured image', 'iworks_upprev' ),
+            'label'             => __('Show featured image.', 'iworks_upprev'),
+            'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 1) == 1,
+            'sanitize_callback' => 'absint'
+        ),
+        array
+        (
+            'name'              => IWORKS_UPPREV_PREFIX.'thumb_width',
+            'type'              => 'text',
+            'class'             => 'small-text',
+            'label'             => __('Featured image width.', 'iworks_upprev'),
+            'default'           => 48,
+            'sanitize_callback' => 'absint'
+        ),
+        /**
+         * cache
+         */
+        array(
+            'type'              => 'heading',
+            'label'             => __('Transient Cache', 'iworks_upprev' )
+        ),
+        array
+        (
+            'name'              => IWORKS_UPPREV_PREFIX.'use_cache',
+            'type'              => 'checkbox',
+            'th'                => __('Cache', 'iworks_upprev'),
+            'label'             => __('Use Transient Cache.', 'iworks_upprev'),
+            'checked'           => get_option(IWORKS_UPPREV_PREFIX.'use_cache', 1) == 1,
+            'sanitize_callback' => 'absint'
+        ),
+        array
+        (
+            'name'              => IWORKS_UPPREV_PREFIX.'cache_lifetime',
+            'type'              => 'text',
+            'label'             => __('Transients Cache Lifetime (in seconds, default one hour).', 'iworks_upprev'),
+            'default'           => 360,
             'sanitize_callback' => 'absint'
         ),
     ),

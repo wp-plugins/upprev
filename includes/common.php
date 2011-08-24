@@ -25,9 +25,13 @@ function iworks_upprev_build_options($option_name, $echo = true)
                 continue;
             }
         }
-        $content .= sprintf( '<tr valign="top" class="%s">', $i++%2? 'alternate':'' );
-        $content .= sprintf( '<th scope="row">%s</th>', $option['th'] );
-        $content .= '<td>';
+        if ( $option['type'] == 'heading' ) {
+            $content .= '<tr><td colspan="2">';
+        } else {
+            $content .= sprintf( '<tr valign="top" class="%s">', $i++%2? 'alternate':'' );
+            $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
+            $content .= '<td>';
+        }
         switch ($option['type']) {
         case 'hidden':
             $hidden .= sprintf
@@ -44,7 +48,7 @@ function iworks_upprev_build_options($option_name, $echo = true)
                     '<input type="text" name="%s" value="%s" class="%s" /> %s',
                     $option['name'],
                    (!$value && isset($option['default']))? $option['default']:$value,
-                    $option['class'],
+                    isset($option['class']) && $option['class']? $option['class']:'',
                     isset($option['label'])?  $option['label']:''
                 );
             break;
@@ -56,7 +60,7 @@ function iworks_upprev_build_options($option_name, $echo = true)
                     $option['name'],
                     $option['checked']? ' checked="checked"':'',
                     $option['name'],
-                    $option['disabled']? ' disabled="disabled"':'',
+                    isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
                     $option['label']
                 );
             break;
@@ -90,6 +94,12 @@ function iworks_upprev_build_options($option_name, $echo = true)
                    (!$value && isset($option['default']))? $option['default']:$value
                 );
             break;
+        case 'heading':
+            if ( isset( $option['label'] ) && $option['label'] ) {
+                $content .= sprintf( '<h3>%s</h3>', $option['label'] );
+                $i = 0;
+            }
+            break;
         default:
             $content .= sprintf('not implemented type: %s', $option['type']);
         }
@@ -97,7 +107,10 @@ function iworks_upprev_build_options($option_name, $echo = true)
         $content .= '</tr>';
     }
     if ($content) {
-        $top .= sprintf('<h3>%s</h3>', $options['label']);
+        $top = '';
+        if ( isset ( $options['label'] ) && $options['label'] ) {
+            $top .= sprintf('<h3>%s</h3>', $options['label']);
+        }
         $top .= $hidden;
         $top .= sprintf( '<table class="form-table%s" style="%s">', isset($options['widefat'])? ' widefat':'', isset($options['style'])? $options['style']:'' );
         if ( isset( $options['thead'] ) ) {
@@ -136,6 +149,9 @@ function iworks_upprev_options_init()
         if ( isset ( $data['options'] ) && is_array( $data['options'] ) ) {
             $option_group = IWORKS_UPPREV_PREFIX.$key;
             foreach ( $data['options'] as $option ) {
+                if ( $option['type'] == 'heading' ) {
+                    continue;
+                }
                 register_setting
                     (
                         $option_group,

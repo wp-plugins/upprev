@@ -25,11 +25,17 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.0 - xxxxxxxx =
+
+* BUGFIX: fixed display upPrev box in case of an equal height of the window and the document
+* IMPROVMENT: added to use transient cache
+* IMPROVMENT: added thumbnail width (height depent of theme thumbnail)
+
 = 1.0.1 - 2011-08-23 =
 
-* BUGFIX: add post_date as parametr, to get real previous post
+* BUGFIX: added post_date as parametr, to get real previous post
 * BUGFIX: javascript error
-* IMPROVMENT: add header for simple method
+* IMPROVMENT: added header for simple method
 
 = 1.0 - 2011-08-23 =
 

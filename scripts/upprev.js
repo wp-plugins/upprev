@@ -13,7 +13,7 @@ function getScrollY() {
 jQuery(function($){
     var upprev_closed = false;
     var upprev_hidden = true;
-    $(window).scroll(function() {
+    function upprev_show_box() {
         var lastScreen = false;
         if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
             if ($(iworks_upprev.offset_element).length > 0) {
@@ -47,7 +47,13 @@ jQuery(function($){
                 $("#upprev_box").stop().animate({right:"-400px"});
             }
         }
+    }
+    $(window).bind('scroll', function() {
+        upprev_show_box();
     });
+    if ($(window).height() == $(document).height()) {
+        upprev_show_box();
+    }
     $("#upprev_close").click(function() {
         if (iworks_upprev.animation == "fade") {
             $("#upprev_box").fadeOut("slow");
@@ -60,3 +66,4 @@ jQuery(function($){
         upprev_hidden = true;
     });
 });
+
