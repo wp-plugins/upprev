@@ -36,17 +36,11 @@ add_action( 'init', 'iworks_upprev_init' );
 
 function iworks_upprev_init()
 {
-    add_action( 'admin_menu', 'iworks_upprev_add_pages' );
-    add_action( 'admin_init', 'iworks_upprev_options_init' );
-    add_action( 'wp_footer',  'iworks_upprev_box');
-    add_action( 'wp_enqueue_scripts',   'iworks_upprev_enqueue_scripts' );
-    add_action( 'wp_print_scripts',     'iworks_upprev_print_scripts' );
-    add_image_size(
-        'upPrev',
-        get_option( IWORKS_UPPREV_PREFIX.'thumb_width',  48 ),
-        get_option( IWORKS_UPPREV_PREFIX.'thumb_height', 48 ),
-        true
-    );
+    add_action( 'admin_menu',         'iworks_upprev_add_pages' );
+    add_action( 'admin_init',         'iworks_upprev_options_init' );
+    add_action( 'wp_footer',          'iworks_upprev_box');
+    add_action( 'wp_enqueue_scripts', 'iworks_upprev_enqueue_scripts' );
+    add_action( 'wp_print_scripts',   'iworks_upprev_print_scripts' );
 }
 
 function iworks_upprev_enqueue_scripts()

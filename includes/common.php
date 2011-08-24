@@ -25,6 +25,17 @@ function iworks_upprev_build_options($option_name, $echo = true)
                 continue;
             }
         }
+        $show_option = true;
+        if ( isset( $option['check_supports'] ) && is_array( $option['check_supports'] ) && count( $option['check_supports'] ) ) {
+            foreach ( $option['check_supports'] as $support_to_check ) {
+                if ( !current_theme_supports( $support_to_check ) ) {
+                    $show_option = false;
+                }
+            }
+        }
+        if ( !$show_option ) {
+            continue;
+        }
         if ( $option['type'] == 'heading' ) {
             $content .= '<tr><td colspan="2">';
         } else {

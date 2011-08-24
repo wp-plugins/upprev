@@ -106,7 +106,8 @@ $iworks_upprev_options['index'] = array(
             'th'                => __('Featured image', 'iworks_upprev' ),
             'label'             => __('Show featured image.', 'iworks_upprev'),
             'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 1) == 1,
-            'sanitize_callback' => 'absint'
+            'sanitize_callback' => 'absint',
+            'check_supports'    => array( 'post-thumbnails' )
         ),
         array
         (
@@ -115,7 +116,8 @@ $iworks_upprev_options['index'] = array(
             'class'             => 'small-text',
             'label'             => __('Featured image width.', 'iworks_upprev'),
             'default'           => 48,
-            'sanitize_callback' => 'absint'
+            'sanitize_callback' => 'absint',
+            'check_supports'    => array( 'post-thumbnails' )
         ),
         /**
          * cache

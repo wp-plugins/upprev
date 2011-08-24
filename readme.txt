@@ -30,6 +30,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * BUGFIX: fixed display upPrev box in case of an equal height of the window and the document
 * IMPROVMENT: added to use transient cache
 * IMPROVMENT: added thumbnail width (height depent of theme thumbnail)
+* IMPROVMENT: added prevent some options if active theme dosen't support it
 
 = 1.0.1 - 2011-08-23 =
 
