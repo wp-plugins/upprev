@@ -53,6 +53,7 @@
 
 #upprev_box a.upprev_thumbnail img
 {
+    border:0;
     float:left;
     margin:0 10px 5px 0;
 }
@@ -64,7 +65,7 @@
 #upprev_box div.upprev_thumbnail h5
 {
     clear:right;
-    margin-top:0;
+    margin:0 0 .5em 0;
 }
 #upprev_close
 {
@@ -81,7 +82,3 @@
     width: 13px;
 }
 
-.upprev_space
-{
-    padding-bottom:20px;
-}

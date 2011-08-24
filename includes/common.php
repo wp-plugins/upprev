@@ -2,7 +2,7 @@
 function iworks_upprev_build_options($option_name, $echo = true)
 {
     $options = array();
-    global $iworks_upprev_options;
+    $iworks_upprev_options = iworks_upprev_options();
     if ( isset( $iworks_upprev_options[ $option_name ] ) ) {
         $options = $iworks_upprev_options[ $option_name ];
     }
@@ -155,7 +155,8 @@ function iworks_upprev_build_options($option_name, $echo = true)
 
 function iworks_upprev_options_init()
 {
-    global $iworks_upprev_options;
+    add_filter( 'plugin_row_meta', 'iworks_upprev_plugin_links', 10, 2 );
+    $iworks_upprev_options = iworks_upprev_options();
     foreach( $iworks_upprev_options as $key => $data ) {
         if ( isset ( $data['options'] ) && is_array( $data['options'] ) ) {
             $option_group = IWORKS_UPPREV_PREFIX.$key;
@@ -170,6 +171,33 @@ function iworks_upprev_options_init()
                         isset($option['sanitize_callback'])? $option['sanitize_callback']:null
                     );
             }
+        }
+    }
+}
+
+function iworks_upprev_activate()
+{
+    require_once dirname(__FILE__).'/options.php';
+    $iworks_upprev_options = iworks_upprev_options();
+    foreach( $iworks_upprev_options as $key => $data ) {
+    }
+    foreach ( $data['options'] as $option ) {
+        if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] or !isset( $option['default'] ) ) {
+            continue;
+        }
+        add_option( $option['name'], $option['default'], '', isset($option['autoload'])? $option['autoload']:'yes' );
+    }
+}
+
+function iworks_upprev_deactivate()
+{
+    $iworks_upprev_options = iworks_upprev_options();
+    foreach( $iworks_upprev_options as $key => $data ) {
+        foreach ( $data['options'] as $option ) {
+            if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] ) {
+                continue;
+            }
+            delete_option( $option['name'] );
         }
     }
 }

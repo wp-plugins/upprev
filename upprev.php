@@ -24,9 +24,10 @@ require_once dirname(__FILE__).'/includes/options.php';
 require_once dirname(__FILE__).'/includes/common.php';
 
 /**
- * install
+ * install & uninstall
  */
-#register_activation_hook( __FILE__, 'iworks_upprev_activate' );
+register_activation_hook( __FILE__, 'iworks_upprev_activate' );
+register_deactivation_hook( __FILE__, 'iworks_upprev_deactivate' );
 
 /**
  * init
@@ -58,7 +59,7 @@ function iworks_upprev_print_scripts()
     if ( !is_single()) {
         return;
     }
-    global $iworks_upprev_options;
+    $iworks_upprev_options = iworks_upprev_options();
     $data = '';
     foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element' ) as $key ) {
         if ( $data ) {
@@ -155,6 +156,8 @@ function iworks_upprev_box()
         return;
     }
 
+    remove_all_filters( 'the_content' );
+
     $value = sprintf(
         '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
         get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
@@ -210,9 +213,8 @@ function iworks_upprev_box()
             get_the_title()
         );
         if ( $excerpt_length > 0 ) {
-            $value .= get_the_excerpt();
-        }
-        if ( $image ) {
+            $value .= sprintf( '<p>%s</p>', get_the_excerpt() );
+        } else if ( $image ) {
             $value .= '<br />';
         }
         $value .= '</div>';
@@ -245,4 +247,13 @@ function iworks_upprev_filter_where( $where = '' )
     global $post;
     $where .= " AND post_date < '" . $post->post_date . "'";
     return $where;
+}
+
+function iworks_upprev_plugin_links ( $links, $file )
+{
+    if ( $file == plugin_basename(__FILE__) ) {
+        $links[] = '<a href="themes.php?page=upprev/admin/index.php">' . __('Settings') . '</a>';
+        $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
+    }
+    return $links;
 }
