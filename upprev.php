@@ -18,7 +18,7 @@ define( 'IWORKS_UPPREV_PREFIX',  'iworks_upprev_' );
 /**
  * i18n
  */
-load_plugin_textdomain('iworks_upprev', false, dirname( plugin_basename( __FILE__) ).'/languages');
+load_plugin_textdomain( 'upprev', false, dirname( plugin_basename( __FILE__) ).'/languages' );
 
 require_once dirname(__FILE__).'/includes/options.php';
 require_once dirname(__FILE__).'/includes/common.php';
@@ -87,8 +87,8 @@ function iworks_upprev_add_pages()
 {
     if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
         add_theme_page(
-            __('upPrev', 'iworks_upprev'),
-            __('upPrev', 'iworks_upprev'),
+            __('upPrev', 'upprev'),
+            __('upPrev', 'upprev'),
             'manage_options',
             'upprev/admin/index.php'
         );
@@ -105,7 +105,7 @@ function iworks_upprev_box()
     $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
 
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'cache_'.get_the_ID();
+        $cache_key = IWORKS_UPPREV_PREFIX.'cache_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
             print $value;
             return;
@@ -118,7 +118,7 @@ function iworks_upprev_box()
     $number_of_posts = get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 );
 
     $show_taxonomy   = true;
-    $siblings = array();
+    $siblings        = array();
 
     $args = array(
         'orderby'        => 'date',
@@ -126,22 +126,26 @@ function iworks_upprev_box()
         'post__not_in'   => array( $post->ID ),
         'posts_per_page' => $number_of_posts
     );
-    if ( $compare_by == 'category' ) {
-        foreach((get_the_category()) as $one) {
-            $siblings[ get_category_link( $one->term_id ) ] = $one->name;
-            $ids[] = $one->cat_ID;
-        }
-        $args['cat'] = implode(',',$ids);
-        $count_args = array ( 'include' => $args['cat'] );
-    } else if ( $compare_by == 'category' ) {
-        foreach((get_the_tags()) as $one) {
-            $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
-            $ids[] = $one->term_id;
-        }
-        $args['tag__in'] = $ids;
-        $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
-    } else {
-        $show_taxonomy   = false;
+
+    switch ( $compare_by ) {
+        case 'category':
+            foreach((get_the_category()) as $one) {
+                $siblings[ get_category_link( $one->term_id ) ] = $one->name;
+                $ids[] = $one->cat_ID;
+            }
+            $args['cat'] = implode(',',$ids);
+            $count_args = array ( 'include' => $args['cat'] );
+            break;
+        case 'tag':
+            foreach((get_the_tags()) as $one) {
+                $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
+                $ids[] = $one->term_id;
+            }
+            $args['tag__in'] = $ids;
+            $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
+            break;
+        default:
+            $show_taxonomy   = false;
     }
 
     add_filter( 'posts_where',    'iworks_upprev_filter_where',   99, 1 );
@@ -164,18 +168,20 @@ function iworks_upprev_box()
         get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
         get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
     );
-    $value .= '<h6>';
-    if ( count( $siblings ) ) {
-        $value .= sprintf ( '%s ', __('More in', 'iworks_upprev' ) );
-        $a = array();
-        foreach ( $siblings as $url => $name ) {
-            $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
+    if ( get_option( IWORKS_UPPREV_PREFIX.'header_show', 1 ) ) {
+        $value .= '<h6>';
+        if ( count( $siblings ) ) {
+            $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
+            $a = array();
+            foreach ( $siblings as $url => $name ) {
+                $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
+            }
+            $value .= implode( ', ', $a);
+        } else {
+            $value .= __('Read next post:', 'upprev' );
         }
-        $value .= implode( ', ', $a);
-    } else {
-        $value .= __('Read next post:', 'iworks_upprev' );
+        $value .= '</h6>';
     }
-    $value .= '</h6>';
     $i = 1;
     while ( $query->have_posts() ) {
         $query->the_post();
@@ -219,7 +225,7 @@ function iworks_upprev_box()
         }
         $value .= '</div>';
     }
-    $value .= sprintf( '<a id="upprev_close" href="#">%s</a></div>', __('Close', 'iworks_upprev') );
+    $value .= sprintf( '<a id="upprev_close" href="#">%s</a></div>', __('Close', 'upprev') );
     wp_reset_postdata();
     remove_filter( 'excerpt_more',   'iworks_upprev_filter_where',   99, 1 );
     remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );

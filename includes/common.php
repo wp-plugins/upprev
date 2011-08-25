@@ -143,7 +143,7 @@ function iworks_upprev_build_options($option_name, $echo = true)
     $content .= sprintf
         (
             '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
-            __('Save Changes', 'iworks_upprev')
+            __('Save Changes', 'upprev')
         );
     /* print ? */
     if ( $echo ) {
@@ -187,6 +187,7 @@ function iworks_upprev_activate()
         }
         add_option( $option['name'], $option['default'], '', isset($option['autoload'])? $option['autoload']:'yes' );
     }
+    add_option( IWORKS_UPPREV_PREFIX.'cache_stamp', date('c') );
 }
 
 function iworks_upprev_deactivate()

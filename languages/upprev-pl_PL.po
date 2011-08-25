@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-08-24 11:28:47+00:00\n"
-"PO-Revision-Date: 2011-08-24 13:31+0100\n"
+"POT-Creation-Date: 2011-08-25 07:58:55+00:00\n"
+"PO-Revision-Date: 2011-08-25 09:59+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,10 +18,10 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:89
 #: upprev.php:90
+#: upprev.php:91
 msgid "upPrev"
-msgstr ""
+msgstr "upPrev"
 
 #: admin/index.php:6
 msgid "upPrev options saved."
@@ -35,125 +35,141 @@ msgstr "Błąd w pobieraniu konfiguracji."
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/options.php:12
+#: includes/options.php:14
 msgid "Apperance"
 msgstr "Wygląd"
 
-#: includes/options.php:17
+#: includes/options.php:19
 msgid "Animation style"
 msgstr "Styl animacji"
 
-#: includes/options.php:20
+#: includes/options.php:22
 msgid "flyout"
 msgstr "wysuwane"
 
-#: includes/options.php:21
+#: includes/options.php:23
 msgid "fade in/out"
 msgstr "wygaszane"
 
-#: includes/options.php:28
+#: includes/options.php:30
 msgid "Position"
 msgstr "Pozycja"
 
-#: includes/options.php:31
+#: includes/options.php:33
 msgid "right"
 msgstr "po prawej"
 
-#: includes/options.php:32
+#: includes/options.php:34
 msgid "left"
 msgstr "po lewej"
 
-#: includes/options.php:40
+#: includes/options.php:42
 msgid "Offset"
 msgstr "Przesunięcie"
 
-#: includes/options.php:41
+#: includes/options.php:43
 msgid "% Percentage of the page required to be scrolled to display a box."
 msgstr "Ustaw kiedy, w czasie przesuwania strony, ma się pojawić odnośnik do innego artykułu."
 
-#: includes/options.php:49
+#: includes/options.php:51
 msgid "Before HTML element. If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # \"hash\" before the ID, or . \"dot\" before a class name."
 msgstr "Wpisz przed jakim elementem ma się pokazywać. Jeżeli pozostawisz puste, będzie liczona odległość. Używaj # dla identyfikatorów elementów lub . przed nazwą klasy."
 
 #: includes/options.php:58
+msgid "Box header"
+msgstr "Nagłówek"
+
+#: includes/options.php:59
+msgid "Show boks header."
+msgstr "Pokaż nagłówek."
+
+#: includes/options.php:68
 msgid "Content"
 msgstr "Treść"
 
-#: includes/options.php:64
+#: includes/options.php:74
 msgid "Number of posts to show "
 msgstr "Liczba pokazywanych wpisów"
 
-#: includes/options.php:71
+#: includes/options.php:81
 msgid "Next post choose method"
-msgstr "Metoda wybierania następnego posta"
+msgstr "Metoda wybierania następnego wpisu"
 
-#: includes/options.php:74
+#: includes/options.php:84
 msgid "Just next."
 msgstr "Po prostu następny"
 
-#: includes/options.php:75
+#: includes/options.php:85
 msgid "Next in category."
 msgstr "Następny z wspólną kategorią"
 
-#: includes/options.php:76
+#: includes/options.php:86
 msgid "Next in tag."
 msgstr "Następny z wspólnym tagiem"
 
-#: includes/options.php:86
+#: includes/options.php:96
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:87
+#: includes/options.php:97
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:96
+#: includes/options.php:106
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:106
+#: includes/options.php:116
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:107
+#: includes/options.php:117
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:117
+#: includes/options.php:127
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego"
 
-#: includes/options.php:127
+#: includes/options.php:137
 msgid "Transient Cache"
 msgstr "Pamięć podręczna typu Transient"
 
-#: includes/options.php:133
+#: includes/options.php:143
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:134
+#: includes/options.php:144
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:142
+#: includes/options.php:152
 msgid "Transients Cache Lifetime (in seconds, default one hour)."
 msgstr "Czas wygaszania pamięci tymczasowej (w sekundach, domyślnie godzina)."
 
-#: upprev.php:166
+#: upprev.php:170
 msgid "More in"
 msgstr "Więcej w"
 
-#: upprev.php:173
+#: upprev.php:177
 msgid "Read next post:"
 msgstr "Przeczytaj następny wpis:"
 
-#: upprev.php:220
+#: upprev.php:224
 msgid "Close"
 msgstr "Zamknij"
 
+#: upprev.php:257
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:258
+msgid "Donate"
+msgstr "Złóż datek"
+
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
-msgstr ""
+msgstr "http://iworks.pl/upprev/"
 
 #. Description of the plugin/theme
 msgid "When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. Based on upPrev Previous Post Animated Notification by Jason Pelker, Grzegorz Krzyminski"
@@ -161,14 +177,11 @@ msgstr "W czasie przewijania pokazuje odnośnik do poprzedniego wpisu."
 
 #. Author of the plugin/theme
 msgid "Marcin Pietrzak"
-msgstr ""
+msgstr "Marcin Pietrzak"
 
 #. Author URI of the plugin/theme
 msgid "http://iworks.pl/"
-msgstr ""
-
-#~ msgid "Settings"
-#~ msgstr "Ustawienia"
+msgstr "http://iworks.pl/"
 
 #~ msgid "FAQs"
 #~ msgstr "FAQ"

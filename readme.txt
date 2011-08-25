@@ -9,8 +9,8 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.0
 Tested up to:      3.2
-Stable tag:        2.0
-Version:           2.0
+Stable tag:        2.0.1
+Version:           2.0.1
 
 == Description ==
 
@@ -23,7 +23,18 @@ Plugin based on "upPrev Previous Post Animated Notification"
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Configure upPrev plugin using Apperance -> upPrev
 
+== Screenshots ==
+
+1. upPrev options
+2. upPrev on post
+
 == Changelog ==
+
+= 2.0.1 =
+
+* BUGFIX: fixed translation load
+* IMPROVMENT: added show box header option
+* IMPROVMENT: added stamp for cache key
 
 = 2.0 =
 
@@ -44,8 +55,11 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 * INIT: copy and massive refactoring of plugin "upPrev Previous Post Animated Notification
 
-
 == Upgrade Notice ==
+
+= 2.0.1 =
+
+Add a polish translation. Fix cache refresh missing after change plugin configuration.
 
 = 2.0 =
 

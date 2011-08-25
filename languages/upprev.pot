@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-08-24 11:28:47+00:00\n"
+"POT-Creation-Date: 2011-08-25 07:58:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:89 upprev.php:90
+#: admin/index.php:3 upprev.php:90 upprev.php:91
 msgid "upPrev"
 msgstr ""
 
@@ -30,43 +30,43 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: includes/options.php:12
+#: includes/options.php:14
 msgid "Apperance"
 msgstr ""
 
-#: includes/options.php:17
+#: includes/options.php:19
 msgid "Animation style"
 msgstr ""
 
-#: includes/options.php:20
+#: includes/options.php:22
 msgid "flyout"
 msgstr ""
 
-#: includes/options.php:21
+#: includes/options.php:23
 msgid "fade in/out"
 msgstr ""
 
-#: includes/options.php:28
+#: includes/options.php:30
 msgid "Position"
 msgstr ""
 
-#: includes/options.php:31
+#: includes/options.php:33
 msgid "right"
 msgstr ""
 
-#: includes/options.php:32
+#: includes/options.php:34
 msgid "left"
 msgstr ""
 
-#: includes/options.php:40
+#: includes/options.php:42
 msgid "Offset"
 msgstr ""
 
-#: includes/options.php:41
+#: includes/options.php:43
 msgid "% Percentage of the page required to be scrolled to display a box."
 msgstr ""
 
-#: includes/options.php:49
+#: includes/options.php:51
 msgid ""
 "Before HTML element. If empty, all page length is taken for calculation. If "
 "not empty, make sure to use the ID or class of an existing element. Put # "
@@ -74,79 +74,95 @@ msgid ""
 msgstr ""
 
 #: includes/options.php:58
+msgid "Box header"
+msgstr ""
+
+#: includes/options.php:59
+msgid "Show boks header."
+msgstr ""
+
+#: includes/options.php:68
 msgid "Content"
 msgstr ""
 
-#: includes/options.php:64
+#: includes/options.php:74
 msgid "Number of posts to show "
 msgstr ""
 
-#: includes/options.php:71
+#: includes/options.php:81
 msgid "Next post choose method"
 msgstr ""
 
-#: includes/options.php:74
+#: includes/options.php:84
 msgid "Just next."
 msgstr ""
 
-#: includes/options.php:75
+#: includes/options.php:85
 msgid "Next in category."
 msgstr ""
 
-#: includes/options.php:76
+#: includes/options.php:86
 msgid "Next in tag."
 msgstr ""
 
-#: includes/options.php:86
+#: includes/options.php:96
 msgid "Excerpt"
 msgstr ""
 
-#: includes/options.php:87
+#: includes/options.php:97
 msgid "Show excerpt."
 msgstr ""
 
-#: includes/options.php:96
+#: includes/options.php:106
 msgid "Number of words to show."
 msgstr ""
 
-#: includes/options.php:106
+#: includes/options.php:116
 msgid "Featured image"
 msgstr ""
 
-#: includes/options.php:107
+#: includes/options.php:117
 msgid "Show featured image."
 msgstr ""
 
-#: includes/options.php:117
+#: includes/options.php:127
 msgid "Featured image width."
 msgstr ""
 
-#: includes/options.php:127
+#: includes/options.php:137
 msgid "Transient Cache"
 msgstr ""
 
-#: includes/options.php:133
+#: includes/options.php:143
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:134
+#: includes/options.php:144
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:142
+#: includes/options.php:152
 msgid "Transients Cache Lifetime (in seconds, default one hour)."
 msgstr ""
 
-#: upprev.php:166
+#: upprev.php:170
 msgid "More in"
 msgstr ""
 
-#: upprev.php:173
+#: upprev.php:177
 msgid "Read next post:"
 msgstr ""
 
-#: upprev.php:220
+#: upprev.php:224
 msgid "Close"
+msgstr ""
+
+#: upprev.php:257
+msgid "Settings"
+msgstr ""
+
+#: upprev.php:258
+msgid "Donate"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
