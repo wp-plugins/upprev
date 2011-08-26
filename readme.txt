@@ -33,6 +33,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 = 2.1.0 =
 
 * IMPROVMENT: added box width option
+* IMPROVMENT: added box bottom margin option
 
 = 2.0.1 =
 

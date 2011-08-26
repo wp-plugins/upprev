@@ -42,9 +42,9 @@ jQuery(function($){
             if (iworks_upprev.animation == "fade") {
                 $("#upprev_box").fadeOut("slow");
             } else if ( iworks_upprev.position == 'left' ) {
-                $("#upprev_box").stop().animate({left:"-400px"});
+                $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
             } else {
-                $("#upprev_box").stop().animate({right:"-400px"});
+                $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
             }
         }
     }
@@ -58,9 +58,9 @@ jQuery(function($){
         if (iworks_upprev.animation == "fade") {
             $("#upprev_box").fadeOut("slow");
         } else if ( iworks_upprev.position == 'left' ) {
-            $("#upprev_box").stop().animate({left:"-400px"});
+            $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
         } else {
-            $("#upprev_box").stop().animate({right:"-400px"});
+            $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
         }
         upprev_closed = true;
         upprev_hidden = true;

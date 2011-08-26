@@ -36,17 +36,21 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'width',
-                'type'              => 'radio',
-                'th'                => __('Length', 'upprev' ),
+                'name'              => IWORKS_UPPREV_PREFIX.'css_bottom',
+                'type'              => 'text',
+                'class'             => 'small-text',
+                'th'                => __('Margin bottom', 'upprev' ),
+                'label'             => __('px', 'upprev' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'name'              => IWORKS_UPPREV_PREFIX.'css_width',
+                'type'              => 'text',
+                'class'             => 'small-text',
+                'th'                => __('Box width', 'upprev' ),
+                'label'             => __('px', 'upprev' ),
                 'default'           => 400,
-                'radio'             => array(
-                    200 => __('200px', 'upprev'),
-                    300 => __('300px', 'upprev'),
-                    400 => __('400px', 'upprev'),
-                    500 => __('500px', 'upprev'),
-                    600 => __('600px', 'upprev'),
-                ),
                 'sanitize_callback' => 'absint'
             ),
             array(

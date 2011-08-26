@@ -203,3 +203,23 @@ function iworks_upprev_deactivate()
     }
 }
 
+function iworks_upprev_get_default_value( $option_group, $option_name )
+{
+    $options = array();
+    $iworks_upprev_options = iworks_upprev_options();
+    if ( isset( $iworks_upprev_options[ $option_group ] ) ) {
+        $options = $iworks_upprev_options[ $option_group ];
+    }
+    /**
+     * check options exists?
+     */
+    if(!is_array($options['options'])) {
+        return null;
+    }
+    foreach ( $options['options'] as $option ) {
+        if ( isset( $option['name'] ) && $option['name'] == IWORKS_UPPREV_PREFIX.$option_name ) {
+            return isset($option['default'])? $option['default']:null;
+        }
+    }
+    return null;
+}

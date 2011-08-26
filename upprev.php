@@ -42,6 +42,7 @@ function iworks_upprev_init()
     add_action( 'wp_footer',          'iworks_upprev_box');
     add_action( 'wp_enqueue_scripts', 'iworks_upprev_enqueue_scripts' );
     add_action( 'wp_print_scripts',   'iworks_upprev_print_scripts' );
+    add_action( 'wp_print_styles',    'iworks_upprev_print_styles' );
 }
 
 function iworks_upprev_enqueue_scripts()
@@ -61,7 +62,7 @@ function iworks_upprev_print_scripts()
     }
     $iworks_upprev_options = iworks_upprev_options();
     $data = '';
-    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element' ) as $key ) {
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width' ) as $key ) {
         if ( $data ) {
             $data .= ','."\n";
         }
@@ -81,6 +82,24 @@ function iworks_upprev_print_scripts()
     echo $data;
     echo "\n".'};'."\n";
     echo '</script>'."\n";
+}
+
+function iworks_upprev_print_styles()
+{
+    if ( !is_single()) {
+        return;
+    }
+    echo '<style type="text/css">'."\n";
+    echo '#upprev_box{';
+    $values = array();
+    foreach ( array( 'bottom', 'width' ) as $key ) {
+        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key,  iworks_upprev_get_default_value( 'index', 'css_'.$key) );
+        printf( '%s:%dpx;', $key, $values[ $key ] ) ;
+    }
+    echo '}'."\n";
+    printf( '#upprev_box.position_left.animation_flyout{left:-%dpx}%s', $values['width'] + 50, "\n" );
+    printf( '#upprev_box.position_right.animation_flyout{right:-%dpx}%s', $values['width'] + 50, "\n" );
+    echo '</style>'."\n";
 }
 
 function iworks_upprev_add_pages()
