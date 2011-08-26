@@ -163,10 +163,11 @@ function iworks_upprev_box()
     remove_all_filters( 'the_content' );
 
     $value = sprintf(
-        '<div id="upprev_box" class="position_%s animation_%s offset_%d">',
+        '<div id="upprev_box" class="position_%s animation_%s offset_%d width_%d">',
         get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
         get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
-        get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 )
+        get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 ),
+        get_option( IWORKS_UPPREV_PREFIX.'width', 100 )
     );
     if ( get_option( IWORKS_UPPREV_PREFIX.'header_show', 1 ) ) {
         $value .= '<h6>';

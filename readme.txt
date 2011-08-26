@@ -30,6 +30,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.1.0 =
+
+* IMPROVMENT: added box width option
+
 = 2.0.1 =
 
 * BUGFIX: fixed translation load
@@ -64,3 +68,4 @@ Add a polish translation. Fix cache refresh missing after change plugin configur
 = 2.0 =
 
 More configuration options. Uses transient cache to store results. Optimization activation & deactivation process.
+
