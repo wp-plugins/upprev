@@ -50,7 +50,7 @@ function iworks_upprev_options()
                 'class'             => 'small-text',
                 'th'                => __('Box width', 'upprev' ),
                 'label'             => __('px', 'upprev' ),
-                'default'           => 400,
+                'default'           => 360,
                 'sanitize_callback' => 'absint'
             ),
             array(
