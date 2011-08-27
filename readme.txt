@@ -7,10 +7,10 @@ Tags:              next post, previous post, notification, related, upPrev
 Author URI:        http://iworks.pl/
 Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
-Requires at least: 3.0
-Tested up to:      3.2
-Stable tag:        2.0.1
-Version:           2.0.1
+Requires at least: 3.1
+Tested up to:      3.2.1
+Stable tag:        2.1
+Version:           2.1
 
 == Description ==
 
