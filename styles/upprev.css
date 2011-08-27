@@ -16,12 +16,6 @@
     _top: 0;
 }
 
-#upprev_box.animation_fade  { display:none;  }
-#upprev_box.animation_flyout{ display:block; }
-
-#upprev_box.position_left.animation_fade   { left:0; }
-#upprev_box.position_right.animation_fade  { right:0; }
-
 #upprev_box h6
 {
     text-transform: uppercase;

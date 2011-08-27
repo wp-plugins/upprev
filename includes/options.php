@@ -45,6 +45,15 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
+                'name'              => IWORKS_UPPREV_PREFIX.'css_side',
+                'type'              => 'text',
+                'class'             => 'small-text',
+                'th'                => __('Margin side', 'upprev' ),
+                'label'             => __('px (left or right depending on position)', 'upprev' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
                 'name'              => IWORKS_UPPREV_PREFIX.'css_width',
                 'type'              => 'text',
                 'class'             => 'small-text',
@@ -76,6 +85,16 @@ function iworks_upprev_options()
                 'th'                => __('Box header', 'upprev' ),
                 'label'             => __('Show boks header.', 'upprev'),
                 'checked'           => get_option(IWORKS_UPPREV_PREFIX.'header_show', 1) == 1,
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'name'              => IWORKS_UPPREV_PREFIX.'close_button_show',
+                'type'              => 'checkbox',
+                'th'                => __('Close button', 'upprev' ),
+                'label'             => __('Show close button.', 'upprev'),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'close_button_show', 1) == 1,
+                'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             /**
@@ -104,6 +123,34 @@ function iworks_upprev_options()
                     'tag'      => __('Next in tag.', 'upprev')
                 ),
                 'sanitize_callback' => 'esc_html'
+            ),
+            array
+            (
+                'name'              => IWORKS_UPPREV_PREFIX.'post_type_post',
+                'type'              => 'checkbox',
+                'th'                => __('Select post types', 'upprev' ),
+                'label'             => __('Show posts. If not any, then default value is "post".', 'upprev'),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_post', 1) == 1,
+                'default'           => 1,
+                'sanitize_callback' => 'absint',
+            ),
+            array
+            (
+                'name'              => IWORKS_UPPREV_PREFIX.'post_type_page',
+                'type'              => 'checkbox',
+                'label'             => __('Show pages.', 'upprev'),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_page', 0) == 1,
+                'default'           => 0,
+                'sanitize_callback' => 'absint',
+            ),
+            array
+            (
+                'name'              => IWORKS_UPPREV_PREFIX.'post_type_any',
+                'type'              => 'checkbox',
+                'label'             => __('Show any custom post types.', 'upprev'),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_any', 0) == 1,
+                'default'           => 0,
+                'sanitize_callback' => 'absint',
             ),
             /**
              * excerpt

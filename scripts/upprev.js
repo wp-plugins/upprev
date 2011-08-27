@@ -28,9 +28,9 @@ jQuery(function($){
             if (iworks_upprev.animation == "fade") {
                 $("#upprev_box").fadeIn("slow");
             } else if ( iworks_upprev.position == 'left' ) {
-                $("#upprev_box").stop().animate({left:"0px"});
+                $("#upprev_box").stop().animate({left:iworks_upprev.css_side+"px"});
             } else {
-                $("#upprev_box").stop().animate({right:"0px"});
+                $("#upprev_box").stop().animate({right:iworks_upprev.css_side+"px"});
             }
             upprev_hidden = false;
         }
@@ -42,9 +42,9 @@ jQuery(function($){
             if (iworks_upprev.animation == "fade") {
                 $("#upprev_box").fadeOut("slow");
             } else if ( iworks_upprev.position == 'left' ) {
-                $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
+                $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + iworks_upprev.css_side + 50 ) + "px"});
             } else {
-                $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
+                $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + iworks_upprev.css_side + 50 ) + "px"});
             }
         }
     }

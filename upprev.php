@@ -45,9 +45,20 @@ function iworks_upprev_init()
     add_action( 'wp_print_styles',    'iworks_upprev_print_styles' );
 }
 
+function iworks_upprev_check()
+{
+    if ( is_single() ) {
+        return false;
+    }
+    if ( is_page() ) {
+        return false;
+    }
+    return true;
+}
+
 function iworks_upprev_enqueue_scripts()
 {
-    if ( !is_single()) {
+    if ( iworks_upprev_check() ) {
         return;
     }
     wp_enqueue_script( 'iworks_upprev-js', plugins_url('/scripts/upprev.js', __FILE__), array('jquery'), IWORKS_UPPREV_VERSION );
@@ -57,12 +68,20 @@ function iworks_upprev_enqueue_scripts()
 
 function iworks_upprev_print_scripts()
 {
-    if ( !is_single()) {
+    if ( iworks_upprev_check() ) {
         return;
+    }
+    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+    if ( $use_cache ) {
+        $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
+            print $content;
+            return;
+        }
     }
     $iworks_upprev_options = iworks_upprev_options();
     $data = '';
-    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width' ) as $key ) {
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side' ) as $key ) {
         if ( $data ) {
             $data .= ','."\n";
         }
@@ -77,29 +96,59 @@ function iworks_upprev_print_scripts()
     if ( empty($data) ) {
         return;
     }
-    echo '<script type="text/javascript">'."\n";
-    echo 'var iworks_upprev = {'."\n";
-    echo $data;
-    echo "\n".'};'."\n";
-    echo '</script>'."\n";
+    $content  = '<script type="text/javascript">'."\n";
+    $content .= 'var iworks_upprev = {'."\n";
+    $content .= $data;
+    $content .= "\n".'};'."\n";
+    $content .= '</script>'."\n";
+    if ( $use_cache ) {
+        set_site_transient( $cache_key, $content, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+    }
+    echo $content;
 }
 
 function iworks_upprev_print_styles()
 {
-    if ( !is_single()) {
+    if ( iworks_upprev_check() ) {
         return;
     }
-    echo '<style type="text/css">'."\n";
-    echo '#upprev_box{';
-    $values = array();
-    foreach ( array( 'bottom', 'width' ) as $key ) {
-        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key,  iworks_upprev_get_default_value( 'index', 'css_'.$key) );
-        printf( '%s:%dpx;', $key, $values[ $key ] ) ;
+    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+    if ( $use_cache ) {
+        $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
+            print $content;
+            return;
+        }
     }
-    echo '}'."\n";
-    printf( '#upprev_box.position_left.animation_flyout{left:-%dpx}%s', $values['width'] + 50, "\n" );
-    printf( '#upprev_box.position_right.animation_flyout{right:-%dpx}%s', $values['width'] + 50, "\n" );
-    echo '</style>'."\n";
+    $content = '<style type="text/css">'."\n";
+    $content .= '#upprev_box{';
+    $values = array();
+    foreach ( array( 'position', 'animation' ) as $key ) {
+        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.$key, iworks_upprev_get_default_value( 'index', $key) );
+    }
+    foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
+        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key, iworks_upprev_get_default_value( 'index', 'css_'.$key) );
+        switch ( $key ) {
+        case 'position':
+            break;
+        case 'side':
+            $content .= sprintf( '%s:%dpx;', $values['position'], $values[ $key ] ) ;
+            break;
+        default:
+            $content .= sprintf( '%s:%dpx;', $key, $values[ $key ] ) ;
+        }
+    }
+    $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
+    if ( $values['animation'] == 'flyout' ) {
+        $content .= sprintf( '%s:-%dpx;', $values['position'], $values['width'] + $values['side'] + 50 );
+    }
+    $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
+    $content .= '}'."\n";
+    $content .= '</style>'."\n";
+    if ( $use_cache ) {
+        set_site_transient( $cache_key, $content, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+    }
+    echo $content;
 }
 
 function iworks_upprev_add_pages()
@@ -116,21 +165,18 @@ function iworks_upprev_add_pages()
 
 function iworks_upprev_box()
 {
-    if ( !is_single() ) {
+    if ( iworks_upprev_check() ) {
         return;
     }
     global $post;
-
     $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
-
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'cache_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
             print $value;
             return;
         }
     }
-
     $excerpt_length  = get_option( IWORKS_UPPREV_PREFIX.'excerpt_show', 1 )? get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 20 ):0;
     $display_thumb   = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 ) && current_theme_supports( 'post-thumbnails' );
     $compare_by      = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
@@ -143,9 +189,14 @@ function iworks_upprev_box()
         'orderby'        => 'date',
         'order'          => 'DESC',
         'post__not_in'   => array( $post->ID ),
-        'posts_per_page' => $number_of_posts
+        'posts_per_page' => $number_of_posts,
+        'post_type'      => array()
     );
-
+    foreach ( array( 'post', 'page', 'any' ) as $post_type ) {
+        if ( get_option( IWORKS_UPPREV_PREFIX.'post_type_'.$post_type, 0 ) == 1 ) {
+            $args['post_type'][] = $post_type;
+        }
+    }
     switch ( $compare_by ) {
         case 'category':
             foreach((get_the_category()) as $one) {
@@ -167,10 +218,11 @@ function iworks_upprev_box()
             $show_taxonomy   = false;
     }
 
-    add_filter( 'posts_where',    'iworks_upprev_filter_where',   99, 1 );
-    add_filter( 'excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
+    add_filter( 'excerpt_more', 'iworks_upprev_excerpt_more',   72, 1 );
+
     if ( $excerpt_length > 0 ) {
-        add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+        add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
 
     $query = new WP_Query( $args );
@@ -181,13 +233,10 @@ function iworks_upprev_box()
 
     remove_all_filters( 'the_content' );
 
-    $value = sprintf(
-        '<div id="upprev_box" class="position_%s animation_%s offset_%d width_%d">',
-        get_option( IWORKS_UPPREV_PREFIX.'position', 'right' ),
-        get_option( IWORKS_UPPREV_PREFIX.'animation', 'flyout' ),
-        get_option( IWORKS_UPPREV_PREFIX.'offset_percent', 100 ),
-        get_option( IWORKS_UPPREV_PREFIX.'width', 100 )
-    );
+    $value = '<div id="upprev_box">';
+    ob_start();
+    do_action( 'iworks_upprev_box_before' );
+    $value .= ob_get_flush();
     if ( get_option( IWORKS_UPPREV_PREFIX.'header_show', 1 ) ) {
         $value .= '<h6>';
         if ( count( $siblings ) ) {
@@ -245,12 +294,18 @@ function iworks_upprev_box()
         }
         $value .= '</div>';
     }
-    $value .= sprintf( '<a id="upprev_close" href="#">%s</a></div>', __('Close', 'upprev') );
+    if ( get_option( IWORKS_UPPREV_PREFIX.'close_button_show', 1 ) == 1 ) {
+        $value .= sprintf( '<a id="upprev_close" href="#">%s</a>', __('Close', 'upprev') );
+    }
+    ob_start();
+    do_action( 'iworks_upprev_box_after' );
+    $value .= ob_get_flush();
+    $value .= '</div>';
     wp_reset_postdata();
-    remove_filter( 'excerpt_more',   'iworks_upprev_filter_where',   99, 1 );
-    remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more',   10, 1 );
+    remove_filter( 'excerpt_more',   'iworks_upprev_filter_where', 72, 1 );
+    remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more', 72, 1 );
     if ( $excerpt_length > 0 ) {
-        remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 10, 1 );
+        remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
     if ( $use_cache ) {
         set_site_transient( $cache_key, $value, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
@@ -283,3 +338,4 @@ function iworks_upprev_plugin_links ( $links, $file )
     }
     return $links;
 }
+
