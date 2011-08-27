@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-08-25 07:58:55+00:00\n"
-"PO-Revision-Date: 2011-08-25 10:44+0100\n"
+"POT-Creation-Date: 2011-08-27 15:38:35+00:00\n"
+"PO-Revision-Date: 2011-08-27 17:42+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,14 +18,34 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:90
-#: upprev.php:91
+#: upprev.php:158
+#: upprev.php:159
 msgid "upPrev"
 msgstr "upPrev"
 
-#: admin/index.php:6
+#: admin/index.php:7
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
+
+#: upprev.php:243
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:250
+msgid "Read next post:"
+msgstr "Przeczytaj następny wpis:"
+
+#: upprev.php:298
+msgid "Close"
+msgstr "Zamknij"
+
+#: upprev.php:336
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:337
+msgid "Donate"
+msgstr "Złóż datek"
 
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
@@ -64,108 +84,133 @@ msgid "left"
 msgstr "po lewej"
 
 #: includes/options.php:42
+msgid "Margin bottom"
+msgstr "Dolny margines"
+
+#: includes/options.php:43
+#: includes/options.php:61
+msgid "px"
+msgstr "px"
+
+#: includes/options.php:51
+msgid "Margin side"
+msgstr "Boczny margines"
+
+#: includes/options.php:52
+msgid "px (left or right depending on position)"
+msgstr "px (z lewej lub z prawej strony w zależności od pozycji)"
+
+#: includes/options.php:60
+msgid "Box width"
+msgstr "Długość boksu"
+
+#: includes/options.php:69
 msgid "Offset"
 msgstr "Przesunięcie"
 
-#: includes/options.php:43
+#: includes/options.php:70
 msgid "% Percentage of the page required to be scrolled to display a box."
 msgstr "Ustaw kiedy, w czasie przesuwania strony, ma się pojawić odnośnik do innego artykułu."
 
-#: includes/options.php:51
+#: includes/options.php:78
 msgid "Before HTML element. If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # \"hash\" before the ID, or . \"dot\" before a class name."
 msgstr "Wpisz przed jakim elementem ma się pokazywać. Jeżeli pozostawisz puste, będzie liczona odległość. Używaj # dla identyfikatorów elementów lub . przed nazwą klasy."
 
-#: includes/options.php:58
+#: includes/options.php:85
 msgid "Box header"
 msgstr "Nagłówek"
 
-#: includes/options.php:59
+#: includes/options.php:86
 msgid "Show boks header."
 msgstr "Pokaż nagłówek."
 
-#: includes/options.php:68
+#: includes/options.php:94
+msgid "Close button"
+msgstr "Przycisk do zamykania"
+
+#: includes/options.php:95
+msgid "Show close button."
+msgstr "Pokaż przycisk do zamykania."
+
+#: includes/options.php:105
 msgid "Content"
 msgstr "Treść"
 
-#: includes/options.php:74
+#: includes/options.php:111
 msgid "Number of posts to show "
 msgstr "Liczba pokazywanych wpisów"
 
-#: includes/options.php:81
+#: includes/options.php:118
 msgid "Next post choose method"
 msgstr "Metoda wybierania następnego wpisu"
 
-#: includes/options.php:84
+#: includes/options.php:121
 msgid "Just next."
 msgstr "Po prostu następny"
 
-#: includes/options.php:85
+#: includes/options.php:122
 msgid "Next in category."
 msgstr "Następny z wspólną kategorią"
 
-#: includes/options.php:86
+#: includes/options.php:123
 msgid "Next in tag."
 msgstr "Następny z wspólnym tagiem"
 
-#: includes/options.php:96
+#: includes/options.php:131
+msgid "Select post types"
+msgstr "Wybierz typ wpisów"
+
+#: includes/options.php:132
+msgid "Show posts. If not any, then default value is \"post\"."
+msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
+
+#: includes/options.php:141
+msgid "Show pages."
+msgstr "Pokaż strony."
+
+#: includes/options.php:150
+msgid "Show any custom post types."
+msgstr "Pokazuj wszystkie typy wpisów."
+
+#: includes/options.php:161
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:97
+#: includes/options.php:162
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:106
+#: includes/options.php:171
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:116
+#: includes/options.php:181
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:117
+#: includes/options.php:182
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:127
+#: includes/options.php:192
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego"
 
-#: includes/options.php:137
+#: includes/options.php:202
 msgid "Transient Cache"
 msgstr "Pamięć podręczna typu Transient"
 
-#: includes/options.php:143
+#: includes/options.php:208
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:144
+#: includes/options.php:209
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:152
+#: includes/options.php:217
 msgid "Transients Cache Lifetime (in seconds, default one hour)."
 msgstr "Czas wygaszania pamięci tymczasowej (w sekundach, domyślnie godzina)."
-
-#: upprev.php:170
-msgid "More in"
-msgstr "Więcej w"
-
-#: upprev.php:177
-msgid "Read next post:"
-msgstr "Przeczytaj następny wpis:"
-
-#: upprev.php:224
-msgid "Close"
-msgstr "Zamknij"
-
-#: upprev.php:257
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: upprev.php:258
-msgid "Donate"
-msgstr "Złóż datek"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -185,28 +230,21 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
-
 #~ msgid "Before HTML element."
 #~ msgstr ""
 #~ "Ustawia wyświetlanie w momencie pojawienia się konkretnego elementu strony"
-
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
-
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
 #~ msgid "Thumbnail"
 #~ msgstr "Miniaturka"
-
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
-
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
-
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
-
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
+

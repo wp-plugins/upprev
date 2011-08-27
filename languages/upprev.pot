@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-08-25 07:58:55+00:00\n"
+"POT-Creation-Date: 2011-08-27 15:38:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,12 +14,32 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:90 upprev.php:91
+#: admin/index.php:3 upprev.php:158 upprev.php:159
 msgid "upPrev"
 msgstr ""
 
-#: admin/index.php:6
+#: admin/index.php:7
 msgid "upPrev options saved."
+msgstr ""
+
+#: upprev.php:243
+msgid "More in"
+msgstr ""
+
+#: upprev.php:250
+msgid "Read next post:"
+msgstr ""
+
+#: upprev.php:298
+msgid "Close"
+msgstr ""
+
+#: upprev.php:336
+msgid "Settings"
+msgstr ""
+
+#: upprev.php:337
+msgid "Donate"
 msgstr ""
 
 #: includes/common.php:13
@@ -59,110 +79,134 @@ msgid "left"
 msgstr ""
 
 #: includes/options.php:42
-msgid "Offset"
+msgid "Margin bottom"
 msgstr ""
 
-#: includes/options.php:43
-msgid "% Percentage of the page required to be scrolled to display a box."
+#: includes/options.php:43 includes/options.php:61
+msgid "px"
 msgstr ""
 
 #: includes/options.php:51
+msgid "Margin side"
+msgstr ""
+
+#: includes/options.php:52
+msgid "px (left or right depending on position)"
+msgstr ""
+
+#: includes/options.php:60
+msgid "Box width"
+msgstr ""
+
+#: includes/options.php:69
+msgid "Offset"
+msgstr ""
+
+#: includes/options.php:70
+msgid "% Percentage of the page required to be scrolled to display a box."
+msgstr ""
+
+#: includes/options.php:78
 msgid ""
 "Before HTML element. If empty, all page length is taken for calculation. If "
 "not empty, make sure to use the ID or class of an existing element. Put # "
 "\"hash\" before the ID, or . \"dot\" before a class name."
 msgstr ""
 
-#: includes/options.php:58
+#: includes/options.php:85
 msgid "Box header"
 msgstr ""
 
-#: includes/options.php:59
+#: includes/options.php:86
 msgid "Show boks header."
 msgstr ""
 
-#: includes/options.php:68
+#: includes/options.php:94
+msgid "Close button"
+msgstr ""
+
+#: includes/options.php:95
+msgid "Show close button."
+msgstr ""
+
+#: includes/options.php:105
 msgid "Content"
 msgstr ""
 
-#: includes/options.php:74
+#: includes/options.php:111
 msgid "Number of posts to show "
 msgstr ""
 
-#: includes/options.php:81
+#: includes/options.php:118
 msgid "Next post choose method"
 msgstr ""
 
-#: includes/options.php:84
+#: includes/options.php:121
 msgid "Just next."
 msgstr ""
 
-#: includes/options.php:85
+#: includes/options.php:122
 msgid "Next in category."
 msgstr ""
 
-#: includes/options.php:86
+#: includes/options.php:123
 msgid "Next in tag."
 msgstr ""
 
-#: includes/options.php:96
+#: includes/options.php:131
+msgid "Select post types"
+msgstr ""
+
+#: includes/options.php:132
+msgid "Show posts. If not any, then default value is \"post\"."
+msgstr ""
+
+#: includes/options.php:141
+msgid "Show pages."
+msgstr ""
+
+#: includes/options.php:150
+msgid "Show any custom post types."
+msgstr ""
+
+#: includes/options.php:161
 msgid "Excerpt"
 msgstr ""
 
-#: includes/options.php:97
+#: includes/options.php:162
 msgid "Show excerpt."
 msgstr ""
 
-#: includes/options.php:106
+#: includes/options.php:171
 msgid "Number of words to show."
 msgstr ""
 
-#: includes/options.php:116
+#: includes/options.php:181
 msgid "Featured image"
 msgstr ""
 
-#: includes/options.php:117
+#: includes/options.php:182
 msgid "Show featured image."
 msgstr ""
 
-#: includes/options.php:127
+#: includes/options.php:192
 msgid "Featured image width."
 msgstr ""
 
-#: includes/options.php:137
+#: includes/options.php:202
 msgid "Transient Cache"
 msgstr ""
 
-#: includes/options.php:143
+#: includes/options.php:208
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:144
+#: includes/options.php:209
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:152
+#: includes/options.php:217
 msgid "Transients Cache Lifetime (in seconds, default one hour)."
-msgstr ""
-
-#: upprev.php:170
-msgid "More in"
-msgstr ""
-
-#: upprev.php:177
-msgid "Read next post:"
-msgstr ""
-
-#: upprev.php:224
-msgid "Close"
-msgstr ""
-
-#: upprev.php:257
-msgid "Settings"
-msgstr ""
-
-#: upprev.php:258
-msgid "Donate"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
