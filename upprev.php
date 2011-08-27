@@ -214,6 +214,9 @@ function iworks_upprev_box()
             $args['tag__in'] = $ids;
             $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
             break;
+        case 'random':
+            $args['orderby'] = 'rand';
+            unset($args['order']);
         default:
             $show_taxonomy   = false;
     }
@@ -246,6 +249,8 @@ function iworks_upprev_box()
                 $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
             }
             $value .= implode( ', ', $a);
+        } else if ( $compare_by == 'random' ) {
+            $value .= __('Read more:', 'upprev' );
         } else {
             $value .= __('Read next post:', 'upprev' );
         }
@@ -307,7 +312,7 @@ function iworks_upprev_box()
     if ( $excerpt_length > 0 ) {
         remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
-    if ( $use_cache ) {
+    if ( $use_cache && $compare_by != 'random' ) {
         set_site_transient( $cache_key, $value, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
     }
     echo $value;

@@ -38,6 +38,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * IMPROVMENT: added actions: iworks_upprev_box_before and iworks_upprev_box_after, called inside the upPrevBox, before and after post. Now you can add some elements to upPrevBox whithout plugin modyfication.
 * IMPROVMENT: added option to display (or not) close button
 * IMPROVMENT: added post type choose: post, page or any.
+* IMPROVMENT: added random order for displayed posts
 
 = 2.0.1 =
 
@@ -68,7 +69,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 = 2.1 =
 
-Add some apperance, cache improvments. Scripts and styles optimization.
+Add some apperance, cache improvments. Scripts and styles optimization. New order available: random.
 
 = 2.0.1 =
 

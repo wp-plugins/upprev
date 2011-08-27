@@ -118,9 +118,10 @@ function iworks_upprev_options()
                 'th'                => __('Next post choose method', 'upprev' ),
                 'default'           => 'simple',
                 'radio'             => array(
-                    'simple'   => __('Just next.', 'upprev'),
-                    'category' => __('Next in category.', 'upprev'),
-                    'tag'      => __('Next in tag.', 'upprev')
+                    'simple'   => __( 'Just next.',        'upprev' ),
+                    'category' => __( 'Next in category.', 'upprev' ),
+                    'tag'      => __( 'Next in tag.',      'upprev' ),
+                    'random'   => __( 'Random.',           'upprev' )
                 ),
                 'sanitize_callback' => 'esc_html'
             ),

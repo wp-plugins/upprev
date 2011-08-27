@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-08-27 15:38:35+00:00\n"
-"PO-Revision-Date: 2011-08-27 17:42+0100\n"
+"POT-Creation-Date: 2011-08-27 16:18:42+00:00\n"
+"PO-Revision-Date: 2011-08-27 18:48+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -27,23 +27,27 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
-#: upprev.php:243
+#: upprev.php:246
 msgid "More in"
 msgstr "Więcej w"
 
-#: upprev.php:250
+#: upprev.php:253
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: upprev.php:255
 msgid "Read next post:"
 msgstr "Przeczytaj następny wpis:"
 
-#: upprev.php:298
+#: upprev.php:303
 msgid "Close"
 msgstr "Zamknij"
 
-#: upprev.php:336
+#: upprev.php:341
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: upprev.php:337
+#: upprev.php:342
 msgid "Donate"
 msgstr "Złóż datek"
 
@@ -146,69 +150,73 @@ msgstr "Metoda wybierania następnego wpisu"
 
 #: includes/options.php:121
 msgid "Just next."
-msgstr "Po prostu następny"
+msgstr "Po prostu następny."
 
 #: includes/options.php:122
 msgid "Next in category."
-msgstr "Następny z wspólną kategorią"
+msgstr "Następny z wspólną kategorią."
 
 #: includes/options.php:123
 msgid "Next in tag."
-msgstr "Następny z wspólnym tagiem"
+msgstr "Następny z wspólnym tagiem."
 
-#: includes/options.php:131
+#: includes/options.php:124
+msgid "Random."
+msgstr "Losowo."
+
+#: includes/options.php:132
 msgid "Select post types"
 msgstr "Wybierz typ wpisów"
 
-#: includes/options.php:132
+#: includes/options.php:133
 msgid "Show posts. If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
-#: includes/options.php:141
+#: includes/options.php:142
 msgid "Show pages."
 msgstr "Pokaż strony."
 
-#: includes/options.php:150
+#: includes/options.php:151
 msgid "Show any custom post types."
 msgstr "Pokazuj wszystkie typy wpisów."
 
-#: includes/options.php:161
+#: includes/options.php:162
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:162
+#: includes/options.php:163
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:171
+#: includes/options.php:172
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:181
+#: includes/options.php:182
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:182
+#: includes/options.php:183
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:192
+#: includes/options.php:193
 msgid "Featured image width."
-msgstr "Szerokość obrazka wyróżniającego"
+msgstr "Szerokość obrazka wyróżniającego."
 
-#: includes/options.php:202
+#: includes/options.php:203
 msgid "Transient Cache"
 msgstr "Pamięć podręczna typu Transient"
 
-#: includes/options.php:208
+#: includes/options.php:209
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:209
+#: includes/options.php:210
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:217
+#: includes/options.php:218
 msgid "Transients Cache Lifetime (in seconds, default one hour)."
 msgstr "Czas wygaszania pamięci tymczasowej (w sekundach, domyślnie godzina)."
 
