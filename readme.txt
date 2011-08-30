@@ -9,7 +9,7 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.1
+Stable tag:        2.1.1
 Version:           2.1
 
 == Description ==
@@ -29,6 +29,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 2. upPrev on post
 
 == Changelog ==
+
+= 2.1.1 =
+
+* BUGFIX: When they scroll down again, the box flies out, which -- on a small screen -- can obscure a big chunk of the content. http://wordpress.org/support/topic/plugin-upprev-return-to-top-of-post-after-clicking-x
 
 = 2.1 =
 
