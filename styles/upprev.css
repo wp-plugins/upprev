@@ -52,6 +52,10 @@
 {
     clear:both;
 }
+#upprev_box h5
+{
+    margin-top:0;
+}
 #upprev_box div.upprev_thumbnail h5
 {
     clear:right;

@@ -30,6 +30,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+* BUGFIX: remove margin-top for title element
+
 = 2.1.1 =
 
 * BUGFIX: When they scroll down again, the box flies out, which -- on a small screen -- can obscure a big chunk of the content. http://wordpress.org/support/topic/plugin-upprev-return-to-top-of-post-after-clicking-x
