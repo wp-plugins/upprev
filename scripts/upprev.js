@@ -64,6 +64,7 @@ jQuery(function($){
         }
         upprev_closed = true;
         upprev_hidden = true;
+        return false;
     });
 });
 
