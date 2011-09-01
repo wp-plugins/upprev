@@ -114,6 +114,12 @@ function iworks_upprev_build_options($option_name, $echo = true)
         default:
             $content .= sprintf('not implemented type: %s', $option['type']);
         }
+        if ( isset ( $option['description'] ) && $option['description'] ) {
+            if ( isset ( $option['label'] ) && $option['label'] ) {
+                $content .= '<br />';
+            }
+            $content .= sprintf('<span class="description">%s</span>', $option['description']);
+        }
         $content .= '</td>';
         $content .= '</tr>';
     }
@@ -203,7 +209,16 @@ function iworks_upprev_deactivate()
     }
 }
 
-function iworks_upprev_get_default_value( $option_group, $option_name )
+function iworks_upprev_get_option( $option_name, $option_group = 'index' )
+{
+    $option_value = get_option( IWORKS_UPPREV_PREFIX.$option_name, null );
+    if ( $option_group === null ) {
+        $option_value = iworks_upprev_get_default_value( $option_name, $option_group );
+    }
+    return $option_value;
+}
+
+function iworks_upprev_get_default_value( $option_name, $option_group = 'index' )
 {
     $options = array();
     $iworks_upprev_options = iworks_upprev_options();

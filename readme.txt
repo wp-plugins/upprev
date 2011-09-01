@@ -9,7 +9,7 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.1.1
+Stable tag:        2.1.2
 Version:           2.1
 
 == Description ==
@@ -30,7 +30,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.1.2 =
+
 * BUGFIX: remove margin-top for title element
+* IMPROVMENT: added display taxonomies limit
 
 = 2.1.1 =
 

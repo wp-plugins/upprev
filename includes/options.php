@@ -49,7 +49,8 @@ function iworks_upprev_options()
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Margin side', 'upprev' ),
-                'label'             => __('px (left or right depending on position)', 'upprev' ),
+                'label'             => __('px', 'upprev' ),
+                'description'       => __('Left or right depending on position.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
@@ -67,7 +68,8 @@ function iworks_upprev_options()
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Offset', 'upprev' ),
-                'label'             => __('% Percentage of the page required to be scrolled to display a box.', 'upprev' ),
+                'label'             => __('%', 'upprev' ),
+                'description'       => __('Percentage of the page required to be scrolled to display a box.', 'upprev' ),
                 'default'           => 75,
                 'sanitize_callback' => 'absint'
             ),
@@ -75,7 +77,8 @@ function iworks_upprev_options()
                 'name'              => IWORKS_UPPREV_PREFIX.'offset_element',
                 'type'              => 'text',
                 'class'             => 'regular-text',
-                'label'             => __('Before HTML element. If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # "hash" before the ID, or . "dot" before a class name.', 'upprev' ),
+                'label'             => __('Before HTML element.', 'upprev' ),
+                'description'       => __('If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # "hash" before the ID, or . "dot" before a class name.', 'upprev' ),
                 'default'           => '#comments',
                 'sanitize_callback' => 'esc_html'
             ),
@@ -127,10 +130,22 @@ function iworks_upprev_options()
             ),
             array
             (
+                'name'              => IWORKS_UPPREV_PREFIX.'taxonomy_limit',
+                'type'              => 'text',
+                'class'             => 'small-text',
+                'th'                => __('Taxonomy limit', 'upprev' ),
+                'label'             => __('Number of taxonomies (tags or categories) to show.', 'upprev' ),
+                'description'       => __('Default value: 0 (no limit).', 'upprev'),
+                'default'           => 0,
+                'sanitize_callback' => 'absint',
+            ),
+            array
+            (
                 'name'              => IWORKS_UPPREV_PREFIX.'post_type_post',
                 'type'              => 'checkbox',
                 'th'                => __('Select post types', 'upprev' ),
-                'label'             => __('Show posts. If not any, then default value is "post".', 'upprev'),
+                'label'             => __('Show posts.', 'upprev' ),
+                'description'       => __('If not any, then default value is "post".', 'upprev'),
                 'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_post', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
@@ -215,7 +230,8 @@ function iworks_upprev_options()
             (
                 'name'              => IWORKS_UPPREV_PREFIX.'cache_lifetime',
                 'type'              => 'text',
-                'label'             => __('Transients Cache Lifetime (in seconds, default one hour).', 'upprev'),
+                'label'             => __('Transients Cache Lifetime.', 'upprev' ),
+                'description'       => __('In seconds, default one hour (360s).', 'upprev'),
                 'default'           => 360,
                 'sanitize_callback' => 'absint'
             ),

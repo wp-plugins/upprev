@@ -124,10 +124,10 @@ function iworks_upprev_print_styles()
     $content .= '#upprev_box{';
     $values = array();
     foreach ( array( 'position', 'animation' ) as $key ) {
-        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.$key, iworks_upprev_get_default_value( 'index', $key) );
+        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.$key, iworks_upprev_get_default_value( $key ) );
     }
     foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
-        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key, iworks_upprev_get_default_value( 'index', 'css_'.$key) );
+        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key, iworks_upprev_get_default_value( 'css_'.$key ) );
         switch ( $key ) {
         case 'position':
             break;
@@ -177,10 +177,13 @@ function iworks_upprev_box()
             return;
         }
     }
-    $excerpt_length  = get_option( IWORKS_UPPREV_PREFIX.'excerpt_show', 1 )? get_option( IWORKS_UPPREV_PREFIX.'excerpt_length', 20 ):0;
-    $display_thumb   = get_option( IWORKS_UPPREV_PREFIX.'show_thumb', 0 ) && current_theme_supports( 'post-thumbnails' );
-    $compare_by      = get_option( IWORKS_UPPREV_PREFIX.'compare', 'simple' );
-    $number_of_posts = get_option( IWORKS_UPPREV_PREFIX.'number_of_posts', 1 );
+    $iworks_upprev_options = iworks_upprev_options();
+
+    $excerpt_length  = iworks_upprev_get_option( 'excerpt_show' );
+    $display_thumb   = iworks_upprev_get_option( 'show_thumb' );
+    $compare_by      = iworks_upprev_get_option( 'compare' );
+    $number_of_posts = iworks_upprev_get_option( 'number_of_posts' );
+    $taxonomy_limit  = iworks_upprev_get_option( 'taxonomy_limit' );
 
     $show_taxonomy   = true;
     $siblings        = array();
@@ -199,20 +202,38 @@ function iworks_upprev_box()
     }
     switch ( $compare_by ) {
         case 'category':
-            foreach((get_the_category()) as $one) {
-                $siblings[ get_category_link( $one->term_id ) ] = $one->name;
-                $ids[] = $one->cat_ID;
+            $categories = get_the_category();
+            $max = count( $categories );
+            if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
+                $max = $taxonomy_limit;
+            }
+            $ids = array();
+            for ( $i = 0; $i < $max; $i++ ) {
+                $siblings[ get_category_link( $categories[$i]->term_id ) ] = $categories[$i]->name;
+                $ids[] = $categories[$i]->cat_ID;
             }
             $args['cat'] = implode(',',$ids);
-            $count_args = array ( 'include' => $args['cat'] );
             break;
         case 'tag':
-            foreach((get_the_tags()) as $one) {
-                $siblings[ get_tag_link( $one->term_id ) ] = $one->name;
-                $ids[] = $one->term_id;
+            $count_args = array ( 'taxonomy' => 'post_tag' );
+            $tags = get_the_tags();
+            $max = count( $tags );
+            if ( $max < 1 ) {
+                break;
+            }
+            if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
+                $max = $taxonomy_limit;
+            }
+            $ids = array();
+            $i = 1;
+            foreach( $tags as $tag ) {
+                if ( ++$i > $max ) {
+                    continue;
+                }
+                $siblings[ get_tag_link( $tag->term_id ) ] = $tag->name;
+                $ids[] = $tag->term_id;
             }
             $args['tag__in'] = $ids;
-            $count_args = array ( 'include' => implode(',', $args['tag__in'] ), 'taxonomy' => 'post_tag' );
             break;
         case 'random':
             $args['orderby'] = 'rand';
