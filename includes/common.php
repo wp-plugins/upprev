@@ -1,10 +1,10 @@
 <?php
-function iworks_upprev_build_options($option_name, $echo = true)
+function iworks_upprev_build_options( $option_group = 'index', $echo = true )
 {
     $options = array();
     $iworks_upprev_options = iworks_upprev_options();
-    if ( isset( $iworks_upprev_options[ $option_name ] ) ) {
-        $options = $iworks_upprev_options[ $option_name ];
+    if ( isset( $iworks_upprev_options[ $option_group ] ) ) {
+        $options = $iworks_upprev_options[ $option_group ];
     }
     /**
      * check options exists?
@@ -43,22 +43,22 @@ function iworks_upprev_build_options($option_name, $echo = true)
             $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
             $content .= '<td>';
         }
+        $html_element_name = isset($option['name']) && $option['name']? IWORKS_UPPREV_PREFIX.$option['name']:'';
         switch ($option['type']) {
         case 'hidden':
             $hidden .= sprintf
                 (
                     '<input type="hidden" name="%s" value="%s" />',
-                    $option['name'],
+                    $html_element_name,
                     $option['value']
                 );
             break;
         case 'text':
-            $value = get_option($option['name']);
             $content .= sprintf
                 (
                     '<input type="text" name="%s" value="%s" class="%s" /> %s',
-                    $option['name'],
-                   (!$value && isset($option['default']))? $option['default']:$value,
+                    $html_element_name,
+                    iworks_upprev_get_option( $option['name'], $option_group ),
                     isset($option['class']) && $option['class']? $option['class']:'',
                     isset($option['label'])?  $option['label']:''
                 );
@@ -66,17 +66,17 @@ function iworks_upprev_build_options($option_name, $echo = true)
         case 'checkbox':
             $content .= sprintf
                 (
-                    '<label for="%s"><input type="checkbox" name="%s" value="1"%s id="%s"%s /> %s</label>',
-                    $option['name'],
-                    $option['name'],
+                    '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
+                    $html_element_name,
+                    $html_element_name,
+                    $html_element_name,
                     $option['checked']? ' checked="checked"':'',
-                    $option['name'],
                     isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
                     $option['label']
                 );
             break;
         case 'radio':
-            $option_value = get_option($option['name']);
+            $option_value = iworks_upprev_get_option($option['name'], $option_group );
             $content .= '<ul>';
             $i = 0;
             foreach ($option['radio'] as $value => $label) {
@@ -85,7 +85,7 @@ function iworks_upprev_build_options($option_name, $echo = true)
                     (
                         '<li><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s"/> %s</label></li>',
                         $id,
-                        $option['name'],
+                        $html_element_name,
                         $value,
                         ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
                         $id,
@@ -95,11 +95,11 @@ function iworks_upprev_build_options($option_name, $echo = true)
             $content .= '</ul>';
             break;
         case 'textarea':
-            $value = get_option($option['name']);
+            $value = iworks_upprev_get_option($option['name'], $option_group);
             $content .= sprintf
                 (
                     '<textarea name="%s" class="%s" rows="%d">%s</textarea>',
-                    $option['name'],
+                    $html_element_name,
                     $option['class'],
                     isset($option['rows'])? $option['rows']:3,
                    (!$value && isset($option['default']))? $option['default']:$value
@@ -173,7 +173,7 @@ function iworks_upprev_options_init()
                 register_setting
                     (
                         $option_group,
-                        $option['name'],
+                        IWORKS_UPPREV_PREFIX.$option['name'],
                         isset($option['sanitize_callback'])? $option['sanitize_callback']:null
                     );
             }
@@ -191,7 +191,7 @@ function iworks_upprev_activate()
         if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] or !isset( $option['default'] ) ) {
             continue;
         }
-        add_option( $option['name'], $option['default'], '', isset($option['autoload'])? $option['autoload']:'yes' );
+        add_option( IWORKS_UPPREV_PREFIX.$option['name'], $option['default'], '', isset($option['autoload'])? $option['autoload']:'yes' );
     }
     add_option( IWORKS_UPPREV_PREFIX.'cache_stamp', date('c') );
 }

@@ -14,7 +14,7 @@ function iworks_upprev_options()
                 'label'             => __('Apperance', 'upprev' )
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'animation',
+                'name'              => 'animation',
                 'type'              => 'radio',
                 'th'                => __('Animation style', 'upprev' ),
                 'default'           => 'flyout',
@@ -25,7 +25,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'position',
+                'name'              => 'position',
                 'type'              => 'radio',
                 'th'                => __('Position', 'upprev' ),
                 'default'           => 'right',
@@ -36,7 +36,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'css_bottom',
+                'name'              => 'css_bottom',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Margin bottom', 'upprev' ),
@@ -45,7 +45,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'css_side',
+                'name'              => 'css_side',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Margin side', 'upprev' ),
@@ -55,7 +55,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'css_width',
+                'name'              => 'css_width',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Box width', 'upprev' ),
@@ -64,7 +64,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'offset_percent',
+                'name'              => 'offset_percent',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Offset', 'upprev' ),
@@ -74,7 +74,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'offset_element',
+                'name'              => 'offset_element',
                 'type'              => 'text',
                 'class'             => 'regular-text',
                 'label'             => __('Before HTML element.', 'upprev' ),
@@ -83,20 +83,20 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'header_show',
+                'name'              => 'header_show',
                 'type'              => 'checkbox',
                 'th'                => __('Box header', 'upprev' ),
                 'label'             => __('Show boks header.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'header_show', 1) == 1,
+                'checked'           => get_option('header_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'close_button_show',
+                'name'              => 'close_button_show',
                 'type'              => 'checkbox',
                 'th'                => __('Close button', 'upprev' ),
                 'label'             => __('Show close button.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'close_button_show', 1) == 1,
+                'checked'           => get_option('close_button_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -108,7 +108,7 @@ function iworks_upprev_options()
                 'label'             => __('Content', 'upprev' )
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'number_of_posts',
+                'name'              => 'number_of_posts',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Number of posts to show ', 'upprev' ),
@@ -116,7 +116,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'compare',
+                'name'              => 'compare',
                 'type'              => 'radio',
                 'th'                => __('Next post choose method', 'upprev' ),
                 'default'           => 'simple',
@@ -130,7 +130,7 @@ function iworks_upprev_options()
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'taxonomy_limit',
+                'name'              => 'taxonomy_limit',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'th'                => __('Taxonomy limit', 'upprev' ),
@@ -141,30 +141,30 @@ function iworks_upprev_options()
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'post_type_post',
+                'name'              => 'post_type_post',
                 'type'              => 'checkbox',
                 'th'                => __('Select post types', 'upprev' ),
                 'label'             => __('Show posts.', 'upprev' ),
                 'description'       => __('If not any, then default value is "post".', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_post', 1) == 1,
+                'checked'           => get_option('post_type_post', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'post_type_page',
+                'name'              => 'post_type_page',
                 'type'              => 'checkbox',
                 'label'             => __('Show pages.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_page', 0) == 1,
+                'checked'           => get_option('post_type_page', 0) == 1,
                 'default'           => 0,
                 'sanitize_callback' => 'absint',
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'post_type_any',
+                'name'              => 'post_type_any',
                 'type'              => 'checkbox',
                 'label'             => __('Show any custom post types.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'post_type_any', 0) == 1,
+                'checked'           => get_option('post_type_any', 0) == 1,
                 'default'           => 0,
                 'sanitize_callback' => 'absint',
             ),
@@ -172,15 +172,15 @@ function iworks_upprev_options()
              * excerpt
              */
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'excerpt_show',
+                'name'              => 'excerpt_show',
                 'type'              => 'checkbox',
                 'th'                => __('Excerpt', 'upprev' ),
                 'label'             => __('Show excerpt.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'excerpt_show', 1) == 1,
+                'checked'           => get_option('excerpt_show', 1) == 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
-                'name'              => IWORKS_UPPREV_PREFIX.'excerpt_length',
+                'name'              => 'excerpt_length',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'default'           => 20,
@@ -192,17 +192,17 @@ function iworks_upprev_options()
              */
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'show_thumb',
+                'name'              => 'show_thumb',
                 'type'              => 'checkbox',
                 'th'                => __('Featured image', 'upprev' ),
                 'label'             => __('Show featured image.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 1) == 1,
+                'checked'           => get_option('show_thumb', 1) == 1,
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'thumb_width',
+                'name'              => 'thumb_width',
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'label'             => __('Featured image width.', 'upprev'),
@@ -219,16 +219,16 @@ function iworks_upprev_options()
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'use_cache',
+                'name'              => 'use_cache',
                 'type'              => 'checkbox',
                 'th'                => __('Cache', 'upprev'),
                 'label'             => __('Use Transient Cache.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'use_cache', 1) == 1,
+                'checked'           => get_option('use_cache', 1) == 1,
                 'sanitize_callback' => 'absint'
             ),
             array
             (
-                'name'              => IWORKS_UPPREV_PREFIX.'cache_lifetime',
+                'name'              => 'cache_lifetime',
                 'type'              => 'text',
                 'label'             => __('Transients Cache Lifetime.', 'upprev' ),
                 'description'       => __('In seconds, default one hour (360s).', 'upprev'),

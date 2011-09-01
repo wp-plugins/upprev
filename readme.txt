@@ -30,6 +30,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+* BUGFIX: fixed error if the behavior of boxing display for html element
+
 = 2.1.2 =
 
 * BUGFIX: remove margin-top for title element
