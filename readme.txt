@@ -10,6 +10,7 @@ Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
 Stable tag:        2.1.2
+Version:           2.1
 
 == Description ==
 
