@@ -37,12 +37,13 @@ add_action( 'init', 'iworks_upprev_init' );
 
 function iworks_upprev_init()
 {
-    add_action( 'admin_menu',         'iworks_upprev_add_pages' );
-    add_action( 'admin_init',         'iworks_upprev_options_init' );
-    add_action( 'wp_footer',          'iworks_upprev_box');
-    add_action( 'wp_enqueue_scripts', 'iworks_upprev_enqueue_scripts' );
-    add_action( 'wp_print_scripts',   'iworks_upprev_print_scripts' );
-    add_action( 'wp_print_styles',    'iworks_upprev_print_styles' );
+    add_action( 'admin_init',                 'iworks_upprev_options_init' );
+    add_action( 'admin_menu',                 'iworks_upprev_add_pages' );
+    add_action( 'wp_before_admin_bar_render', 'iworks_upprev_add_to_admin_bar' );
+    add_action( 'wp_enqueue_scripts',         'iworks_upprev_enqueue_scripts' );
+    add_action( 'wp_footer',                  'iworks_upprev_box');
+    add_action( 'wp_print_scripts',           'iworks_upprev_print_scripts' );
+    add_action( 'wp_print_styles',            'iworks_upprev_print_styles' );
 }
 
 function iworks_upprev_check()
@@ -364,4 +365,15 @@ function iworks_upprev_plugin_links ( $links, $file )
     }
     return $links;
 }
+
+
+function iworks_upprev_add_to_admin_bar()
+{
+    if ( !current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    global $wp_admin_bar;
+    $wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'upprev', 'title' => __('upPrev', 'upprev'), 'href' => admin_url('themes.php?page=upprev/admin/index.php') ) );
+}
+
 

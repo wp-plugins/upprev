@@ -31,6 +31,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 == Changelog ==
 
 * BUGFIX: fixed error if the behavior of boxing display for html element
+* IMPROVMENT: add upPrev configuration link to admin bar
 
 = 2.1.2 =
 
