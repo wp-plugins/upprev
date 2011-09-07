@@ -79,6 +79,9 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
             $option_value = iworks_upprev_get_option($option['name'], $option_group );
             $content .= '<ul>';
             $i = 0;
+            if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
+                $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
+            }
             foreach ($option['radio'] as $value => $label) {
                 $id = $option['name'].$i++;
                 $content .= sprintf
@@ -237,4 +240,17 @@ function iworks_upprev_get_default_value( $option_name, $option_group = 'index' 
         }
     }
     return null;
+}
+
+function iworks_upprev_get_post_types()
+{
+    $data = array();
+    $post_types = get_post_types( null, 'objects' );
+    foreach ( $post_types as $post_type_key => $post_type ) {
+        if ( preg_match( '/^(post|page|attachment|revision|nav_menu_item)$/', $post_type_key ) ) {
+            continue;
+        }
+        $data[$post_type_key] = __('Only custom post type: ', 'upprev' ).(isset($post_type->labels->name)? $post_type->labels->name:$post_type_key).'.';
+    }
+    return $data;
 }

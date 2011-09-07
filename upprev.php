@@ -196,10 +196,9 @@ function iworks_upprev_box()
         'posts_per_page' => $number_of_posts,
         'post_type'      => array()
     );
-    foreach ( array( 'post', 'page', 'any' ) as $post_type ) {
-        if ( get_option( IWORKS_UPPREV_PREFIX.'post_type_'.$post_type, 0 ) == 1 ) {
-            $args['post_type'][] = $post_type;
-        }
+    $post_type = get_option( IWORKS_UPPREV_PREFIX.'post_type', 'post' );
+    if ( array_key_exists( $post_type, get_post_types() ) || $post_type == 'any' ) {
+        $args['post_type'] = $post_type;
     }
     switch ( $compare_by ) {
         case 'category':
@@ -225,16 +224,18 @@ function iworks_upprev_box()
             if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
                 $max = $taxonomy_limit;
             }
-            $ids = array();
-            $i = 1;
-            foreach( $tags as $tag ) {
-                if ( ++$i > $max ) {
-                    continue;
+            if ( count( $tags ) ) {
+                $ids = array();
+                $i = 1;
+                foreach( $tags as $tag ) {
+                    if ( ++$i > $max ) {
+                        continue;
+                    }
+                    $siblings[ get_tag_link( $tag->term_id ) ] = $tag->name;
+                    $ids[] = $tag->term_id;
                 }
-                $siblings[ get_tag_link( $tag->term_id ) ] = $tag->name;
-                $ids[] = $tag->term_id;
+                $args['tag__in'] = $ids;
             }
-            $args['tag__in'] = $ids;
             break;
         case 'random':
             $args['orderby'] = 'rand';
@@ -249,7 +250,6 @@ function iworks_upprev_box()
     if ( $excerpt_length > 0 ) {
         add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
-
     $query = new WP_Query( $args );
 
     if (!$query->have_posts()) {

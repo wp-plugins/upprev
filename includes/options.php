@@ -141,32 +141,18 @@ function iworks_upprev_options()
             ),
             array
             (
-                'name'              => 'post_type_post',
-                'type'              => 'checkbox',
+                'name'              => 'post_type',
+                'type'              => 'radio',
                 'th'                => __('Select post types', 'upprev' ),
                 'label'             => __('Show posts.', 'upprev' ),
                 'description'       => __('If not any, then default value is "post".', 'upprev'),
-                'checked'           => get_option('post_type_post', 1) == 1,
-                'default'           => 1,
-                'sanitize_callback' => 'absint',
-            ),
-            array
-            (
-                'name'              => 'post_type_page',
-                'type'              => 'checkbox',
-                'label'             => __('Show pages.', 'upprev'),
-                'checked'           => get_option('post_type_page', 0) == 1,
-                'default'           => 0,
-                'sanitize_callback' => 'absint',
-            ),
-            array
-            (
-                'name'              => 'post_type_any',
-                'type'              => 'checkbox',
-                'label'             => __('Show any custom post types.', 'upprev'),
-                'checked'           => get_option('post_type_any', 0) == 1,
-                'default'           => 0,
-                'sanitize_callback' => 'absint',
+                'default'           => 'post',
+                'radio'             => array(
+                    'post' => __( 'Only posts.',                                'upprev' ),
+                    'page' => __( 'Only pages.',                                'upprev' ),
+                    'any'  => __( 'Any post type (include custom post types).', 'upprev' ),
+                ),
+                'extra_options'    => 'iworks_upprev_get_post_types'
             ),
             /**
              * excerpt

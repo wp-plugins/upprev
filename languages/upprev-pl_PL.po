@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-01 09:33:44+00:00\n"
-"PO-Revision-Date: 2011-09-01 11:33+0100\n"
+"POT-Creation-Date: 2011-09-07 13:26:02+00:00\n"
+"PO-Revision-Date: 2011-09-07 15:27+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,8 +18,9 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:158
 #: upprev.php:159
+#: upprev.php:160
+#: upprev.php:377
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -31,9 +32,13 @@ msgstr "Zapisano konfigurację upPrev."
 msgid "An error occurred while getting the configuration."
 msgstr "Błąd w pobieraniu konfiguracji."
 
-#: includes/common.php:152
+#: includes/common.php:155
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
+
+#: includes/common.php:253
+msgid "Only custom post type: "
+msgstr "Pokaż tylko wpisy typu: "
 
 #: includes/options.php:14
 msgid "Apperance"
@@ -173,79 +178,83 @@ msgstr "Pokaż strony."
 msgid "If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
-#: includes/options.php:157
-msgid "Show pages."
-msgstr "Pokaż strony."
+#: includes/options.php:151
+msgid "Only posts."
+msgstr "Pokaż tylko wpisy."
 
-#: includes/options.php:166
-msgid "Show any custom post types."
-msgstr "Pokazuj wszystkie typy wpisów."
+#: includes/options.php:152
+msgid "Only pages."
+msgstr "Pokaż tylko strony."
 
-#: includes/options.php:177
+#: includes/options.php:153
+msgid "Any post type (include custom post types)."
+msgstr "Pokazuj wszystkie typy wpisów (łącznie ze zdefiniowanymi przez użytkownika)."
+
+#: includes/options.php:163
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:178
+#: includes/options.php:164
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:187
+#: includes/options.php:173
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:197
+#: includes/options.php:183
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:198
+#: includes/options.php:184
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:208
+#: includes/options.php:194
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego."
 
-#: includes/options.php:218
+#: includes/options.php:204
 msgid "Transient Cache"
 msgstr "Pamięć podręczna typu Transient"
 
-#: includes/options.php:224
+#: includes/options.php:210
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:225
+#: includes/options.php:211
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:233
+#: includes/options.php:219
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:234
+#: includes/options.php:220
 msgid "In seconds, default one hour (360s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (360s)."
 
-#: upprev.php:267
+#: upprev.php:269
 msgid "More in"
 msgstr "Więcej w"
 
-#: upprev.php:274
+#: upprev.php:276
 msgid "Read more:"
 msgstr "Przeczytaj inne:"
 
-#: upprev.php:276
+#: upprev.php:278
 msgid "Read next post:"
 msgstr "Przeczytaj następny wpis:"
 
-#: upprev.php:324
+#: upprev.php:326
 msgid "Close"
 msgstr "Zamknij"
 
-#: upprev.php:362
+#: upprev.php:364
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: upprev.php:363
+#: upprev.php:365
 msgid "Donate"
 msgstr "Złóż datek"
 

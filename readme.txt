@@ -9,8 +9,8 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.1.2
-Version:           2.1
+Stable tag:        2.2
+Version:           2.2
 
 == Description ==
 
@@ -30,8 +30,12 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.2 =
+
+* IMPROVMENT: added upPrev configuration link to admin bar
+* IMPROVMENT: added registered custom posts
 * BUGFIX: fixed error if the behavior of boxing display for html element
-* IMPROVMENT: add upPrev configuration link to admin bar
+* BUGFIX: fixed wrong method post_type selection
 
 = 2.1.2 =
 
@@ -78,6 +82,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * INIT: copy and massive refactoring of plugin "upPrev Previous Post Animated Notification
 
 == Upgrade Notice ==
+
+= 2.1 =
+
+Add support to custom post type.
 
 = 2.1 =
 

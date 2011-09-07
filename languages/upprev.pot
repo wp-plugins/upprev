@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-01 09:33:44+00:00\n"
+"POT-Creation-Date: 2011-09-07 13:26:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:158 upprev.php:159
+#: admin/index.php:3 upprev.php:159 upprev.php:160 upprev.php:377
 msgid "upPrev"
 msgstr ""
 
@@ -26,8 +26,12 @@ msgstr ""
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/common.php:152
+#: includes/common.php:155
 msgid "Save Changes"
+msgstr ""
+
+#: includes/common.php:253
+msgid "Only custom post type: "
 msgstr ""
 
 #: includes/options.php:14
@@ -169,79 +173,83 @@ msgstr ""
 msgid "If not any, then default value is \"post\"."
 msgstr ""
 
-#: includes/options.php:157
-msgid "Show pages."
+#: includes/options.php:151
+msgid "Only posts."
 msgstr ""
 
-#: includes/options.php:166
-msgid "Show any custom post types."
+#: includes/options.php:152
+msgid "Only pages."
 msgstr ""
 
-#: includes/options.php:177
+#: includes/options.php:153
+msgid "Any post type (include custom post types)."
+msgstr ""
+
+#: includes/options.php:163
 msgid "Excerpt"
 msgstr ""
 
-#: includes/options.php:178
+#: includes/options.php:164
 msgid "Show excerpt."
 msgstr ""
 
-#: includes/options.php:187
+#: includes/options.php:173
 msgid "Number of words to show."
 msgstr ""
 
-#: includes/options.php:197
+#: includes/options.php:183
 msgid "Featured image"
 msgstr ""
 
-#: includes/options.php:198
+#: includes/options.php:184
 msgid "Show featured image."
 msgstr ""
 
-#: includes/options.php:208
+#: includes/options.php:194
 msgid "Featured image width."
 msgstr ""
 
-#: includes/options.php:218
+#: includes/options.php:204
 msgid "Transient Cache"
 msgstr ""
 
-#: includes/options.php:224
+#: includes/options.php:210
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:225
+#: includes/options.php:211
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:233
+#: includes/options.php:219
 msgid "Transients Cache Lifetime."
 msgstr ""
 
-#: includes/options.php:234
+#: includes/options.php:220
 msgid "In seconds, default one hour (360s)."
 msgstr ""
 
-#: upprev.php:267
+#: upprev.php:269
 msgid "More in"
 msgstr ""
 
-#: upprev.php:274
+#: upprev.php:276
 msgid "Read more:"
 msgstr ""
 
-#: upprev.php:276
+#: upprev.php:278
 msgid "Read next post:"
 msgstr ""
 
-#: upprev.php:324
+#: upprev.php:326
 msgid "Close"
 msgstr ""
 
-#: upprev.php:362
+#: upprev.php:364
 msgid "Settings"
 msgstr ""
 
-#: upprev.php:363
+#: upprev.php:365
 msgid "Donate"
 msgstr ""
 
