@@ -12,9 +12,11 @@ Tested up to:      3.2.1
 Stable tag:        2.2.1
 Version:           2.2.1
 
+When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
+
 == Description ==
 
-When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right corner, allowing the reader to select the next available post in the selected configuration.
+When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right or left corner, allowing the reader to select the next available post in the selected configuration.
 Plugin based on "upPrev Previous Post Animated Notification"
 
 == Installation ==
