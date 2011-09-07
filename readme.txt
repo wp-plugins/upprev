@@ -9,8 +9,8 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.2
-Version:           2.2
+Stable tag:        2.2.1
+Version:           2.2.1
 
 == Description ==
 
@@ -29,6 +29,11 @@ Plugin based on "upPrev Previous Post Animated Notification"
 2. upPrev on post
 
 == Changelog ==
+
+= 2.2.1 =
+
+* BUGFIX: fixed display problem with document shorter than browser
+* IMPROVMENT: document post type as checkbox list
 
 = 2.2 =
 

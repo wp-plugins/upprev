@@ -179,6 +179,7 @@ function iworks_upprev_box()
         }
     }
     $iworks_upprev_options = iworks_upprev_options();
+    $taxonomy_limit  = get_option( IWORKS_UPPREV_PREFIX.'taxonomy_limit', 0 );
 
     $excerpt_length  = iworks_upprev_get_option( 'excerpt_show' );
     $display_thumb   = iworks_upprev_get_option( 'show_thumb' );
@@ -196,13 +197,22 @@ function iworks_upprev_box()
         'posts_per_page' => $number_of_posts,
         'post_type'      => array()
     );
-    $post_type = get_option( IWORKS_UPPREV_PREFIX.'post_type', 'post' );
-    if ( array_key_exists( $post_type, get_post_types() ) || $post_type == 'any' ) {
-        $args['post_type'] = $post_type;
+    $post_type = get_option( IWORKS_UPPREV_PREFIX.'post_type', array( 'post' => 'post' ) );
+    if ( !empty( $post_type ) ) {
+        if ( array_key_exists( 'any', $post_type ) ) {
+            $args['post_type'] = 'any';
+        } else {
+            foreach( $post_type as $type ) {
+                $args['post_type'][] = $type;
+            }
+        }
     }
     switch ( $compare_by ) {
         case 'category':
             $categories = get_the_category();
+            if ( count( $categories ) < 1 ) {
+                break;
+            }
             $max = count( $categories );
             if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
                 $max = $taxonomy_limit;
@@ -251,13 +261,10 @@ function iworks_upprev_box()
         add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
     $query = new WP_Query( $args );
-
     if (!$query->have_posts()) {
         return;
     }
-
     remove_all_filters( 'the_content' );
-
     $value = '<div id="upprev_box">';
     ob_start();
     do_action( 'iworks_upprev_box_before' );

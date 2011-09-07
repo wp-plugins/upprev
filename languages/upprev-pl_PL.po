@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-07 13:26:02+00:00\n"
-"PO-Revision-Date: 2011-09-07 15:27+0100\n"
+"POT-Creation-Date: 2011-09-07 20:36:07+00:00\n"
+"PO-Revision-Date: 2011-09-07 22:46+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #: admin/index.php:3
 #: upprev.php:159
 #: upprev.php:160
-#: upprev.php:377
+#: upprev.php:383
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -28,17 +28,41 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
+#: upprev.php:275
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:282
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: upprev.php:284
+msgid "Read next post:"
+msgstr "Przeczytaj następny wpis:"
+
+#: upprev.php:332
+msgid "Close"
+msgstr "Zamknij"
+
+#: upprev.php:370
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:371
+msgid "Donate"
+msgstr "Złóż datek"
+
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
 msgstr "Błąd w pobieraniu konfiguracji."
 
-#: includes/common.php:155
+#: includes/common.php:187
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/common.php:253
-msgid "Only custom post type: "
-msgstr "Pokaż tylko wpisy typu: "
+#: includes/common.php:285
+msgid "Custom post type: "
+msgstr "Wpisy typu: "
 
 #: includes/options.php:14
 msgid "Apperance"
@@ -179,12 +203,12 @@ msgid "If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
 #: includes/options.php:151
-msgid "Only posts."
-msgstr "Pokaż tylko wpisy."
+msgid "Posts."
+msgstr "Wpisy."
 
 #: includes/options.php:152
-msgid "Only pages."
-msgstr "Pokaż tylko strony."
+msgid "Pages."
+msgstr "Strony."
 
 #: includes/options.php:153
 msgid "Any post type (include custom post types)."
@@ -234,30 +258,6 @@ msgstr "Czas wygasania pamięci podręcznej."
 msgid "In seconds, default one hour (360s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (360s)."
 
-#: upprev.php:269
-msgid "More in"
-msgstr "Więcej w"
-
-#: upprev.php:276
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
-
-#: upprev.php:278
-msgid "Read next post:"
-msgstr "Przeczytaj następny wpis:"
-
-#: upprev.php:326
-msgid "Close"
-msgstr "Zamknij"
-
-#: upprev.php:364
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: upprev.php:365
-msgid "Donate"
-msgstr "Złóż datek"
-
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
 msgstr "http://iworks.pl/upprev/"
@@ -274,26 +274,24 @@ msgstr "Marcin Pietrzak"
 msgid "http://iworks.pl/"
 msgstr "http://iworks.pl/"
 
+#~ msgid "Only posts."
+#~ msgstr "Pokaż tylko wpisy."
+#~ msgid "Only pages."
+#~ msgstr "Pokaż tylko strony."
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
-
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
-
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
 #~ msgid "Thumbnail"
 #~ msgstr "Miniaturka"
-
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
-
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
-
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
-
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
+

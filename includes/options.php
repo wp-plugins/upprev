@@ -142,14 +142,14 @@ function iworks_upprev_options()
             array
             (
                 'name'              => 'post_type',
-                'type'              => 'radio',
+                'type'              => 'checkbox_group',
                 'th'                => __('Select post types', 'upprev' ),
                 'label'             => __('Show posts.', 'upprev' ),
                 'description'       => __('If not any, then default value is "post".', 'upprev'),
-                'default'           => 'post',
-                'radio'             => array(
-                    'post' => __( 'Only posts.',                                'upprev' ),
-                    'page' => __( 'Only pages.',                                'upprev' ),
+                'defaults'          => array( 'post' ),
+                'options'           => array(
+                    'post' => __( 'Posts.',                                'upprev' ),
+                    'page' => __( 'Pages.',                                'upprev' ),
                     'any'  => __( 'Any post type (include custom post types).', 'upprev' ),
                 ),
                 'extra_options'    => 'iworks_upprev_get_post_types'

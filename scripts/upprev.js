@@ -19,10 +19,10 @@ jQuery(function($){
             if ($(iworks_upprev.offset_element).length > 0) {
                 lastScreen = getScrollY() + $(window).height() > $(iworks_upprev.offset_element).offset().top;
             } else {
-                lastScreen = getScrollY() + $(window).height() > $(document).height() * iworks_upprev.offset_percent / 100;
+                lastScreen = getScrollY() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            lastScreen = ( getScrollY() + $(window).height() > $(document).height() * iworks_upprev.offset_percent / 100 );
+            lastScreen = ( getScrollY() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
         if (lastScreen && !upprev_closed) {
             if (iworks_upprev.animation == "fade") {

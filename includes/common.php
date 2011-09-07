@@ -75,6 +75,38 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                     $option['label']
                 );
             break;
+        case 'checkbox_group':
+            $option_value = iworks_upprev_get_option($option['name'], $option_group );
+            if ( empty( $option_value ) && isset( $option['defaults'] ) ) {
+                foreach( $option['defaults'] as $default ) {
+                    $option_value[ $default ] = $default;
+                }
+            }
+            $content .= '<ul>';
+            $i = 0;
+            if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
+                $option['options'] = array_merge( $option['options'], $option['extra_options']());
+            }
+            foreach ($option['options'] as $value => $label) {
+                $checked = false;
+                if ( is_array( $option_value ) && array_key_exists( $value, $option_value ) ) {
+                    $checked = true;
+                }
+                $id = $option['name'].$i++;
+                $content .= sprintf
+                    (
+                        '<li><label for="%s"><input type="checkbox" name="%s[%s]" value="%s"%s id="%s"/> %s</label></li>',
+                        $id,
+                        $html_element_name,
+                        $value,
+                        $value,
+                        $checked? ' checked="checked"':'',
+                        $id,
+                        $label
+                    );
+            }
+            $content .= '</ul>';
+            break;
         case 'radio':
             $option_value = iworks_upprev_get_option($option['name'], $option_group );
             $content .= '<ul>';
@@ -250,7 +282,10 @@ function iworks_upprev_get_post_types()
         if ( preg_match( '/^(post|page|attachment|revision|nav_menu_item)$/', $post_type_key ) ) {
             continue;
         }
-        $data[$post_type_key] = __('Only custom post type: ', 'upprev' ).(isset($post_type->labels->name)? $post_type->labels->name:$post_type_key).'.';
+        $data[$post_type_key]  = __( 'Custom post type: ', 'upprev' );
+        $data[$post_type_key] .= isset($post_type->labels->name)? $post_type->labels->name:$post_type_key;
+        $data[$post_type_key] .= '.';
     }
     return $data;
 }
+
