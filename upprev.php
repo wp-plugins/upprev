@@ -344,7 +344,7 @@ function iworks_upprev_box()
     if ( $use_cache && $compare_by != 'random' ) {
         set_site_transient( $cache_key, $value, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
     }
-    echo $value;
+    echo apply_filters( 'iworks_upprev_box', $value );
 }
 
 function iworks_upprev_excerpt_more($more)
