@@ -10,11 +10,32 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
      * check options exists?
      */
     if(!is_array($options['options'])) {
-        echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'solr4wp').'</strong></p></div>';
+        echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks_upprev').'</strong></p></div>';
         return;
     }
     $content = '';
     $hidden  = '';
+    $top     = '';
+    if ( isset ( $options['use_tabs'] ) && $options['use_tabs'] ) {
+        $top .= '<div id="hasadmintabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
+        $top .= '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
+        foreach ($options['options'] as $option) {
+            if (isset($option['capability'])) {
+                if(!current_user_can($option['capability'])) {
+                    continue;
+                }
+            }
+            if ( $option['type'] != 'heading' ) {
+                continue;
+            }
+            $top .= sprintf(
+                '<li class="ui-state-default ui-corner-top"><a href="#upprev-%s"><span>%s</span></a></li>',
+                sanitize_title_with_dashes(remove_accents($option['label'])),
+                $option['label']
+            );
+        }
+        $top .= '</ul>';
+    }
     /**
      * produce options
      */
@@ -142,7 +163,11 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
             break;
         case 'heading':
             if ( isset( $option['label'] ) && $option['label'] ) {
-                $content .= sprintf( '<h3>%s</h3>', $option['label'] );
+                $content .= sprintf(
+                    '<h3 id="upprev-%s">%s</h3>',
+                    sanitize_title_with_dashes(remove_accents($option['label'])),
+                    $option['label']
+                );
                 $i = 0;
             }
             break;
@@ -159,7 +184,6 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         $content .= '</tr>';
     }
     if ($content) {
-        $top = '';
         if ( isset ( $options['label'] ) && $options['label'] ) {
             $top .= sprintf('<h3>%s</h3>', $options['label']);
         }
@@ -181,11 +205,13 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         $content = $top.$content;
         $content .= '</tbody></table>';
     }
-    $content .= sprintf
-        (
-            '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
-            __('Save Changes', 'upprev')
-        );
+    if ( isset ( $options['use_tabs'] ) && $options['use_tabs'] ) {
+        $content .= '</div>';
+    }
+    $content .= sprintf(
+        '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
+        __('Save Changes', 'upprev')
+    );
     /* print ? */
     if ( $echo ) {
         echo $content;

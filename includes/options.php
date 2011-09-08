@@ -8,7 +8,8 @@ function iworks_upprev_options()
      * main settings
      */
     $iworks_upprev_options['index'] = array(
-        'options' => array(
+        'use_tabs' => true,
+        'options'  => array(
             array(
                 'type'              => 'heading',
                 'label'             => __('Apperance', 'upprev' )
@@ -201,7 +202,7 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Transient Cache', 'upprev' )
+                'label'             => __('Cache', 'upprev' )
             ),
             array
             (
