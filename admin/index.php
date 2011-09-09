@@ -7,7 +7,7 @@ if( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) {
     echo '<div id="message" class="updated fade"><p>'.__('upPrev options saved.', 'upprev').'</p></div>';
 }
 ?>
-    <form method="post" action="options.php">
+    <form method="post" action="options.php" id="iworks_upprev_admin_index">
 <?php
 $option_name = basename( __FILE__, '.php');
 iworks_upprev_build_options( $option_name );

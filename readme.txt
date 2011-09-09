@@ -33,6 +33,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 == Changelog ==
 
 * IMPROVMENT: added filter **iworks_upprev_box**
+* IMPROVMENT: added tabed options (based on [Breadcrumb NavXT](http://wordpress.org/extend/plugins/breadcrumb-navxt/) plugin
 
 = 2.2.1 =
 
@@ -88,7 +89,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 = 1.0 =
 
-* INIT: copy and massive refactoring of plugin "upPrev Previous Post Animated Notification
+* INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
 

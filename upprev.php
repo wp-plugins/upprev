@@ -162,6 +162,48 @@ function iworks_upprev_add_pages()
             'upprev/admin/index.php'
         );
     }
+    add_action( 'admin_head-upprev/admin/index.php', 'iworks_upprev_admin_head' );
+}
+
+function iworks_upprev_admin_head()
+{
+        ?>
+<style type="text/css">
+#hasadmintabs ul.ui-tabs-nav {border-bottom:1px solid #dfdfdf; font-size:12px; height:29px; list-style-image:none; list-style-position:outside; list-style-type:none; margin:13px 0 0; overflow:visible; padding:0 0 0 8px;}
+#hasadmintabs ul.ui-tabs-nav li {display:block; float:left; line-height:200%; list-style-image:none; list-style-position:outside; list-style-type:none; margin:0; padding:0; position:relative; text-align:center; white-space:nowrap; width:auto;}
+#hasadmintabs ul.ui-tabs-nav li a {background:transparent none no-repeat scroll 0 50%; border-bottom:1px solid #dfdfdf; display:block; float:left; line-height:28px; padding:1px 13px 0; position:relative; text-decoration:none;}
+#hasadmintabs ul.ui-tabs-nav li.ui-tabs-selected a{-moz-border-radius-topleft:4px; -moz-border-radius-topright:4px;border:1px solid #dfdfdf; border-bottom-color:#f9f9f9; color:#333333; font-weight:normal; padding:0 12px;}
+#hasadmintabs ul.ui-tabs-nav a:focus, a:active {outline-color:-moz-use-text-color; outline-style:none; outline-width:medium;}
+</style>
+<script type="text/javascript">
+/* <![CDATA[ */
+    jQuery(function()
+    {
+        iworks_upprev_tabulator_init();
+     });
+    /**
+     * Tabulator Bootup
+     */
+    function iworks_upprev_tabulator_init()
+    {
+        if (!jQuery("#hasadmintabs").length) {
+            return;
+        }
+        jQuery('#hasadmintabs').prepend("<ul><\/ul>");
+        jQuery('#hasadmintabs > fieldset').each(function(i){
+            id      = jQuery(this).attr('id');
+            caption = jQuery(this).find('h3').text();
+            jQuery('#hasadmintabs > ul').append('<li><a href="#'+id+'"><span>'+caption+"<\/span><\/a><\/li>");
+            jQuery(this).find('h3').hide();
+        });
+        jQuery("#hasadmintabs").tabs({ selected: <?php echo get_option( IWORKS_UPPREV_PREFIX.'last_used_tab', 0 ); ?> });
+        jQuery('#hasadmintabs ul a').click(function(i){
+            jQuery('#hasadmintabs input[name=<?php echo IWORKS_UPPREV_PREFIX;?>last_used_tab]').val(jQuery(this).parent().index());
+        });
+    }
+/* ]]> */
+</script>
+<?php
 }
 
 function iworks_upprev_box()

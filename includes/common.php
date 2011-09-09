@@ -13,33 +13,18 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks_upprev').'</strong></p></div>';
         return;
     }
-    $content = '';
-    $hidden  = '';
-    $top     = '';
-    if ( isset ( $options['use_tabs'] ) && $options['use_tabs'] ) {
-        $top .= '<div id="hasadmintabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
-        $top .= '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
-        foreach ($options['options'] as $option) {
-            if (isset($option['capability'])) {
-                if(!current_user_can($option['capability'])) {
-                    continue;
-                }
-            }
-            if ( $option['type'] != 'heading' ) {
-                continue;
-            }
-            $top .= sprintf(
-                '<li class="ui-state-default ui-corner-top"><a href="#upprev-%s"><span>%s</span></a></li>',
-                sanitize_title_with_dashes(remove_accents($option['label'])),
-                $option['label']
-            );
-        }
-        $top .= '</ul>';
-    }
+    $content  = '';
+    $hidden   = '';
+    $top      = '';
+    $use_tabs = isset( $options['use_tabs'] ) && $options['use_tabs'];
     /**
      * produce options
      */
+    if ( $use_tabs ) {
+        $top .= '<div id="hasadmintabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
+    }
     $i = 0;
+    $last_tab = null;
     foreach ($options['options'] as $option) {
         if (isset($option['capability'])) {
             if(!current_user_can($option['capability'])) {
@@ -58,8 +43,28 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
             continue;
         }
         if ( $option['type'] == 'heading' ) {
+            if ( $use_tabs ) {
+                if ( $last_tab != $option['label'] ) {
+                    $last_tab = $option['label'];
+                    $content .= '</tbody></table>';
+                    $content .= '</fieldset>';
+                }
+                $content .= sprintf(
+                    '<fieldset id="%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom">',
+                    sanitize_title_with_dashes(remove_accents($option['label']))
+                );
+                if ( !$use_tabs ) {
+                    $content .= sprintf( '<h3>%s</h3>', $option['label'] );
+                }
+                $content .= sprintf(
+                    '<table class="form-table%s" style="%s">',
+                    isset($options['widefat'])? ' widefat':'',
+                    isset($options['style'])? $options['style']:''
+                );
+                $content .= '<tbody>';
+            }
             $content .= '<tr><td colspan="2">';
-        } else {
+        } else if ( $option['type'] != 'hidden' ) {
             $content .= sprintf( '<tr valign="top" class="%s">', $i++%2? 'alternate':'' );
             $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
             $content .= '<td>';
@@ -71,7 +76,7 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                 (
                     '<input type="hidden" name="%s" value="%s" />',
                     $html_element_name,
-                    $option['value']
+                    isset($option['dynamic']) && $option['dynamic']? iworks_upprev_get_option( $option['name'], $option_group ):$option['value']
                 );
             break;
         case 'text':
@@ -174,38 +179,46 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         default:
             $content .= sprintf('not implemented type: %s', $option['type']);
         }
-        if ( isset ( $option['description'] ) && $option['description'] ) {
-            if ( isset ( $option['label'] ) && $option['label'] ) {
-                $content .= '<br />';
+        if ( $option['type'] != 'hidden' ) {
+            if ( isset ( $option['description'] ) && $option['description'] ) {
+                if ( isset ( $option['label'] ) && $option['label'] ) {
+                    $content .= '<br />';
+                }
+                $content .= sprintf('<span class="description">%s</span>', $option['description']);
             }
-            $content .= sprintf('<span class="description">%s</span>', $option['description']);
+            $content .= '</td>';
+            $content .= '</tr>';
         }
-        $content .= '</td>';
-        $content .= '</tr>';
     }
     if ($content) {
-        if ( isset ( $options['label'] ) && $options['label'] ) {
+        if ( isset ( $options['label'] ) && $options['label'] && !$use_tabs ) {
             $top .= sprintf('<h3>%s</h3>', $options['label']);
         }
         $top .= $hidden;
-        $top .= sprintf( '<table class="form-table%s" style="%s">', isset($options['widefat'])? ' widefat':'', isset($options['style'])? $options['style']:'' );
-        if ( isset( $options['thead'] ) ) {
-            $top .= '<thead><tr>';
-            foreach( $options['thead'] as $text => $colspan ) {
-                $top .= sprintf
-                    (
-                        '<th%s>%s</th>',
-                        $colspan > 1? ' colspan="'.$colspan.'"':'',
-                        $text
-                    );
+        if ( $use_tabs ) {
+            $content .= '</tbody></table>';
+            $content .= '</fieldset>';
+            $content = $top.$content;
+        } else {
+            $top .= sprintf( '<table class="form-table%s" style="%s">', isset($options['widefat'])? ' widefat':'', isset($options['style'])? $options['style']:'' );
+            if ( isset( $options['thead'] ) ) {
+                $top .= '<thead><tr>';
+                foreach( $options['thead'] as $text => $colspan ) {
+                    $top .= sprintf
+                        (
+                            '<th%s>%s</th>',
+                            $colspan > 1? ' colspan="'.$colspan.'"':'',
+                            $text
+                        );
+                }
+                $top .= '</tr></thead>';
             }
-            $top .= '</tr></thead>';
+            $top .= '<tbody>';
+            $content = $top.$content;
+            $content .= '</tbody></table>';
         }
-        $top .= '<tbody>';
-        $content = $top.$content;
-        $content .= '</tbody></table>';
     }
-    if ( isset ( $options['use_tabs'] ) && $options['use_tabs'] ) {
+    if ( $use_tabs ) {
         $content .= '</div>';
     }
     $content .= sprintf(
@@ -240,6 +253,8 @@ function iworks_upprev_options_init()
             }
         }
     }
+    $text = __("<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>");
+#    add_contextual_help( 'upprev/admin/index', $text );
 }
 
 function iworks_upprev_activate()

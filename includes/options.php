@@ -15,6 +15,13 @@ function iworks_upprev_options()
                 'label'             => __('Apperance', 'upprev' )
             ),
             array(
+                'name'              => 'last_used_tab',
+                'type'              => 'hidden',
+                'value'             => '-1',
+                'dynamic'           => true,
+                'autoload'          => false
+            ),
+            array(
                 'name'              => 'animation',
                 'type'              => 'radio',
                 'th'                => __('Animation style', 'upprev' ),

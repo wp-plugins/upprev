@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-07 20:36:07+00:00\n"
-"PO-Revision-Date: 2011-09-07 22:46+0100\n"
+"POT-Creation-Date: 2011-09-09 08:50:39+00:00\n"
+"PO-Revision-Date: 2011-09-09 10:52+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #: admin/index.php:3
 #: upprev.php:159
 #: upprev.php:160
-#: upprev.php:383
+#: upprev.php:425
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -28,235 +28,236 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
-#: upprev.php:275
-msgid "More in"
-msgstr "Więcej w"
-
-#: upprev.php:282
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
-
-#: upprev.php:284
-msgid "Read next post:"
-msgstr "Przeczytaj następny wpis:"
-
-#: upprev.php:332
-msgid "Close"
-msgstr "Zamknij"
-
-#: upprev.php:370
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: upprev.php:371
-msgid "Donate"
-msgstr "Złóż datek"
-
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
 msgstr "Błąd w pobieraniu konfiguracji."
 
-#: includes/common.php:187
+#: includes/common.php:226
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/common.php:285
+#: includes/common.php:256
+msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
+msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o następnym dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
+
+#: includes/common.php:326
 msgid "Custom post type: "
 msgstr "Wpisy typu: "
 
-#: includes/options.php:14
+#: includes/options.php:15
 msgid "Apperance"
 msgstr "Wygląd"
 
-#: includes/options.php:19
+#: includes/options.php:27
 msgid "Animation style"
 msgstr "Styl animacji"
 
-#: includes/options.php:22
+#: includes/options.php:30
 msgid "flyout"
 msgstr "wysuwane"
 
-#: includes/options.php:23
+#: includes/options.php:31
 msgid "fade in/out"
 msgstr "wygaszane"
 
-#: includes/options.php:30
+#: includes/options.php:38
 msgid "Position"
 msgstr "Pozycja"
 
-#: includes/options.php:33
+#: includes/options.php:41
 msgid "right"
 msgstr "po prawej"
 
-#: includes/options.php:34
+#: includes/options.php:42
 msgid "left"
 msgstr "po lewej"
 
-#: includes/options.php:42
+#: includes/options.php:50
 msgid "Margin bottom"
 msgstr "Dolny margines"
 
-#: includes/options.php:43
-#: includes/options.php:52
-#: includes/options.php:62
+#: includes/options.php:51
+#: includes/options.php:60
+#: includes/options.php:70
 msgid "px"
 msgstr "px"
 
-#: includes/options.php:51
+#: includes/options.php:59
 msgid "Margin side"
 msgstr "Boczny margines"
 
-#: includes/options.php:53
+#: includes/options.php:61
 msgid "Left or right depending on position."
 msgstr "W zależności od pozycji margines z lewej lub prawej strony ."
 
-#: includes/options.php:61
+#: includes/options.php:69
 msgid "Box width"
 msgstr "Długość boksu"
 
-#: includes/options.php:70
+#: includes/options.php:78
 msgid "Offset"
 msgstr "Przesunięcie"
 
-#: includes/options.php:71
+#: includes/options.php:79
 msgid "%"
 msgstr "%"
 
-#: includes/options.php:72
+#: includes/options.php:80
 msgid "Percentage of the page required to be scrolled to display a box."
 msgstr "Po wyświetleniu jakiej części strony, ma się pojawić odnośnik do innego artykułu."
 
-#: includes/options.php:80
+#: includes/options.php:88
 msgid "Before HTML element."
 msgstr "Ustawia wyświetlanie w momencie pojawienia się konkretnego elementu strony"
 
-#: includes/options.php:81
+#: includes/options.php:89
 msgid "If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # \"hash\" before the ID, or . \"dot\" before a class name."
 msgstr " Jeżeli pozostanie puste, będzie liczona odległość. Używaj # dla identyfikatorów elementów lub . przed nazwą klasy."
 
-#: includes/options.php:88
+#: includes/options.php:96
 msgid "Box header"
 msgstr "Nagłówek"
 
-#: includes/options.php:89
+#: includes/options.php:97
 msgid "Show boks header."
 msgstr "Pokaż nagłówek."
 
-#: includes/options.php:97
+#: includes/options.php:105
 msgid "Close button"
 msgstr "Przycisk do zamykania"
 
-#: includes/options.php:98
+#: includes/options.php:106
 msgid "Show close button."
 msgstr "Pokaż przycisk do zamykania."
 
-#: includes/options.php:108
+#: includes/options.php:116
 msgid "Content"
 msgstr "Treść"
 
-#: includes/options.php:114
+#: includes/options.php:122
 msgid "Number of posts to show "
 msgstr "Liczba pokazywanych wpisów"
 
-#: includes/options.php:121
+#: includes/options.php:129
 msgid "Next post choose method"
 msgstr "Metoda wybierania następnego wpisu"
 
-#: includes/options.php:124
+#: includes/options.php:132
 msgid "Just next."
 msgstr "Po prostu następny."
 
-#: includes/options.php:125
+#: includes/options.php:133
 msgid "Next in category."
 msgstr "Następny z wspólną kategorią."
 
-#: includes/options.php:126
+#: includes/options.php:134
 msgid "Next in tag."
 msgstr "Następny z wspólnym tagiem."
 
-#: includes/options.php:127
+#: includes/options.php:135
 msgid "Random."
 msgstr "Losowo."
 
-#: includes/options.php:136
+#: includes/options.php:144
 msgid "Taxonomy limit"
 msgstr "Limit kategorii lub tagów"
 
-#: includes/options.php:137
+#: includes/options.php:145
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr "Liczba pokazywanych tagów lub kategorii."
 
-#: includes/options.php:138
+#: includes/options.php:146
 msgid "Default value: 0 (no limit)."
 msgstr "Domyślna wartość to 0 (brak limitu)"
 
-#: includes/options.php:146
+#: includes/options.php:154
 msgid "Select post types"
 msgstr "Wybierz typ wpisów"
 
-#: includes/options.php:147
+#: includes/options.php:155
 msgid "Show posts."
 msgstr "Pokaż strony."
 
-#: includes/options.php:148
+#: includes/options.php:156
 msgid "If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
-#: includes/options.php:151
+#: includes/options.php:159
 msgid "Posts."
 msgstr "Wpisy."
 
-#: includes/options.php:152
+#: includes/options.php:160
 msgid "Pages."
 msgstr "Strony."
 
-#: includes/options.php:153
+#: includes/options.php:161
 msgid "Any post type (include custom post types)."
 msgstr "Pokazuj wszystkie typy wpisów (łącznie ze zdefiniowanymi przez użytkownika)."
 
-#: includes/options.php:163
+#: includes/options.php:171
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:164
+#: includes/options.php:172
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:173
+#: includes/options.php:181
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:183
+#: includes/options.php:191
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:184
+#: includes/options.php:192
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:194
+#: includes/options.php:202
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego."
 
-#: includes/options.php:204
-msgid "Transient Cache"
-msgstr "Pamięć podręczna typu Transient"
-
-#: includes/options.php:210
+#: includes/options.php:212
+#: includes/options.php:218
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:211
+#: includes/options.php:219
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:219
+#: includes/options.php:227
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:220
+#: includes/options.php:228
 msgid "In seconds, default one hour (360s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (360s)."
+
+#: upprev.php:317
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:324
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: upprev.php:326
+msgid "Read next post:"
+msgstr "Przeczytaj następny wpis:"
+
+#: upprev.php:374
+msgid "Close"
+msgstr "Zamknij"
+
+#: upprev.php:412
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:413
+msgid "Donate"
+msgstr "Złóż datek"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -274,24 +275,35 @@ msgstr "Marcin Pietrzak"
 msgid "http://iworks.pl/"
 msgstr "http://iworks.pl/"
 
+#~ msgid "Transient Cache"
+#~ msgstr "Pamięć podręczna typu Transient"
+
 #~ msgid "Only posts."
 #~ msgstr "Pokaż tylko wpisy."
+
 #~ msgid "Only pages."
 #~ msgstr "Pokaż tylko strony."
+
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
+
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
+
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Miniaturka"
+
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
+
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
+
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
+
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
-

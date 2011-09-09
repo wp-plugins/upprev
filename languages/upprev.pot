@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-07 20:36:07+00:00\n"
+"POT-Creation-Date: 2011-09-09 08:50:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:159 upprev.php:160 upprev.php:383
+#: admin/index.php:3 upprev.php:159 upprev.php:160 upprev.php:425
 msgid "upPrev"
 msgstr ""
 
@@ -22,235 +22,237 @@ msgstr ""
 msgid "upPrev options saved."
 msgstr ""
 
-#: upprev.php:275
-msgid "More in"
-msgstr ""
-
-#: upprev.php:282
-msgid "Read more:"
-msgstr ""
-
-#: upprev.php:284
-msgid "Read next post:"
-msgstr ""
-
-#: upprev.php:332
-msgid "Close"
-msgstr ""
-
-#: upprev.php:370
-msgid "Settings"
-msgstr ""
-
-#: upprev.php:371
-msgid "Donate"
-msgstr ""
-
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/common.php:187
+#: includes/common.php:226
 msgid "Save Changes"
 msgstr ""
 
-#: includes/common.php:285
+#: includes/common.php:256
+msgid ""
+"<p>upPrev settings allows you to set the proprites of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+
+#: includes/common.php:326
 msgid "Custom post type: "
 msgstr ""
 
-#: includes/options.php:14
+#: includes/options.php:15
 msgid "Apperance"
 msgstr ""
 
-#: includes/options.php:19
+#: includes/options.php:27
 msgid "Animation style"
 msgstr ""
 
-#: includes/options.php:22
+#: includes/options.php:30
 msgid "flyout"
 msgstr ""
 
-#: includes/options.php:23
+#: includes/options.php:31
 msgid "fade in/out"
 msgstr ""
 
-#: includes/options.php:30
+#: includes/options.php:38
 msgid "Position"
 msgstr ""
 
-#: includes/options.php:33
+#: includes/options.php:41
 msgid "right"
 msgstr ""
 
-#: includes/options.php:34
+#: includes/options.php:42
 msgid "left"
 msgstr ""
 
-#: includes/options.php:42
+#: includes/options.php:50
 msgid "Margin bottom"
 msgstr ""
 
-#: includes/options.php:43 includes/options.php:52 includes/options.php:62
+#: includes/options.php:51 includes/options.php:60 includes/options.php:70
 msgid "px"
 msgstr ""
 
-#: includes/options.php:51
+#: includes/options.php:59
 msgid "Margin side"
 msgstr ""
 
-#: includes/options.php:53
+#: includes/options.php:61
 msgid "Left or right depending on position."
 msgstr ""
 
-#: includes/options.php:61
+#: includes/options.php:69
 msgid "Box width"
 msgstr ""
 
-#: includes/options.php:70
+#: includes/options.php:78
 msgid "Offset"
 msgstr ""
 
-#: includes/options.php:71
+#: includes/options.php:79
 msgid "%"
 msgstr ""
 
-#: includes/options.php:72
+#: includes/options.php:80
 msgid "Percentage of the page required to be scrolled to display a box."
 msgstr ""
 
-#: includes/options.php:80
+#: includes/options.php:88
 msgid "Before HTML element."
 msgstr ""
 
-#: includes/options.php:81
+#: includes/options.php:89
 msgid ""
 "If empty, all page length is taken for calculation. If not empty, make sure "
 "to use the ID or class of an existing element. Put # \"hash\" before the ID, "
 "or . \"dot\" before a class name."
 msgstr ""
 
-#: includes/options.php:88
+#: includes/options.php:96
 msgid "Box header"
 msgstr ""
 
-#: includes/options.php:89
+#: includes/options.php:97
 msgid "Show boks header."
 msgstr ""
 
-#: includes/options.php:97
+#: includes/options.php:105
 msgid "Close button"
 msgstr ""
 
-#: includes/options.php:98
+#: includes/options.php:106
 msgid "Show close button."
 msgstr ""
 
-#: includes/options.php:108
+#: includes/options.php:116
 msgid "Content"
 msgstr ""
 
-#: includes/options.php:114
+#: includes/options.php:122
 msgid "Number of posts to show "
 msgstr ""
 
-#: includes/options.php:121
+#: includes/options.php:129
 msgid "Next post choose method"
 msgstr ""
 
-#: includes/options.php:124
+#: includes/options.php:132
 msgid "Just next."
 msgstr ""
 
-#: includes/options.php:125
+#: includes/options.php:133
 msgid "Next in category."
 msgstr ""
 
-#: includes/options.php:126
+#: includes/options.php:134
 msgid "Next in tag."
 msgstr ""
 
-#: includes/options.php:127
+#: includes/options.php:135
 msgid "Random."
 msgstr ""
 
-#: includes/options.php:136
+#: includes/options.php:144
 msgid "Taxonomy limit"
 msgstr ""
 
-#: includes/options.php:137
+#: includes/options.php:145
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr ""
 
-#: includes/options.php:138
+#: includes/options.php:146
 msgid "Default value: 0 (no limit)."
 msgstr ""
 
-#: includes/options.php:146
+#: includes/options.php:154
 msgid "Select post types"
 msgstr ""
 
-#: includes/options.php:147
+#: includes/options.php:155
 msgid "Show posts."
 msgstr ""
 
-#: includes/options.php:148
+#: includes/options.php:156
 msgid "If not any, then default value is \"post\"."
 msgstr ""
 
-#: includes/options.php:151
+#: includes/options.php:159
 msgid "Posts."
 msgstr ""
 
-#: includes/options.php:152
+#: includes/options.php:160
 msgid "Pages."
 msgstr ""
 
-#: includes/options.php:153
+#: includes/options.php:161
 msgid "Any post type (include custom post types)."
 msgstr ""
 
-#: includes/options.php:163
+#: includes/options.php:171
 msgid "Excerpt"
 msgstr ""
 
-#: includes/options.php:164
+#: includes/options.php:172
 msgid "Show excerpt."
 msgstr ""
 
-#: includes/options.php:173
+#: includes/options.php:181
 msgid "Number of words to show."
 msgstr ""
 
-#: includes/options.php:183
+#: includes/options.php:191
 msgid "Featured image"
 msgstr ""
 
-#: includes/options.php:184
+#: includes/options.php:192
 msgid "Show featured image."
 msgstr ""
 
-#: includes/options.php:194
+#: includes/options.php:202
 msgid "Featured image width."
 msgstr ""
 
-#: includes/options.php:204
-msgid "Transient Cache"
-msgstr ""
-
-#: includes/options.php:210
+#: includes/options.php:212 includes/options.php:218
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:211
+#: includes/options.php:219
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:219
+#: includes/options.php:227
 msgid "Transients Cache Lifetime."
 msgstr ""
 
-#: includes/options.php:220
+#: includes/options.php:228
 msgid "In seconds, default one hour (360s)."
+msgstr ""
+
+#: upprev.php:317
+msgid "More in"
+msgstr ""
+
+#: upprev.php:324
+msgid "Read more:"
+msgstr ""
+
+#: upprev.php:326
+msgid "Read next post:"
+msgstr ""
+
+#: upprev.php:374
+msgid "Close"
+msgstr ""
+
+#: upprev.php:412
+msgid "Settings"
+msgstr ""
+
+#: upprev.php:413
+msgid "Donate"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
