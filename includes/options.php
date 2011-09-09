@@ -95,7 +95,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Box header', 'upprev' ),
                 'label'             => __('Show boks header.', 'upprev'),
-                'checked'           => get_option('header_show', 1) == 1,
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'header_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -104,7 +104,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Close button', 'upprev' ),
                 'label'             => __('Show close button.', 'upprev'),
-                'checked'           => get_option('close_button_show', 1) == 1,
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'close_button_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -170,7 +170,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Excerpt', 'upprev' ),
                 'label'             => __('Show excerpt.', 'upprev'),
-                'checked'           => get_option('excerpt_show', 1) == 1,
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'excerpt_show', 1) == 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
@@ -190,7 +190,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Featured image', 'upprev' ),
                 'label'             => __('Show featured image.', 'upprev'),
-                'checked'           => get_option('show_thumb', 1) == 1,
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 1) == 1,
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
             ),
@@ -203,6 +203,41 @@ function iworks_upprev_options()
                 'default'           => 48,
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
+            ),
+            /**
+             * tracking
+             */
+            array(
+                'type'              => 'heading',
+                'label'             => __('Links', 'upprev' )
+            ),
+            array(
+                'name'              => 'url_prefix',
+                'type'              => 'text',
+                'th'                => __('URL prefix', 'upprev' ),
+                'class'             => 'regular-text',
+                'description'       => __( 'Will be added before link.', 'upprev' ),
+                'default'           => '',
+                'sanitize_callback' => 'esc_html'
+            ),
+            array(
+                'name'              => 'url_sufix',
+                'type'              => 'text',
+                'th'                => __('URL sufix', 'upprev' ),
+                'class'             => 'regular-text',
+                'description'       => __( 'Will be added after link.', 'upprev' ),
+                'default'           => '',
+                'sanitize_callback' => 'esc_html'
+            ),
+            array
+            (
+                'name'              => 'url_new_window',
+                'type'              => 'checkbox',
+                'th'                => __('Open link', 'upprev' ),
+                'label'             => __('Open link in new window.', 'upprev'),
+                'description'       => __('Not recomended!', 'upprev' ),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'url_new_window', 0) == 1,
+                'sanitize_callback' => 'absint'
             ),
             /**
              * cache

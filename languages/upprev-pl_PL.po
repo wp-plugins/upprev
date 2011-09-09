@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-09 08:50:39+00:00\n"
-"PO-Revision-Date: 2011-09-09 10:52+0100\n"
+"POT-Creation-Date: 2011-09-09 14:45:26+00:00\n"
+"PO-Revision-Date: 2011-09-09 16:47+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,15 +18,39 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
+#: upprev.php:158
 #: upprev.php:159
-#: upprev.php:160
-#: upprev.php:425
+#: upprev.php:434
 msgid "upPrev"
 msgstr "upPrev"
 
 #: admin/index.php:7
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
+
+#: upprev.php:318
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:325
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: upprev.php:327
+msgid "Read next post:"
+msgstr "Przeczytaj następny wpis:"
+
+#: upprev.php:383
+msgid "Close"
+msgstr "Zamknij"
+
+#: upprev.php:421
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:422
+msgid "Donate"
+msgstr "Złóż datek"
 
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
@@ -219,45 +243,53 @@ msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego."
 
 #: includes/options.php:212
-#: includes/options.php:218
+msgid "Links"
+msgstr "Odnośniki"
+
+#: includes/options.php:217
+msgid "URL prefix"
+msgstr "Prefiks adresu"
+
+#: includes/options.php:219
+msgid "Will be added before link."
+msgstr "Prefiks będzie dodany przed odnośnikiem."
+
+#: includes/options.php:226
+msgid "URL sufix"
+msgstr "Sufiks adresu"
+
+#: includes/options.php:228
+msgid "Will be added after link."
+msgstr "Sufiks będzie dodane po odnośniku."
+
+#: includes/options.php:236
+msgid "Open link"
+msgstr "Otwórz odnośnik"
+
+#: includes/options.php:237
+msgid "Open link in new window."
+msgstr "Otwórz odnośnik w nowym oknie"
+
+#: includes/options.php:238
+msgid "Not recomended!"
+msgstr "Nie polecam użycia tej opcji!"
+
+#: includes/options.php:247
+#: includes/options.php:253
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:219
+#: includes/options.php:254
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:227
+#: includes/options.php:262
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:228
+#: includes/options.php:263
 msgid "In seconds, default one hour (360s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (360s)."
-
-#: upprev.php:317
-msgid "More in"
-msgstr "Więcej w"
-
-#: upprev.php:324
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
-
-#: upprev.php:326
-msgid "Read next post:"
-msgstr "Przeczytaj następny wpis:"
-
-#: upprev.php:374
-msgid "Close"
-msgstr "Zamknij"
-
-#: upprev.php:412
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: upprev.php:413
-msgid "Donate"
-msgstr "Złóż datek"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -277,33 +309,24 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "Transient Cache"
 #~ msgstr "Pamięć podręczna typu Transient"
-
 #~ msgid "Only posts."
 #~ msgstr "Pokaż tylko wpisy."
-
 #~ msgid "Only pages."
 #~ msgstr "Pokaż tylko strony."
-
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
-
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
-
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
 #~ msgid "Thumbnail"
 #~ msgstr "Miniaturka"
-
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
-
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
-
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
-
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
+

@@ -34,7 +34,6 @@ register_deactivation_hook( __FILE__, 'iworks_upprev_deactivate' );
  */
 add_action( 'init', 'iworks_upprev_init' );
 
-
 function iworks_upprev_init()
 {
     add_action( 'admin_init',                 'iworks_upprev_options_init' );
@@ -221,13 +220,15 @@ function iworks_upprev_box()
         }
     }
     $iworks_upprev_options = iworks_upprev_options();
-    $taxonomy_limit  = get_option( IWORKS_UPPREV_PREFIX.'taxonomy_limit', 0 );
 
-    $excerpt_length  = iworks_upprev_get_option( 'excerpt_show' );
-    $display_thumb   = iworks_upprev_get_option( 'show_thumb' );
-    $compare_by      = iworks_upprev_get_option( 'compare' );
+    $compare_by      = iworks_upprev_get_option( 'compare'         );
+    $display_thumb   = iworks_upprev_get_option( 'show_thumb'      );
+    $excerpt_length  = iworks_upprev_get_option( 'excerpt_show'    );
     $number_of_posts = iworks_upprev_get_option( 'number_of_posts' );
-    $taxonomy_limit  = iworks_upprev_get_option( 'taxonomy_limit' );
+    $taxonomy_limit  = iworks_upprev_get_option( 'taxonomy_limit'  );
+    $url_new_window  = iworks_upprev_get_option( 'url_new_window'  );
+    $url_prefix      = iworks_upprev_get_option( 'url_prefix'      );
+    $url_sufix       = iworks_upprev_get_option( 'url_sufix'       );
 
     $show_taxonomy   = true;
     $siblings        = array();
@@ -338,12 +339,19 @@ function iworks_upprev_box()
             $item_class .= ' upprev_space';
         }
         $image = '';
+        $permalink = sprintf(
+            '%s%s%s',
+            $url_prefix,
+            get_permalink(),
+            $url_sufix
+        );
         if ( $display_thumb && has_post_thumbnail( get_the_ID() ) ) {
             $item_class .= ' upprev_thumbnail';
             $image = sprintf(
-                '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
-                get_permalink(),
+                '<a href="%s" title="%s" class="upprev_thumbnail"%s>%s</a>',
+                $permalink,
                 wptexturize(get_the_title()),
+                $url_new_window? ' onclick="window.open(this.href);return false;" onkeypress="this.onclick"':'',
                 get_the_post_thumbnail(
                     get_the_ID(),
                     array(
@@ -359,8 +367,9 @@ function iworks_upprev_box()
         }
         $value .= sprintf( '<div class="%s">%s', $item_class, $image );
         $value .= sprintf(
-            '<h5><a href="%s">%s</a></h5>',
-            get_permalink(),
+            '<h5><a href="%s"%s>%s</a></h5>',
+            $permalink,
+            $url_new_window? ' onclick="window.open(this.href);return false;" onkeypress="this.onclick"':'',
             get_the_title()
         );
         if ( $excerpt_length > 0 ) {

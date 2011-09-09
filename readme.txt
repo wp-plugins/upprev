@@ -34,6 +34,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 * IMPROVMENT: added filter **iworks_upprev_box**
 * IMPROVMENT: added tabed options (based on [Breadcrumb NavXT](http://wordpress.org/extend/plugins/breadcrumb-navxt/) plugin
+* IMPROVMENT: added prefix and suffix to urls
+* IMPROVMENT: added option to allow open links in new window
 
 = 2.2.1 =
 
