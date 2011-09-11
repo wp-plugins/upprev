@@ -36,6 +36,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * IMPROVMENT: added tabed options (based on [Breadcrumb NavXT](http://wordpress.org/extend/plugins/breadcrumb-navxt/) plugin
 * IMPROVMENT: added prefix and suffix to urls
 * IMPROVMENT: added option to allow open links in new window
+* BUGFIX: fixed [Transients Cache Lifetime is set to wrong seconds] (http://wordpress.org/support/topic/plugin-upprev-transients-cache-lifetime-is-set-to-wrong-seconds)
 
 = 2.2.1 =
 
