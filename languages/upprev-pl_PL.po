@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-09 14:45:26+00:00\n"
-"PO-Revision-Date: 2011-09-09 16:47+0100\n"
+"POT-Creation-Date: 2011-09-11 19:54:37+00:00\n"
+"PO-Revision-Date: 2011-09-11 22:01+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -288,8 +288,8 @@ msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
 #: includes/options.php:263
-msgid "In seconds, default one hour (360s)."
-msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (360s)."
+msgid "In seconds, default one hour (3600s)."
+msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (3600s)."
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"

@@ -260,8 +260,8 @@ function iworks_upprev_options()
                 'name'              => 'cache_lifetime',
                 'type'              => 'text',
                 'label'             => __('Transients Cache Lifetime.', 'upprev' ),
-                'description'       => __('In seconds, default one hour (360s).', 'upprev'),
-                'default'           => 360,
+                'description'       => __('In seconds, default one hour (3600s).', 'upprev'),
+                'default'           => 3600,
                 'sanitize_callback' => 'absint'
             ),
         ),

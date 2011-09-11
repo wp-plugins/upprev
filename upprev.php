@@ -102,7 +102,7 @@ function iworks_upprev_print_scripts()
     $content .= "\n".'};'."\n";
     $content .= '</script>'."\n";
     if ( $use_cache ) {
-        set_site_transient( $cache_key, $content, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+        set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
     }
     echo $content;
 }
@@ -146,7 +146,7 @@ function iworks_upprev_print_styles()
     $content .= '}'."\n";
     $content .= '</style>'."\n";
     if ( $use_cache ) {
-        set_site_transient( $cache_key, $content, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+        set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
     }
     echo $content;
 }
@@ -393,7 +393,7 @@ function iworks_upprev_box()
         remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
     if ( $use_cache && $compare_by != 'random' ) {
-        set_site_transient( $cache_key, $value, get_option( IWORKS_UPPREV_PREFIX.'cache_lifetime', 360 ) );
+        set_site_transient( $cache_key, $value, iworks_upprev_get_option( 'cache_lifetime' ) );
     }
     echo apply_filters( 'iworks_upprev_box', $value );
 }
