@@ -282,7 +282,7 @@ function iworks_upprev_deactivate()
             if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] ) {
                 continue;
             }
-            delete_option( $option['name'] );
+            delete_option( IWORKS_UPPREV_PREFIX.$option['name'] );
         }
     }
 }

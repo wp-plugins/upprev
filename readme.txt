@@ -37,6 +37,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * IMPROVMENT: added prefix and suffix to urls
 * IMPROVMENT: added option to allow open links in new window
 * BUGFIX: fixed [Transients Cache Lifetime is set to wrong seconds] (http://wordpress.org/support/topic/plugin-upprev-transients-cache-lifetime-is-set-to-wrong-seconds)
+* BUGFIX: fixed deactivation hook option names
 
 = 2.2.1 =
 
