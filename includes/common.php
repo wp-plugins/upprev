@@ -254,7 +254,9 @@ function iworks_upprev_options_init()
         }
     }
     $text = __("<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>");
-#    add_contextual_help( 'upprev/admin/index', $text );
+    add_contextual_help( 'upprev/admin/index', $text );
+    //Enqueue ui-tabs
+    wp_enqueue_script('jquery-ui-tabs');
 }
 
 function iworks_upprev_activate()
