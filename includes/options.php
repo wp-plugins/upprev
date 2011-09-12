@@ -134,7 +134,8 @@ function iworks_upprev_options()
                     'tag'      => __( 'Next in tag.',      'upprev' ),
                     'random'   => __( 'Random.',           'upprev' )
                 ),
-                'sanitize_callback' => 'esc_html'
+                'sanitize_callback' => 'esc_html',
+                'extra_options'    => 'iworks_upprev_get_compare_option'
             ),
             array
             (
@@ -268,3 +269,31 @@ function iworks_upprev_options()
     );
     return $iworks_upprev_options;
 }
+
+function iworks_upprev_get_post_types()
+{
+    $data = array();
+    $post_types = get_post_types( null, 'objects' );
+    foreach ( $post_types as $post_type_key => $post_type ) {
+        if ( preg_match( '/^(post|page|attachment|revision|nav_menu_item)$/', $post_type_key ) ) {
+            continue;
+        }
+        $data[$post_type_key]  = __( 'Custom post type: ', 'upprev' );
+        $data[$post_type_key] .= isset($post_type->labels->name)? $post_type->labels->name:$post_type_key;
+        $data[$post_type_key] .= '.';
+    }
+    return $data;
+}
+
+function iworks_upprev_get_compare_option()
+{
+    $data = array();
+    if ( is_plugin_active(plugin_basename( 'yet-another-related-posts-plugin/yarpp.php' ) ) ) {
+        $data['yarpp'] = __( 'Related Posts (YARPP)', 'yarpp' );
+        $data['yarpp'] .= __( '. Works only with post and/or pages.', 'iworks_upprev' );
+    } else {
+        $data['yarpp-disabled'] = __( 'Related Posts (YARPP)', 'iworks_upprev' );
+    }
+    return $data;
+}
+

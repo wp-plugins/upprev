@@ -221,7 +221,7 @@ function iworks_upprev_box()
     }
     $iworks_upprev_options = iworks_upprev_options();
 
-    $compare_by      = iworks_upprev_get_option( 'compare'         );
+    $compare         = iworks_upprev_get_option( 'compare'         );
     $display_thumb   = iworks_upprev_get_option( 'show_thumb'      );
     $excerpt_length  = iworks_upprev_get_option( 'excerpt_show'    );
     $number_of_posts = iworks_upprev_get_option( 'number_of_posts' );
@@ -250,7 +250,23 @@ function iworks_upprev_box()
             }
         }
     }
-    switch ( $compare_by ) {
+    if ( $compare == 'yarpp' ) {
+        if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.3' ) > -1 ) {
+            echo 'more checks';
+            if ( array_key_exists( 'post', $post_type ) && array_key_exists( 'page', $post_type ) ) {
+                related_entries();
+            } else if ( array_key_exists( 'post', $post_type ) ) {
+                related_posts();
+            } else if ( array_key_exists( 'page', $post_type ) ) {
+                related_pages();
+            } else {
+            }
+        } else {
+            $compare = 'simple';
+        }
+    }
+    d($compare);
+    switch ( $compare ) {
         case 'category':
             $categories = get_the_category();
             if ( count( $categories ) < 1 ) {
@@ -321,7 +337,7 @@ function iworks_upprev_box()
                 $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
             }
             $value .= implode( ', ', $a);
-        } else if ( $compare_by == 'random' ) {
+        } else if ( $compare == 'random' ) {
             $value .= __('Read more:', 'upprev' );
         } else {
             $value .= __('Read next post:', 'upprev' );
@@ -392,7 +408,7 @@ function iworks_upprev_box()
     if ( $excerpt_length > 0 ) {
         remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
     }
-    if ( $use_cache && $compare_by != 'random' ) {
+    if ( $use_cache && $compare != 'random' ) {
         set_site_transient( $cache_key, $value, iworks_upprev_get_option( 'cache_lifetime' ) );
     }
     echo apply_filters( 'iworks_upprev_box', $value );

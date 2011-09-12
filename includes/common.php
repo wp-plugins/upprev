@@ -144,12 +144,13 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                 $id = $option['name'].$i++;
                 $content .= sprintf
                     (
-                        '<li><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s"/> %s</label></li>',
+                        '<li><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
                         $id,
                         $html_element_name,
                         $value,
                         ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
                         $id,
+                        preg_match( '/\-disabled$/', $value )? 'disabled="disabled"':'',
                         $label
                     );
             }
@@ -315,20 +316,5 @@ function iworks_upprev_get_default_value( $option_name, $option_group = 'index' 
         }
     }
     return null;
-}
-
-function iworks_upprev_get_post_types()
-{
-    $data = array();
-    $post_types = get_post_types( null, 'objects' );
-    foreach ( $post_types as $post_type_key => $post_type ) {
-        if ( preg_match( '/^(post|page|attachment|revision|nav_menu_item)$/', $post_type_key ) ) {
-            continue;
-        }
-        $data[$post_type_key]  = __( 'Custom post type: ', 'upprev' );
-        $data[$post_type_key] .= isset($post_type->labels->name)? $post_type->labels->name:$post_type_key;
-        $data[$post_type_key] .= '.';
-    }
-    return $data;
 }
 
