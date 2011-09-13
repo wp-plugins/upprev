@@ -34,9 +34,11 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+* BUGFIX: fixed translation bug
+
 = 2.3.1 =
 
-* BUGFIX: small bug with display option
+* BUGFIX: fixed small bug with display option
 
 = 2.3 =
 
