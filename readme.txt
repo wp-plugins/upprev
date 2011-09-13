@@ -103,6 +103,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Upgrade Notice ==
 
+= 2.3 =
+
+Add YARPP integration.
+
 = 2.1 =
 
 Add support to custom post type.
