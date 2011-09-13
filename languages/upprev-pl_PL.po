@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-11 19:54:37+00:00\n"
-"PO-Revision-Date: 2011-09-11 22:01+0100\n"
+"POT-Creation-Date: 2011-09-13 11:16:35+00:00\n"
+"PO-Revision-Date: 2011-09-13 13:21+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 #: admin/index.php:3
 #: upprev.php:158
 #: upprev.php:159
-#: upprev.php:434
+#: upprev.php:459
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -28,45 +28,17 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
-#: upprev.php:318
-msgid "More in"
-msgstr "Więcej w"
-
-#: upprev.php:325
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
-
-#: upprev.php:327
-msgid "Read next post:"
-msgstr "Przeczytaj następny wpis:"
-
-#: upprev.php:383
-msgid "Close"
-msgstr "Zamknij"
-
-#: upprev.php:421
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: upprev.php:422
-msgid "Donate"
-msgstr "Złóż datek"
-
 #: includes/common.php:13
 msgid "An error occurred while getting the configuration."
 msgstr "Błąd w pobieraniu konfiguracji."
 
-#: includes/common.php:226
+#: includes/common.php:227
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
 
-#: includes/common.php:256
+#: includes/common.php:257
 msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
 msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o następnym dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
-
-#: includes/common.php:326
-msgid "Custom post type: "
-msgstr "Wpisy typu: "
 
 #: includes/options.php:15
 msgid "Apperance"
@@ -194,102 +166,164 @@ msgstr "Liczba pokazywanych tagów lub kategorii."
 msgid "Default value: 0 (no limit)."
 msgstr "Domyślna wartość to 0 (brak limitu)"
 
-#: includes/options.php:154
+#: includes/options.php:153
 msgid "Select post types"
 msgstr "Wybierz typ wpisów"
 
-#: includes/options.php:155
+#: includes/options.php:154
 msgid "Show posts."
 msgstr "Pokaż strony."
 
-#: includes/options.php:156
+#: includes/options.php:155
 msgid "If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
-#: includes/options.php:159
+#: includes/options.php:158
 msgid "Posts."
 msgstr "Wpisy."
 
-#: includes/options.php:160
+#: includes/options.php:159
 msgid "Pages."
 msgstr "Strony."
 
-#: includes/options.php:161
+#: includes/options.php:160
 msgid "Any post type (include custom post types)."
 msgstr "Pokazuj wszystkie typy wpisów (łącznie ze zdefiniowanymi przez użytkownika)."
 
-#: includes/options.php:171
+#: includes/options.php:170
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:172
+#: includes/options.php:171
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:181
+#: includes/options.php:180
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:191
+#: includes/options.php:189
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:192
+#: includes/options.php:190
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:202
+#: includes/options.php:199
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego."
 
-#: includes/options.php:212
+#: includes/options.php:209
 msgid "Links"
 msgstr "Odnośniki"
 
-#: includes/options.php:217
+#: includes/options.php:214
 msgid "URL prefix"
 msgstr "Prefiks adresu"
 
-#: includes/options.php:219
+#: includes/options.php:216
 msgid "Will be added before link."
 msgstr "Prefiks będzie dodany przed odnośnikiem."
 
-#: includes/options.php:226
+#: includes/options.php:223
 msgid "URL sufix"
 msgstr "Sufiks adresu"
 
-#: includes/options.php:228
+#: includes/options.php:225
 msgid "Will be added after link."
 msgstr "Sufiks będzie dodane po odnośniku."
 
-#: includes/options.php:236
+#: includes/options.php:232
 msgid "Open link"
 msgstr "Otwórz odnośnik"
 
-#: includes/options.php:237
+#: includes/options.php:233
 msgid "Open link in new window."
 msgstr "Otwórz odnośnik w nowym oknie"
 
-#: includes/options.php:238
+#: includes/options.php:234
 msgid "Not recomended!"
 msgstr "Nie polecam użycia tej opcji!"
 
-#: includes/options.php:247
-#: includes/options.php:253
+#: includes/options.php:243
+#: includes/options.php:248
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:254
+#: includes/options.php:249
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:262
+#: includes/options.php:256
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:263
+#: includes/options.php:257
 msgid "In seconds, default one hour (3600s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (3600s)."
+
+#: includes/options.php:266
+msgid "Other"
+msgstr "Inne"
+
+#: includes/options.php:271
+msgid "Promote"
+msgstr "Promuj"
+
+#: includes/options.php:272
+msgid "Help promote upPrev plugin?"
+msgstr "Czy pomagać w promowaniu wtyczki?"
+
+#: includes/options.php:273
+msgid "This option will add the code <code>Next posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>"
+msgstr "Włączenie opcji doda wyświetlanie informacji o wtyczce: <code>Dodatek zrealizowany za pomocą &lt;a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;. Włącz i zobacz różnicę w wyświetlanym powiadomieniu."
+
+#: includes/options.php:280
+#: upprev.php:447
+msgid "Donate"
+msgstr "Złóż datek"
+
+#: includes/options.php:281
+msgid "You can buy me some special coffees if you appreciate my work, thank you! <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
+msgstr "Kup mi piwo, jeżeli uważasz wtyczkę za pomocną. Z góry dziękuję! <a href=\"http://iworks.pl/donate/upprev.php\">Złóż datek.</a>"
+
+#: includes/options.php:296
+msgid "Custom post type: "
+msgstr "Wpisy typu: "
+
+#: includes/options.php:307
+#: includes/options.php:310
+msgid "Related Posts (YARPP)"
+msgstr "Powiązane wpisy (YARPP)"
+
+#: includes/options.php:308
+msgid ". Works only with post and/or pages."
+msgstr ". Działa tylko dla wpisów oraz stron."
+
+#: upprev.php:335
+msgid "More in"
+msgstr "Więcej w"
+
+#: upprev.php:342
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: upprev.php:344
+msgid "Read next post:"
+msgstr "Przeczytaj następny wpis:"
+
+#: upprev.php:403
+msgid "Close"
+msgstr "Zamknij"
+
+#: upprev.php:406
+msgid "Next posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr "Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\">wtyczki upPrev</a>."
+
+#: upprev.php:446
+msgid "Settings"
+msgstr "Ustawienia"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -309,24 +343,33 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "Transient Cache"
 #~ msgstr "Pamięć podręczna typu Transient"
+
 #~ msgid "Only posts."
 #~ msgstr "Pokaż tylko wpisy."
+
 #~ msgid "Only pages."
 #~ msgstr "Pokaż tylko strony."
+
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
+
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
+
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Miniaturka"
+
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
+
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
+
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
+
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
-

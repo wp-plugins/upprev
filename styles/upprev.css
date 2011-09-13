@@ -75,4 +75,11 @@
     top: 5px;
     width: 13px;
 }
+#upprev_box p.promote 
+{
+    margin:0px;
+    text-align:right;
+    color:#888;
+    font-size:.9em;
+}
 

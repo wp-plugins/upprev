@@ -137,8 +137,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html',
                 'extra_options'    => 'iworks_upprev_get_compare_option'
             ),
-            array
-            (
+            array(
                 'name'              => 'taxonomy_limit',
                 'type'              => 'text',
                 'class'             => 'small-text',
@@ -148,8 +147,7 @@ function iworks_upprev_options()
                 'default'           => 0,
                 'sanitize_callback' => 'absint',
             ),
-            array
-            (
+            array(
                 'name'              => 'post_type',
                 'type'              => 'checkbox_group',
                 'th'                => __('Select post types', 'upprev' ),
@@ -185,8 +183,7 @@ function iworks_upprev_options()
             /**
              * Featured image
              */
-            array
-            (
+            array(
                 'name'              => 'show_thumb',
                 'type'              => 'checkbox',
                 'th'                => __('Featured image', 'upprev' ),
@@ -195,8 +192,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
             ),
-            array
-            (
+            array(
                 'name'              => 'thumb_width',
                 'type'              => 'text',
                 'class'             => 'small-text',
@@ -230,8 +226,7 @@ function iworks_upprev_options()
                 'default'           => '',
                 'sanitize_callback' => 'esc_html'
             ),
-            array
-            (
+            array(
                 'name'              => 'url_new_window',
                 'type'              => 'checkbox',
                 'th'                => __('Open link', 'upprev' ),
@@ -247,8 +242,7 @@ function iworks_upprev_options()
                 'type'              => 'heading',
                 'label'             => __('Cache', 'upprev' )
             ),
-            array
-            (
+            array(
                 'name'              => 'use_cache',
                 'type'              => 'checkbox',
                 'th'                => __('Cache', 'upprev'),
@@ -256,14 +250,35 @@ function iworks_upprev_options()
                 'checked'           => get_option('use_cache', 1) == 1,
                 'sanitize_callback' => 'absint'
             ),
-            array
-            (
+            array(
                 'name'              => 'cache_lifetime',
                 'type'              => 'text',
                 'label'             => __('Transients Cache Lifetime.', 'upprev' ),
                 'description'       => __('In seconds, default one hour (3600s).', 'upprev'),
                 'default'           => 3600,
                 'sanitize_callback' => 'absint'
+            ),
+            /**
+             * cache
+             */
+            array(
+                'type'              => 'heading',
+                'label'             => __('Other', 'upprev' )
+            ),
+            array(
+                'name'              => 'promote',
+                'type'              => 'checkbox',
+                'th'                => __('Promote', 'upprev'),
+                'label'             => __('Help promote upPrev plugin?', 'upprev'),
+                'description'       => __('This option will add the code <code>Next posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev'),
+                'checked'           => get_option('promote', 0) == 1,
+                'default'           => 0,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'type'              => 'info',
+                'th'                => __('Donate', 'upprev'),
+                'value'             => __('You can buy me some special coffees if you appreciate my work, thank you! <a href="http://iworks.pl/donate/upprev.php">Donate to this plugin.</a>', 'upprev' )
             ),
         ),
     );

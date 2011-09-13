@@ -9,8 +9,8 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.2.1
-Version:           2.2.1
+Stable tag:        2.3
+Version:           2.3
 
 When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
 
@@ -27,16 +27,22 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Screenshots ==
 
-1. upPrev options
-2. upPrev on post
+1. upPrev on post
+2. upPrev options: apperance
+3. upPrev options: content
+4. upPrev options: links
+5. upPrev options: cache
 
 == Changelog ==
+
+= 2.3 =
 
 * IMPROVMENT: added filter **iworks_upprev_box**
 * IMPROVMENT: added tabed options (based on [Breadcrumb NavXT](http://wordpress.org/extend/plugins/breadcrumb-navxt/) plugin
 * IMPROVMENT: added prefix and suffix to urls
 * IMPROVMENT: added option to allow open links in new window
-* BUGFIX: fixed [Transients Cache Lifetime is set to wrong seconds] (http://wordpress.org/support/topic/plugin-upprev-transients-cache-lifetime-is-set-to-wrong-seconds)
+* IMPROVMENT: added integration with [YARPP](http://wordpress.org/extend/plugins/yet-another-related-posts-plugin/)
+* BUGFIX: fixed [Transients Cache Lifetime is set to wrong seconds](http://wordpress.org/support/topic/plugin-upprev-transients-cache-lifetime-is-set-to-wrong-seconds)
 * BUGFIX: fixed deactivation hook option names
 
 = 2.2.1 =
@@ -58,7 +64,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 = 2.1.1 =
 
-* BUGFIX: When they scroll down again, the box flies out, which -- on a small screen -- can obscure a big chunk of the content. http://wordpress.org/support/topic/plugin-upprev-return-to-top-of-post-after-clicking-x
+* BUGFIX: When they scroll down again, the box flies out, which -- on a small screen -- can obscure a big chunk of the content. [forum](http://wordpress.org/support/topic/plugin-upprev-return-to-top-of-post-after-clicking-x)
 
 = 2.1 =
 

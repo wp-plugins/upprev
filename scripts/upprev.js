@@ -66,5 +66,6 @@ jQuery(function($){
         upprev_hidden = true;
         return false;
     });
+    $('#upprev_box').addClass( iworks_upprev.compare );
 });
 
