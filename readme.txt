@@ -9,8 +9,8 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.3
-Version:           2.3
+Stable tag:        2.3.1
+Version:           2.3.1
 
 When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
 
