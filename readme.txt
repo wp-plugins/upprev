@@ -35,6 +35,10 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.3.1 =
+
+* BUGFIX: small bug with display option
+
 = 2.3 =
 
 * IMPROVMENT: added filter **iworks_upprev_box**

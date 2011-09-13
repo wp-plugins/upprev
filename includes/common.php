@@ -177,6 +177,9 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                 $i = 0;
             }
             break;
+        case 'info':
+            $content .= $option['value'];
+            break;
         default:
             $content .= sprintf('not implemented type: %s', $option['type']);
         }
