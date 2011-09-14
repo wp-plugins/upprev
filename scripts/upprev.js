@@ -67,5 +67,11 @@ jQuery(function($){
         return false;
     });
     $('#upprev_box').addClass( iworks_upprev.compare );
+    if( iworks_upprev.url_new_window == 1 ) {
+        $('#upprev_box a').click(function() {
+            window.open($(this).href);
+            return false;
+        });
+    }
 });
 

@@ -148,6 +148,15 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint',
             ),
             array(
+                'name'              => 'match_post_type',
+                'type'              => 'checkbox',
+                'th'                => __('Match post type', 'upprev' ),
+                'label'             => __('Display only for selected post types.', 'upprev'),
+                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'match_post_type', 1) == 1,
+                'default'           => 1,
+                'sanitize_callback' => 'absint',
+            ),
+            array(
                 'name'              => 'post_type',
                 'type'              => 'checkbox_group',
                 'th'                => __('Select post types', 'upprev' ),
