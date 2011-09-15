@@ -34,6 +34,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.3.2 =
+
 * BUGFIX: fixed translation bug
 * BUGFIX: remoed date limit for random posts
 * BUGFIX: fixed open in new window bug
