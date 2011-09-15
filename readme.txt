@@ -34,6 +34,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+* BUGFIX: hide configuration link on plugins list page for WordPress MU
+
 = 2.3.2 =
 
 * BUGFIX: fixed translation bug

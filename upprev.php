@@ -452,7 +452,9 @@ function iworks_upprev_filter_where( $where = '' )
 function iworks_upprev_plugin_links ( $links, $file )
 {
     if ( $file == plugin_basename(__FILE__) ) {
-        $links[] = '<a href="themes.php?page=upprev/admin/index.php">' . __('Settings') . '</a>';
+        if ( !is_multisite() ) {
+            $links[] = '<a href="themes.php?page=upprev/admin/index.php">' . __('Settings') . '</a>';
+        }
         $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
     }
     return $links;
