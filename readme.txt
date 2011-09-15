@@ -35,6 +35,9 @@ Plugin based on "upPrev Previous Post Animated Notification"
 == Changelog ==
 
 * BUGFIX: fixed translation bug
+* BUGFIX: remoed date limit for random posts
+* BUGFIX: fixed open in new window bug
+* IMPROVMENT: added limit to display only on selected post types [forum](http://wordpress.org/support/topic/plugin-upprev-previous-post-animated-notification-custom-post-types)
 
 = 2.3.1 =
 

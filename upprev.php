@@ -48,9 +48,15 @@ function iworks_upprev_init()
 function iworks_upprev_check()
 {
     if ( is_single() ) {
+        if ( iworks_upprev_get_option( 'match_post_type' ) ) {
+            return !array_key_exists( get_post_type(), iworks_upprev_get_option( 'post_type' ) );
+        }
         return false;
     }
     if ( is_page() ) {
+        if ( iworks_upprev_get_option( 'match_post_type' ) ) {
+            return !array_key_exists( 'page', iworks_upprev_get_option( 'post_type' ) );
+        }
         return false;
     }
     return true;
@@ -224,7 +230,6 @@ function iworks_upprev_box()
     foreach( array(
         'compare',
         'excerpt_show',
-        'match_post_type',
         'number_of_posts',
         'show_thumb',
         'taxonomy_limit',
@@ -244,7 +249,7 @@ function iworks_upprev_box()
         'posts_per_page' => $number_of_posts,
         'post_type'      => array()
     );
-    $post_type = get_option( IWORKS_UPPREV_PREFIX.'post_type', array( 'post' => 'post' ) );
+    $post_type = iworks_upprev_get_option( 'post_type' );
     if ( !empty( $post_type ) ) {
         if ( array_key_exists( 'any', $post_type ) ) {
             $args['post_type'] = 'any';
@@ -319,7 +324,9 @@ function iworks_upprev_box()
     }
     $value = '<div id="upprev_box">';
     if ( $compare != 'yarpp' ) {
-        add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
+        if ( $compare != 'random' ) {
+            add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
+        }
         add_filter( 'excerpt_more', 'iworks_upprev_excerpt_more',   72, 1 );
 
         if ( $excerpt_length > 0 ) {
