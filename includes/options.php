@@ -49,7 +49,7 @@ function iworks_upprev_options()
                 'class'             => 'small-text',
                 'th'                => __('Margin bottom', 'upprev' ),
                 'label'             => __('px', 'upprev' ),
-                'default'           => 0,
+                'default'           => 5,
                 'sanitize_callback' => 'absint'
             ),
             array(
@@ -59,7 +59,7 @@ function iworks_upprev_options()
                 'th'                => __('Margin side', 'upprev' ),
                 'label'             => __('px', 'upprev' ),
                 'description'       => __('Left or right depending on position.', 'upprev' ),
-                'default'           => 0,
+                'default'           => 5,
                 'sanitize_callback' => 'absint'
             ),
             array(
