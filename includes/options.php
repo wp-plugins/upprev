@@ -17,9 +17,9 @@ function iworks_upprev_options()
             array(
                 'name'              => 'last_used_tab',
                 'type'              => 'hidden',
-                'value'             => '-1',
                 'dynamic'           => true,
-                'autoload'          => false
+                'autoload'          => false,
+                'default'           => 0
             ),
             array(
                 'name'              => 'animation',

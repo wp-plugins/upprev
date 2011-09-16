@@ -76,7 +76,7 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                 (
                     '<input type="hidden" name="%s" value="%s" />',
                     $html_element_name,
-                    isset($option['dynamic']) && $option['dynamic']? iworks_upprev_get_option( $option['name'], $option_group ):$option['value']
+                    isset($option['dynamic']) && $option['dynamic']? iworks_upprev_get_option( $option['name'], $option_group ):$option['default']
                 );
             break;
         case 'text':

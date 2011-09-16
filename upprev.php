@@ -47,7 +47,6 @@ function iworks_upprev_init()
 
 function iworks_upprev_check()
 {
-    d(iworks_upprev_get_option( 'post_type' ));
     if ( is_single() ) {
         if ( iworks_upprev_get_option( 'match_post_type' ) ) {
             return !array_key_exists( get_post_type(), iworks_upprev_get_option( 'post_type' ) );
