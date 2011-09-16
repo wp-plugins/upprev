@@ -9,7 +9,7 @@ Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
 Donate link:       http://iworks.pl/donate/upprev.php
 Requires at least: 3.1
 Tested up to:      3.2.1
-Stable tag:        2.3.3
+Stable tag:        2.3.4
 
 When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
 
@@ -34,7 +34,15 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.3.4 =
+
+* BUGFIX: fixed problem with default values and values saving (again)
+
+= 2.3.3 =
+
 * BUGFIX: hide configuration link on plugins list page for WordPress MU
+* BUGFIX: fixed problem with post excerpt
+* BUGFIX: fixed problem with default values and values saving
 
 = 2.3.2 =
 

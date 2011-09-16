@@ -96,7 +96,7 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
                     $html_element_name,
                     $html_element_name,
                     $html_element_name,
-                    $option['checked']? ' checked="checked"':'',
+                    iworks_upprev_get_option( $option['name'], $option_group )? ' checked="checked"':'',
                     isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
                     $option['label']
                 );
@@ -245,7 +245,7 @@ function iworks_upprev_options_init()
         if ( isset ( $data['options'] ) && is_array( $data['options'] ) ) {
             $option_group = IWORKS_UPPREV_PREFIX.$key;
             foreach ( $data['options'] as $option ) {
-                if ( $option['type'] == 'heading' ) {
+                if ( $option['type'] == 'heading' || !isset($option['name']) ) {
                     continue;
                 }
                 register_setting
@@ -294,7 +294,7 @@ function iworks_upprev_deactivate()
 function iworks_upprev_get_option( $option_name, $option_group = 'index' )
 {
     $option_value = get_option( IWORKS_UPPREV_PREFIX.$option_name, null );
-    if ( $option_group === null ) {
+    if ( $option_value === null ) {
         $option_value = iworks_upprev_get_default_value( $option_name, $option_group );
     }
     return $option_value;
@@ -314,7 +314,7 @@ function iworks_upprev_get_default_value( $option_name, $option_group = 'index' 
         return null;
     }
     foreach ( $options['options'] as $option ) {
-        if ( isset( $option['name'] ) && $option['name'] == IWORKS_UPPREV_PREFIX.$option_name ) {
+        if ( isset( $option['name'] ) && $option['name'] == $option_name ) {
             return isset($option['default'])? $option['default']:null;
         }
     }

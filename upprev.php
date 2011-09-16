@@ -47,6 +47,7 @@ function iworks_upprev_init()
 
 function iworks_upprev_check()
 {
+    d(iworks_upprev_get_option( 'post_type' ));
     if ( is_single() ) {
         if ( iworks_upprev_get_option( 'match_post_type' ) ) {
             return !array_key_exists( get_post_type(), iworks_upprev_get_option( 'post_type' ) );
@@ -77,7 +78,7 @@ function iworks_upprev_print_scripts()
     if ( iworks_upprev_check() ) {
         return;
     }
-    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+    $use_cache = iworks_upprev_get_option( 'use_cache' );
     if ( $use_cache ) {
         $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
@@ -85,14 +86,12 @@ function iworks_upprev_print_scripts()
             return;
         }
     }
-    $iworks_upprev_options = iworks_upprev_options();
     $data = '';
     foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window' ) as $key ) {
         if ( $data ) {
-            $data .= ','."\n";
+            $data .= ', ';
         }
-        $default = isset($iworks_upprev_options['index']['options'][IWORKS_UPPREV_PREFIX.$key]['default'])? $iworks_upprev_options['index']['options'][IWORKS_UPPREV_PREFIX.$key]['default']:'';
-        $value   = get_option(IWORKS_UPPREV_PREFIX.$key, $default );
+        $value   = iworks_upprev_get_option( $key );
         $data .= sprintf(
             '%s: %s',
             $key,
@@ -103,9 +102,9 @@ function iworks_upprev_print_scripts()
         return;
     }
     $content  = '<script type="text/javascript">'."\n";
-    $content .= 'var iworks_upprev = {'."\n";
+    $content .= 'var iworks_upprev = { ';
     $content .= $data;
-    $content .= "\n".'};'."\n";
+    $content .= ' };'."\n";
     $content .= '</script>'."\n";
     if ( $use_cache ) {
         set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
@@ -118,7 +117,7 @@ function iworks_upprev_print_styles()
     if ( iworks_upprev_check() ) {
         return;
     }
-    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+    $use_cache = iworks_upprev_get_option( 'use_cache' );
     if ( $use_cache ) {
         $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
@@ -130,10 +129,10 @@ function iworks_upprev_print_styles()
     $content .= '#upprev_box{';
     $values = array();
     foreach ( array( 'position', 'animation' ) as $key ) {
-        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.$key, iworks_upprev_get_default_value( $key ) );
+        $values[$key] = iworks_upprev_get_option( $key );
     }
     foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
-        $values[$key] = get_option(IWORKS_UPPREV_PREFIX.'css_'.$key, iworks_upprev_get_default_value( 'css_'.$key ) );
+        $values[$key] = iworks_upprev_get_option( 'css_'.$key );
         switch ( $key ) {
         case 'position':
             break;
@@ -201,7 +200,7 @@ function iworks_upprev_admin_head()
             jQuery('#hasadmintabs > ul').append('<li><a href="#'+id+'"><span>'+caption+"<\/span><\/a><\/li>");
             jQuery(this).find('h3').hide();
         });
-        jQuery("#hasadmintabs").tabs({ selected: <?php echo get_option( IWORKS_UPPREV_PREFIX.'last_used_tab', 0 ); ?> });
+        jQuery("#hasadmintabs").tabs({ selected: <?php echo iworks_upprev_get_option( 'last_used_tab' ); ?> });
         jQuery('#hasadmintabs ul a').click(function(i){
             jQuery('#hasadmintabs input[name=<?php echo IWORKS_UPPREV_PREFIX;?>last_used_tab]').val(jQuery(this).parent().index());
         });
@@ -217,9 +216,9 @@ function iworks_upprev_box()
         return;
     }
     global $post;
-    $use_cache = get_option( IWORKS_UPPREV_PREFIX.'use_cache', 1 );
+    $use_cache = iworks_upprev_get_option( 'use_cache' );
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.iworks_upprev_get_option( 'cache_stamp' );
         if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
             print $value;
             return;
@@ -229,6 +228,7 @@ function iworks_upprev_box()
 
     foreach( array(
         'compare',
+        'excerpt_length',
         'excerpt_show',
         'number_of_posts',
         'show_thumb',
@@ -340,7 +340,7 @@ function iworks_upprev_box()
         ob_start();
         do_action( 'iworks_upprev_box_before' );
         $value .= ob_get_flush();
-        if ( get_option( IWORKS_UPPREV_PREFIX.'header_show', 1 ) ) {
+        if ( iworks_upprev_get_option( 'header_show' ) ) {
             $value .= '<h6>';
             if ( count( $siblings ) ) {
                 $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
@@ -373,7 +373,7 @@ function iworks_upprev_box()
                 get_permalink(),
                 $url_sufix
             );
-            if ( $display_thumb && has_post_thumbnail( get_the_ID() ) ) {
+            if ( $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
                     '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
@@ -382,7 +382,7 @@ function iworks_upprev_box()
                     get_the_post_thumbnail(
                         get_the_ID(),
                         array(
-                            get_option( IWORKS_UPPREV_PREFIX.'thumb_width',  48 ),
+                            iworks_upprev_get_option( 'thumb_width' ),
                             9999
                         ),
                         array(
@@ -439,7 +439,7 @@ function iworks_upprev_excerpt_more($more)
 
 function iworks_upprev_excerpt_length($length)
 {
-    return get_option(IWORKS_UPPREV_PREFIX.'excerpt_length', 20);
+    return iworks_upprev_get_option( 'excerpt_length' );
 }
 
 function iworks_upprev_filter_where( $where = '' )

@@ -95,7 +95,6 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Box header', 'upprev' ),
                 'label'             => __('Show boks header.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'header_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -104,7 +103,6 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Close button', 'upprev' ),
                 'label'             => __('Show close button.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'close_button_show', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -152,7 +150,6 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Match post type', 'upprev' ),
                 'label'             => __('Display only for selected post types.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'match_post_type', 1) == 1,
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
             ),
@@ -162,7 +159,7 @@ function iworks_upprev_options()
                 'th'                => __('Select post types', 'upprev' ),
                 'label'             => __('Show posts.', 'upprev' ),
                 'description'       => __('If not any, then default value is "post".', 'upprev'),
-                'defaults'          => array( 'post' ),
+                'default'           => array( 'post' ),
                 'options'           => array(
                     'post' => __( 'Posts.',                                'upprev' ),
                     'page' => __( 'Pages.',                                'upprev' ),
@@ -178,7 +175,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Excerpt', 'upprev' ),
                 'label'             => __('Show excerpt.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'excerpt_show', 1) == 1,
+                'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
@@ -197,8 +194,8 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Featured image', 'upprev' ),
                 'label'             => __('Show featured image.', 'upprev'),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'show_thumb', 1) == 1,
                 'sanitize_callback' => 'absint',
+                'default'           => 1,
                 'check_supports'    => array( 'post-thumbnails' )
             ),
             array(
@@ -241,7 +238,7 @@ function iworks_upprev_options()
                 'th'                => __('Open link', 'upprev' ),
                 'label'             => __('Open link in new window.', 'upprev'),
                 'description'       => __('Not recomended!', 'upprev' ),
-                'checked'           => get_option(IWORKS_UPPREV_PREFIX.'url_new_window', 0) == 1,
+                'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
             /**
@@ -256,7 +253,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Cache', 'upprev'),
                 'label'             => __('Use Transient Cache.', 'upprev'),
-                'checked'           => get_option('use_cache', 1) == 1,
+                'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
@@ -280,7 +277,6 @@ function iworks_upprev_options()
                 'th'                => __('Promote', 'upprev'),
                 'label'             => __('Help promote upPrev plugin?', 'upprev'),
                 'description'       => __('This option will add the code <code>Next posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev'),
-                'checked'           => get_option('promote', 0) == 1,
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
