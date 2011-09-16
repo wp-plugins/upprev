@@ -159,7 +159,7 @@ function iworks_upprev_options()
                 'th'                => __('Select post types', 'upprev' ),
                 'label'             => __('Show posts.', 'upprev' ),
                 'description'       => __('If not any, then default value is "post".', 'upprev'),
-                'default'           => array( 'post' ),
+                'default'           => array( 'post' => 'post' ),
                 'options'           => array(
                     'post' => __( 'Posts.',                                'upprev' ),
                     'page' => __( 'Pages.',                                'upprev' ),

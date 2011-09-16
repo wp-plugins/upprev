@@ -37,6 +37,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 = 2.3.4 =
 
 * BUGFIX: fixed problem with default values and values saving (again)
+* IMPROVMENT: added correct way to enquene style and js files
 
 = 2.3.3 =
 

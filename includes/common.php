@@ -24,6 +24,7 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         $top .= '<div id="hasadmintabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
     }
     $i = 0;
+    $label_index = 0;
     $last_tab = null;
     foreach ($options['options'] as $option) {
         if (isset($option['capability'])) {
@@ -170,10 +171,12 @@ function iworks_upprev_build_options( $option_group = 'index', $echo = true )
         case 'heading':
             if ( isset( $option['label'] ) && $option['label'] ) {
                 $content .= sprintf(
-                    '<h3 id="upprev-%s">%s</h3>',
+                    '<h3 id="upprev-%s"%s>%s</h3>',
                     sanitize_title_with_dashes(remove_accents($option['label'])),
+                    get_option(IWORKS_UPPREV_PREFIX.'last_used_tab', 0 ) == $label_index? ' class="selected"':'',
                     $option['label']
                 );
+                $label_index++;
                 $i = 0;
             }
             break;
@@ -259,8 +262,6 @@ function iworks_upprev_options_init()
     }
     $text = __("<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>");
     add_contextual_help( 'upprev/admin/index', $text );
-    //Enqueue ui-tabs
-    wp_enqueue_script('jquery-ui-tabs');
 }
 
 function iworks_upprev_activate()
