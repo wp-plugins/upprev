@@ -337,7 +337,7 @@ function iworks_upprev_box()
                 get_permalink(),
                 $url_sufix
             );
-            if ( $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
+            if ( current_theme_supports('posts-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
                     '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
