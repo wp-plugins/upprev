@@ -34,7 +34,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
-= 2.3.4 =
+= 2.3.5 =
 
 * BUGFIX: fixed problem with using thumbnails in themes without thumbnail support
 
