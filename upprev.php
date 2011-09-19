@@ -6,7 +6,6 @@ Description: When scrolling post down upPrev will display a flyout box with a li
 Version: trunk
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
-Licence: BSD
 */
 
 /**
