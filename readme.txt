@@ -34,6 +34,11 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+= 2.3.6 =
+
+* BUGFIX: fixed problem with using thumbnails in themes with thumbnail support [forum](http://wordpress.org/support/topic/plugin-upprev-version-235-update-breaks-thumbnail-support)
+* IMPROVMENT: added custom css rules (forum](http://wordpress.org/support/topic/plugin-upprev-version-235-update-breaks-thumbnail-support)
+
 = 2.3.5 =
 
 * BUGFIX: fixed problem with using thumbnails in themes without thumbnail support

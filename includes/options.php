@@ -106,6 +106,36 @@ function iworks_upprev_options()
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
+            array(
+                'name'              => 'css',
+                'type'              => 'textarea',
+                'class'             => 'large-text code',
+                'th'                => __('Custom CSS', 'upprev' ),
+                'sanitize_callback' => 'esc_html',
+                'rows'              => 10,
+                'default'           =>'
+/* header */
+#upprev_box h6 a { }
+/* header link: mouse over */
+#upprev_box h6 a:hover { }
+/* headera link: visited */
+#upprev_box h6 a:visited { }
+/* container for title, thumbnail and excerpt */
+#upprev_box .upprev_excerpt { }
+/* excerpt */
+#upprev_box .upprev_excerpt p { }
+/* previous post link */
+#upprev_box .upprev_excerpt p a { }
+/* previous post link: mouse over */
+#upprev_box .upprev_excerpt p a:hover { }
+/* previous post link: visited */
+#upprev_box .upprev_excerpt p a:visited { }
+/* thumbnail image */
+#upprev_box .upprev_thumb { }
+/* close button */
+#upprev_close { }
+'
+            ),
             /**
              * content
              */

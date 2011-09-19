@@ -149,6 +149,7 @@ function iworks_upprev_print_styles()
     }
     $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
     $content .= '}'."\n";
+    $content .= iworks_upprev_get_option( 'css' );
     $content .= '</style>'."\n";
     if ( $use_cache ) {
         set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
@@ -337,7 +338,7 @@ function iworks_upprev_box()
                 get_permalink(),
                 $url_sufix
             );
-            if ( current_theme_supports('posts-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
+            if ( current_theme_supports('post-thumbnails') ) { //&& $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
                     '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
