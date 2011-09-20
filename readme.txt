@@ -34,6 +34,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 == Changelog ==
 
+* BUGFIX: fixed javascript conflict on edit post screen
+
 = 2.3.7 =
 
 * BUGFIX: fixed problem for defaults post_type if no one choosed [forum](http://wordpress.org/support/topic/plugin-upprev-error)

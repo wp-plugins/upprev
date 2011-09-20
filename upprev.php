@@ -190,8 +190,11 @@ function iworks_upprev_add_pages()
 
 function iworks_upprev_admin_enqueue_scripts()
 {
-    wp_enqueue_script( 'upprev', plugins_url('/scripts/upprev-admin.js', __FILE__), array('jquery-ui-tabs'), IWORKS_UPPREV_VERSION );
-    wp_enqueue_style( 'upprev', plugins_url('/styles/upprev-admin.css', __FILE__), null, IWORKS_UPPREV_VERSION );
+    global $current_screen;
+    if ( isset( $current_screen->id ) && $current_screen->id == 'upprev/admin/index' ) {
+        wp_enqueue_script( 'upprev', plugins_url('/scripts/upprev-admin.js', __FILE__), array('jquery-ui-tabs'), IWORKS_UPPREV_VERSION );
+        wp_enqueue_style( 'upprev', plugins_url('/styles/upprev-admin.css', __FILE__), null, IWORKS_UPPREV_VERSION );
+    }
 }
 
 function iworks_upprev_box()
