@@ -47,19 +47,19 @@ function iworks_upprev_init()
 
 function iworks_upprev_check()
 {
-    if ( is_single() ) {
-        if ( iworks_upprev_get_option( 'match_post_type' ) ) {
-            return !array_key_exists( get_post_type(), iworks_upprev_get_option( 'post_type' ) );
-        }
-        return false;
+    if ( !is_single() && !is_page() ) {
+        return true;
     }
-    if ( is_page() ) {
-        if ( iworks_upprev_get_option( 'match_post_type' ) ) {
-            return !array_key_exists( 'page', iworks_upprev_get_option( 'post_type' ) );
-        }
-        return false;
+    $post_types = iworks_upprev_get_option( 'post_type' );
+    if ( empty( $post_types ) ) {
+        $post_types = iworks_upprev_get_default_value( 'post_type' );
     }
-    return true;
+    if ( is_page() && iworks_upprev_get_option( 'match_post_type' ) ) {
+        return !array_key_exists( 'page', $post_types );
+    } else if ( iworks_upprev_get_option( 'match_post_type' ) ) {
+        return !array_key_exists( get_post_type(), $post_types );
+    }
+    return false;
 }
 
 function iworks_upprev_enqueue_scripts()
