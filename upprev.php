@@ -77,7 +77,8 @@ function iworks_upprev_check()
     if ( is_page() && iworks_upprev_get_option( 'match_post_type' ) ) {
         return !array_key_exists( 'page', $post_types );
     } else if ( iworks_upprev_get_option( 'match_post_type' ) ) {
-        return !array_key_exists( get_post_type(), $post_types );
+        global $post;
+        return !array_key_exists( get_post_type( $post ), $post_types );
     }
     return false;
 }
