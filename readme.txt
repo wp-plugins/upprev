@@ -1,15 +1,10 @@
 === upPrev ===
-
-Contributors:      iworks
-Plugin Name:       upPrev
-Plugin URI:        http://iworks.pl/upPrev/
-Tags:              next post, previous post, notification, related, upPrev
-Author URI:        http://iworks.pl/
-Author:            Marcin Pietrzak, Grzegorz Krzyminski, Jason Pelker
-Donate link:       http://iworks.pl/donate/upprev.php
+Contributors: iworks
+Donate link: http://iworks.pl/donate/upprev.php
+Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to:      3.2.1
-Stable tag:        2.3.7
+Tested up to: 3.2.1
+Stable tag: 2.3.7
 
 When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
 
