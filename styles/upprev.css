@@ -77,9 +77,12 @@
 }
 #upprev_box p.promote 
 {
-    margin:0px;
-    text-align:right;
+    clear:both;
     color:#888;
     font-size:.9em;
+    margin:0px;
+    padding-top:5px;
+    text-align:right;
 }
+
 
