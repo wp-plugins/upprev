@@ -13,6 +13,11 @@ When a reader scrolls to the bottom of a single post, show next post in the sele
 When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right or left corner, allowing the reader to select the next available post in the selected configuration.
 Plugin based on "upPrev Previous Post Animated Notification"
 
+= Translators =
+
+Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
+
+
 == Installation ==
 
 1. Upload upPrev to your plugins directory.
