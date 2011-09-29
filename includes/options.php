@@ -154,13 +154,13 @@ function iworks_upprev_options()
             array(
                 'name'              => 'compare',
                 'type'              => 'radio',
-                'th'                => __('Next post choose method', 'upprev' ),
+                'th'                => __('Previous entry choose method', 'upprev' ),
                 'default'           => 'simple',
                 'radio'             => array(
-                    'simple'   => __( 'Just next.',        'upprev' ),
-                    'category' => __( 'Next in category.', 'upprev' ),
-                    'tag'      => __( 'Next in tag.',      'upprev' ),
-                    'random'   => __( 'Random.',           'upprev' )
+                    'simple'   => __( 'Just previous.',        'upprev' ),
+                    'category' => __( 'Previous in category.', 'upprev' ),
+                    'tag'      => __( 'Previous in tag.',      'upprev' ),
+                    'random'   => __( 'Random entry.',         'upprev' )
                 ),
                 'sanitize_callback' => 'esc_html',
                 'extra_options'    => 'iworks_upprev_get_compare_option'
@@ -306,7 +306,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Promote', 'upprev'),
                 'label'             => __('Help promote upPrev plugin?', 'upprev'),
-                'description'       => __('This option will add the code <code>Next posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev'),
+                'description'       => __('This option will add the code <code>Previous posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev'),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),

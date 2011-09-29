@@ -39,7 +39,6 @@ define( 'IWORKS_UPPREV_PREFIX',  'iworks_upprev_' );
  */
 load_plugin_textdomain( 'upprev', false, dirname( plugin_basename( __FILE__) ).'/languages' );
 
-require_once dirname(__FILE__).'/includes/options.php';
 require_once dirname(__FILE__).'/includes/common.php';
 
 /**
@@ -70,13 +69,14 @@ function iworks_upprev_check()
     if ( !is_single() && !is_page() ) {
         return true;
     }
-    $post_types = iworks_upprev_get_option( 'post_type' );
+    global $iworks_upprev_options;
+    $post_types = $iworks_upprev_options->get_option( 'post_type' );
     if ( empty( $post_types ) ) {
         $post_types = iworks_upprev_get_default_value( 'post_type' );
     }
-    if ( is_page() && iworks_upprev_get_option( 'match_post_type' ) ) {
+    if ( is_page() && $iworks_upprev_options->get_option( 'match_post_type' ) ) {
         return !array_key_exists( 'page', $post_types );
-    } else if ( iworks_upprev_get_option( 'match_post_type' ) ) {
+    } else if ( $iworks_upprev_options->get_option( 'match_post_type' ) ) {
         global $post;
         return !array_key_exists( get_post_type( $post ), $post_types );
     }
@@ -98,7 +98,8 @@ function iworks_upprev_print_scripts()
     if ( iworks_upprev_check() ) {
         return;
     }
-    $use_cache = iworks_upprev_get_option( 'use_cache' );
+    global $iworks_upprev_options;
+    $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
         $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
@@ -111,7 +112,7 @@ function iworks_upprev_print_scripts()
         if ( $data ) {
             $data .= ', ';
         }
-        $value   = iworks_upprev_get_option( $key );
+        $value   = $iworks_upprev_options->get_option( $key );
         $data .= sprintf(
             '%s: %s',
             $key,
@@ -127,7 +128,7 @@ function iworks_upprev_print_scripts()
     $content .= ' };'."\n";
     $content .= '</script>'."\n";
     if ( $use_cache ) {
-        set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
+        set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
     }
     echo $content;
 }
@@ -137,7 +138,8 @@ function iworks_upprev_print_styles()
     if ( iworks_upprev_check() ) {
         return;
     }
-    $use_cache = iworks_upprev_get_option( 'use_cache' );
+    global $iworks_upprev_options;
+    $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
         $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
@@ -149,10 +151,10 @@ function iworks_upprev_print_styles()
     $content .= '#upprev_box{';
     $values = array();
     foreach ( array( 'position', 'animation' ) as $key ) {
-        $values[$key] = iworks_upprev_get_option( $key );
+        $values[$key] = $iworks_upprev_options->get_option( $key );
     }
     foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
-        $values[$key] = iworks_upprev_get_option( 'css_'.$key );
+        $values[$key] = $iworks_upprev_options->get_option( 'css_'.$key );
         switch ( $key ) {
         case 'position':
             break;
@@ -169,10 +171,10 @@ function iworks_upprev_print_styles()
     }
     $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
     $content .= '}'."\n";
-    $content .= iworks_upprev_get_option( 'css' );
+    $content .= $iworks_upprev_options->get_option( 'css' );
     $content .= '</style>'."\n";
     if ( $use_cache ) {
-        set_site_transient( $cache_key, $content, iworks_upprev_get_option( 'cache_lifetime' ) );
+        set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
     }
     echo $content;
 }
@@ -203,17 +205,15 @@ function iworks_upprev_box()
     if ( iworks_upprev_check() ) {
         return;
     }
-    global $post;
-    $use_cache = iworks_upprev_get_option( 'use_cache' );
+    global $post, $iworks_upprev_options;
+    $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.iworks_upprev_get_option( 'cache_stamp' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$iworks_upprev_options->get_option( 'cache_stamp' );
         if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
             print $value;
             return;
         }
     }
-    $iworks_upprev_options = iworks_upprev_options();
-
     foreach( array(
         'compare',
         'excerpt_length',
@@ -224,7 +224,7 @@ function iworks_upprev_box()
         'url_prefix',
         'url_sufix'
     ) as $key ) {
-        $$key = iworks_upprev_get_option( $key );
+        $$key = $iworks_upprev_options->get_option( $key );
     }
 
     $show_taxonomy   = true;
@@ -237,7 +237,7 @@ function iworks_upprev_box()
         'posts_per_page' => $number_of_posts,
         'post_type'      => array()
     );
-    $post_type = iworks_upprev_get_option( 'post_type' );
+    $post_type = $iworks_upprev_options->get_option( 'post_type' );
     if ( !empty( $post_type ) ) {
         if ( array_key_exists( 'any', $post_type ) ) {
             $args['post_type'] = 'any';
@@ -328,7 +328,7 @@ function iworks_upprev_box()
         ob_start();
         do_action( 'iworks_upprev_box_before' );
         $value .= ob_get_flush();
-        if ( iworks_upprev_get_option( 'header_show' ) ) {
+        if ( $iworks_upprev_options->get_option( 'header_show' ) ) {
             $value .= '<h6>';
             if ( count( $siblings ) ) {
                 $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
@@ -340,7 +340,7 @@ function iworks_upprev_box()
             } else if ( $compare == 'random' ) {
                 $value .= __('Read more:', 'upprev' );
             } else {
-                $value .= __('Read next post:', 'upprev' );
+                $value .= __('Read previous post:', 'upprev' );
             }
             $value .= '</h6>';
         }
@@ -370,7 +370,7 @@ function iworks_upprev_box()
                     get_the_post_thumbnail(
                         get_the_ID(),
                         array(
-                            iworks_upprev_get_option( 'thumb_width' ),
+                            $iworks_upprev_options->get_option( 'thumb_width' ),
                             9999
                         ),
                         array(
@@ -396,11 +396,11 @@ function iworks_upprev_box()
     } else {
         $value .= $yarpp_posts;
     }
-    if ( iworks_upprev_get_option( 'close_button_show' ) ) {
+    if ( $iworks_upprev_options->get_option( 'close_button_show' ) ) {
         $value .= sprintf( '<a id="upprev_close" href="#">%s</a>', __('Close', 'upprev') );
     }
-    if ( iworks_upprev_get_option( 'promote' ) ) {
-        $value .= '<p class="promote"><small>'.__('Next posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
+    if ( $iworks_upprev_options->get_option( 'promote' ) ) {
+        $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
     }
     ob_start();
     do_action( 'iworks_upprev_box_after' );
@@ -415,7 +415,7 @@ function iworks_upprev_box()
         }
     }
     if ( $use_cache && $compare != 'random' ) {
-        set_site_transient( $cache_key, $value, iworks_upprev_get_option( 'cache_lifetime' ) );
+        set_site_transient( $cache_key, $value, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
     }
     echo apply_filters( 'iworks_upprev_box', $value );
 }
@@ -427,7 +427,8 @@ function iworks_upprev_excerpt_more($more)
 
 function iworks_upprev_excerpt_length($length)
 {
-    return iworks_upprev_get_option( 'excerpt_length' );
+    global $iworks_upprev_options;
+    return $iworks_upprev_options->get_option( 'excerpt_length' );
 }
 
 function iworks_upprev_filter_where( $where = '' )
@@ -448,7 +449,6 @@ function iworks_upprev_plugin_links ( $links, $file )
     return $links;
 }
 
-
 function iworks_upprev_add_to_admin_bar()
 {
     if ( !current_user_can( 'manage_options' ) ) {
@@ -457,5 +457,4 @@ function iworks_upprev_add_to_admin_bar()
     global $wp_admin_bar;
     $wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'upprev', 'title' => __('upPrev', 'upprev'), 'href' => admin_url('themes.php?page=upprev/admin/index.php') ) );
 }
-
 

@@ -6,11 +6,21 @@ Requires at least: 3.1
 Tested up to: 3.2.1
 Stable tag: 2.3.7
 
-When a reader scrolls to the bottom of a single post, show next post in the selected configuration.
+When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
 == Description ==
 
-When a reader scrolls to the bottom of a single post, a button animates in the page’s bottom right or left corner, allowing the reader to select the next available post in the selected configuration.
+When a reader scrolls to the bottom of a single post, page or custom post
+type, a button animates in the page’s bottom right or left corner,
+allowing the reader to select the previous or random available post or posts
+in the selected configuration:
+
+1. Just previous
+2. Previous in category
+3. Previous in tag
+4. Random
+5. Related using YARPP (only post/pages)
+
 Plugin based on "upPrev Previous Post Animated Notification"
 
 = Translators =
@@ -35,6 +45,7 @@ Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 == Changelog ==
 
 * BUGFIX: fixed javascript conflict on edit post screen
+* REFACTORING: option managment
 
 = 2.3.7 =
 
