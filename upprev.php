@@ -141,7 +141,7 @@ function iworks_upprev_print_styles()
     global $iworks_upprev_options;
     $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$iworks_upprev_options->get_option('cache_stamp' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
             print $content;
             return;
@@ -218,6 +218,7 @@ function iworks_upprev_box()
         'compare',
         'excerpt_length',
         'excerpt_show',
+        'ga_track_clicks',
         'number_of_posts',
         'show_thumb',
         'taxonomy_limit',
@@ -345,8 +346,19 @@ function iworks_upprev_box()
             $value .= '</h6>';
         }
         $i = 1;
+        $ga_click_track = '';
         while ( $query->have_posts() ) {
             $query->the_post();
+            /**
+             * add GA click track
+             */
+            d($ga_track_clicks);
+            if ( $ga_track_clicks ) {
+                $ga_click_track = sprintf(
+                    ' onclick="_gaq.push( [ \'_trackEvent\', \'upPrev\', \'%s\', 1 ] );" onkeypress="this.onclick"',
+                    preg_replace('/\'/', '\\\'', get_the_title() )
+                );
+            }
             $item_class = 'upprev_excerpt';
             if ( $i > $number_of_posts ) {
                 break;
@@ -364,9 +376,10 @@ function iworks_upprev_box()
             if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
-                    '<a href="%s" title="%s" class="upprev_thumbnail">%s</a>',
+                    '<a href="%s" title="%s" class="upprev_thumbnail"%s>%s</a>',
                     $permalink,
                     wptexturize(get_the_title()),
+                    $ga_click_track,
                     get_the_post_thumbnail(
                         get_the_ID(),
                         array(
@@ -382,8 +395,9 @@ function iworks_upprev_box()
             }
             $value .= sprintf( '<div class="%s">%s', $item_class, $image );
             $value .= sprintf(
-                '<h5><a href="%s">%s</a></h5>',
+                '<h5><a href="%s"%s>%s</a></h5>',
                 $permalink,
+                $ga_click_track,
                 get_the_title()
             );
             if ( $excerpt_length > 0 ) {

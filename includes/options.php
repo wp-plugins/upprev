@@ -271,6 +271,32 @@ function iworks_upprev_options()
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
+            array(
+                'name'              => 'ga_status',
+                'type'              => 'checkbox',
+                'th'                => __('Google Analitics', 'upprev' ),
+                'label'             => __('I don\'t have GA tracking on site.', 'upprev'),
+                'description'       => __('Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'name'              => 'ga_account',
+                'type'              => 'text',
+                'label'             => __('Google Analitics Account', 'upprev' ),
+                'class'             => 'regular-text',
+                'default'           => '',
+                'sanitize_callback' => 'esc_html',
+                'related_to'        => 'ga_status'
+            ),
+            array(
+                'name'              => 'ga_track_clicks',
+                'type'              => 'checkbox',
+                'label'             => __('Track clicks', 'upprev'),
+                'description'       => __('Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
             /**
              * cache
              */

@@ -45,6 +45,7 @@ Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 
 * BUGFIX: fixed javascript conflict on edit post screen
 * BUGFIX: fixed thumbnail display problem
+* IMPROVMENT: added GA click tracks
 * REFACTORING: option managment
 
 = 2.3.7 =

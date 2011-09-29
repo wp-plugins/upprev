@@ -70,9 +70,10 @@ class IworksOptions
         if ( $use_tabs ) {
             $top .= '<div id="hasadmintabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
         }
-        $i = 0;
+        $i           = 0;
         $label_index = 0;
-        $last_tab = null;
+        $last_tab    = null;
+        $related_to  = array();
         foreach ($options['options'] as $option) {
             if (isset($option['capability'])) {
                 if(!current_user_can($option['capability'])) {
@@ -113,7 +114,11 @@ class IworksOptions
                 }
                 $content .= '<tr><td colspan="2">';
             } else if ( $option['type'] != 'hidden' ) {
-                $content .= sprintf( '<tr valign="top" class="%s">', $i++%2? 'alternate':'' );
+                $style = '';
+                if ( isset($option['related_to'] ) && isset( $related_to[ $option['related_to'] ] ) && $related_to[ $option['related_to'] ] == 0 ) {
+                    $style .= 'style="display:none"';
+                }
+                $content .= sprintf( '<tr valign="top" class="%s" id="tr_%s"%s>', $i++%2? 'alternate':'', $option['name'], $style );
                 $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
                 $content .= '<td>';
             }
@@ -138,13 +143,14 @@ class IworksOptions
                     );
                 break;
             case 'checkbox':
+                $related_to[ $option['name'] ] = $this->get_option( $option['name'], $option_group );
                 $content .= sprintf
                     (
                         '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
                         $html_element_name,
                         $html_element_name,
                         $html_element_name,
-                        $this->get_option( $option['name'], $option_group )? ' checked="checked"':'',
+                        $related_to[ $option['name'] ]? ' checked="checked"':'',
                         isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
                         $option['label']
                     );
@@ -346,7 +352,7 @@ class IworksOptions
                 add_option( $this->option_prefix.$option['name'], $option['default'], '', isset($option['autoload'])? $option['autoload']:'yes' );
             }
         }
-    add_option( $this->option_prefix.'cache_stamp', date('c') );
+        add_option( $this->option_prefix.'cache_stamp', date('c') );
     }
 
     public function deactivate()
