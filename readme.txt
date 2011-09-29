@@ -27,7 +27,6 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 
-
 == Installation ==
 
 1. Upload upPrev to your plugins directory.
@@ -45,6 +44,7 @@ Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 == Changelog ==
 
 * BUGFIX: fixed javascript conflict on edit post screen
+* BUGFIX: fixed thumbnail display problem
 * REFACTORING: option managment
 
 = 2.3.7 =
