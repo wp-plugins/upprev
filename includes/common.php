@@ -2,6 +2,7 @@
 
 require_once dirname( __FILE__ ).'/options.php';
 require_once dirname( __FILE__ ).'/iworks.options.class.php';
+require_once dirname( __FILE__ ).'/show_thubnail_on_admin_post_list.php';
 
 $iworks_upprev_options = new IworksOptions();
 $iworks_upprev_options->set_option_function_name( 'iworks_upprev_options' );

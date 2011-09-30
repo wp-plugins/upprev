@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-09-29 11:59:11+00:00\n"
-"PO-Revision-Date: 2011-09-29 14:00+0100\n"
+"POT-Creation-Date: 2011-09-30 14:40:34+00:00\n"
+"PO-Revision-Date: 2011-09-30 16:41+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -28,9 +28,17 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
-#: includes/common.php:15
+#: includes/common.php:16
 msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
 msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o następnym dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
+
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Miniaturka"
+
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Brak"
 
 #: includes/iworks.options.class.php:60
 msgid "An error occurred while getting the configuration."
@@ -394,9 +402,6 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
-#~ msgid "Thumbnail"
-#~ msgstr "Miniaturka"
 
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
