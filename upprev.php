@@ -458,7 +458,7 @@ function iworks_upprev_excerpt_length($length)
 function iworks_upprev_filter_where( $where = '' )
 {
     global $post;
-    if ($post->date) {
+    if ($post->post_date) {
         $where .= " AND post_date < '" . $post->post_date . "'";
     }
     return $where;
