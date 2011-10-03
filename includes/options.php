@@ -295,8 +295,9 @@ function iworks_upprev_options()
                 'name'              => 'ga_account',
                 'type'              => 'text',
                 'label'             => __('Google Analitics Account', 'upprev' ),
+                'description'       => __('Replace UA-XXXXX-X with your web property ID.', 'upprev' ),
                 'class'             => 'regular-text',
-                'default'           => '',
+                'default'           => 'UA-XXXXX-X',
                 'sanitize_callback' => 'esc_html',
                 'related_to'        => 'ga_status'
             ),
