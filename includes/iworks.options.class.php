@@ -343,7 +343,6 @@ class IworksOptions
     public function activate()
     {
         $options = call_user_func( $this->option_function_name );
-        $options = call_user_func( $this->option_function_name );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
                 if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] or !isset( $option['default'] ) ) {
@@ -366,6 +365,7 @@ class IworksOptions
                 delete_option( $this->option_prefix.$option['name'] );
             }
         }
+        delete_option( $this->option_prefix.'cache_stamp', date('c') );
     }
 
     public function settings_fields( $option_name )

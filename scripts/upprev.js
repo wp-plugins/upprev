@@ -67,10 +67,17 @@ jQuery(function($){
         return false;
     });
     $('#upprev_box').addClass( iworks_upprev.compare );
-    if( iworks_upprev.url_new_window == 1 ) {
+    if( iworks_upprev.url_new_window == 1 || iworks_upprev.ga_track_clicks == 1 ) {
         $('#upprev_box a').click(function() {
-            window.open($(this).attr('href'));
-            return false;
+            if ( iworks_upprev.url_new_window == 1) {
+                window.open($(this).attr('href'));
+            }
+            if ( iworks_upprev.ga_track_clicks == 1 ) {
+                _gaq.push( [ '_trackEvent', 'upPrev', $(this).html(), 1 ] );
+            }
+            if ( iworks_upprev.url_new_window == 1) {
+                return false;
+            }
         });
     }
 });

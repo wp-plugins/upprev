@@ -198,6 +198,17 @@ function iworks_upprev_options()
                 'extra_options'    => 'iworks_upprev_get_post_types'
             ),
             /**
+             * ignore sticky posts to avoid two post loop
+             */
+            array(
+                'name'              => 'ignore_sticky_posts',
+                'type'              => 'checkbox',
+                'th'                => __('Sticky posts', 'upprev' ),
+                'label'             => __('Ignore sticky posts.', 'upprev'),
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
+            /**
              * excerpt
              */
             array(
@@ -287,6 +298,14 @@ function iworks_upprev_options()
                 'class'             => 'regular-text',
                 'default'           => '',
                 'sanitize_callback' => 'esc_html',
+                'related_to'        => 'ga_status'
+            ),
+            array(
+                'name'              => 'ga_track_views',
+                'type'              => 'checkbox',
+                'label'             => __('Track views', 'upprev'),
+                'default'           => 1,
+                'sanitize_callback' => 'absint',
                 'related_to'        => 'ga_status'
             ),
             array(

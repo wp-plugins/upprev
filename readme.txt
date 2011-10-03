@@ -45,8 +45,10 @@ Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 
 * BUGFIX: fixed javascript conflict on edit post screen
 * BUGFIX: fixed thumbnail display problem
+* BUGFIX: fixed sticky posts display loop
 * IMPROVMENT: added GA click tracks
 * IMPROVMENT: added thumbnail preview on posts/pages list
+* IMPROVMENT: added option *ignore sticky posts*
 * REFACTORING: option managment
 
 = 2.3.7 =

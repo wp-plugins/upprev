@@ -101,14 +101,14 @@ function iworks_upprev_print_scripts()
     global $iworks_upprev_options;
     $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.get_option(IWORKS_UPPREV_PREFIX.'cache_stamp', '' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$iworks_upprev_options->get_option('cache_stamp');
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
             print $content;
             return;
         }
     }
     $data = '';
-    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window' ) as $key ) {
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_clicks' ) as $key ) {
         if ( $data ) {
             $data .= ', ';
         }
@@ -126,6 +126,22 @@ function iworks_upprev_print_scripts()
     $content .= 'var iworks_upprev = { ';
     $content .= $data;
     $content .= ' };'."\n";
+    /**
+     * Google Analitics tracking code
+     */
+    $ga_account = $iworks_upprev_options->get_option( 'ga_account' );
+    if ( $ga_account ) {
+        $content.= 'var _gaq = _gaq || [];'."\n";
+        $content.= '_gaq.push([\'_setAccount\', \''.$ga_account.'\']);'."\n";
+        if ( $iworks_upprev_options->get_option( 'ga_track_views' ) ) {
+            $content.= '_gaq.push([\'_trackPageview\']);'."\n";
+        }
+        $content.= '(function() {'."\n";
+        $content.= '    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;'."\n";
+        $content.= '    ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'."\n";
+        $content.= '    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);'."\n";
+        $content.= '})();'."\n";
+    }
     $content .= '</script>'."\n";
     if ( $use_cache ) {
         set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
@@ -141,7 +157,7 @@ function iworks_upprev_print_styles()
     global $iworks_upprev_options;
     $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
     if ( $use_cache ) {
-        $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$iworks_upprev_options->get_option('cache_stamp' );
+        $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$iworks_upprev_options->get_option( 'cache_stamp' );
         if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
             print $content;
             return;
@@ -179,6 +195,9 @@ function iworks_upprev_print_styles()
     echo $content;
 }
 
+/**
+ * Add page to theme menu
+ */
 function iworks_upprev_add_pages()
 {
     if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
@@ -218,7 +237,7 @@ function iworks_upprev_box()
         'compare',
         'excerpt_length',
         'excerpt_show',
-        'ga_track_clicks',
+        'ignore_sticky_posts',
         'number_of_posts',
         'show_thumb',
         'taxonomy_limit',
@@ -232,11 +251,12 @@ function iworks_upprev_box()
     $siblings        = array();
 
     $args = array(
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-        'post__not_in'   => array( $post->ID ),
-        'posts_per_page' => $number_of_posts,
-        'post_type'      => array()
+        'ignore_sticky_posts' => $ignore_sticky_posts,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+        'post__not_in'        => array( $post->ID ),
+        'posts_per_page'      => $number_of_posts,
+        'post_type'           => array()
     );
     $post_type = $iworks_upprev_options->get_option( 'post_type' );
     if ( !empty( $post_type ) ) {
@@ -349,16 +369,6 @@ function iworks_upprev_box()
         $ga_click_track = '';
         while ( $query->have_posts() ) {
             $query->the_post();
-            /**
-             * add GA click track
-             */
-            d($ga_track_clicks);
-            if ( $ga_track_clicks ) {
-                $ga_click_track = sprintf(
-                    ' onclick="_gaq.push( [ \'_trackEvent\', \'upPrev\', \'%s\', 1 ] );" onkeypress="this.onclick"',
-                    preg_replace('/\'/', '\\\'', get_the_title() )
-                );
-            }
             $item_class = 'upprev_excerpt';
             if ( $i > $number_of_posts ) {
                 break;
