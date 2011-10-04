@@ -73,7 +73,7 @@ jQuery(function($){
                 window.open($(this).attr('href'));
             }
             if ( iworks_upprev.ga_track_clicks == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', $(this).html(), 1 ] );
+                _gaq.push( [ '_trackEvent', 'upPrev', 'click', $(this).html(), 1 ] );
             }
             if ( iworks_upprev.url_new_window == 1) {
                 return false;
