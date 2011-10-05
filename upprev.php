@@ -233,6 +233,15 @@ function iworks_upprev_box()
             return;
         }
     }
+
+    /**
+     * get current post title and convert special characters to HTML entities
+     */
+    $current_post_title = htmlspecialchars( get_the_title() );
+
+    /**
+     * get used params
+     */
     foreach( array(
         'compare',
         'excerpt_length',
@@ -341,8 +350,8 @@ function iworks_upprev_box()
         if ( $excerpt_length > 0 ) {
             add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
         }
-        $query = new WP_Query( $args );
-        if (!$query->have_posts()) {
+        $upprev_query = new WP_Query( $args );
+        if (!$upprev_query->have_posts()) {
             return;
         }
         remove_all_filters( 'the_content' );
@@ -355,7 +364,7 @@ function iworks_upprev_box()
                 $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
-                    $a[] = sprintf( '<a href="%s">%s</a>', $url, $name );
+                    $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
                 }
                 $value .= implode( ', ', $a);
             } else if ( $compare == 'random' ) {
@@ -367,8 +376,8 @@ function iworks_upprev_box()
         }
         $i = 1;
         $ga_click_track = '';
-        while ( $query->have_posts() ) {
-            $query->the_post();
+        while ( $upprev_query->have_posts() ) {
+            $upprev_query->the_post();
             $item_class = 'upprev_excerpt';
             if ( $i > $number_of_posts ) {
                 break;
@@ -386,10 +395,11 @@ function iworks_upprev_box()
             if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
-                    '<a href="%s" title="%s" class="upprev_thumbnail"%s>%s</a>',
+                    '<a href="%s" title="%s" class="upprev_thumbnail"%s rel="%s">%s</a>',
                     $permalink,
                     wptexturize(get_the_title()),
                     $ga_click_track,
+                    $current_post_title,
                     get_the_post_thumbnail(
                         get_the_ID(),
                         array(
@@ -405,9 +415,10 @@ function iworks_upprev_box()
             }
             $value .= sprintf( '<div class="%s">%s', $item_class, $image );
             $value .= sprintf(
-                '<h5><a href="%s"%s>%s</a></h5>',
+                '<h5><a href="%s"%s rel="%s">%s</a></h5>',
                 $permalink,
                 $ga_click_track,
+                $current_post_title,
                 get_the_title()
             );
             if ( $excerpt_length > 0 ) {
@@ -421,7 +432,7 @@ function iworks_upprev_box()
         $value .= $yarpp_posts;
     }
     if ( $iworks_upprev_options->get_option( 'close_button_show' ) ) {
-        $value .= sprintf( '<a id="upprev_close" href="#">%s</a>', __('Close', 'upprev') );
+        $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
     }
     if ( $iworks_upprev_options->get_option( 'promote' ) ) {
         $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
