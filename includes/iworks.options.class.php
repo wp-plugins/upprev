@@ -118,7 +118,7 @@ class IworksOptions
                 if ( isset($option['related_to'] ) && isset( $related_to[ $option['related_to'] ] ) && $related_to[ $option['related_to'] ] == 0 ) {
                     $style .= 'style="display:none"';
                 }
-                $content .= sprintf( '<tr valign="top" class="%s" id="tr_%s"%s>', $i++%2? 'alternate':'', $option['name'], $style );
+                $content .= sprintf( '<tr valign="top" class="%s" id="tr_%s"%s>', $i++%2? 'alternate':'', isset($option['name'])? $option['name']:'', $style );
                 $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
                 $content .= '<td>';
             }

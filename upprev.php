@@ -254,6 +254,7 @@ function iworks_upprev_box()
         'url_sufix'
     ) as $key ) {
         $$key = $iworks_upprev_options->get_option( $key );
+        d($$key, $key);
     }
 
     $show_taxonomy   = true;
@@ -421,7 +422,7 @@ function iworks_upprev_box()
                 $current_post_title,
                 get_the_title()
             );
-            if ( $excerpt_length > 0 ) {
+            if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
                 $value .= sprintf( '<p>%s</p>', get_the_excerpt() );
             } else if ( $image ) {
                 $value .= '<br />';

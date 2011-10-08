@@ -79,7 +79,7 @@ function iworks_upprev_options()
                 'label'             => __('%', 'upprev' ),
                 'description'       => __('Percentage of the page required to be scrolled to display a box.', 'upprev' ),
                 'default'           => 75,
-                'sanitize_callback' => 'absint'
+                'sanitize_callback' => 'iworks_upprev_offset_percent'
             ),
             array(
                 'name'              => 'offset_element',
@@ -391,5 +391,19 @@ function iworks_upprev_get_compare_option()
         $data['yarpp-disabled'] = __( 'Related Posts (YARPP)', 'upprev' );
     }
     return $data;
+}
+
+/**
+ * sanitize offset value
+ */
+function iworks_upprev_offset_percent( $value = null )
+{
+    if ( is_null( $value ) ) {
+        return 100;
+    }
+    if ( !is_numeric( $value ) || $value < 0 || $value > 100 ) {
+        return 75;
+    }
+    return $value;
 }
 

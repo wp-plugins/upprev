@@ -27,6 +27,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 
+If you have created your own language pack, or have an update of an existing one, you can send [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to me so that I can bundle it into upPrev. You can [download the latest POT file from here](http://plugins.svn.wordpress.org/upprev/trunk/languages/upprev.pot).
+
 == Installation ==
 
 1. Upload upPrev to your plugins directory.
@@ -43,13 +45,15 @@ Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 
 == Changelog ==
 
-* BUGFIX: fixed javascript conflict on edit post screen
-* BUGFIX: fixed thumbnail display problem
-* BUGFIX: fixed sticky posts display loop
 * BUGFIX: fixed end date filter for imported posts
+* BUGFIX: fixed javascript conflict on edit post screen
+* BUGFIX: fixed problem with unchecking 'Excerpts'. [forum](http://wordpress.org/support/topic/plugin-upprev-bugs-no-box-in-firefox-6-offset-doesnt-work-disable-excerpts-doesnt-work) thx [benjamin](http://wordpress.org/support/profile/kbenjamin)
+* BUGFIX: fixed sticky posts display loop
+* BUGFIX: fixed thumbnail display problem
 * IMPROVMENT: added GA click tracks
-* IMPROVMENT: added thumbnail preview on posts/pages list
 * IMPROVMENT: added option *ignore sticky posts*
+* IMPROVMENT: added sanitize function for offset
+* IMPROVMENT: added thumbnail preview on posts/pages list
 * REFACTORING: option managment
 
 = 2.3.7 =
