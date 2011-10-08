@@ -187,7 +187,7 @@ function iworks_upprev_print_styles()
     }
     $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
     $content .= '}'."\n";
-    $content .= $iworks_upprev_options->get_option( 'css' );
+    $content .= preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $iworks_upprev_options->get_option( 'css' ) ) );
     $content .= '</style>'."\n";
     if ( $use_cache ) {
         set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
@@ -254,7 +254,6 @@ function iworks_upprev_box()
         'url_sufix'
     ) as $key ) {
         $$key = $iworks_upprev_options->get_option( $key );
-        d($$key, $key);
     }
 
     $show_taxonomy   = true;

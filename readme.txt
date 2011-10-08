@@ -54,6 +54,7 @@ If you have created your own language pack, or have an update of an existing one
 * IMPROVMENT: added option *ignore sticky posts*
 * IMPROVMENT: added sanitize function for offset
 * IMPROVMENT: added thumbnail preview on posts/pages list
+* IMPROVMENT: cleaning empty styles from custom css field
 * REFACTORING: option managment
 
 = 2.3.7 =
