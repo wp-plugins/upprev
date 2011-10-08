@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-10-03 11:41:05+00:00\n"
+"POT-Creation-Date: 2011-10-08 20:54:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,12 +14,42 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:205 upprev.php:206 upprev.php:484
+#: admin/index.php:3 upprev.php:205 upprev.php:206 upprev.php:496
 msgid "upPrev"
 msgstr ""
 
 #: admin/index.php:7
 msgid "upPrev options saved."
+msgstr ""
+
+#: upprev.php:365
+msgid "More in"
+msgstr ""
+
+#: upprev.php:372
+msgid "Read more:"
+msgstr ""
+
+#: upprev.php:374
+msgid "Read previous post:"
+msgstr ""
+
+#: upprev.php:436
+msgid "Close"
+msgstr ""
+
+#: upprev.php:439
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr ""
+
+#: upprev.php:483
+msgid "Settings"
+msgstr ""
+
+#: upprev.php:485 includes/options.php:362
+msgid "Donate"
 msgstr ""
 
 #: includes/common.php:16
@@ -34,14 +64,6 @@ msgstr ""
 
 #: includes/show_thubnail_on_admin_post_list.php:19
 msgid "None"
-msgstr ""
-
-#: includes/iworks.options.class.php:60
-msgid "An error occurred while getting the configuration."
-msgstr ""
-
-#: includes/iworks.options.class.php:286
-msgid "Save Changes"
 msgstr ""
 
 #: includes/options.php:15
@@ -143,191 +165,195 @@ msgstr ""
 msgid "Number of posts to show "
 msgstr ""
 
-#: includes/options.php:157
+#: includes/options.php:151
+msgid "Not affected if using YARPP as choose method."
+msgstr ""
+
+#: includes/options.php:158
 msgid "Previous entry choose method"
 msgstr ""
 
-#: includes/options.php:160
+#: includes/options.php:161
 msgid "Just previous."
 msgstr ""
 
-#: includes/options.php:161
+#: includes/options.php:162
 msgid "Previous in category."
 msgstr ""
 
-#: includes/options.php:162
+#: includes/options.php:163
 msgid "Previous in tag."
 msgstr ""
 
-#: includes/options.php:163
+#: includes/options.php:164
 msgid "Random entry."
 msgstr ""
 
-#: includes/options.php:172
+#: includes/options.php:173
 msgid "Taxonomy limit"
 msgstr ""
 
-#: includes/options.php:173
+#: includes/options.php:174
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr ""
 
-#: includes/options.php:174
+#: includes/options.php:175
 msgid "Default value: 0 (no limit)."
 msgstr ""
 
-#: includes/options.php:181
+#: includes/options.php:182
 msgid "Match post type"
 msgstr ""
 
-#: includes/options.php:182
+#: includes/options.php:183
 msgid "Display only for selected post types."
 msgstr ""
 
-#: includes/options.php:189
+#: includes/options.php:190
 msgid "Select post types"
 msgstr ""
 
-#: includes/options.php:190
+#: includes/options.php:191
 msgid "Show posts."
 msgstr ""
 
-#: includes/options.php:191
+#: includes/options.php:192
 msgid "If not any, then default value is \"post\"."
 msgstr ""
 
-#: includes/options.php:194
+#: includes/options.php:195
 msgid "Posts."
 msgstr ""
 
-#: includes/options.php:195
+#: includes/options.php:196
 msgid "Pages."
 msgstr ""
 
-#: includes/options.php:196
+#: includes/options.php:197
 msgid "Any post type (include custom post types)."
 msgstr ""
 
-#: includes/options.php:206
+#: includes/options.php:207
 msgid "Sticky posts"
 msgstr ""
 
-#: includes/options.php:207
+#: includes/options.php:208
 msgid "Ignore sticky posts."
 msgstr ""
 
-#: includes/options.php:217
+#: includes/options.php:218
 msgid "Excerpt"
 msgstr ""
 
-#: includes/options.php:218
+#: includes/options.php:219
 msgid "Show excerpt."
 msgstr ""
 
-#: includes/options.php:227
+#: includes/options.php:228
 msgid "Number of words to show."
 msgstr ""
 
-#: includes/options.php:236
+#: includes/options.php:237
 msgid "Featured image"
 msgstr ""
 
-#: includes/options.php:237
+#: includes/options.php:238
 msgid "Show featured image."
 msgstr ""
 
-#: includes/options.php:246
+#: includes/options.php:247
 msgid "Featured image width."
 msgstr ""
 
-#: includes/options.php:256
+#: includes/options.php:257
 msgid "Links"
 msgstr ""
 
-#: includes/options.php:261
+#: includes/options.php:262
 msgid "URL prefix"
 msgstr ""
 
-#: includes/options.php:263
+#: includes/options.php:264
 msgid "Will be added before link."
 msgstr ""
 
-#: includes/options.php:270
+#: includes/options.php:271
 msgid "URL sufix"
 msgstr ""
 
-#: includes/options.php:272
+#: includes/options.php:273
 msgid "Will be added after link."
 msgstr ""
 
-#: includes/options.php:279
+#: includes/options.php:280
 msgid "Open link"
 msgstr ""
 
-#: includes/options.php:280
+#: includes/options.php:281
 msgid "Open link in new window."
 msgstr ""
 
-#: includes/options.php:281
+#: includes/options.php:282
 msgid "Not recomended!"
 msgstr ""
 
-#: includes/options.php:288
+#: includes/options.php:289
 msgid "Google Analitics"
 msgstr ""
 
-#: includes/options.php:289
+#: includes/options.php:290
 msgid "I don't have GA tracking on site."
 msgstr ""
 
-#: includes/options.php:290 includes/options.php:316
+#: includes/options.php:291 includes/options.php:317
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr ""
 
-#: includes/options.php:297
+#: includes/options.php:298
 msgid "Google Analitics Account"
 msgstr ""
 
-#: includes/options.php:298
+#: includes/options.php:299
 msgid "Replace UA-XXXXX-X with your web property ID."
 msgstr ""
 
-#: includes/options.php:307
+#: includes/options.php:308
 msgid "Track views"
 msgstr ""
 
-#: includes/options.php:315
+#: includes/options.php:316
 msgid "Track clicks"
 msgstr ""
 
-#: includes/options.php:325 includes/options.php:330
+#: includes/options.php:326 includes/options.php:331
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:331
+#: includes/options.php:332
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:338
+#: includes/options.php:339
 msgid "Transients Cache Lifetime."
 msgstr ""
 
-#: includes/options.php:339
+#: includes/options.php:340
 msgid "In seconds, default one hour (3600s)."
 msgstr ""
 
-#: includes/options.php:348
+#: includes/options.php:349
 msgid "Other"
 msgstr ""
 
-#: includes/options.php:353
+#: includes/options.php:354
 msgid "Promote"
 msgstr ""
 
-#: includes/options.php:354
+#: includes/options.php:355
 msgid "Help promote upPrev plugin?"
 msgstr ""
 
-#: includes/options.php:355
+#: includes/options.php:356
 msgid ""
 "This option will add the code <code>Previous posts box brought to you by &lt;"
 "a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev "
@@ -336,52 +362,30 @@ msgid ""
 "greatly appreciated.</span>"
 msgstr ""
 
-#: includes/options.php:361 upprev.php:473
-msgid "Donate"
-msgstr ""
-
-#: includes/options.php:362
+#: includes/options.php:363
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
 "href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr ""
 
-#: includes/options.php:377
+#: includes/options.php:378
 msgid "Custom post type: "
 msgstr ""
 
-#: includes/options.php:388 includes/options.php:391
+#: includes/options.php:389 includes/options.php:392
 msgid "Related Posts (YARPP)"
 msgstr ""
 
-#: includes/options.php:389
+#: includes/options.php:390
 msgid ". Works only with post and/or pages."
 msgstr ""
 
-#: upprev.php:355
-msgid "More in"
+#: includes/iworks.options.class.php:60
+msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: upprev.php:362
-msgid "Read more:"
-msgstr ""
-
-#: upprev.php:364
-msgid "Read previous post:"
-msgstr ""
-
-#: upprev.php:424
-msgid "Close"
-msgstr ""
-
-#: upprev.php:427
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
-msgstr ""
-
-#: upprev.php:471
-msgid "Settings"
+#: includes/iworks.options.class.php:286
+msgid "Save Changes"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

@@ -79,7 +79,7 @@ function iworks_upprev_options()
                 'label'             => __('%', 'upprev' ),
                 'description'       => __('Percentage of the page required to be scrolled to display a box.', 'upprev' ),
                 'default'           => 75,
-                'sanitize_callback' => 'iworks_upprev_offset_percent'
+                'sanitize_callback' => 'iworks_upprev_sanitize_callback_offset_percent'
             ),
             array(
                 'name'              => 'offset_element',
@@ -147,7 +147,8 @@ function iworks_upprev_options()
                 'name'              => 'number_of_posts',
                 'type'              => 'text',
                 'class'             => 'small-text',
-                'th'                => __('Number of posts to show ', 'upprev' ),
+                'th'                => __( 'Number of posts to show ', 'upprev' ),
+                'description'       => __( 'Not affected if using YARPP as choose method.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -298,7 +299,7 @@ function iworks_upprev_options()
                 'description'       => __('Replace UA-XXXXX-X with your web property ID.', 'upprev' ),
                 'class'             => 'regular-text',
                 'default'           => 'UA-XXXXX-X',
-                'sanitize_callback' => 'esc_html',
+                'sanitize_callback' => 'iworks_upprev_sanitize_callback_ga_account',
                 'related_to'        => 'ga_status'
             ),
             array(
@@ -396,7 +397,7 @@ function iworks_upprev_get_compare_option()
 /**
  * sanitize offset value
  */
-function iworks_upprev_offset_percent( $value = null )
+function iworks_upprev_sanitize_callback_offset_percent( $value = null )
 {
     if ( is_null( $value ) ) {
         return 100;
@@ -405,5 +406,16 @@ function iworks_upprev_offset_percent( $value = null )
         return 75;
     }
     return $value;
+}
+
+/**
+ * sanitize GA account
+ */
+function iworks_upprev_sanitize_callback_ga_account( $value = 'UA-XXXXX-X' )
+{
+    if ( preg_match( '/^UA\-\d{5}\-\d$/i', $value ) ) {
+        return strtoupper( $value );
+    }
+    return null;
 }
 
