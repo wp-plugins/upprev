@@ -308,8 +308,7 @@ function iworks_upprev_options()
                 'label'             => __('Track views', 'upprev'),
                 'description'       => __('Track showing of upPrev box.', 'upprev' ),
                 'default'           => 1,
-                'sanitize_callback' => 'absint',
-                'related_to'        => 'ga_status'
+                'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'ga_track_clicks',
