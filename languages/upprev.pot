@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-10-08 20:54:02+00:00\n"
+"POT-Creation-Date: 2011-10-10 07:12:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,42 +14,12 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:205 upprev.php:206 upprev.php:496
+#: admin/index.php:3 upprev.php:202 upprev.php:203 upprev.php:492
 msgid "upPrev"
 msgstr ""
 
 #: admin/index.php:7
 msgid "upPrev options saved."
-msgstr ""
-
-#: upprev.php:365
-msgid "More in"
-msgstr ""
-
-#: upprev.php:372
-msgid "Read more:"
-msgstr ""
-
-#: upprev.php:374
-msgid "Read previous post:"
-msgstr ""
-
-#: upprev.php:436
-msgid "Close"
-msgstr ""
-
-#: upprev.php:439
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
-msgstr ""
-
-#: upprev.php:483
-msgid "Settings"
-msgstr ""
-
-#: upprev.php:485 includes/options.php:362
-msgid "Donate"
 msgstr ""
 
 #: includes/common.php:16
@@ -64,6 +34,14 @@ msgstr ""
 
 #: includes/show_thubnail_on_admin_post_list.php:19
 msgid "None"
+msgstr ""
+
+#: includes/iworks.options.class.php:60
+msgid "An error occurred while getting the configuration."
+msgstr ""
+
+#: includes/iworks.options.class.php:286
+msgid "Save Changes"
 msgstr ""
 
 #: includes/options.php:15
@@ -305,7 +283,7 @@ msgstr ""
 msgid "I don't have GA tracking on site."
 msgstr ""
 
-#: includes/options.php:291 includes/options.php:317
+#: includes/options.php:291 includes/options.php:318
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr ""
 
@@ -321,39 +299,43 @@ msgstr ""
 msgid "Track views"
 msgstr ""
 
-#: includes/options.php:316
+#: includes/options.php:309
+msgid "Track showing of upPrev box."
+msgstr ""
+
+#: includes/options.php:317
 msgid "Track clicks"
 msgstr ""
 
-#: includes/options.php:326 includes/options.php:331
+#: includes/options.php:327 includes/options.php:332
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:332
+#: includes/options.php:333
 msgid "Use Transient Cache."
 msgstr ""
 
-#: includes/options.php:339
+#: includes/options.php:340
 msgid "Transients Cache Lifetime."
 msgstr ""
 
-#: includes/options.php:340
+#: includes/options.php:341
 msgid "In seconds, default one hour (3600s)."
 msgstr ""
 
-#: includes/options.php:349
+#: includes/options.php:350
 msgid "Other"
 msgstr ""
 
-#: includes/options.php:354
+#: includes/options.php:355
 msgid "Promote"
 msgstr ""
 
-#: includes/options.php:355
+#: includes/options.php:356
 msgid "Help promote upPrev plugin?"
 msgstr ""
 
-#: includes/options.php:356
+#: includes/options.php:357
 msgid ""
 "This option will add the code <code>Previous posts box brought to you by &lt;"
 "a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev "
@@ -362,30 +344,52 @@ msgid ""
 "greatly appreciated.</span>"
 msgstr ""
 
-#: includes/options.php:363
+#: includes/options.php:363 upprev.php:481
+msgid "Donate"
+msgstr ""
+
+#: includes/options.php:364
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
 "href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr ""
 
-#: includes/options.php:378
+#: includes/options.php:379
 msgid "Custom post type: "
 msgstr ""
 
-#: includes/options.php:389 includes/options.php:392
+#: includes/options.php:390 includes/options.php:393
 msgid "Related Posts (YARPP)"
 msgstr ""
 
-#: includes/options.php:390
+#: includes/options.php:391
 msgid ". Works only with post and/or pages."
 msgstr ""
 
-#: includes/iworks.options.class.php:60
-msgid "An error occurred while getting the configuration."
+#: upprev.php:361
+msgid "More in"
 msgstr ""
 
-#: includes/iworks.options.class.php:286
-msgid "Save Changes"
+#: upprev.php:368
+msgid "Read more:"
+msgstr ""
+
+#: upprev.php:370
+msgid "Read previous post:"
+msgstr ""
+
+#: upprev.php:432
+msgid "Close"
+msgstr ""
+
+#: upprev.php:435
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr ""
+
+#: upprev.php:479
+msgid "Settings"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

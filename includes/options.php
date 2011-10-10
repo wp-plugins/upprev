@@ -306,6 +306,7 @@ function iworks_upprev_options()
                 'name'              => 'ga_track_views',
                 'type'              => 'checkbox',
                 'label'             => __('Track views', 'upprev'),
+                'description'       => __('Track showing of upPrev box.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
                 'related_to'        => 'ga_status'

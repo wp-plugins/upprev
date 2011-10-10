@@ -108,7 +108,7 @@ function iworks_upprev_print_scripts()
         }
     }
     $data = '';
-    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_clicks' ) as $key ) {
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks' ) as $key ) {
         if ( $data ) {
             $data .= ', ';
         }
@@ -133,9 +133,6 @@ function iworks_upprev_print_scripts()
     if ( $ga_account ) {
         $content.= 'var _gaq = _gaq || [];'."\n";
         $content.= '_gaq.push([\'_setAccount\', \''.$ga_account.'\']);'."\n";
-        if ( $iworks_upprev_options->get_option( 'ga_track_views' ) ) {
-            $content.= '_gaq.push([\'_trackPageview\']);'."\n";
-        }
         $content.= '(function() {'."\n";
         $content.= '    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;'."\n";
         $content.= '    ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'."\n";

@@ -13,6 +13,7 @@ function getScrollY() {
 jQuery(function($){
     var upprev_closed = false;
     var upprev_hidden = true;
+    var upprev_ga_track_view = true;
     function upprev_show_box() {
         var lastScreen = false;
         if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
@@ -33,6 +34,10 @@ jQuery(function($){
                 $("#upprev_box").stop().animate({right:iworks_upprev.css_side+"px"});
             }
             upprev_hidden = false;
+            if ( upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
+                _gaq.push( [ '_trackEvent', 'upPrev', $(this).attr('rel'), $(this).html(), 0 ] );
+                upprev_ga_track_view = false;
+            }
         }
         else if (upprev_closed && getScrollY() == 0) {
             upprev_closed = false;
