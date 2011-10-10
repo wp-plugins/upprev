@@ -35,7 +35,8 @@ jQuery(function($){
             }
             upprev_hidden = false;
             if ( upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', $(this).attr('rel'), $(this).html(), 0 ] );
+                alert($(document).attr('title'));
+                _gaq.push( [ '_trackEvent', 'upPrev', 'show', $(this).attr('rel') ] );
                 upprev_ga_track_view = false;
             }
         }
