@@ -374,6 +374,7 @@ function iworks_upprev_box()
         $i = 1;
         $ga_click_track = '';
         while ( $upprev_query->have_posts() ) {
+            $item = '';
             $upprev_query->the_post();
             $item_class = 'upprev_excerpt';
             if ( $i > $number_of_posts ) {
@@ -410,8 +411,8 @@ function iworks_upprev_box()
                     )
                 );
             }
-            $value .= sprintf( '<div class="%s">%s', $item_class, $image );
-            $value .= sprintf(
+            $item .= sprintf( '<div class="%s">%s', $item_class, $image );
+            $item .= sprintf(
                 '<h5><a href="%s"%s rel="%s">%s</a></h5>',
                 $permalink,
                 $ga_click_track,
@@ -419,11 +420,12 @@ function iworks_upprev_box()
                 get_the_title()
             );
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
-                $value .= sprintf( '<p>%s</p>', get_the_excerpt() );
+                $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
             } else if ( $image ) {
-                $value .= '<br />';
+                $item .= '<br />';
             }
-            $value .= '</div>';
+            $item .= '</div>';
+            $value .= apply_filters( 'iworks_upprev_box_item', $item );
         }
     } else {
         $value .= $yarpp_posts;

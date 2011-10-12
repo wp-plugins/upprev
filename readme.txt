@@ -50,6 +50,7 @@ If you have created your own language pack, or have an update of an existing one
 * BUGFIX: fixed problem with unchecking 'Excerpts'. [forum](http://wordpress.org/support/topic/plugin-upprev-bugs-no-box-in-firefox-6-offset-doesnt-work-disable-excerpts-doesnt-work) thx [benjamin](http://wordpress.org/support/profile/kbenjamin)
 * BUGFIX: fixed sticky posts display loop
 * BUGFIX: fixed thumbnail display problem
+* IMPROVMENT: added filter 'iworks_upprev_box_item' for any item excerpt YARPPs
 * IMPROVMENT: added GA track: view box and click link
 * IMPROVMENT: added option *ignore sticky posts*
 * IMPROVMENT: added sanitize function for offset
