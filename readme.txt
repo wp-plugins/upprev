@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
 Tested up to: 3.2.1
-Stable tag: 2.3.7
+Stable tag: 3.0
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -160,6 +160,10 @@ If you have created your own language pack, or have an update of an existing one
 * INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
+
+= 3.0 =
+
+Add GA tracking for display and click. Add filter and action to modify result.
 
 = 2.3 =
 
