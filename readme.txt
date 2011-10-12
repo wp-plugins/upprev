@@ -45,6 +45,8 @@ If you have created your own language pack, or have an update of an existing one
 
 == Changelog ==
 
+= 3.0 =
+
 * BUGFIX: fixed end date filter for imported posts
 * BUGFIX: fixed javascript conflict on edit post screen
 * BUGFIX: fixed problem with unchecking 'Excerpts'. [forum](http://wordpress.org/support/topic/plugin-upprev-bugs-no-box-in-firefox-6-offset-doesnt-work-disable-excerpts-doesnt-work) thx [benjamin](http://wordpress.org/support/profile/kbenjamin)
