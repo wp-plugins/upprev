@@ -161,6 +161,10 @@ If you have created your own language pack, or have an update of an existing one
 
 == Upgrade Notice ==
 
+= 3.0 =
+
+Add GA tracking for display and click. Add filter and action to modify result.
+
 = 2.3 =
 
 Add YARPP integration.
