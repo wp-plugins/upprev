@@ -45,6 +45,10 @@ If you have created your own language pack, or have an update of an existing one
 
 == Changelog ==
 
+= 3.0.1 =
+
+* BUGFIX: fixed printing GA code when "I don't have GA tracking on site." is unticked. [forum](http://wordpress.org/support/topic/plugin-upprev-google-analytics-tracking-code-error-ga-tracking-installed) thx [win101](http://wordpress.org/support/profile/win101)
+
 = 3.0 =
 
 * BUGFIX: fixed end date filter for imported posts

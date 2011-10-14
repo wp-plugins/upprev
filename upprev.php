@@ -130,7 +130,7 @@ function iworks_upprev_print_scripts()
      * Google Analitics tracking code
      */
     $ga_account = $iworks_upprev_options->get_option( 'ga_account' );
-    if ( $ga_account ) {
+    if ( $ga_account && $iworks_upprev_options->get_option( 'ga_status' )) {
         $content.= 'var _gaq = _gaq || [];'."\n";
         $content.= '_gaq.push([\'_setAccount\', \''.$ga_account.'\']);'."\n";
         $content.= '(function() {'."\n";
