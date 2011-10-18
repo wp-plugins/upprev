@@ -35,7 +35,7 @@ jQuery(function($){
             }
             upprev_hidden = false;
             if ( upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', 'show', $(this).attr('rel') ] );
+                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, null, 0 ] );
                 upprev_ga_track_view = false;
             }
         }
@@ -78,7 +78,7 @@ jQuery(function($){
                 window.open($(this).attr('href'));
             }
             if ( iworks_upprev.ga_track_clicks == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', $(this).attr('rel'), $(this).html(), 1 ] );
+                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1 ] );
             }
             if ( iworks_upprev.url_new_window == 1) {
                 return false;

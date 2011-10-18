@@ -109,12 +109,9 @@ function iworks_upprev_print_scripts()
     }
     $data = '';
     foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks' ) as $key ) {
-        if ( $data ) {
-            $data .= ', ';
-        }
         $value   = $iworks_upprev_options->get_option( $key );
         $data .= sprintf(
-            '%s: %s',
+            '%s: %s, ',
             $key,
             is_numeric($value)? $value:(sprintf("'%s'", $value))
         );
@@ -125,6 +122,7 @@ function iworks_upprev_print_scripts()
     $content  = '<script type="text/javascript">'."\n";
     $content .= 'var iworks_upprev = { ';
     $content .= $data;
+    $content .= 'title: \''.htmlentities(get_the_title()).'\'';
     $content .= ' };'."\n";
     /**
      * Google Analitics tracking code
@@ -184,7 +182,7 @@ function iworks_upprev_print_styles()
     }
     $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
     $content .= '}'."\n";
-    $content .= preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $iworks_upprev_options->get_option( 'css' ) ) );
+    $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $iworks_upprev_options->get_option( 'css' ) ) ) );
     $content .= '</style>'."\n";
     if ( $use_cache ) {
         set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
