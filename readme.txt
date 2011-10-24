@@ -26,6 +26,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 = Translators =
 
 Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
+Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek)
 
 If you have created your own language pack, or have an update of an existing one, you can send [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to me so that I can bundle it into upPrev. You can [download the latest POT file from here](http://plugins.svn.wordpress.org/upprev/trunk/languages/upprev.pot).
 
@@ -48,6 +49,7 @@ If you have created your own language pack, or have an update of an existing one
 = 3.1 =
 
 * IMPROVMENT: change GA trackEvent syntax
+* IMPROVMENT: Added Turkish translation by [wpdestek](http://wordpress.org/support/profile/wpdestek)
 
 = 3.0.1 =
 
