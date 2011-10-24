@@ -122,7 +122,7 @@ function iworks_upprev_print_scripts()
     $content  = '<script type="text/javascript">'."\n";
     $content .= 'var iworks_upprev = { ';
     $content .= $data;
-    $content .= 'title: \''.htmlentities(get_the_title()).'\'';
+    $content .= 'title: \''.get_the_title().'\'';
     $content .= ' };'."\n";
     /**
      * Google Analitics tracking code
