@@ -59,7 +59,7 @@ function iworks_upprev_init()
     add_action( 'admin_menu',                 'iworks_upprev_add_pages' );
     add_action( 'wp_before_admin_bar_render', 'iworks_upprev_add_to_admin_bar' );
     add_action( 'wp_enqueue_scripts',         'iworks_upprev_enqueue_scripts' );
-    add_action( 'wp_footer',                  'iworks_upprev_box');
+    add_action( 'wp_footer',                  'iworks_upprev_box', PHP_INT_MAX, 0 );
     add_action( 'wp_print_scripts',           'iworks_upprev_print_scripts' );
     add_action( 'wp_print_styles',            'iworks_upprev_print_styles' );
 }
@@ -349,7 +349,15 @@ function iworks_upprev_box()
         if (!$upprev_query->have_posts()) {
             return;
         }
-        remove_all_filters( 'the_content' );
+        /**
+         * remove any filter if needed
+         */
+        if ( $iworks_upprev_options->get_option( 'remove_all_filters' ) ) {
+            remove_all_filters( 'the_content' );
+        }
+        /**
+         * catch elements
+         */
         ob_start();
         do_action( 'iworks_upprev_box_before' );
         $value .= ob_get_flush();

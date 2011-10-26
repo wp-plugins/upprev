@@ -46,10 +46,14 @@ If you have created your own language pack, or have an update of an existing one
 
 == Changelog ==
 
+= 3.1.1 =
+
+* IMPROVMENT: added ability to turn off "remove_all_filters" function
+
 = 3.1 =
 
 * IMPROVMENT: change GA trackEvent syntax
-* IMPROVMENT: Added Turkish translation by [wpdestek](http://wordpress.org/support/profile/wpdestek)
+* IMPROVMENT: added Turkish translation by [wpdestek](http://wordpress.org/support/profile/wpdestek)
 
 = 3.0.1 =
 

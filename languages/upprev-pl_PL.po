@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-10-10 07:12:19+00:00\n"
-"PO-Revision-Date: 2011-10-10 09:13+0100\n"
+"POT-Creation-Date: 2011-10-26 11:27:10+00:00\n"
+"PO-Revision-Date: 2011-10-26 13:28+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,9 +18,9 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:202
-#: upprev.php:203
-#: upprev.php:492
+#: upprev.php:200
+#: upprev.php:201
+#: upprev.php:501
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -151,242 +151,254 @@ msgid "Not affected if using YARPP as choose method."
 msgstr "Nieużywane jeżeli wybrano YARPP dla wybierania poprzednich wpisów."
 
 #: includes/options.php:158
+msgid "Content filters"
+msgstr "Filtrowanie treści"
+
+#: includes/options.php:159
+msgid "Remove all filters."
+msgstr "Usuń wszystkie filtry."
+
+#: includes/options.php:160
+msgid "Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout."
+msgstr "Wyłącz tę opcję jeżeli w upPrev pojawiają się dziwne znaczki. Niestety może się to źle skończyć dla wyświetlania."
+
+#: includes/options.php:167
 msgid "Previous entry choose method"
 msgstr "Metoda wybierania poprzedniego wpisu"
 
-#: includes/options.php:161
+#: includes/options.php:170
 msgid "Just previous."
 msgstr "Po prostu poprzedni."
 
-#: includes/options.php:162
+#: includes/options.php:171
 msgid "Previous in category."
 msgstr "Poprzedni w wspólnej kategorii."
 
-#: includes/options.php:163
+#: includes/options.php:172
 msgid "Previous in tag."
 msgstr "Poprzedni ze wspólnym tagiem."
 
-#: includes/options.php:164
+#: includes/options.php:173
 msgid "Random entry."
 msgstr "Losowy wpis."
 
-#: includes/options.php:173
+#: includes/options.php:182
 msgid "Taxonomy limit"
 msgstr "Limit kategorii lub tagów"
 
-#: includes/options.php:174
+#: includes/options.php:183
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr "Liczba pokazywanych tagów lub kategorii."
 
-#: includes/options.php:175
+#: includes/options.php:184
 msgid "Default value: 0 (no limit)."
 msgstr "Domyślna wartość to 0 (brak limitu)"
 
-#: includes/options.php:182
+#: includes/options.php:191
 msgid "Match post type"
 msgstr "Sprawdzaj typ"
 
-#: includes/options.php:183
+#: includes/options.php:192
 msgid "Display only for selected post types."
 msgstr "Pokazuj tylko dla wybranych typów."
 
-#: includes/options.php:190
+#: includes/options.php:199
 msgid "Select post types"
 msgstr "Wybierz typ wpisów"
 
-#: includes/options.php:191
+#: includes/options.php:200
 msgid "Show posts."
 msgstr "Pokaż strony."
 
-#: includes/options.php:192
+#: includes/options.php:201
 msgid "If not any, then default value is \"post\"."
 msgstr "Pokazuj wpisy. Jeżeli nic nie będzie wybrane to i tak będą pokazywać się wpisy."
 
-#: includes/options.php:195
+#: includes/options.php:204
 msgid "Posts."
 msgstr "Wpisy."
 
-#: includes/options.php:196
+#: includes/options.php:205
 msgid "Pages."
 msgstr "Strony."
 
-#: includes/options.php:197
+#: includes/options.php:206
 msgid "Any post type (include custom post types)."
 msgstr "Pokazuj wszystkie typy wpisów (łącznie ze zdefiniowanymi przez użytkownika)."
 
-#: includes/options.php:207
+#: includes/options.php:216
 msgid "Sticky posts"
 msgstr "Wpisy przyklejone"
 
-#: includes/options.php:208
+#: includes/options.php:217
 msgid "Ignore sticky posts."
 msgstr "Ignoruj przyklejone wpisy."
 
-#: includes/options.php:218
+#: includes/options.php:227
 msgid "Excerpt"
 msgstr "Streszczenie"
 
-#: includes/options.php:219
+#: includes/options.php:228
 msgid "Show excerpt."
 msgstr "Pokaż streszczenie."
 
-#: includes/options.php:228
+#: includes/options.php:237
 msgid "Number of words to show."
 msgstr "Liczba słów do pokazania."
 
-#: includes/options.php:237
+#: includes/options.php:246
 msgid "Featured image"
 msgstr "Obrazek wyróżniający"
 
-#: includes/options.php:238
+#: includes/options.php:247
 msgid "Show featured image."
 msgstr "Pokaż obrazek wyróżniający."
 
-#: includes/options.php:247
+#: includes/options.php:256
 msgid "Featured image width."
 msgstr "Szerokość obrazka wyróżniającego."
 
-#: includes/options.php:257
+#: includes/options.php:266
 msgid "Links"
 msgstr "Odnośniki"
 
-#: includes/options.php:262
+#: includes/options.php:271
 msgid "URL prefix"
 msgstr "Prefiks adresu"
 
-#: includes/options.php:264
+#: includes/options.php:273
 msgid "Will be added before link."
 msgstr "Prefiks będzie dodany przed odnośnikiem."
 
-#: includes/options.php:271
+#: includes/options.php:280
 msgid "URL sufix"
 msgstr "Sufiks adresu"
 
-#: includes/options.php:273
+#: includes/options.php:282
 msgid "Will be added after link."
 msgstr "Sufiks będzie dodane po odnośniku."
 
-#: includes/options.php:280
+#: includes/options.php:289
 msgid "Open link"
 msgstr "Otwórz odnośnik"
 
-#: includes/options.php:281
+#: includes/options.php:290
 msgid "Open link in new window."
 msgstr "Otwórz odnośnik w nowym oknie"
 
-#: includes/options.php:282
+#: includes/options.php:291
 msgid "Not recomended!"
 msgstr "Nie polecam użycia tej opcji!"
 
-#: includes/options.php:289
+#: includes/options.php:298
 msgid "Google Analitics"
 msgstr ""
 
-#: includes/options.php:290
+#: includes/options.php:299
 msgid "I don't have GA tracking on site."
 msgstr "Nie posiadam na stronie śledzenia GA."
 
-#: includes/options.php:291
-#: includes/options.php:318
+#: includes/options.php:300
+#: includes/options.php:326
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Włącz jeżeli nie posiadasz śledzenia realizowanego za pomocą innej wtyczki."
 
-#: includes/options.php:298
+#: includes/options.php:307
 msgid "Google Analitics Account"
 msgstr ""
 
-#: includes/options.php:299
+#: includes/options.php:308
 msgid "Replace UA-XXXXX-X with your web property ID."
 msgstr "W miejsce UA-XXXXX-X wstaw swój kod."
 
-#: includes/options.php:308
+#: includes/options.php:317
 msgid "Track views"
 msgstr "Śledź wyświetlenia"
 
-#: includes/options.php:309
+#: includes/options.php:318
 msgid "Track showing of upPrev box."
 msgstr "Zliczaj wyświetlenia wyskakującego elementu."
 
-#: includes/options.php:317
+#: includes/options.php:325
 msgid "Track clicks"
 msgstr "Śledź kliknięcia w odnośniki"
 
-#: includes/options.php:327
-#: includes/options.php:332
+#: includes/options.php:335
+#: includes/options.php:340
 msgid "Cache"
 msgstr "Pamięć podręczna"
 
-#: includes/options.php:333
+#: includes/options.php:341
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:340
+#: includes/options.php:348
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:341
+#: includes/options.php:349
 msgid "In seconds, default one hour (3600s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (3600s)."
 
-#: includes/options.php:350
+#: includes/options.php:358
 msgid "Other"
 msgstr "Inne"
 
-#: includes/options.php:355
+#: includes/options.php:363
 msgid "Promote"
 msgstr "Promuj"
 
-#: includes/options.php:356
+#: includes/options.php:364
 msgid "Help promote upPrev plugin?"
 msgstr "Czy pomagać w promowaniu wtyczki?"
 
-#: includes/options.php:357
+#: includes/options.php:365
 msgid "This option will add the code <code>Previous posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>"
 msgstr "Włączenie opcji doda wyświetlanie informacji o wtyczce: <code>Dodatek zrealizowany za pomocą &lt;a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;. Włącz i zobacz różnicę w wyświetlanym powiadomieniu."
 
-#: includes/options.php:363
-#: upprev.php:481
+#: includes/options.php:371
+#: upprev.php:490
 msgid "Donate"
 msgstr "Złóż datek"
 
-#: includes/options.php:364
+#: includes/options.php:372
 msgid "You can buy me some special coffees if you appreciate my work, thank you! <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr "Kup mi piwo, jeżeli uważasz wtyczkę za pomocną. Z góry dziękuję! <a href=\"http://iworks.pl/donate/upprev.php\">Złóż datek.</a>"
 
-#: includes/options.php:379
+#: includes/options.php:387
 msgid "Custom post type: "
 msgstr "Wpisy typu: "
 
-#: includes/options.php:390
-#: includes/options.php:393
+#: includes/options.php:398
+#: includes/options.php:401
 msgid "Related Posts (YARPP)"
 msgstr "Powiązane wpisy (YARPP)"
 
-#: includes/options.php:391
+#: includes/options.php:399
 msgid ". Works only with post and/or pages."
 msgstr ". Działa tylko dla wpisów oraz stron."
 
-#: upprev.php:361
+#: upprev.php:368
 msgid "More in"
 msgstr "Więcej w"
 
-#: upprev.php:368
+#: upprev.php:375
 msgid "Read more:"
 msgstr "Przeczytaj inne:"
 
-#: upprev.php:370
+#: upprev.php:377
 msgid "Read previous post:"
 msgstr "Przeczytaj poprzedni wpis:"
 
-#: upprev.php:432
+#: upprev.php:441
 msgid "Close"
 msgstr "Zamknij"
 
-#: upprev.php:435
+#: upprev.php:444
 msgid "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 msgstr "Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\">wtyczki upPrev</a>."
 
-#: upprev.php:479
+#: upprev.php:488
 msgid "Settings"
 msgstr "Ustawienia"
 

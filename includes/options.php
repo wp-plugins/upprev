@@ -153,6 +153,15 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
+                'name'              => 'remove_all_filters',
+                'type'              => 'checkbox',
+                'th'                => __('Content filters', 'upprev' ),
+                'label'             => __('Remove all filters.', 'upprev' ),
+                'description'       =>  __('Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout.' , 'upprev'),
+                'default'           => 1,
+                'sanitize_callback' => 'absint',
+            ),
+            array(
                 'name'              => 'compare',
                 'type'              => 'radio',
                 'th'                => __('Previous entry choose method', 'upprev' ),
