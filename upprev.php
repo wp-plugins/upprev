@@ -404,15 +404,17 @@ function iworks_upprev_box()
                     wptexturize(get_the_title()),
                     $ga_click_track,
                     $current_post_title,
-                    get_the_post_thumbnail(
-                        get_the_ID(),
-                        array(
-                            $iworks_upprev_options->get_option( 'thumb_width' ),
-                            9999
-                        ),
-                        array(
-                            'title'=>get_the_title(),
-                            'class'=>'iworks_upprev_thumb'
+                    apply_filters(
+                        'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
+                            get_the_ID(),
+                            array(
+                                $iworks_upprev_options->get_option( 'thumb_width' ),
+                                9999
+                            ),
+                            array(
+                                'title'=>get_the_title(),
+                                'class'=>'iworks_upprev_thumb'
+                            )
                         )
                     )
                 );
