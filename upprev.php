@@ -195,20 +195,24 @@ function iworks_upprev_print_styles()
  */
 function iworks_upprev_add_pages()
 {
+    $dir = explode('/', dirname(__FILE__));
+    $dir = $dir[ count( $dir ) - 1 ];
     if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
         add_theme_page(
             __('upPrev', 'upprev'),
             __('upPrev', 'upprev'),
             'manage_options',
-            'upprev/admin/index.php'
+            $dir.'/admin/index.php'
         );
     }
 }
 
 function iworks_upprev_admin_enqueue_scripts()
 {
+    $dir = explode('/', dirname(__FILE__));
+    $dir = $dir[ count( $dir ) - 1 ];
     global $current_screen;
-    if ( isset( $current_screen->id ) && $current_screen->id == 'upprev/admin/index' ) {
+    if ( isset( $current_screen->id ) && $current_screen->id == $dir.'/admin/index' ) {
         wp_enqueue_script( 'upprev', plugins_url('/scripts/upprev-admin.js', __FILE__), array('jquery-ui-tabs'), IWORKS_UPPREV_VERSION );
         wp_enqueue_style( 'upprev', plugins_url('/styles/upprev-admin.css', __FILE__), null, IWORKS_UPPREV_VERSION );
     }
@@ -486,7 +490,9 @@ function iworks_upprev_plugin_links ( $links, $file )
 {
     if ( $file == plugin_basename(__FILE__) ) {
         if ( !is_multisite() ) {
-            $links[] = '<a href="themes.php?page=upprev/admin/index.php">' . __('Settings') . '</a>';
+            $dir = explode('/', dirname(__FILE__));
+            $dir = $dir[ count( $dir ) - 1 ];
+            $links[] = '<a href="themes.php?page='.$dir.'/admin/index.php">' . __('Settings') . '</a>';
         }
         $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
     }
@@ -499,6 +505,8 @@ function iworks_upprev_add_to_admin_bar()
         return;
     }
     global $wp_admin_bar;
-    $wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'upprev', 'title' => __('upPrev', 'upprev'), 'href' => admin_url('themes.php?page=upprev/admin/index.php') ) );
+    $dir = explode('/', dirname(__FILE__));
+    $dir = $dir[ count( $dir ) - 1 ];
+    $wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'upprev', 'title' => __('upPrev', 'upprev'), 'href' => admin_url('themes.php?page='.$dir.'/admin/index.php') ) );
 }
 
