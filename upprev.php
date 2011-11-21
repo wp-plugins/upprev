@@ -122,7 +122,7 @@ function iworks_upprev_print_scripts()
     $content  = '<script type="text/javascript">'."\n";
     $content .= 'var iworks_upprev = { ';
     $content .= $data;
-    $content .= 'title: \''.get_the_title().'\'';
+    $content .= 'title: \''.esc_attr( get_the_title() ).'\'';
     $content .= ' };'."\n";
     /**
      * Google Analitics tracking code
@@ -236,7 +236,7 @@ function iworks_upprev_box()
     /**
      * get current post title and convert special characters to HTML entities
      */
-    $current_post_title = htmlspecialchars( get_the_title() );
+    $current_post_title = esc_attr( get_the_title() );
 
     /**
      * get used params
