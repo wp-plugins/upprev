@@ -340,7 +340,7 @@ function iworks_upprev_options()
                 'th'                => __('Cache', 'upprev'),
                 'label'             => __('Use Transient Cache.', 'upprev'),
                 'default'           => 1,
-                'sanitize_callback' => 'absint'
+                'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
             ),
             array(
                 'name'              => 'cache_lifetime',
@@ -351,7 +351,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
-             * cache
+             * promotion
              */
             array(
                 'type'              => 'heading',
@@ -426,5 +426,21 @@ function iworks_upprev_sanitize_callback_ga_account( $value = 'UA-XXXXX-X' )
         return strtoupper( $value );
     }
     return null;
+}
+
+/**
+    * sanitize use_cache
+    */
+function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
+{
+    if ( !preg_match( '/^(0|1)$/', $value ) ) {
+        $value = 0;
+    }
+    if ( empty( $value ) ) {
+        global $wpdb;
+        $query = 'DELETE FROM '.$wpdb->options.' WHERE option_name LIKE \'_site_transient%iworks_upprev_%\'';
+        $wpdb->query( $query );
+    }
+    return $value;
 }
 
