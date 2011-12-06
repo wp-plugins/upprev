@@ -11,9 +11,11 @@ function getScrollY() {
 }
 
 jQuery(function($){
-    var upprev_closed = false;
-    var upprev_hidden = true;
+    var upprev_closed        = false;
+    var upprev_hidden        = true;
     var upprev_ga_track_view = true;
+    var upprev_ga            = typeof(_gaq ) != 'undefined';
+
     function upprev_show_box() {
         var lastScreen = false;
         if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
@@ -34,7 +36,7 @@ jQuery(function($){
                 $("#upprev_box").stop().animate({right:iworks_upprev.css_side+"px"});
             }
             upprev_hidden = false;
-            if ( upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
+            if ( upprev_ga && upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
                 _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, null, 0 ] );
                 upprev_ga_track_view = false;
             }
@@ -77,7 +79,7 @@ jQuery(function($){
             if ( iworks_upprev.url_new_window == 1) {
                 window.open($(this).attr('href'));
             }
-            if ( iworks_upprev.ga_track_clicks == 1 ) {
+            if ( upprev_ga && iworks_upprev.ga_track_clicks == 1 ) {
                 _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1 ] );
             }
             if ( iworks_upprev.url_new_window == 1) {

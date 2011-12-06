@@ -50,6 +50,7 @@ If you have created your own language pack, or have an update of an existing one
 
 * IMPROVMENT: added thumbnail filter *iworks_upprev_get_the_post_thumbnail*
 * IMPROVMENT: added purging transient cache entries from $wpdb->options table when turn off this cache [forum](http://wordpress.org/support/topic/plugin-upprev-crazy-number-of-wp-options-database-entries)
+* IMPROVMENT: add check _gaq object exist
 
 = 3.1.1 =
 
