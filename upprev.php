@@ -422,6 +422,10 @@ function iworks_upprev_box()
                         )
                     )
                 );
+            } else {
+                ob_start();
+                do_action( 'iworks_upprev_image' );
+                $image = ob_get_flush();
             }
             $item .= sprintf( '<div class="%s">%s', $item_class, $image );
             $item .= sprintf(
