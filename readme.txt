@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to: 3.2.1
-Stable tag: 3.1.1
+Tested up to: 3.3
+Stable tag: 3.2
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -48,9 +48,12 @@ If you have created your own language pack, or have an update of an existing one
 
 = 3.2 =
 
-* IMPROVMENT: added thumbnail filter *iworks_upprev_get_the_post_thumbnail*
+* IMPROVMENT: added action *iworks_upprev_image* - you can add own code to produce icon, when them don't support post-thumbnails
+* IMPROVMENT: added thumbnail filter *iworks_upprev_get_the_post_thumbnail* - now you can easy change thumbnail
 * IMPROVMENT: added purging transient cache entries from $wpdb->options table when turn off this cache [forum](http://wordpress.org/support/topic/plugin-upprev-crazy-number-of-wp-options-database-entries)
 * IMPROVMENT: add check _gaq object exist
+* CHECK: checked compatybility to WordPress 3.3
+* IMPROVMENT: updated IworksOptionClass to version 1.0.1
 
 = 3.1.1 =
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-10-26 11:27:10+00:00\n"
-"PO-Revision-Date: 2011-10-26 13:28+0100\n"
+"POT-Creation-Date: 2011-12-16 21:13:15+00:00\n"
+"PO-Revision-Date: 2011-12-16 22:14+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -18,9 +18,9 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:200
-#: upprev.php:201
-#: upprev.php:501
+#: upprev.php:202
+#: upprev.php:203
+#: upprev.php:514
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -28,25 +28,34 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "Zapisano konfigurację upPrev."
 
-#: includes/common.php:16
-msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
-msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
+#: upprev.php:371
+msgid "More in"
+msgstr "Więcej w"
 
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Miniaturka"
+#: upprev.php:378
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
 
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Brak"
+#: upprev.php:380
+msgid "Read previous post:"
+msgstr "Przeczytaj poprzedni wpis:"
 
-#: includes/iworks.options.class.php:60
-msgid "An error occurred while getting the configuration."
-msgstr "Błąd w pobieraniu konfiguracji."
+#: upprev.php:450
+msgid "Close"
+msgstr "Zamknij"
 
-#: includes/iworks.options.class.php:286
-msgid "Save Changes"
-msgstr "Zapisz zmiany"
+#: upprev.php:453
+msgid "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr "Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\">wtyczki upPrev</a>."
+
+#: upprev.php:499
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: upprev.php:501
+#: includes/options.php:372
+msgid "Donate"
+msgstr "Złóż datek"
 
 #: includes/options.php:15
 msgid "Apperance"
@@ -292,7 +301,7 @@ msgstr "Nie polecam użycia tej opcji!"
 
 #: includes/options.php:298
 msgid "Google Analitics"
-msgstr ""
+msgstr "Google Analitics"
 
 #: includes/options.php:299
 msgid "I don't have GA tracking on site."
@@ -305,7 +314,7 @@ msgstr "Włącz jeżeli nie posiadasz śledzenia realizowanego za pomocą innej 
 
 #: includes/options.php:307
 msgid "Google Analitics Account"
-msgstr ""
+msgstr "Konto Google Analitics"
 
 #: includes/options.php:308
 msgid "Replace UA-XXXXX-X with your web property ID."
@@ -332,75 +341,70 @@ msgstr "Pamięć podręczna"
 msgid "Use Transient Cache."
 msgstr "Używaj pamięci typu Transient."
 
-#: includes/options.php:348
+#: includes/options.php:342
+msgid "Using on large site (more than 1000 posts) may crash website."
+msgstr "Użycie na dużej stronie (powyżej 1000 wpisów) może spowodować jej wyłączenie."
+
+#: includes/options.php:349
 msgid "Transients Cache Lifetime."
 msgstr "Czas wygasania pamięci podręcznej."
 
-#: includes/options.php:349
+#: includes/options.php:350
 msgid "In seconds, default one hour (3600s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (3600s)."
 
-#: includes/options.php:358
+#: includes/options.php:359
 msgid "Other"
 msgstr "Inne"
 
-#: includes/options.php:363
+#: includes/options.php:364
 msgid "Promote"
 msgstr "Promuj"
 
-#: includes/options.php:364
+#: includes/options.php:365
 msgid "Help promote upPrev plugin?"
 msgstr "Czy pomagać w promowaniu wtyczki?"
 
-#: includes/options.php:365
+#: includes/options.php:366
 msgid "This option will add the code <code>Previous posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>"
 msgstr "Włączenie opcji doda wyświetlanie informacji o wtyczce: <code>Dodatek zrealizowany za pomocą &lt;a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;. Włącz i zobacz różnicę w wyświetlanym powiadomieniu."
 
-#: includes/options.php:371
-#: upprev.php:490
-msgid "Donate"
-msgstr "Złóż datek"
-
-#: includes/options.php:372
+#: includes/options.php:373
 msgid "You can buy me some special coffees if you appreciate my work, thank you! <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr "Kup mi piwo, jeżeli uważasz wtyczkę za pomocną. Z góry dziękuję! <a href=\"http://iworks.pl/donate/upprev.php\">Złóż datek.</a>"
 
-#: includes/options.php:387
+#: includes/options.php:388
 msgid "Custom post type: "
 msgstr "Wpisy typu: "
 
-#: includes/options.php:398
-#: includes/options.php:401
+#: includes/options.php:399
+#: includes/options.php:402
 msgid "Related Posts (YARPP)"
 msgstr "Powiązane wpisy (YARPP)"
 
-#: includes/options.php:399
+#: includes/options.php:400
 msgid ". Works only with post and/or pages."
 msgstr ". Działa tylko dla wpisów oraz stron."
 
-#: upprev.php:368
-msgid "More in"
-msgstr "Więcej w"
+#: includes/iworks.options.class.php:58
+msgid "An error occurred while getting the configuration."
+msgstr "Błąd w pobieraniu konfiguracji."
 
-#: upprev.php:375
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
+#: includes/iworks.options.class.php:291
+msgid "Save Changes"
+msgstr "Zapisz zmiany"
 
-#: upprev.php:377
-msgid "Read previous post:"
-msgstr "Przeczytaj poprzedni wpis:"
+#: includes/common.php:18
+msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
+msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
 
-#: upprev.php:441
-msgid "Close"
-msgstr "Zamknij"
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Miniaturka"
 
-#: upprev.php:444
-msgid "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
-msgstr "Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\">wtyczki upPrev</a>."
-
-#: upprev.php:488
-msgid "Settings"
-msgstr "Ustawienia"
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Brak"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"

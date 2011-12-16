@@ -339,7 +339,8 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __('Cache', 'upprev'),
                 'label'             => __('Use Transient Cache.', 'upprev'),
-                'default'           => 1,
+                'description'       => __('Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
+                'default'           => 0,
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
             ),
             array(
