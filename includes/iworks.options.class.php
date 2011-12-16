@@ -13,10 +13,8 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.0';
-
+        $this->version              = '1.0.1';
         $this->option_group         = 'index';
-
         $this->option_function_name = null;
         $this->option_prefix        = null;
     }
@@ -57,7 +55,7 @@ class IworksOptions
          * check options exists?
          */
         if(!is_array($options['options'])) {
-            echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks_upprev').'</strong></p></div>';
+            echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks').'</strong></p></div>';
             return;
         }
         $content  = '';
@@ -123,7 +121,7 @@ class IworksOptions
                 $content .= '<td>';
             }
             $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
-            switch ($option['type']) {
+            switch ( $option['type'] ) {
             case 'hidden':
                 $hidden .= sprintf
                     (
@@ -133,12 +131,19 @@ class IworksOptions
                     );
                 break;
             case 'text':
+            case 'password':
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
                 $content .= sprintf
                     (
-                        '<input type="text" name="%s" value="%s" class="%s" /> %s',
+                        '<input type="%s" name="%s" value="%s" class="%s"%s /> %s',
+                        $option['type'],
                         $html_element_name,
                         $this->get_option( $option['name'], $option_group ),
                         isset($option['class']) && $option['class']? $option['class']:'',
+                        $id,
                         isset($option['label'])?  $option['label']:''
                     );
                 break;
@@ -152,7 +157,7 @@ class IworksOptions
                         $html_element_name,
                         $related_to[ $option['name'] ]? ' checked="checked"':'',
                         isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
-                        $option['label']
+                        isset($option['label'])?  $option['label']:''
                     );
                 break;
             case 'checkbox_group':
@@ -224,7 +229,7 @@ class IworksOptions
             case 'heading':
                 if ( isset( $option['label'] ) && $option['label'] ) {
                     $content .= sprintf(
-                        '<h3 id="upprev-%s"%s>%s</h3>',
+                        '<h3 id="options-%s"%s>%s</h3>',
                         sanitize_title_with_dashes(remove_accents($option['label'])),
                         get_option( $this->option_prefix.'last_used_tab', 0 ) == $label_index? ' class="selected"':'',
                         $option['label']
@@ -283,7 +288,7 @@ class IworksOptions
         }
         $content .= sprintf(
             '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
-            __('Save Changes', 'upprev')
+            __( 'Save Changes' )
         );
         /* print ? */
         if ( $echo ) {
@@ -365,7 +370,7 @@ class IworksOptions
                 delete_option( $this->option_prefix.$option['name'] );
             }
         }
-        delete_option( $this->option_prefix.'cache_stamp', date('c') );
+        delete_option( $this->option_prefix.'cache_stamp' );
     }
 
     public function settings_fields( $option_name )
