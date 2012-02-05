@@ -69,7 +69,19 @@ function iworks_upprev_check()
     if ( !is_single() && !is_page() ) {
         return true;
     }
+    /**
+     * check mobile devices
+     */
+    if ( iworks_upprev_check_mobile_device() ) {
+        return true;
+    }
+    /**
+     * global option object
+     */
     global $iworks_upprev_options;
+    /**
+     * check post types
+     */
     $post_types = $iworks_upprev_options->get_option( 'post_type' );
     if ( empty( $post_types ) ) {
         $post_types = iworks_upprev_get_default_value( 'post_type' );

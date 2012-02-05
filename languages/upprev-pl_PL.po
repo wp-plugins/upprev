@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-12-16 21:13:15+00:00\n"
-"PO-Revision-Date: 2011-12-16 22:14+0100\n"
+"POT-Creation-Date: 2012-02-05 17:24:09+00:00\n"
+"PO-Revision-Date: 2012-02-05 18:28+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -53,9 +53,21 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 #: upprev.php:501
-#: includes/options.php:372
+#: includes/options.php:396
 msgid "Donate"
 msgstr "Złóż datek"
+
+#: includes/common.php:18
+msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
+msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
+
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Miniaturka"
+
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Brak"
 
 #: includes/options.php:15
 msgid "Apperance"
@@ -354,35 +366,56 @@ msgid "In seconds, default one hour (3600s)."
 msgstr "Czas wygaszania pamięci tymczasowej w sekundach, domyślnie godzina (3600s)."
 
 #: includes/options.php:359
+#: includes/options.php:364
+msgid "Mobile devices"
+msgstr "Urządzenia przenośne"
+
+#: includes/options.php:365
+msgid "Hide for mobile devices."
+msgstr "Ukryj dla urządzeń przenośnych."
+
+#: includes/options.php:372
+msgid "Tablets"
+msgstr "Tablety"
+
+#: includes/options.php:373
+msgid "Hide for tablets too."
+msgstr "Ukryj również dla tabletów."
+
+#: includes/options.php:374
+msgid "Works only when hidding for mobile devices is turn on."
+msgstr "Opcja działa tylko wtedy kiedy włączone jest ukrywanie dla urządzeń mobilnych."
+
+#: includes/options.php:383
 msgid "Other"
 msgstr "Inne"
 
-#: includes/options.php:364
+#: includes/options.php:388
 msgid "Promote"
 msgstr "Promuj"
 
-#: includes/options.php:365
+#: includes/options.php:389
 msgid "Help promote upPrev plugin?"
 msgstr "Czy pomagać w promowaniu wtyczki?"
 
-#: includes/options.php:366
+#: includes/options.php:390
 msgid "This option will add the code <code>Previous posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>"
 msgstr "Włączenie opcji doda wyświetlanie informacji o wtyczce: <code>Dodatek zrealizowany za pomocą &lt;a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;. Włącz i zobacz różnicę w wyświetlanym powiadomieniu."
 
-#: includes/options.php:373
+#: includes/options.php:397
 msgid "You can buy me some special coffees if you appreciate my work, thank you! <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr "Kup mi piwo, jeżeli uważasz wtyczkę za pomocną. Z góry dziękuję! <a href=\"http://iworks.pl/donate/upprev.php\">Złóż datek.</a>"
 
-#: includes/options.php:388
+#: includes/options.php:412
 msgid "Custom post type: "
 msgstr "Wpisy typu: "
 
-#: includes/options.php:399
-#: includes/options.php:402
+#: includes/options.php:423
+#: includes/options.php:426
 msgid "Related Posts (YARPP)"
 msgstr "Powiązane wpisy (YARPP)"
 
-#: includes/options.php:400
+#: includes/options.php:424
 msgid ". Works only with post and/or pages."
 msgstr ". Działa tylko dla wpisów oraz stron."
 
@@ -393,18 +426,6 @@ msgstr "Błąd w pobieraniu konfiguracji."
 #: includes/iworks.options.class.php:291
 msgid "Save Changes"
 msgstr "Zapisz zmiany"
-
-#: includes/common.php:18
-msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
-msgstr "<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do odpowiedniego miejsca.</p>"
-
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Miniaturka"
-
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Brak"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -424,30 +445,22 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "Just next."
 #~ msgstr "Po prostu następny."
-
 #~ msgid "Transient Cache"
 #~ msgstr "Pamięć podręczna typu Transient"
-
 #~ msgid "Only pages."
 #~ msgstr "Pokaż tylko strony."
-
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
-
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
-
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
-
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
-
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
-
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
+

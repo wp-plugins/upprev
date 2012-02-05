@@ -352,11 +352,35 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
+             * mobile devices
+             */
+            array(
+                'type'              => 'heading',
+                'label'             => __( 'Mobile devices', 'upprev' )
+            ),
+            array(
+                'name'              => 'mobile_hide',
+                'type'              => 'checkbox',
+                'th'                => __('Mobile devices', 'upprev'),
+                'label'             => __('Hide for mobile devices.', 'upprev'),
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'name'              => 'mobile_tablets',
+                'type'              => 'checkbox',
+                'th'                => __('Tablets', 'upprev'),
+                'label'             => __('Hide for tablets too.', 'upprev'),
+                'description'       => __( 'Works only when hidding for mobile devices is turn on.', 'upprev' ),
+                'default'           => 0,
+                'sanitize_callback' => 'absint'
+            ),
+            /**
              * promotion
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Other', 'upprev' )
+                'label'             => __( 'Other', 'upprev' )
             ),
             array(
                 'name'              => 'promote',

@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to: 3.3
-Stable tag: 3.2
+Tested up to: 3.3.1
+Stable tag: 3.3
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -45,6 +45,10 @@ If you have created your own language pack, or have an update of an existing one
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3 =
+
+* IMPROVMENT: added option to hide upPrevBox on mobile devices, matching imlemented from [WP Mobile Detector](http://wordpress.org/extend/plugins/wp-mobile-detector/) ticket from [forum](http://wordpress.org/support/topic/plugin-upprev-mobile-themes)
 
 = 3.2 =
 
