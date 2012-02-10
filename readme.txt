@@ -25,7 +25,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 = Translators =
 
-* French (fr_FR) - [Eva](http://myclientisrich-leblog.com/)
+* French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek)
 
