@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2011-10-26 11:27:10+00:00\n"
-"PO-Revision-Date: 2012-02-09 15:28+0100\n"
-"Last-Translator: eva <eva@myclientisrich.com>\n"
+"POT-Creation-Date: 2012-02-17 15:48:07+00:00\n"
+"PO-Revision-Date: 2012-02-17 16:51+0100\n"
+"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,9 @@ msgstr ""
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/index.php:3
-#: upprev.php:200
-#: upprev.php:201
-#: upprev.php:501
+#: upprev.php:214
+#: upprev.php:215
+#: upprev.php:526
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -26,7 +26,7 @@ msgstr "upPrev"
 msgid "upPrev options saved."
 msgstr "LEs options upPrev ont été sauvegardées."
 
-#: includes/common.php:16
+#: includes/common.php:18
 msgid "<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>"
 msgstr "<p>Les paramètres upPrev vous autorisent à configurer les notifications utilisateurs montrées quand le lecteur fait défiler la page.</p>"
 
@@ -38,11 +38,11 @@ msgstr "Miniature"
 msgid "None"
 msgstr "Aucun"
 
-#: includes/iworks.options.class.php:60
+#: includes/iworks.options.class.php:58
 msgid "An error occurred while getting the configuration."
 msgstr "Une erreur est survenue lors du chargement de la configuration."
 
-#: includes/iworks.options.class.php:286
+#: includes/iworks.options.class.php:291
 msgid "Save Changes"
 msgstr "Sauver les changements"
 
@@ -55,11 +55,13 @@ msgid "Animation style"
 msgstr "Style de l'animation"
 
 #: includes/options.php:30
-msgid "Flyout"
+#, fuzzy
+msgid "flyout"
 msgstr "Envolée"
 
 #: includes/options.php:31
-msgid "Fade in/out"
+#, fuzzy
+msgid "fade in/out"
 msgstr "Apparition/Disparition en fondu"
 
 #: includes/options.php:38
@@ -121,7 +123,8 @@ msgid "Box header"
 msgstr "En-tête de la boite"
 
 #: includes/options.php:97
-msgid "Show box header."
+#, fuzzy
+msgid "Show boks header."
 msgstr "Montrer l'en-tête de la boite."
 
 #: includes/options.php:104
@@ -157,7 +160,8 @@ msgid "Remove all filters."
 msgstr "Retirer tous les filtres."
 
 #: includes/options.php:160
-msgid "Untick this if you have some strange things in upPrev box, but unticked have a lot of chances to break your layout."
+#, fuzzy
+msgid "Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout."
 msgstr "Décochez ceci si vous avez des choses étranges dans la boite upPrev, mais ceci a de grandes chances de briser la mise en page."
 
 #: includes/options.php:167
@@ -321,82 +325,115 @@ msgstr "Surveiller l'affichage de la boite upPrev."
 msgid "Track clicks"
 msgstr "Surveiller les clicks"
 
-#: includes/options.php:335
-#: includes/options.php:340
+#: includes/options.php:333
+msgid "Prevent bounce-rate"
+msgstr ""
+
+#: includes/options.php:334
+msgid "Turn it on to indicate that the event hit will not be used in bounce-rate calculation."
+msgstr ""
+
+#: includes/options.php:343
+#: includes/options.php:348
 msgid "Cache"
 msgstr "Cache"
 
-#: includes/options.php:341
+#: includes/options.php:349
 msgid "Use Transient Cache."
 msgstr "Utiliser le cache éphémère"
 
-#: includes/options.php:348
+#: includes/options.php:350
+msgid "Using on large site (more than 1000 posts) may crash website."
+msgstr ""
+
+#: includes/options.php:357
 msgid "Transients Cache Lifetime."
 msgstr "Cache éphémère à vie"
 
-#: includes/options.php:349
+#: includes/options.php:358
 msgid "In seconds, default one hour (3600s)."
 msgstr "En secondes, une heure par défaut (3600s)."
 
-#: includes/options.php:358
+#: includes/options.php:367
+#: includes/options.php:372
+msgid "Mobile devices"
+msgstr ""
+
+#: includes/options.php:373
+msgid "Hide for mobile devices."
+msgstr ""
+
+#: includes/options.php:380
+msgid "Tablets"
+msgstr ""
+
+#: includes/options.php:381
+msgid "Hide for tablets too."
+msgstr ""
+
+#: includes/options.php:382
+msgid "Works only when hidding for mobile devices is turn on."
+msgstr ""
+
+#: includes/options.php:391
 msgid "Other"
 msgstr "Autre"
 
-#: includes/options.php:363
+#: includes/options.php:396
 msgid "Promote"
 msgstr "Promouvoir"
 
-#: includes/options.php:364
+#: includes/options.php:397
 msgid "Help promote upPrev plugin?"
 msgstr "Souhaitez-vous aider à promouvoir l'extension upPrev ?"
 
-#: includes/options.php:365
+#: includes/options.php:398
 msgid "This option will add the code <code>Previous posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>"
 msgstr "Cette option ajoutera le code <code>Previous posts box brought to you by &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev plugin&lt;/a&gt;.</code>. Essayez de l'activer, mettre à jour vos options et voyez le code dans l'exemple à droite. Ces liens et donations sont grandement appréciés."
 
-#: includes/options.php:371
-#: upprev.php:490
+#: includes/options.php:404
+#: upprev.php:513
 msgid "Donate"
 msgstr "Donations"
 
-#: includes/options.php:372
+#: includes/options.php:405
 msgid "You can buy me some special coffees if you appreciate my work, thank you! <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr "Vous pouvez m'acheter quelques cafés si vous appréciez mon travail, merci  <a href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a> !"
 
-#: includes/options.php:387
+#: includes/options.php:420
 msgid "Custom post type: "
 msgstr "Type de custom post :"
 
-#: includes/options.php:398
-#: includes/options.php:401
+#: includes/options.php:431
+#: includes/options.php:434
 msgid "Related Posts (YARPP)"
 msgstr "Related Posts (YARPP)"
 
-#: includes/options.php:399
+#: includes/options.php:432
 msgid ". Works only with post and/or pages."
 msgstr ". Fonctionne seulement avec les articles et/ou pages."
 
-#: upprev.php:368
+#: upprev.php:383
 msgid "More in"
 msgstr "Plus dans"
 
-#: upprev.php:375
+#: upprev.php:390
 msgid "Read more:"
 msgstr "Lire plus :"
 
-#: upprev.php:377
+#: upprev.php:392
 msgid "Read previous post:"
 msgstr "Lire les articles précédents :"
 
-#: upprev.php:441
+#: upprev.php:462
 msgid "Close"
 msgstr "Fermer"
 
-#: upprev.php:444
+#: upprev.php:465
 msgid "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 msgstr "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 
-#: upprev.php:488
+#: upprev.php:511
 msgid "Settings"
 msgstr "Paramètres"
 
