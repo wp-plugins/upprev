@@ -11,10 +11,11 @@ function getScrollY() {
 }
 
 jQuery(function($){
-    var upprev_closed        = false;
-    var upprev_hidden        = true;
-    var upprev_ga_track_view = true;
-    var upprev_ga            = typeof(_gaq ) != 'undefined';
+    var upprev_closed                = false;
+    var upprev_hidden                = true;
+    var upprev_ga_track_view         = true;
+    var upprev_ga                    = typeof(_gaq ) != 'undefined';
+    var upprev_ga_opt_noninteraction = iworks_upprev.ga_opt_noninteraction == 1;
 
     function upprev_show_box() {
         var lastScreen = false;
@@ -37,7 +38,7 @@ jQuery(function($){
             }
             upprev_hidden = false;
             if ( upprev_ga && upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, null, 0 ] );
+                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, null, 0, upprev_ga_opt_noninteraction ] );
                 upprev_ga_track_view = false;
             }
         }
@@ -80,7 +81,7 @@ jQuery(function($){
                 window.open($(this).attr('href'));
             }
             if ( upprev_ga && iworks_upprev.ga_track_clicks == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1 ] );
+                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1, upprev_ga_opt_noninteraction ] );
             }
             if ( iworks_upprev.url_new_window == 1) {
                 return false;

@@ -327,6 +327,14 @@ function iworks_upprev_options()
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
+            array(
+                'name'              => 'ga_opt_noninteraction',
+                'type'              => 'checkbox',
+                'label'             => __('Prevent bounce-rate', 'upprev'),
+                'description'       => __('Turn it on to indicate that the event hit will not be used in bounce-rate calculation.', 'upprev' ),
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
             /**
              * cache
              */

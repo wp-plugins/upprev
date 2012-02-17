@@ -120,7 +120,7 @@ function iworks_upprev_print_scripts()
         }
     }
     $data = '';
-    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks' ) as $key ) {
+    foreach ( array( 'animation', 'position', 'offset_percent', 'offset_element', 'css_width', 'css_side', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks', 'ga_opt_noninteraction' ) as $key ) {
         $value   = $iworks_upprev_options->get_option( $key );
         $data .= sprintf(
             '%s: %s, ',
