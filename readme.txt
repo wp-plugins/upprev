@@ -51,6 +51,7 @@ If you have created your own language pack, or have an update of an existing one
 = 3.3.3 =
 
 * IMPROVMENT: added Vietnamese translation by [Xman](http://thegioimanguon.com/)
+* BUGFIX: use crc32 to build ids for tabbed config, wich collapsed in other than utf8 charset
 
 = 3.3.2 =
 

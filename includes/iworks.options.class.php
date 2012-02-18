@@ -97,8 +97,8 @@ class IworksOptions
                         $content .= '</fieldset>';
                     }
                     $content .= sprintf(
-                        '<fieldset id="%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom">',
-                        sanitize_title_with_dashes(remove_accents($option['label']))
+                        '<fieldset id="upprev_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom">',
+                        crc32( $option['label'] )
                     );
                     if ( !$use_tabs ) {
                         $content .= sprintf( '<h3>%s</h3>', $option['label'] );
