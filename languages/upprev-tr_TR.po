@@ -2,16 +2,15 @@
 # This file is distributed under the same license as the upPrev package.
 msgid ""
 msgstr ""
-"Project-Id-Version: upPrev trunk\n"
+"Project-Id-Version: upPrev Turkish lang\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
 "POT-Creation-Date: 2012-02-17 15:48:07+00:00\n"
-"PO-Revision-Date: 2012-02-17 16:52+0100\n"
-"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
-"Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-02-18 14:17+0200\n"
+"Last-Translator: Tufan Tunç <tufan.tunc.91@gmail.com>\n"
+"Language-Team: WPDestek <wpdestek@wpdestek.com>\n"
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
@@ -86,7 +85,7 @@ msgstr "px"
 
 #: includes/options.php:59
 msgid "Margin side"
-msgstr "Yan kenar boşluğu"
+msgstr "Kenar boşluğu"
 
 #: includes/options.php:61
 msgid "Left or right depending on position."
@@ -158,7 +157,7 @@ msgstr "Tüm filtreleri kaldır."
 
 #: includes/options.php:160
 msgid "Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout."
-msgstr "upPrev kutusunda bir gariplik görürseniz eğer bu seçimi kaldırın, ama seçimi kaldırmak tema şemanızda pek çok değişiklik yapacaktır."
+msgstr "Eğer upPrev kutusunda bazı gariplikler görürseniz buradaki seçimi kaldırın, ama seçimi kaldırmak sayfanızda değişikliklere neden olabilir."
 
 #: includes/options.php:167
 msgid "Previous entry choose method"
@@ -238,7 +237,7 @@ msgstr "Özet"
 
 #: includes/options.php:228
 msgid "Show excerpt."
-msgstr "Özet görüntüle."
+msgstr "Özet metni görüntüle."
 
 #: includes/options.php:237
 msgid "Number of words to show."
@@ -299,7 +298,7 @@ msgstr "Bu sitede GA takip kodu kullanmıyorum."
 #: includes/options.php:300
 #: includes/options.php:326
 msgid "Turn it on if you don't use any other GA tracking plugin."
-msgstr "Eğer GA takip eklentisi kullanmıyorsanız bu seçeneği seçin."
+msgstr "Eğer başka bir GA takip eklentisi kullanmıyorsanız bu seçeneği seçin."
 
 #: includes/options.php:307
 msgid "Google Analitics Account"
@@ -323,11 +322,11 @@ msgstr "Tıklamaları takip et"
 
 #: includes/options.php:333
 msgid "Prevent bounce-rate"
-msgstr ""
+msgstr "Hemen çıkma oranını önle"
 
 #: includes/options.php:334
 msgid "Turn it on to indicate that the event hit will not be used in bounce-rate calculation."
-msgstr ""
+msgstr "Buradaki tıklamaların hemen çıkma oranını etkilemesini istemiyorsanız bu seçeneği işaretleyin."
 
 #: includes/options.php:343
 #: includes/options.php:348
@@ -340,36 +339,36 @@ msgstr "Geçici Önbelleği Kullan"
 
 #: includes/options.php:350
 msgid "Using on large site (more than 1000 posts) may crash website."
-msgstr ""
+msgstr "Büyük sitelerde (1000'den fazla yazı içeren) kullanmak siteyi yavaşlatabilir."
 
 #: includes/options.php:357
 msgid "Transients Cache Lifetime."
-msgstr "Geçici Önbellek Süresi"
+msgstr "Geçici bellek ömrü"
 
 #: includes/options.php:358
 msgid "In seconds, default one hour (3600s)."
-msgstr "Saniye ile, varsayılan bir saat (3600s)."
+msgstr "Saniye ile, varsayılan 1 saattir (3600s)."
 
 #: includes/options.php:367
 #: includes/options.php:372
 msgid "Mobile devices"
-msgstr ""
+msgstr "Mobil Cihazlar"
 
 #: includes/options.php:373
 msgid "Hide for mobile devices."
-msgstr ""
+msgstr "Mobil cihazlar için gizle"
 
 #: includes/options.php:380
 msgid "Tablets"
-msgstr ""
+msgstr "Tabletler"
 
 #: includes/options.php:381
 msgid "Hide for tablets too."
-msgstr ""
+msgstr "Tabletlerde de gizle."
 
 #: includes/options.php:382
 msgid "Works only when hidding for mobile devices is turn on."
-msgstr ""
+msgstr "Sadece mobil cihazlarda gizlediğinizde çalışır."
 
 #: includes/options.php:391
 msgid "Other"
@@ -431,7 +430,7 @@ msgstr "Önceki yazı kutusu &lt;a href='http://iworks.pl/produkty/wordpress/wty
 
 #: upprev.php:511
 msgid "Settings"
-msgstr "sEçenekler"
+msgstr "Seçenekler"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
