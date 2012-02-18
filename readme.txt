@@ -27,7 +27,8 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
-* Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek)
+* Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
+* Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
 If you have created your own language pack, or have an update of an existing one, you can send [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to me so that I can bundle it into upPrev. You can [download the latest POT file from here](http://plugins.svn.wordpress.org/upprev/trunk/languages/upprev.pot).
 
@@ -46,6 +47,10 @@ If you have created your own language pack, or have an update of an existing one
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.3 =
+
+* IMPROVMENT: added Vietnamese translation by [Xman](http://thegioimanguon.com/)
 
 = 3.3.2 =
 
