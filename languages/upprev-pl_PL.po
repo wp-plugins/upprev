@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
 "POT-Creation-Date: 2012-02-17 15:48:07+00:00\n"
-"PO-Revision-Date: 2012-02-17 16:51+0100\n"
+"PO-Revision-Date: 2012-02-20 10:00+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -123,7 +123,7 @@ msgid "Box header"
 msgstr "Nagłówek"
 
 #: includes/options.php:97
-msgid "Show boks header."
+msgid "Show box header."
 msgstr "Pokaż nagłówek."
 
 #: includes/options.php:104
@@ -453,30 +453,22 @@ msgstr "http://iworks.pl/"
 
 #~ msgid "Just next."
 #~ msgstr "Po prostu następny."
-
 #~ msgid "Transient Cache"
 #~ msgstr "Pamięć podręczna typu Transient"
-
 #~ msgid "Only pages."
 #~ msgstr "Pokaż tylko strony."
-
 #~ msgid "FAQs"
 #~ msgstr "FAQ"
-
 #~ msgid "Left"
 #~ msgstr "Wysuwaj od lewej"
-
 #~ msgid "Word limit:"
 #~ msgstr "Liczba słów:"
-
 #~ msgid "Where can I customize fonts, colors, etc.?"
 #~ msgstr "Gdzie mogę ustawić czcionkę, kolory i inne elementy?"
-
 #~ msgid "You can modify all css properties by edditing %1$s"
 #~ msgstr "Poprzez modyfikacje pliku %1$s."
-
 #~ msgid "How to add some space after upPrev?"
 #~ msgstr "Jak dodać więcej światła po upPrev?"
-
 #~ msgid "%1$d of %2$d articles"
 #~ msgstr "%1$d z %2$d artykułów"
+

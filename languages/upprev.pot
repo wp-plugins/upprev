@@ -120,7 +120,7 @@ msgid "Box header"
 msgstr ""
 
 #: includes/options.php:97
-msgid "Show boks header."
+msgid "Show box header."
 msgstr ""
 
 #: includes/options.php:104

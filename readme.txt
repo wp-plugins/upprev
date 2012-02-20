@@ -48,6 +48,10 @@ If you have created your own language pack, or have an update of an existing one
 
 == Changelog ==
 
+= 3.3.4 =
+
+* BUGFIX: fixed minor description bug (thx Eva)
+
 = 3.3.3 =
 
 * IMPROVMENT: added Vietnamese translation by [Xman](http://thegioimanguon.com/)

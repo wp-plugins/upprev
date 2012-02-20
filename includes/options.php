@@ -94,7 +94,7 @@ function iworks_upprev_options()
                 'name'              => 'header_show',
                 'type'              => 'checkbox',
                 'th'                => __('Box header', 'upprev' ),
-                'label'             => __('Show boks header.', 'upprev'),
+                'label'             => __('Show box header.', 'upprev'),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),

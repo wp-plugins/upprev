@@ -8,8 +8,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-02-18 14:17+0200\n"
-"Last-Translator: Tufan Tunç <tufan.tunc.91@gmail.com>\n"
+"PO-Revision-Date: 2012-02-20 10:00+0100\n"
+"Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: WPDestek <wpdestek@wpdestek.com>\n"
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
@@ -120,7 +120,7 @@ msgid "Box header"
 msgstr "Kutu başlığı"
 
 #: includes/options.php:97
-msgid "Show boks header."
+msgid "Show box header."
 msgstr "Kutu başlığını göster."
 
 #: includes/options.php:104
