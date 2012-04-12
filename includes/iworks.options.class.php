@@ -58,10 +58,11 @@ class IworksOptions
             echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks').'</strong></p></div>';
             return;
         }
-        $content  = '';
-        $hidden   = '';
-        $top      = '';
-        $use_tabs = isset( $options['use_tabs'] ) && $options['use_tabs'];
+        $is_simple = 'simple' == get_option( 'iworks_upprev_configuration', 'advance' );
+        $content   = '';
+        $hidden    = '';
+        $top       = '';
+        $use_tabs  = isset( $options['use_tabs'] ) && $options['use_tabs'];
         /**
          * produce options
          */
@@ -72,6 +73,7 @@ class IworksOptions
         $label_index = 0;
         $last_tab    = null;
         $related_to  = array();
+        $configuration = 'all';
         foreach ($options['options'] as $option) {
             if (isset($option['capability'])) {
                 if(!current_user_can($option['capability'])) {
@@ -87,6 +89,22 @@ class IworksOptions
                 }
             }
             if ( !$show_option ) {
+                continue;
+            }
+            /**
+             * dismiss on special type
+             */
+            if ( $option['type'] == 'special' ) {
+                continue;
+            }
+            if ( $option['type'] == 'heading' ) {
+                if ( isset( $option['configuration'] ) ) {
+                    $configuration = $option['configuration'];
+                } else {
+                    $configuration = 'all';
+                }
+            }
+            if ( ( $is_simple && $configuration == 'advance' ) || ( !$is_simple && $configuration == 'simple' ) ) {
                 continue;
             }
             if ( $option['type'] == 'heading' ) {

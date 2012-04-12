@@ -11,15 +11,37 @@ function iworks_upprev_options()
         'use_tabs' => true,
         'options'  => array(
             array(
-                'type'              => 'heading',
-                'label'             => __('Apperance', 'upprev' )
-            ),
-            array(
                 'name'              => 'last_used_tab',
                 'type'              => 'hidden',
                 'dynamic'           => true,
                 'autoload'          => false,
                 'default'           => 0
+            ),
+            array(
+                'name'              => 'configuration',
+                'type'              => 'special',
+                'default'           => 'advance'
+            ),
+            array(
+                'type'              => 'heading',
+                'label'             => __('Apperance', 'upprev' ),
+                'configuration'     => 'simple'
+            ),
+            array(
+                'name'              => 'schema',
+                'type'              => 'radio',
+                'th'                => __('Schema', 'upprev' ),
+                'default'           => 'flyout',
+                'radio'             => array(
+                    'flyout' => __('flyout', 'upprev'),
+                    'fade'   => __('fade in/out', 'upprev'),
+                ),
+                'sanitize_callback' => 'esc_html'
+            ),
+            array(
+                'type'              => 'heading',
+                'label'             => __('Apperance', 'upprev' ),
+                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'animation',
@@ -141,7 +163,8 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Content', 'upprev' )
+                'label'             => __('Content', 'upprev' ),
+                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'number_of_posts',
@@ -263,7 +286,8 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Links', 'upprev' )
+                'label'             => __('Links', 'upprev' ),
+                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'url_prefix',
@@ -340,7 +364,8 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Cache', 'upprev' )
+                'label'             => __('Cache', 'upprev' ),
+                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'use_cache',
@@ -364,7 +389,8 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __( 'Mobile devices', 'upprev' )
+                'label'             => __( 'Mobile devices', 'upprev' ),
+                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'mobile_hide',
