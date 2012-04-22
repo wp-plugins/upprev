@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
 Tested up to: 3.3.1
-Stable tag: 3.3.3
+Stable tag: 3.3.4
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -25,6 +25,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 = Translators =
 
+* Brazilian Portuguese (pt_BR) - [Leonardo Antonioli](http://www.tobeguarany.com/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
@@ -50,6 +51,7 @@ If you have created your own language pack, or have an update of an existing one
 
 = 3.3.4 =
 
+* IMPROVMENT: added Brazilian Portuguese translation by [Leonardo Antonioli](http://www.tobeguarany.com/)
 * BUGFIX: fixed minor description bug (thx Eva)
 
 = 3.3.3 =
@@ -208,6 +210,10 @@ If you have created your own language pack, or have an update of an existing one
 * INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
+
+= 3.3.3.1 =
+
+Add Brazilian Portuguese translation.
 
 = 3.0 =
 
