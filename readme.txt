@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to: 3.3.1
-Stable tag: 3.3.4
+Tested up to: 3.3.2
+Stable tag: 3.3.5
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -48,6 +48,11 @@ If you have created your own language pack, or have an update of an existing one
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.5 =
+
+* BUGFIX: fixed double output when using YARPP thx to [gyutae](http://wordpress.org/support/profile/gyutae)
+* BUGFIX: hide developer admin option
 
 = 3.3.4 =
 

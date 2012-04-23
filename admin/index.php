@@ -21,16 +21,6 @@ $configuration = get_option( 'iworks_upprev_configuration', 'advance' );
         <div class="postbox-container" style="width:23%;margin-left:2%">
             <div class="metabox-holder">
                 <div id="links" class="postbox">
-                    <h3 class="hndle"><?php _e( 'Choose configuration mode', 'upprev' ); ?></h3>
-                    <div class="inside">
-                        <p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
-                        <ul>
-                        <li><input type="radio" name="iworks_upprev_configuration" value="simple" id="iworks_upprev_configuration_simple"   <?php checked( $configuration, 'simple' ); ?>/> <label for="iworks_upprev_configuration_simple"><?php _e( 'simple', 'upprev' ); ?></label></li>
-                        <li><input type="radio" name="iworks_upprev_configuration" value="advance" id="iworks_upprev_configuration_advance" <?php checked( $configuration, 'advance' ); ?>/> <label for="iworks_upprev_configuration_advance"><?php _e( 'advance', 'upprev' ); ?></label></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="links" class="postbox">
                     <h3 class="hndle"><?php _e( 'Loved this Plugin?', 'upprev' ); ?></h3>
                     <div class="inside">
                         <p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
