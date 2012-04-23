@@ -292,11 +292,11 @@ function iworks_upprev_box()
         if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.3' ) > -1 ) {
             $a = array();
             if ( array_key_exists( 'post', $post_type ) && array_key_exists( 'page', $post_type ) ) {
-                $yarpp_posts = related_entries( $a, false, $post->ID );
+                $yarpp_posts = related_entries( $a, $post->ID, false );
             } else if ( array_key_exists( 'post', $post_type ) ) {
-                $yarpp_posts = related_posts( $a, false, $post->ID );
+                $yarpp_posts = related_posts( $a, $post->ID, false );
             } else if ( array_key_exists( 'page', $post_type ) ) {
-                $yarpp_posts = related_pages( $a, false, $post->ID );
+                $yarpp_posts = related_pages( $a, $post->ID, false );
             }
             if ( !$yarpp_posts ) {
                 return;
