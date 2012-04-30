@@ -6,7 +6,8 @@ Description: When scrolling post down upPrev will display a flyout box with a li
 Version: trunk
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
-Licence: GPL2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /*
@@ -308,7 +309,7 @@ function iworks_upprev_box()
     switch ( $compare ) {
         case 'category':
             $categories = get_the_category();
-            if ( count( $categories ) < 1 ) {
+            if ( !$categories ) {
                 break;
             }
             $max = count( $categories );
@@ -325,6 +326,9 @@ function iworks_upprev_box()
         case 'tag':
             $count_args = array ( 'taxonomy' => 'post_tag' );
             $tags = get_the_tags();
+            if ( !$tags ) {
+                break;
+            }
             $max = count( $tags );
             if ( $max < 1 ) {
                 break;

@@ -5,6 +5,8 @@ Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
 Tested up to: 3.3.2
 Stable tag: 3.3.5
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
