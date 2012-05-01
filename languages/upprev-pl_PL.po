@@ -1,8 +1,8 @@
-# Copyright (C) 2010 upPrev Previous Post Animated Notification
-# This file is distributed under the same license as the upPrev Previous Post Animated Notification package.
+# Copyright (C) 2011-2012 upPrev
+# This file is distributed under the same license as the upPrev package.
 msgid ""
 msgstr ""
-"Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
+"Project-Id-Version: upPrev 3.3.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
 "POT-Creation-Date: 2012-05-01 11:45:51+00:00\n"
 "PO-Revision-Date: 2012-05-01 13:46+0100\n"

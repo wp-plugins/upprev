@@ -1,4 +1,4 @@
-# Copyright (C) 2010 upPrev
+# Copyright (C) 2011-2012 upPrev
 # This file is distributed under the same license as the upPrev package.
 msgid ""
 msgstr ""
