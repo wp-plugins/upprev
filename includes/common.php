@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname( __FILE__ ).'/options.php';
+require_once dirname(dirname( __FILE__ )).'/etc/options.php';
 if ( !class_exists( 'IworksOptions' ) ) {
     require_once dirname( __FILE__ ).'/iworks.options.class.php';
 }

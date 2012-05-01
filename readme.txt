@@ -51,6 +51,10 @@ If you have created your own language pack, or have an update of an existing one
 
 == Changelog ==
 
+= 4.0.0 =
+
+* IMPROVMENT: add settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
+
 = 3.3.5 =
 
 * BUGFIX: fixed double output when using YARPP thx to [gyutae](http://wordpress.org/support/profile/gyutae)

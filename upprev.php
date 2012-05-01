@@ -2,7 +2,7 @@
 /*
 Plugin Name: upPrev
 Plugin URI: http://iworks.pl/upprev/
-Description: When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. Based on upPrev Previous Post Animated Notification by Jason Pelker, Grzegorz Krzyminski
+Description: When scrolling post down upPrev will display a flyout box with a link to the previous post from the same category. Based on plugin upPrev Previous Post Animated Notification.
 Version: trunk
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
@@ -382,8 +382,11 @@ function iworks_upprev_box()
         do_action( 'iworks_upprev_box_before' );
         $value .= ob_get_flush();
         if ( $iworks_upprev_options->get_option( 'header_show' ) ) {
+            $header_text = $iworks_upprev_options->get_option( 'header_text' );
             $value .= '<h6>';
-            if ( count( $siblings ) ) {
+            if ( !empty( $header_text ) ) {
+                $value .= $header_text;
+            } else if ( count( $siblings ) ) {
                 $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {

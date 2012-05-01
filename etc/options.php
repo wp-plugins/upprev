@@ -121,6 +121,15 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             array(
+                'name'              => 'header_text',
+                'type'              => 'text',
+                'class'             => 'regular-text',
+                'label'             => __('Header tekst.', 'upprev' ),
+                'description'       => __( 'Leave blank to allow plugin set the heading text.', 'upprev' ),
+                'default'           => false,
+                'sanitize_callback' => 'esc_html'
+            ),
+            array(
                 'name'              => 'close_button_show',
                 'type'              => 'checkbox',
                 'th'                => __('Close button', 'upprev' ),
