@@ -11,6 +11,9 @@ function getScrollY() {
 }
 
 jQuery(function($){
+    if ( 'undefined' == typeof( iworks_upprev ) ) {
+        return;
+    }
     var upprev_closed                = false;
     var upprev_hidden                = true;
     var upprev_ga_track_view         = true;
