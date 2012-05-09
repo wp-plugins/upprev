@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div id="icon-themes" class="icon32"><br /></div>
+    <?php screen_icon(); ?>
     <h2><?php _e('upPrev', 'upprev') ?></h2>
 <?php
 if( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) {

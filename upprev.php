@@ -35,35 +35,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 define( 'IWORKS_UPPREV_VERSION', 'trunk' );
 define( 'IWORKS_UPPREV_PREFIX',  'iworks_upprev_' );
 
-/**
- * i18n
- */
-load_plugin_textdomain( 'upprev', false, dirname( plugin_basename( __FILE__) ).'/languages' );
-
 require_once dirname(__FILE__).'/includes/common.php';
+
+new IworksUpprev();
 
 /**
  * install & uninstall
  */
-register_activation_hook( __FILE__, 'iworks_upprev_activate' );
+register_activation_hook  ( __FILE__, 'iworks_upprev_activate'   );
 register_deactivation_hook( __FILE__, 'iworks_upprev_deactivate' );
-
-/**
- * init
- */
-add_action( 'init', 'iworks_upprev_init' );
-
-function iworks_upprev_init()
-{
-    add_action( 'admin_enqueue_scripts',      'iworks_upprev_admin_enqueue_scripts' );
-    add_action( 'admin_init',                 'iworks_upprev_options_init' );
-    add_action( 'admin_menu',                 'iworks_upprev_add_pages' );
-    add_action( 'wp_before_admin_bar_render', 'iworks_upprev_add_to_admin_bar' );
-    add_action( 'wp_enqueue_scripts',         'iworks_upprev_enqueue_scripts' );
-    add_action( 'wp_footer',                  'iworks_upprev_box', PHP_INT_MAX, 0 );
-    add_action( 'wp_print_scripts',           'iworks_upprev_print_scripts' );
-    add_action( 'wp_print_styles',            'iworks_upprev_print_styles' );
-}
 
 function iworks_upprev_check()
 {
@@ -94,16 +74,6 @@ function iworks_upprev_check()
         return !array_key_exists( get_post_type( $post ), $post_types );
     }
     return false;
-}
-
-function iworks_upprev_enqueue_scripts()
-{
-    if ( iworks_upprev_check() ) {
-        return;
-    }
-    wp_enqueue_script( 'iworks_upprev-js', plugins_url('/scripts/upprev.js', __FILE__), array('jquery'), IWORKS_UPPREV_VERSION );
-    $plugin_path = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-    wp_enqueue_style( 'upprev-css', $plugin_path.'styles/upprev.css', array(), IWORKS_UPPREV_VERSION );
 }
 
 function iworks_upprev_print_scripts()
@@ -201,34 +171,6 @@ function iworks_upprev_print_styles()
         set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
     }
     echo $content;
-}
-
-/**
- * Add page to theme menu
- */
-function iworks_upprev_add_pages()
-{
-    $dir = explode('/', dirname(__FILE__));
-    $dir = $dir[ count( $dir ) - 1 ];
-    if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
-        add_theme_page(
-            __('upPrev', 'upprev'),
-            __('upPrev', 'upprev'),
-            'manage_options',
-            $dir.'/admin/index.php'
-        );
-    }
-}
-
-function iworks_upprev_admin_enqueue_scripts()
-{
-    $dir = explode('/', dirname(__FILE__));
-    $dir = $dir[ count( $dir ) - 1 ];
-    global $current_screen;
-    if ( isset( $current_screen->id ) && $current_screen->id == $dir.'/admin/index' ) {
-        wp_enqueue_script( 'upprev', plugins_url('/scripts/upprev-admin.js', __FILE__), array('jquery-ui-tabs'), IWORKS_UPPREV_VERSION );
-        wp_enqueue_style( 'upprev', plugins_url('/styles/upprev-admin.css', __FILE__), null, IWORKS_UPPREV_VERSION );
-    }
 }
 
 function iworks_upprev_box()
@@ -353,14 +295,14 @@ function iworks_upprev_box()
             $args['orderby'] = 'rand';
             unset($args['order']);
         default:
-            $show_taxonomy   = false;
+            $show_taxonomy = false;
     }
     $value = '<div id="upprev_box">';
     if ( $compare != 'yarpp' ) {
         if ( $compare != 'random' ) {
-            add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
+            add_filter( 'posts_where', 'iworks_upprev_filter_where', 72, 1 );
         }
-        add_filter( 'excerpt_more', 'iworks_upprev_excerpt_more',   72, 1 );
+        add_filter( 'excerpt_more', 'iworks_upprev_excerpt_more', 72, 1 );
 
         if ( $excerpt_length > 0 ) {
             add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
@@ -477,8 +419,8 @@ function iworks_upprev_box()
     $value .= '</div>';
     if ( !$compare != 'yarpp' ) {
         wp_reset_postdata();
-        remove_filter( 'excerpt_more',   'iworks_upprev_filter_where', 72, 1 );
-        remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more', 72, 1 );
+        remove_filter( 'excerpt_more', 'iworks_upprev_filter_where', 72, 1 );
+        remove_filter( 'excerpt_more', 'iworks_upprev_excerpt_more', 72, 1 );
         if ( $excerpt_length > 0 ) {
             remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
         }
@@ -507,29 +449,5 @@ function iworks_upprev_filter_where( $where = '' )
         $where .= " AND post_date < '" . $post->post_date . "'";
     }
     return $where;
-}
-
-function iworks_upprev_plugin_links ( $links, $file )
-{
-    if ( $file == plugin_basename(__FILE__) ) {
-        if ( !is_multisite() ) {
-            $dir = explode('/', dirname(__FILE__));
-            $dir = $dir[ count( $dir ) - 1 ];
-            $links[] = '<a href="themes.php?page='.$dir.'/admin/index.php">' . __('Settings') . '</a>';
-        }
-        $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
-    }
-    return $links;
-}
-
-function iworks_upprev_add_to_admin_bar()
-{
-    if ( !current_user_can( 'manage_options' ) ) {
-        return;
-    }
-    global $wp_admin_bar;
-    $dir = explode('/', dirname(__FILE__));
-    $dir = $dir[ count( $dir ) - 1 ];
-    $wp_admin_bar->add_menu( array( 'parent' => 'appearance', 'id' => 'upprev', 'title' => __('upPrev', 'upprev'), 'href' => admin_url('themes.php?page='.$dir.'/admin/index.php') ) );
 }
 

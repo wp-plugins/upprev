@@ -53,8 +53,10 @@ If you have created your own language pack, or have an update of an existing one
 
 = 4.0.0 =
 
-* IMPROVMENT: add settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
+* IMPROVMENT: added settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
 * IMPROVMENT: check variable iworks_upprev in javascript before use it
+* IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
+* REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 
 = 3.3.5 =
