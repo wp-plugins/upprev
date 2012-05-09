@@ -103,7 +103,7 @@ function iworks_upprev_enqueue_scripts()
     }
     wp_enqueue_script( 'iworks_upprev-js', plugins_url('/scripts/upprev.js', __FILE__), array('jquery'), IWORKS_UPPREV_VERSION );
     $plugin_path = WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__));
-    wp_enqueue_style("upprev-css",$plugin_path.'styles/upprev.css');
+    wp_enqueue_style( 'upprev-css', $plugin_path.'styles/upprev.css', array(), IWORKS_UPPREV_VERSION );
 }
 
 function iworks_upprev_print_scripts()

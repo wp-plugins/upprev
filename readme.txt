@@ -55,6 +55,7 @@ If you have created your own language pack, or have an update of an existing one
 
 * IMPROVMENT: add settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
 * IMPROVMENT: check variable iworks_upprev in javascript before use it
+* BUGFIX: added version number to upprev.css
 
 = 3.3.5 =
 
