@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
 Tested up to: 3.3.2
-Stable tag: 3.3.5
+Stable tag: 3.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,10 @@ If you have created your own language pack, or have an update of an existing one
 * IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
+
+= 3.3.6 =
+
+* IMPROVMENT: added German translation by [Mario Wolf](http://wolfmedien.de/)
 
 = 3.3.5 =
 
