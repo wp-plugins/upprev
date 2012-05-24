@@ -323,25 +323,34 @@ function iworks_upprev_box()
         ob_start();
         do_action( 'iworks_upprev_box_before' );
         $value .= ob_get_flush();
+        /**
+         * box title
+         */
+        $title = '';
         if ( $iworks_upprev_options->get_option( 'header_show' ) ) {
             $header_text = $iworks_upprev_options->get_option( 'header_text' );
-            $value .= '<h6>';
             if ( !empty( $header_text ) ) {
-                $value .= $header_text;
+                $title .= $header_text;
             } else if ( count( $siblings ) ) {
-                $value .= sprintf ( '%s ', __('More in', 'upprev' ) );
+                $title .= sprintf ( '%s ', __('More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
                     $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
                 }
-                $value .= implode( ', ', $a);
+                $title .= implode( ', ', $a);
             } else if ( $compare == 'random' ) {
-                $value .= __('Read more:', 'upprev' );
+                $title .= __( 'Read more:', 'upprev' );
             } else {
-                $value .= __('Read previous post:', 'upprev' );
+                $title .= __( 'Read previous post:', 'upprev' );
             }
-            $value .= '</h6>';
         }
+        $title = apply_filters( 'iworks_upprev_box_title', $title );
+        if ( $title ) {
+            $value .= sprintf( '<h6>%s</h6>', $title );
+        }
+        /**
+         *
+         */
         $i = 1;
         $ga_click_track = '';
         while ( $upprev_query->have_posts() ) {
