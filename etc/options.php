@@ -60,8 +60,8 @@ function iworks_upprev_options()
                 'th'                => __('Position', 'upprev' ),
                 'default'           => 'right',
                 'radio'             => array(
-                    'right' => __('right', 'upprev'),
-                    'left'  => __('left', 'upprev'),
+                    'right'        => __('bottom right', 'upprev' ),
+                    'left'         => __('bottom left',  'upprev' ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),

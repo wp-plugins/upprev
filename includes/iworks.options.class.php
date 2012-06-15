@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.0.1';
+        $this->version              = '1.1.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -105,6 +105,20 @@ class IworksOptions
                 }
             }
             if ( ( $is_simple && $configuration == 'advance' ) || ( !$is_simple && $configuration == 'simple' ) ) {
+                if( in_array( $option['type'], array( 
+                    'radio',
+                    'text',
+                    'checkbox',
+                    'textarea'
+                ) ) ) {
+                    $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
+                    $content .= sprintf (
+                        '<input type="hidden" name="%s" value="%s" /> %s',
+                        $html_element_name,
+                        $this->get_option( $option['name'], $option_group ),
+                        "\n"
+                    );
+                }
                 continue;
             }
             if ( $option['type'] == 'heading' ) {
@@ -139,6 +153,7 @@ class IworksOptions
                 $content .= '<td>';
             }
             $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
+            $filter_name = $html_element_name? $option_group.'_'.$html_element_name : null;
             switch ( $option['type'] ) {
             case 'hidden':
                 $hidden .= sprintf
@@ -154,16 +169,15 @@ class IworksOptions
                 if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
                     $id = sprintf( ' id="%s"', $html_element_name );
                 }
-                $content .= sprintf
-                    (
-                        '<input type="%s" name="%s" value="%s" class="%s"%s /> %s',
-                        $option['type'],
-                        $html_element_name,
-                        $this->get_option( $option['name'], $option_group ),
-                        isset($option['class']) && $option['class']? $option['class']:'',
-                        $id,
-                        isset($option['label'])?  $option['label']:''
-                    );
+                $content .= sprintf (
+                    '<input type="%s" name="%s" value="%s" class="%s"%s /> %s',
+                    $option['type'],
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['label'])?  $option['label']:''
+                );
                 break;
             case 'checkbox':
                 $related_to[ $option['name'] ] = $this->get_option( $option['name'], $option_group );
@@ -212,16 +226,18 @@ class IworksOptions
                 break;
             case 'radio':
                 $option_value = $this->get_option($option['name'], $option_group );
-                $content .= '<ul>';
+                $radio = '<ul>';
                 $i = 0;
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
+                $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
                 foreach ($option['radio'] as $value => $label) {
                     $id = $option['name'].$i++;
-                    $content .= sprintf
+                    $radio .= sprintf
                         (
-                            '<li><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
+                            '<li class="%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
+                            sanitize_title( $value ),
                             $id,
                             $html_element_name,
                             $value,
@@ -231,7 +247,8 @@ class IworksOptions
                             $label
                         );
                 }
-                $content .= '</ul>';
+                $radio .= '</ul>';
+                $content .= apply_filters( $filter_name, $radio );
                 break;
             case 'textarea':
                 $value = $this->get_option($option['name'], $option_group);

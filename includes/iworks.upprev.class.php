@@ -10,6 +10,7 @@ class IworksUpprev
     private static $dir;
     private static $base;
     private static $capability;
+    private static $is_pro;
 
     public function __construct()
     {
@@ -20,10 +21,16 @@ class IworksUpprev
         $this->base       = dirname( __FILE__ );
         $this->dir        = basename( dirname( $this->base ) );
         $this->capability = apply_filters( 'iworks_upprev_capability', 'manage_options' );
+        $this->is_pro     = $this->is_pro();
         /**
          * generate
          */
         add_action( 'init', array( &$this, 'init' ) );
+    }
+
+    private function is_pro()
+    {
+        return false;
     }
 
     public function get_version()
@@ -42,6 +49,10 @@ class IworksUpprev
         add_action( 'wp_footer',                  'iworks_upprev_box', PHP_INT_MAX, 0 );
         add_action( 'wp_print_scripts',           'iworks_upprev_print_scripts' );
         add_action( 'wp_print_styles',            'iworks_upprev_print_styles' );
+        /**
+         * filters
+         */
+        add_filter( 'index_iworks_upprev_position_data', array( &$this, 'index_iworks_upprev_position_data' ) );
     }
 
     public function admin_enqueue_scripts()
@@ -124,6 +135,19 @@ class IworksUpprev
             $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
         }
         return $links;
+    }
+
+    public function index_iworks_upprev_position_data( $data )
+    {
+        if ( $this->is_pro ) {
+            $data = array_merge( $data, array (
+                'right-top'    => __('top right',    'upprev' ),
+                'left-top'     => __('top left',     'upprev' ),
+                'right-middle' => __('middle right', 'upprev' ),
+                'left-middle'  => __('middle left',  'upprev' )
+            ) );
+        }
+        return $data;
     }
 
 }

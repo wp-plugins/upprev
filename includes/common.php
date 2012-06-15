@@ -27,7 +27,6 @@ function iworks_upprev_options_init()
 
 function iworks_upprev_activate()
 {
-    require_once dirname(__FILE__).'/options.php';
     $iworks_upprev_options = new IworksOptions();
     $iworks_upprev_options->set_option_function_name( 'iworks_upprev_options' );
     $iworks_upprev_options->set_option_prefix( IWORKS_UPPREV_PREFIX );
