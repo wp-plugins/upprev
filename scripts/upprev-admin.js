@@ -25,4 +25,7 @@ function iworks_upprev_tabulator_init()
     jQuery('#hasadmintabs ul a').click(function(i){
         jQuery('#hasadmintabs input[name=iworks_upprev_last_used_tab]').val(jQuery(this).parent().index());
     });
+    jQuery( 'input[name="iworks_upprev_configuration"]' ).change( function() {
+        jQuery(this).parents( 'form' ).submit();
+    });
 }

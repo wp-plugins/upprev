@@ -33,8 +33,8 @@ function iworks_upprev_options()
                 'th'                => __('Schema', 'upprev' ),
                 'default'           => 'flyout',
                 'radio'             => array(
-                    'flyout' => __('flyout', 'upprev'),
-                    'fade'   => __('fade in/out', 'upprev'),
+                    'flyout' => array( 'label' => __('flyout', 'upprev') ),
+                    'fade'   => array( 'label' => __('fade in/out', 'upprev') ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
@@ -49,8 +49,8 @@ function iworks_upprev_options()
                 'th'                => __('Animation style', 'upprev' ),
                 'default'           => 'flyout',
                 'radio'             => array(
-                    'flyout' => __('flyout', 'upprev'),
-                    'fade'   => __('fade in/out', 'upprev'),
+                    'flyout' => array( 'label' => __( 'flyout', 'upprev' ) ),
+                    'fade'   => array( 'label' => __( 'fade in/out', 'upprev' ) ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
@@ -60,8 +60,12 @@ function iworks_upprev_options()
                 'th'                => __('Position', 'upprev' ),
                 'default'           => 'right',
                 'radio'             => array(
-                    'right'        => __('bottom right', 'upprev' ),
-                    'left'         => __('bottom left',  'upprev' ),
+                    'right'         => array( 'label' => __('bottom right', 'upprev' ) ),
+                    'left'          => array( 'label' => __('bottom left',  'upprev' ) ),
+                    'right-top'     => array( 'label' => __('top right',    'upprev' ), 'disabled' => true ),
+                    'left-top'      => array( 'label' => __('top left',     'upprev' ), 'disabled' => true ),
+                    'right-middle'  => array( 'label' => __('middle right', 'upprev' ), 'disabled' => true ),
+                    'left-middle'   => array( 'label' => __('middle left',  'upprev' ), 'disabled' => true )
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
@@ -199,10 +203,10 @@ function iworks_upprev_options()
                 'th'                => __('Previous entry choose method', 'upprev' ),
                 'default'           => 'simple',
                 'radio'             => array(
-                    'simple'   => __( 'Just previous.',        'upprev' ),
-                    'category' => __( 'Previous in category.', 'upprev' ),
-                    'tag'      => __( 'Previous in tag.',      'upprev' ),
-                    'random'   => __( 'Random entry.',         'upprev' )
+                    'simple'   => array( 'label' => __( 'Just previous.',        'upprev' ) ),
+                    'category' => array( 'label' => __( 'Previous in category.', 'upprev' ) ),
+                    'tag'      => array( 'label' => __( 'Previous in tag.',      'upprev' ) ),
+                    'random'   => array( 'label' => __( 'Random entry.',         'upprev' ) )
                 ),
                 'sanitize_callback' => 'esc_html',
                 'extra_options'    => 'iworks_upprev_get_compare_option'

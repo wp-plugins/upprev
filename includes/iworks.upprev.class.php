@@ -139,16 +139,15 @@ class IworksUpprev
 
     public function index_iworks_upprev_position_data( $data )
     {
-        if ( $this->is_pro ) {
-            $data = array_merge( $data, array (
-                'right-top'    => __('top right',    'upprev' ),
-                'left-top'     => __('top left',     'upprev' ),
-                'right-middle' => __('middle right', 'upprev' ),
-                'left-middle'  => __('middle left',  'upprev' )
-            ) );
+        if ( !$this->is_pro ) {
+            return $data;
+        }
+        foreach( array( 'right', 'left' ) as $a ) {
+            foreach( array( 'top', 'middle' ) as $b ) {
+                $data[ $a . '_' . $b ]['disabled'] = false;
+            }
         }
         return $data;
     }
-
 }
 

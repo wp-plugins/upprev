@@ -232,19 +232,26 @@ class IworksOptions
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
                 $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
-                foreach ($option['radio'] as $value => $label) {
+                foreach ($option['radio'] as $value => $input) {
                     $id = $option['name'].$i++;
+                    $disabled = '';
+                    if ( preg_match( '/\-disabled$/', $value ) ) {
+                        $disabled = 'disabled="disabled"';
+                    } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                        $disabled = 'disabled="disabled"';
+                    }
                     $radio .= sprintf
                         (
-                            '<li class="%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
+                            '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
                             sanitize_title( $value ),
+                            $disabled? ' disabled':'',
                             $id,
                             $html_element_name,
                             $value,
                             ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
                             $id,
-                            preg_match( '/\-disabled$/', $value )? 'disabled="disabled"':'',
-                            $label
+                            $disabled,
+                            $input['label']
                         );
                 }
                 $radio .= '</ul>';
