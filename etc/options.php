@@ -439,6 +439,18 @@ function iworks_upprev_options()
                 'th'                => __('Donate', 'upprev'),
                 'value'             => __('You can buy me some special coffees if you appreciate my work, thank you! <a href="http://iworks.pl/donate/upprev.php">Donate to this plugin.</a>', 'upprev' )
             ),
+            array(
+                'type'              => 'heading',
+                'label'             => __( 'Excludes', 'upprev' ),
+                'configuration'     => 'both'
+            ),
+            array(
+                'name'              => 'exclude_categories',
+                'type'              => 'serialize',
+                'th'                => __( 'Categories', 'upprev'),
+                'sanitize_callback' => 'iworks_upprev_exclude_categories_sanitize_callback',
+                'callback'          => 'iworks_upprev_exclude_categories',
+            ),
         ),
     );
     return $iworks_upprev_options;
@@ -497,8 +509,8 @@ function iworks_upprev_sanitize_callback_ga_account( $value = 'UA-XXXXX-X' )
 }
 
 /**
-    * sanitize use_cache
-    */
+ * sanitize use_cache
+ */
 function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
 {
     if ( !preg_match( '/^(0|1)$/', $value ) ) {
@@ -510,5 +522,46 @@ function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
         $wpdb->query( $query );
     }
     return $value;
+}
+
+/**
+ * exclude_categories
+ */
+function iworks_upprev_exclude_categories( $values = array(), $is_pro = false )
+{
+    $args = array(
+        'hide_empty' => false,
+        'hierarchical' => false,
+    );
+    $content = '';
+    if ( !$is_pro ) {
+        $args['number'] = 3;
+        $content .= '<li class="error-message">'.__( 'Exlude categories available in PRO version!', 'iworks_upprev' ).'</li>';
+    }
+    $categories = get_categories( $args );
+    foreach ( $categories as $category ) {
+        $id = sprintf( 'category_%04d', $category->term_id );
+        $content .= sprintf(
+            '<li><input type="checkbox" name="iworks_upprev_exclude_categories[%d]" id="%s"%s%s /><label for="%s"> %s</label></li>',
+            $category->term_id,
+            $id,
+            in_array( $category->term_id, $values )? ' checked="checked"':'',
+            $is_pro? '':' disabled="disabled"',
+            $id,
+            $category->name
+        );
+    }
+    return '<ul>'.$content.'</li>';
+}
+function iworks_upprev_exclude_categories_sanitize_callback( $values )
+{
+    if ( is_array( $values ) ) {
+        $ids = array();
+        foreach( $values as $id => $value ) {
+            $ids[] = $id;
+        }
+        return $ids;
+    }
+    return null;
 }
 
