@@ -14,7 +14,11 @@ $option_name = basename( __FILE__, '.php');
 $iworks_upprev_options->settings_fields( $option_name );
 $iworks_upprev_options->build_options( $option_name );
 
-$configuration = get_option( 'iworks_upprev_configuration', 'advance' );
+$configuration = get_option( 'iworks_upprev_configuration', 'simple' );
+if ( !preg_match( '/^(advance|simple)$/', $configuration ) ) {
+    $configuration = 'simple';
+    $iworks_upprev_options->update_option( 'configuration', $configuration );
+}
 
 ?>
         </div>

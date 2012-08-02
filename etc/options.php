@@ -20,7 +20,8 @@ function iworks_upprev_options()
             array(
                 'name'              => 'configuration',
                 'type'              => 'special',
-                'default'           => 'advance'
+                'default'           => 'simple',
+                'sanitize_callback' => 'iworks_upprev_sanitize_callback_configuration'
             ),
             array(
                 'type'              => 'heading',
@@ -549,7 +550,7 @@ function iworks_upprev_exclude_categories( $values = array(), $is_pro = false )
             '<li><input type="checkbox" name="iworks_upprev_exclude_categories[%d]" id="%s"%s%s /><label for="%s"> %s</label></li>',
             $category->term_id,
             $id,
-            in_array( $category->term_id, $values )? ' checked="checked"':'',
+            is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
             $is_pro? '':' disabled="disabled"',
             $id,
             $category->name
@@ -567,5 +568,15 @@ function iworks_upprev_exclude_categories_sanitize_callback( $values )
         return $ids;
     }
     return null;
+}
+/**
+ * sanitize_callback: configuration
+ */
+function iworks_upprev_sanitize_callback_configuration( $option_value )
+{
+    if ( preg_match( '/^(simple|advance)$/', $option_value ) ) {
+        return $option_value;
+    }
+    return 'simple';
 }
 

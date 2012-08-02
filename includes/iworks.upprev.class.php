@@ -58,7 +58,7 @@ class IworksUpprev
     public function admin_enqueue_scripts()
     {
         $screen = get_current_screen();
-        if ( isset( $screen->id ) && $screen->id == $this->dir.'/admin/index' ) {
+        if ( isset( $screen->id ) && $this->dir.'/admin/index' == $screen->id ) {
             /**
              * make help
              */
@@ -128,7 +128,7 @@ class IworksUpprev
 
     public function plugin_row_meta( $links, $file )
     {
-        if ( $file == $this->dir.'/upprev.php' ) {
+        if ( $this->dir.'/upprev.php' == $file ) {
             if ( !is_multisite() && current_user_can( $this->capability ) ) {
                 $links[] = '<a href="themes.php?page='.$this->dir.'/admin/index.php">' . __('Settings') . '</a>';
             }
