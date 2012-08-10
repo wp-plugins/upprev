@@ -29,6 +29,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 
 * Brazilian Portuguese (pt_BR) - [Leonardo Antonioli](http://www.tobeguarany.com/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
+* German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
@@ -59,8 +60,10 @@ If you have created your own language pack, or have an update of an existing one
 * IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
 * IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
 * IMPROVMENT: javascript & css files are minifized
+* IMPROVMENT: added remebering usage "close" button
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
+* BUGFIX: fixed bug with removing filter name
 
 = 3.3.6 =
 

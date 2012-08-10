@@ -19,6 +19,7 @@ jQuery(function($){
     var upprev_ga_track_view         = true;
     var upprev_ga                    = typeof(_gaq ) != 'undefined';
     var upprev_ga_opt_noninteraction = iworks_upprev.ga_opt_noninteraction == 1;
+    var side_offset = 0;
 
     function upprev_show_box() {
         var lastScreen = false;
@@ -31,13 +32,33 @@ jQuery(function($){
         } else {
             lastScreen = ( getScrollY() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
+        box = $('#upprev_box');
         if (lastScreen && !upprev_closed) {
             if (iworks_upprev.animation == "fade") {
-                $("#upprev_box").fadeIn("slow");
-            } else if ( iworks_upprev.position == 'left' ) {
-                $("#upprev_box").stop().animate({left:iworks_upprev.css_side+"px"});
+                box.fadeIn("slow");
             } else {
-                $("#upprev_box").stop().animate({right:iworks_upprev.css_side+"px"});
+                horizontal = iworks_upprev.css_side + 'px';
+                switch ( iworks_upprev.position.all ) {
+                    case 'left':
+                        box.stop().animate({left: horizontal, bottom: iworks_upprev.css_bottom + 'px' });
+                        break;
+                    case 'left-top':
+                        box.stop().animate({left: horizontal, top: iworks_upprev.css_bottom + 'px' });
+                        break;
+                    case 'right':
+                        box.stop().animate({right: horizontal, bottom: iworks_upprev.css_bottom + 'px' });
+                        break;
+                    case 'right-middle':
+                        box.css( 'top', ( ( $(window).height() + box.height() ) / 2 ) + 'px' );
+                        box.stop().animate( { right: horizontal });
+                        break;
+                    case 'right-top':
+                        box.stop().animate({right: horizontal, top: iworks_upprev.css_bottom + 'px' });
+                        break;
+                    default:
+                        alert( iworks_upprev.position );
+                        break;
+                }
             }
             upprev_hidden = false;
             if ( upprev_ga && upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
@@ -50,31 +71,59 @@ jQuery(function($){
         }
         else if (!upprev_hidden) {
             upprev_hidden = true;
-            if (iworks_upprev.animation == "fade") {
-                $("#upprev_box").fadeOut("slow");
-            } else if ( iworks_upprev.position == 'left' ) {
-                $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + iworks_upprev.css_side + 50 ) + "px"});
+            if ( iworks_upprev.animation == 'fade' ) {
+                box.fadeOut( 'slow' );
             } else {
-                $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + iworks_upprev.css_side + 50 ) + "px"});
+                /**
+                 * horizontal
+                 */
+                horizontal = box.height() + side_offset;
+                padding = 0;
+                if ( iworks_upprev.position_left ) {
+                    padding = box.css( 'padding-left' );
+                } else {
+                    padding = box.css( 'padding-right' );
+                }
+                padding.re( /px$/, '' );
+                alert( padding );
+
+                horizontal = '-' + horizontal + 'px';
+                /**
+                 * vertical
+                 */
+                vertical   = '-' + ( box.width()  + side_offset ) + 'px';
+                switch ( iworks_upprev.position.all ) {
+                    case 'left':
+                        box.stop().animate( { left: horizontal, bottom: vertical } );
+                        break;
+                    case 'left-top':
+                        box.stop().animate( { left: horizontal, top: vertical } );
+                        break;
+                    case 'right-top':
+                        box.stop().animate( { right: horizontal, top: vertical } );
+                        break;
+                    case 'right-middle':
+                        box.stop().animate( { right: vertical } );
+                        break;
+                    case 'right':
+                        box.stop().animate( { right: horizontal, bottom: vertical } );
+                        break;
+                    default:
+                        alert( iworks_upprev.position );
+                        break;
+                }
             }
         }
     }
-    $(window).bind('scroll', function() {
+    $( window ).bind( 'scroll', function() {
         upprev_show_box();
     });
     if ($(window).height() == $(document).height()) {
         upprev_show_box();
     }
     $("#upprev_close").click(function() {
-        if (iworks_upprev.animation == "fade") {
-            $("#upprev_box").fadeOut("slow");
-        } else if ( iworks_upprev.position == 'left' ) {
-            $("#upprev_box").stop().animate({left:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
-        } else {
-            $("#upprev_box").stop().animate({right:"-" + ( iworks_upprev.css_width + 50 ) + "px"});
-        }
-        upprev_closed = true;
-        upprev_hidden = true;
+        $('#upprev_box').fadeOut("slow");
+        $(window).unbind('scroll');
         return false;
     });
     $('#upprev_box').addClass( iworks_upprev.compare );
