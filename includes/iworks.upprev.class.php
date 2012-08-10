@@ -48,7 +48,7 @@ class IworksUpprev
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
         add_action( 'wp_footer',                  array( &$this, 'wp_footer' ), PHP_INT_MAX, 0 );
         add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts' ) );
-        add_action( 'wp_print_styles',            array( &$yhis, 'wp_print_styles' ) );
+        add_action( 'wp_print_styles',            array( &$this, 'wp_print_styles' ) );
         /**
          * filters
          */
@@ -109,7 +109,7 @@ class IworksUpprev
         if ( iworks_upprev_check() ) {
             return;
         }
-        $dev = ( defined( 'IWORKS_UPPREV_DEV_MODE' ) && IWORKS_UPPREV_DEV_MODE )? '.dev':'';
+        $dev = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? '.dev':'';
         wp_enqueue_script( 'upprev-js',  plugins_url( '/scripts/upprev'.$dev.'.js', $this->base ), array( 'jquery' ), IWORKS_UPPREV_VERSION );
         wp_enqueue_style ( 'upprev-css', plugins_url( '/styles/upprev'.$dev.'.css', $this->base ), array(),           IWORKS_UPPREV_VERSION );
     }
