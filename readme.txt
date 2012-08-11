@@ -42,6 +42,36 @@ If you have created your own language pack, or have an update of an existing one
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Configure upPrev plugin using Apperance -> upPrev
 
+== Frequently Asked Questions ==
+
+= upPrev is turn on, but ther is no box, what now? =
+
+First of all, check your template. Rof proper work plugin requires function `wp_head` and `wp_footer`. If your template dont use one of theme, upPrev will not work. If you cant check this action in your templates manualy use this code to check it: https://gist.github.com/378450
+
+= How to add default image to post without thumbnail? =
+
+Use the `iworks_upprev_image` action:
+`
+<?php
+add_action( 'iworks_upprev_image' , 'default_image' );
+function default_image()
+{
+    return '<img src="image.png" alt="" />';
+}
+`
+
+= How to change post thubnail to other image? =
+
+Use the `iworks_upprev_get_the_post_thumbnail` filter:
+`
+<?php
+add_filter( 'iworks_upprev_get_the_post_thumbnail' , 'change_thumbnail' );
+function change_thumbnail( $image )
+{
+    return '<img src="image.png" alt="" />';
+}
+`
+
 == Screenshots ==
 
 1. upPrev on post
