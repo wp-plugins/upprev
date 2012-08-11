@@ -48,6 +48,17 @@ If you have created your own language pack, or have an update of an existing one
 
 First of all, check your template. Rof proper work plugin requires function `wp_head` and `wp_footer`. If your template dont use one of theme, upPrev will not work. If you cant check this action in your templates manualy use this code to check it: https://gist.github.com/378450
 
+= My website is not in English, will upPrev work? =
+
+upPrev plugin will work on websites in the following languages:
+
+* Brazilian Portuguese
+* French
+* German
+* Polish
+* Turkish
+* Vietnamese
+
 = How to add default image to post without thumbnail? =
 
 Use the `iworks_upprev_image` action:
@@ -59,7 +70,6 @@ function default_image()
     return '<img src="image.png" alt="" />';
 }
 `
-
 = How to change post thubnail to other image? =
 
 Use the `iworks_upprev_get_the_post_thumbnail` filter:
@@ -71,6 +81,10 @@ function change_thumbnail( $image )
     return '<img src="image.png" alt="" />';
 }
 `
+
+= How to add upPrev for pages or custom post types? =
+
+Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select post types` section.
 
 == Screenshots ==
 
