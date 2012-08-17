@@ -11,6 +11,7 @@ class IworksUpprev
     private static $base;
     private static $capability;
     private static $is_pro;
+    private $options;
 
     public function __construct()
     {
@@ -26,6 +27,11 @@ class IworksUpprev
          * generate
          */
         add_action( 'init', array( &$this, 'init' ) );
+        /**
+         * global option object
+         */
+        global $iworks_upprev_options;
+        $this->options = $iworks_upprev_options;
     }
 
     private function iworks_upprev_check()
@@ -40,20 +46,16 @@ class IworksUpprev
             return true;
         }
         /**
-         * global option object
-         */
-        global $iworks_upprev_options;
-        /**
          * check post types
          */
-        $post_types = $iworks_upprev_options->get_option( 'post_type' );
-        if ( $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
+        $post_types = $this->options->get_option( 'post_type' );
+        if ( $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
             return !is_singular( $post_types );
         }
         return !is_single();
     }
 
-    private function is_pro()
+    public function is_pro()
     {
         return true;
     }
@@ -181,10 +183,9 @@ class IworksUpprev
         if ( $this->iworks_upprev_check() ) {
             return;
         }
-        global $iworks_upprev_options;
-        $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
+        $use_cache = $this->options->get_option( 'use_cache' );
         if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$iworks_upprev_options->get_option('cache_stamp');
+            $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$this->options->get_option('cache_stamp');
             if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
                 print $content;
                 return;
@@ -192,14 +193,14 @@ class IworksUpprev
         }
         $data = '';
         foreach ( array( 'animation', 'offset_percent', 'offset_element', 'css_side', 'css_bottom', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks', 'ga_opt_noninteraction' ) as $key ) {
-            $value = $iworks_upprev_options->get_option( $key );
+            $value = $this->options->get_option( $key );
             $data .= sprintf(
                 '%s: %s, ',
                 $key,
                 is_numeric($value)? $value:(sprintf("'%s'", $value))
             );
         }
-        $postition = $iworks_upprev_options->get_option( 'position' );
+        $postition = $this->options->get_option( 'position' );
         $data .= ' position: { ';
         foreach( array( 'top', 'left', 'center', 'middle' ) as $key ) {
             $re = sprintf( '/%s/', $key );
@@ -217,8 +218,8 @@ class IworksUpprev
         /**
          * Google Analitics tracking code
          */
-        $ga_account = $iworks_upprev_options->get_option( 'ga_account' );
-        if ( $ga_account && $iworks_upprev_options->get_option( 'ga_status' )) {
+        $ga_account = $this->options->get_option( 'ga_account' );
+        if ( $ga_account && $this->options->get_option( 'ga_status' )) {
             $content.= 'var _gaq = _gaq || [];'."\n";
             $content.= '_gaq.push([\'_setAccount\', \''.$ga_account.'\']);'."\n";
             $content.= '(function() {'."\n";
@@ -229,7 +230,7 @@ class IworksUpprev
         }
         $content .= '</script>'."\n";
         if ( $use_cache ) {
-            set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
+            set_site_transient( $cache_key, $content, $this->options->get_option( 'cache_lifetime' ) );
         }
         echo $content;
     }
@@ -239,10 +240,9 @@ class IworksUpprev
         if ( $this->iworks_upprev_check() ) {
             return;
         }
-        global $iworks_upprev_options;
-        $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
+        $use_cache = $this->options->get_option( 'use_cache' );
         if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$iworks_upprev_options->get_option( 'cache_stamp' );
+            $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
             if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
                 print $content;
                 return;
@@ -252,10 +252,10 @@ class IworksUpprev
         $content .= '#upprev_box{';
         $values = array();
         foreach ( array( 'position', 'animation' ) as $key ) {
-            $values[$key] = $iworks_upprev_options->get_option( $key );
+            $values[$key] = $this->options->get_option( $key );
         }
         foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
-            $values[$key] = $iworks_upprev_options->get_option( 'css_'.$key );
+            $values[$key] = $this->options->get_option( 'css_'.$key );
             switch ( $key ) {
             case 'position':
                 break;
@@ -267,15 +267,15 @@ class IworksUpprev
             }
         }
         $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
-        if ( $values['animation'] == 'flyout' ) {
+        if ( 'flyout' == $values['animation'] ) {
             $content .= sprintf( '%s:-%dpx;', $values['position'], $values['width'] + $values['side'] + 50 );
         }
         $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
         $content .= '}'."\n";
-        $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $iworks_upprev_options->get_option( 'css' ) ) ) );
+        $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $this->options->get_option( 'css' ) ) ) );
         $content .= '</style>'."\n";
         if ( $use_cache ) {
-            set_site_transient( $cache_key, $content, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
+            set_site_transient( $cache_key, $content, $this->options->get_option( 'cache_lifetime' ) );
         }
         echo $content;
     }
@@ -285,10 +285,9 @@ class IworksUpprev
         if ( $this->iworks_upprev_check() ) {
             return;
         }
-        global $post, $iworks_upprev_options;
-        $use_cache = $iworks_upprev_options->get_option( 'use_cache' );
+        $use_cache = $this->options->get_option( 'use_cache' );
         if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$iworks_upprev_options->get_option( 'cache_stamp' );
+            $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
             if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
                 print $value;
                 return;
@@ -314,7 +313,7 @@ class IworksUpprev
             'url_prefix',
             'url_sufix'
         ) as $key ) {
-            $$key = $iworks_upprev_options->get_option( $key );
+            $$key = $this->options->get_option( $key );
         }
 
         $show_taxonomy   = true;
@@ -328,7 +327,7 @@ class IworksUpprev
             'posts_per_page'      => $number_of_posts,
             'post_type'           => array()
         );
-        $post_type = $iworks_upprev_options->get_option( 'post_type' );
+        $post_type = $this->options->get_option( 'post_type' );
         if ( !empty( $post_type ) ) {
             if ( array_key_exists( 'any', $post_type ) ) {
                 $args['post_type'] = 'any';
@@ -338,6 +337,18 @@ class IworksUpprev
                 }
             }
         }
+        /**
+         * exclude categories
+         */
+        if( $this->is_pro ) {
+            $exclude_categories = $this->options->get_option( 'exclude_categories' );
+            if ( is_array( $exclude_categories ) && !empty( $exclude_categories ) ) {
+                $args[ 'category__not_in' ] = $exclude_categories;
+            }
+        }
+        /**
+         *
+         */
         if ( $compare == 'yarpp' ) {
             if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.3' ) > -1 ) {
                 $a = array();
@@ -405,8 +416,8 @@ class IworksUpprev
             $show_taxonomy = false;
         }
         $value = '<div id="upprev_box">';
-        if ( $compare != 'yarpp' ) {
-            if ( $compare != 'random' ) {
+        if ( 'yarpp' != $compare ) {
+            if ( 'random' != $compare ) {
                 add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
             }
             add_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
@@ -415,13 +426,13 @@ class IworksUpprev
                 add_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
             }
             $upprev_query = new WP_Query( $args );
-            if (!$upprev_query->have_posts()) {
+            if ( !$upprev_query->have_posts() ) {
                 return;
             }
             /**
              * remove any filter if needed
              */
-            if ( $iworks_upprev_options->get_option( 'remove_all_filters' ) ) {
+            if ( $this->options->get_option( 'remove_all_filters' ) ) {
                 remove_all_filters( 'the_content' );
             }
             /**
@@ -434,8 +445,8 @@ class IworksUpprev
              * box title
              */
             $title = '';
-            if ( $iworks_upprev_options->get_option( 'header_show' ) ) {
-                $header_text = $iworks_upprev_options->get_option( 'header_text' );
+            if ( $this->options->get_option( 'header_show' ) ) {
+                $header_text = $this->options->get_option( 'header_text' );
                 if ( !empty( $header_text ) ) {
                     $title .= $header_text;
                 } else if ( count( $siblings ) ) {
@@ -445,7 +456,7 @@ class IworksUpprev
                         $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
                     }
                     $title .= implode( ', ', $a);
-                } else if ( $compare == 'random' ) {
+                } else if ( 'random' == $compare ) {
                     $title .= __( 'Read more:', 'upprev' );
                 } else {
                     $title .= __( 'Read previous post:', 'upprev' );
@@ -489,7 +500,7 @@ class IworksUpprev
                             'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
                                 get_the_ID(),
                                 array(
-                                    $iworks_upprev_options->get_option( 'thumb_width' ),
+                                    $this->options->get_option( 'thumb_width' ),
                                     9999
                                 ),
                                 array(
@@ -523,10 +534,10 @@ class IworksUpprev
         } else {
             $value .= $yarpp_posts;
         }
-        if ( $iworks_upprev_options->get_option( 'close_button_show' ) ) {
+        if ( $this->options->get_option( 'close_button_show' ) ) {
             $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
         }
-        if ( $iworks_upprev_options->get_option( 'promote' ) ) {
+        if ( $this->options->get_option( 'promote' ) ) {
             $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
         }
         ob_start();
@@ -542,7 +553,7 @@ class IworksUpprev
             }
         }
         if ( $use_cache && $compare != 'random' ) {
-            set_site_transient( $cache_key, $value, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
+            set_site_transient( $cache_key, $value, $this->options->get_option( 'cache_lifetime' ) );
         }
         echo apply_filters( 'iworks_upprev_box', $value );
     }
@@ -550,7 +561,7 @@ class IworksUpprev
     public function posts_where( $where = '' )
     {
         global $post;
-        if ($post->post_date) {
+        if ( $post->post_date ) {
             $where .= " AND post_date < '" . $post->post_date . "'";
         }
         return $where;
@@ -563,8 +574,7 @@ class IworksUpprev
 
     public function excerpt_length( $length )
     {
-        global $iworks_upprev_options;
-        return $iworks_upprev_options->get_option( 'excerpt_length' );
+        return $this->options->get_option( 'excerpt_length' );
     }
 }
 
