@@ -28,6 +28,31 @@ class IworksUpprev
         add_action( 'init', array( &$this, 'init' ) );
     }
 
+    private function iworks_upprev_check()
+    {
+        if ( !is_singular() ) {
+            return true;
+        }
+        /**
+         * check mobile devices
+         */
+        if ( iworks_upprev_check_mobile_device() ) {
+            return true;
+        }
+        /**
+         * global option object
+         */
+        global $iworks_upprev_options;
+        /**
+         * check post types
+         */
+        $post_types = $iworks_upprev_options->get_option( 'post_type' );
+        if ( $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
+            return !is_singular( $post_types );
+        }
+        return !is_single();
+    }
+
     private function is_pro()
     {
         return true;
@@ -106,7 +131,7 @@ class IworksUpprev
 
     public function wp_enqueue_scripts()
     {
-        if ( iworks_upprev_check() ) {
+        if ( $this->iworks_upprev_check() ) {
             return;
         }
         $dev = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? '.dev':'';
@@ -153,7 +178,7 @@ class IworksUpprev
 
     public function wp_print_scripts()
     {
-        if ( iworks_upprev_check() ) {
+        if ( $this->iworks_upprev_check() ) {
             return;
         }
         global $iworks_upprev_options;
@@ -211,7 +236,7 @@ class IworksUpprev
 
     public function wp_print_styles()
     {
-        if ( iworks_upprev_check() ) {
+        if ( $this->iworks_upprev_check() ) {
             return;
         }
         global $iworks_upprev_options;
@@ -257,7 +282,7 @@ class IworksUpprev
 
     public function wp_footer()
     {
-        if ( iworks_upprev_check() ) {
+        if ( $this->iworks_upprev_check() ) {
             return;
         }
         global $post, $iworks_upprev_options;
