@@ -37,7 +37,7 @@ define( 'IWORKS_UPPREV_PREFIX',  'iworks_upprev_' );
 
 require_once dirname(__FILE__).'/includes/common.php';
 
-new IworksUpprev();
+$iworks_upprev = new IworksUpprev();
 
 /**
  * install & uninstall
