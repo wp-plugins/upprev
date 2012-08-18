@@ -1,12 +1,16 @@
 #upprev_box
 {
+    position:fixed;
+}
+#upprev_box
+,.wp-admin .upprev_box
+{
     text-align: left;
     background-color: #fff;
-    position:fixed;
-    z-index:9999999;
     padding: 10px 20px 10px 10px;
     border-top: 2px solid #000;
     border-left: 1px solid #f0f0f0;
+    z-index:9999999;
     -moz-box-shadow: 0 4px 10px #666;
     -webkit-box-shadow: 0 4px 10px #666;
     box-shadow: 0 4px 10px #666;
@@ -15,8 +19,14 @@
     _position: absolute;
     _top: 0;
 }
-
+.wp-admin .upprev_box
+{
+    width: 360px;
+    position: relative;
+    margin: 10px 0 20px 0;
+}
 #upprev_box h6
+,.wp-admin .upprev_box h6
 {
     text-transform: uppercase;
     font-size: 10px;
@@ -28,6 +38,7 @@
 }
 
 #upprev_box h6 .num
+,.wp-admin .upprev_box h6 .num
 {
     font-size: inherit;
     font-weight:normal;
@@ -36,27 +47,33 @@
 }
 
 #upprev_box .upprev_excerpt p
+,.wp-admin .upprev_excerpt p
 {
     overflow:hidden;
     margin:0
 }
 
 #upprev_box a.upprev_thumbnail img
+,.wp-admin a.upprev_thumbnail img
 {
     border:0;
     float:left;
     margin:0 10px 5px 0;
 }
 #upprev_box div
-,#upprev_box div.upprev_thumbnail br
+,#upprev_box br
+,.wp-admin .upprev_box div
+,.wp-admin .upprev_box br
 {
     clear:both;
 }
 #upprev_box h5
+,.wp-admin .upprev_box h5
 {
     margin-top:0;
 }
 #upprev_box div.upprev_thumbnail h5
+,.wp-admin div.upprev_thumbnail h5
 {
     clear:right;
     margin:0 0 .5em 0;
@@ -75,7 +92,7 @@
     top: 5px;
     width: 13px;
 }
-#upprev_box p.promote 
+#upprev_box p.promote
 {
     clear:both;
     color:#888;
@@ -85,4 +102,46 @@
     text-align:right;
 }
 
+/**
+ * vertical-3
+ */
+#upprev_box.vertical-3 div
+,.wp-admin .upprev_box.vertical-3 div
+{
+    clear: none;
+    float: left;
+    height: 96px;
+    margin: 0 12px;
+    overflow: hidden;
+    position: relative;
+    width: 96px;
+}
+#upprev_box.vertical-3 div:first-child
+,.wp-admin .upprev_box.vertical-3 div:first-child
+{
+    margin-left: 0;
+}
+
+#upprev_box.vertical-3 h5
+,.wp-admin .upprev_box.vertical-3 h5
+{
+    background-color: #fff;
+    bottom: 0;
+    font-size: 11px;
+    max-height: 50px;
+    line-height: 15px;
+    margin: 0;
+    opacity: .7;
+    overflow: hidden;
+    padding: 3px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+#upprev_box.vertical-3 div a
+,.wp-admin .upprev_box.vertical-3 div a
+{
+    color: #000;
+    text-decoration: none;
+}
 

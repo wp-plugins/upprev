@@ -29,6 +29,18 @@ function iworks_upprev_options()
                 'configuration'     => 'simple'
             ),
             array(
+                'name'              => 'layout',
+                'type'              => 'serialize',
+                'th'                => __( 'Layout', 'upprev' ),
+                'default'           => 'simple',
+                'callback'          => 'iworks_upprev_callback_layout',
+            ),
+            array(
+                'type'              => 'heading',
+                'label'             => __('Apperance', 'upprev' ),
+                'configuration'     => 'advance'
+            ),
+            array(
                 'name'              => 'schema',
                 'type'              => 'radio',
                 'th'                => __('Schema', 'upprev' ),
@@ -38,11 +50,6 @@ function iworks_upprev_options()
                     'fade'   => array( 'label' => __('fade in/out', 'upprev') ),
                 ),
                 'sanitize_callback' => 'esc_html'
-            ),
-            array(
-                'type'              => 'heading',
-                'label'             => __('Apperance', 'upprev' ),
-                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'animation',
@@ -291,7 +298,7 @@ function iworks_upprev_options()
                 'type'              => 'text',
                 'class'             => 'small-text',
                 'label'             => __('Featured image width.', 'upprev'),
-                'default'           => 48,
+                'default'           => 96,
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
             ),
@@ -579,5 +586,29 @@ function iworks_upprev_sanitize_callback_configuration( $option_value )
         return $option_value;
     }
     return 'simple';
+}
+/**
+    * callback: layout
+*/
+function iworks_upprev_callback_layout( $value )
+{
+    global $iworks_upprev;
+    $options = $iworks_upprev->build_layout_chooser( $value );
+    $content = '<ul>';
+    foreach( $options as $key => $one ) {
+        $id = 'iworks_upprev_'.crc32( $key );
+        $content .= sprintf(
+            '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s id="%s"><label for="%s"> %s</label>',
+            $key,
+            $one['checked']? ' checked="checked"':'',
+            $id,
+            $id,
+            $one['name']
+        );
+        $content .= $one['value'];
+        $content .= '</li>';
+    }
+    $content .= '</ul>';
+    return $content;
 }
 

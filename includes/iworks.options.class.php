@@ -285,7 +285,7 @@ class IworksOptions
                 break;
             case 'serialize':
                 if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
-                    $content .= $option['callback']( $this->get_option($option['name'], $option_group ) );
+                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
                 }
                 break;
             default:

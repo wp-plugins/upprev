@@ -1,16 +1,18 @@
 === upPrev ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
-Tags: next post, previous post, notification, related, upPrev
+Tags: next post, previous post, notification, related, upPrev, flyout, new york times, NYTimes, animated, featured, related content
 Requires at least: 3.1
 Tested up to: 3.4.1
 Stable tag: 3.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
+Display cool, animated flyout or fade box with related content. Just like New York Times.
 
 == Description ==
+
+Display cool, animated flyout or fade box with related content. Just like New York Times.
 
 When a reader scrolls to the bottom of a single post, page or custom post
 type, a button animates in the page’s bottom right or left corner,
@@ -107,6 +109,7 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 * IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
 * IMPROVMENT: javascript & css files are minifized
 * IMPROVMENT: added remebering usage "close" button
+* IMPROVMENT: added free layouts: vertical-3
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name

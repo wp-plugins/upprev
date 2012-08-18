@@ -12,21 +12,49 @@ class IworksUpprev
     private static $capability;
     private static $is_pro;
     private $options;
+    private $working_mode;
+    private $dev;
 
     public function __construct()
     {
         /**
          * static settings
          */
-        $this->version    = '1.0';
-        $this->base       = dirname( __FILE__ );
-        $this->dir        = basename( dirname( $this->base ) );
-        $this->capability = apply_filters( 'iworks_upprev_capability', 'manage_options' );
-        $this->is_pro     = $this->is_pro();
+        $this->version           = '2.0';
+        $this->base              = dirname( __FILE__ );
+        $this->dir               = basename( dirname( $this->base ) );
+        $this->capability        = apply_filters( 'iworks_upprev_capability', 'manage_options' );
+        $this->is_pro            = $this->is_pro();
+        $this->working_mode      = 'site';
+        $this->dev               = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? '.dev':'';
+        /**
+         * layouts settings
+         */
+        $this->available_layouts = array(
+            'simple' => array(
+                'name'     => __( 'Default simple layout', 'iworks_upprev' ),
+                'defaults' => array(
+                    'class'           => 'simple',
+                    'number_of_posts' => 1
+                )
+            ),
+            'vertical 3' => array(
+                'name'     => __( 'Vertical Three', 'iworks_upprev' ),
+                'defaults' => array(
+                    'class'           => 'vertical-3',
+                    'number_of_posts' => 3,
+                    'show_thumb'      => true,
+                    'excerpt_show'    => false,
+                    'thumb_width'     => 96,
+                    'thumb_height'    => 96,
+                )
+            )
+        );
         /**
          * generate
          */
         add_action( 'init', array( &$this, 'init' ) );
+        add_action( 'after_setup_theme',          array( &$this, 'after_setup_theme'  ) );
         /**
          * global option object
          */
@@ -62,24 +90,40 @@ class IworksUpprev
 
     public function get_version()
     {
-        return $this->version;
+        return ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? rand( 0, 99999 ):$this->version;
     }
 
     public function init()
     {
         add_action( 'admin_enqueue_scripts',      array( &$this, 'admin_enqueue_scripts' ) );
-        add_action( 'admin_init',                 'iworks_upprev_options_init' );
         add_action( 'admin_init',                 array( &$this, 'admin_init'         ) );
+        add_action( 'admin_init',                 'iworks_upprev_options_init' );
         add_action( 'admin_menu',                 array( &$this, 'admin_menu'         ) );
         add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar'          ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
-        add_action( 'wp_footer',                  array( &$this, 'wp_footer' ), PHP_INT_MAX, 0 );
-        add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts' ) );
-        add_action( 'wp_print_styles',            array( &$this, 'wp_print_styles' ) );
+        add_action( 'wp_footer',                  array( &$this, 'the_box' ), PHP_INT_MAX, 0 );
+        add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts'   ) );
+        add_action( 'wp_print_styles',            array( &$this, 'wp_print_styles'    ) );
         /**
          * filters
          */
         add_filter( 'index_iworks_upprev_position_data', array( &$this, 'index_iworks_upprev_position_data' ) );
+    }
+
+    public function after_setup_theme()
+    {
+        if ( 'simple' == $this->sanitize_layout( $this->options->get_option( 'layout' ) ) ) {
+            foreach( $this->available_layouts as $key => $layout ) {
+                if( isset( $layout['defaults']['thumb_width'] ) and isset( $layout['defaults']['thumb_height'] ) ) {
+                    add_image_size(
+                        'iworks-upprev-'.$layout['class'],
+                        $layout['defaults']['thumb_width'],
+                        $layout['defaults']['thumb_height'],
+                        true
+                    );
+                }
+            }
+        }
     }
 
     public function admin_enqueue_scripts()
@@ -110,8 +154,9 @@ class IworksUpprev
             /**
              * enqueue resources
              */
-            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array('jquery-ui-tabs'), IWORKS_UPPREV_VERSION );
-            wp_enqueue_style ( 'upprev-admin-css', plugins_url( '/styles/upprev-admin.css', $this->base ), array(),                 IWORKS_UPPREV_VERSION );
+            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array('jquery-ui-tabs'), $this->get_version() );
+            wp_enqueue_style ( 'upprev-admin-css', plugins_url( '/styles/upprev-admin.css', $this->base ), array(),                 $this->get_version() );
+            wp_enqueue_style ( 'upprev-css',       plugins_url( '/styles/upprev'.$this->dev.'.css', $this->base ), array(),         $this->get_version() );
         }
     }
 
@@ -136,9 +181,8 @@ class IworksUpprev
         if ( $this->iworks_upprev_check() ) {
             return;
         }
-        $dev = ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? '.dev':'';
-        wp_enqueue_script( 'upprev-js',  plugins_url( '/scripts/upprev'.$dev.'.js', $this->base ), array( 'jquery' ), IWORKS_UPPREV_VERSION );
-        wp_enqueue_style ( 'upprev-css', plugins_url( '/styles/upprev'.$dev.'.css', $this->base ), array(),           IWORKS_UPPREV_VERSION );
+        wp_enqueue_script( 'upprev-js',  plugins_url( '/scripts/upprev'.$this->dev.'.js', $this->base ), array( 'jquery' ), $this->get_version() );
+        wp_enqueue_style ( 'upprev-css', plugins_url( '/styles/upprev'.$this->dev.'.css', $this->base ), array(),           $this->get_version() );
     }
 
     /**
@@ -280,41 +324,65 @@ class IworksUpprev
         echo $content;
     }
 
-    public function wp_footer()
+    private function get_box( $layout = false )
     {
-        if ( $this->iworks_upprev_check() ) {
-            return;
-        }
-        $use_cache = $this->options->get_option( 'use_cache' );
-        if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
-            if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
-                print $value;
+        if ( 'site' == $this->working_mode ) {
+            if ( $this->iworks_upprev_check() ) {
                 return;
             }
+            $use_cache = $this->options->get_option( 'use_cache' );
+            if ( $use_cache ) {
+                $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
+                if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
+                    print $value;
+                    return;
+                }
+            }
         }
-
         /**
          * get current post title and convert special characters to HTML entities
          */
         $current_post_title = esc_attr( get_the_title() );
-
+        /**
+         * set defaults
+         */
+        $thumb_height = 9999;
+        $class = 'default';
         /**
          * get used params
          */
         foreach( array(
             'compare',
+            'configuration',
             'excerpt_length',
             'excerpt_show',
             'ignore_sticky_posts',
             'number_of_posts',
             'show_thumb',
             'taxonomy_limit',
+            'thumb_width',
             'url_prefix',
             'url_sufix'
         ) as $key ) {
             $$key = $this->options->get_option( $key );
         }
+        /**
+         * if simple or admin mode setup defaults
+         */
+        if ( 'simple' == $configuration or 'admin' == $this->working_mode) {
+            if ( 'admin' == $this->working_mode ) {
+                $compare = 'simple';
+            } else {
+                $layout = $this->sanitize_layout( $this->options->get_option( 'layout' ) );
+            }
+            foreach( $this->available_layouts[ $layout ]['defaults'] as $key => $value ) {
+                $$key = $value;
+            }
+        }
+
+        /**
+         * admin mode?
+         */
 
         $show_taxonomy   = true;
         $siblings        = array();
@@ -325,7 +393,8 @@ class IworksUpprev
             'order'               => 'DESC',
             'post__not_in'        => array( $post->ID ),
             'posts_per_page'      => $number_of_posts,
-            'post_type'           => array()
+            'post_status'         => 'publish',
+            'post_type'           => array(),
         );
         $post_type = $this->options->get_option( 'post_type' );
         if ( !empty( $post_type ) ) {
@@ -347,9 +416,9 @@ class IworksUpprev
             }
         }
         /**
-         *
+         * YARPP
          */
-        if ( $compare == 'yarpp' ) {
+        if ( 'yarpp' == $compare ) {
             if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.3' ) > -1 ) {
                 $a = array();
                 if ( array_key_exists( 'post', $post_type ) && array_key_exists( 'page', $post_type ) ) {
@@ -366,6 +435,9 @@ class IworksUpprev
                 $compare = 'simple';
             }
         }
+        /**
+         * comparation method
+         */
         switch ( $compare ) {
         case 'category':
             $categories = get_the_category();
@@ -415,7 +487,7 @@ class IworksUpprev
         default:
             $show_taxonomy = false;
         }
-        $value = '<div id="upprev_box">';
+        $value = sprintf( '<div id="upprev_box" class="%s">', $class ) ;
         if ( 'yarpp' != $compare ) {
             if ( 'random' != $compare ) {
                 add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
@@ -456,7 +528,7 @@ class IworksUpprev
                         $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
                     }
                     $title .= implode( ', ', $a);
-                } else if ( 'random' == $compare ) {
+                } else if ( 'random' == $compare or 'vertical 3' == $layout ) {
                     $title .= __( 'Read more:', 'upprev' );
                 } else {
                     $title .= __( 'Read previous post:', 'upprev' );
@@ -474,12 +546,15 @@ class IworksUpprev
             while ( $upprev_query->have_posts() ) {
                 $item = '';
                 $upprev_query->the_post();
-                $item_class = 'upprev_excerpt';
+                $item_class = array();
+                if ( $excerpt_show ) {
+                    $item_class[] = 'upprev_excerpt';
+                }
                 if ( $i > $number_of_posts ) {
                     break;
                 }
                 if ( $i++ < $number_of_posts ) {
-                    $item_class .= ' upprev_space';
+                    $item_class[] = 'upprev_space';
                 }
                 $image = '';
                 $permalink = sprintf(
@@ -489,7 +564,7 @@ class IworksUpprev
                     $url_sufix
                 );
                 if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
-                    $item_class .= ' upprev_thumbnail';
+                    $item_class[] = 'upprev_thumbnail';
                     $image = sprintf(
                         '<a href="%s" title="%s" class="upprev_thumbnail"%s rel="%s">%s</a>',
                         $permalink,
@@ -499,10 +574,7 @@ class IworksUpprev
                         apply_filters(
                             'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
                                 get_the_ID(),
-                                array(
-                                    $this->options->get_option( 'thumb_width' ),
-                                    9999
-                                ),
+                                array( $thumb_width, $thumb_height ),
                                 array(
                                     'title'=>get_the_title(),
                                     'class'=>'iworks_upprev_thumb'
@@ -515,7 +587,7 @@ class IworksUpprev
                     do_action( 'iworks_upprev_image' );
                     $image = ob_get_flush();
                 }
-                $item .= sprintf( '<div class="%s">%s', $item_class, $image );
+                $item .= sprintf( '<div class="%s">%s', implode( ' ', $item_class ), $image );
                 $item .= sprintf(
                     '<h5><a href="%s"%s rel="%s">%s</a></h5>',
                     $permalink,
@@ -525,7 +597,7 @@ class IworksUpprev
                 );
                 if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
                     $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
-                } else if ( $image ) {
+                } else if ( $image && !preg_match( '/^(vertical 3)$/', $layout ) ) {
                     $item .= '<br />';
                 }
                 $item .= '</div>';
@@ -543,6 +615,9 @@ class IworksUpprev
         ob_start();
         do_action( 'iworks_upprev_box_after' );
         $value .= ob_get_flush();
+        if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
+            $value .= '<br />';
+        }
         $value .= '</div>';
         if ( !$compare != 'yarpp' ) {
             wp_reset_postdata();
@@ -552,10 +627,10 @@ class IworksUpprev
                 remove_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
             }
         }
-        if ( $use_cache && $compare != 'random' ) {
+        if ( 'site' == $this->working_mode && $use_cache && $compare != 'random' ) {
             set_site_transient( $cache_key, $value, $this->options->get_option( 'cache_lifetime' ) );
         }
-        echo apply_filters( 'iworks_upprev_box', $value );
+        return apply_filters( 'iworks_upprev_box', $value );
     }
 
     public function posts_where( $where = '' )
@@ -575,6 +650,37 @@ class IworksUpprev
     public function excerpt_length( $length )
     {
         return $this->options->get_option( 'excerpt_length' );
+    }
+
+    public function the_box()
+    {
+        echo $this->get_box();
+    }
+
+    private function sanitize_layout( $layout )
+    {
+        if ( array_key_exists( $layout, $this->available_layouts ) ) {
+            return $layout;
+        }
+        return 'simple';
+    }
+
+    /**
+     * callback: layout
+     */
+    public function build_layout_chooser( $layout )
+    {
+        $this->working_mode = 'admin';
+        $options = array();
+        foreach( $this->available_layouts as $key => $one ) {
+            $one = array(
+                'name'    => $one[ 'name' ],
+                'value'   => preg_replace( '/id="upprev_box" class="/', 'class="upprev_box ', $this->get_box( $key ) ),
+                'checked' => $key == $this->sanitize_layout( $layout )
+            );
+            $options[ $key ] = $one;
+        }
+        return $options;
     }
 }
 
