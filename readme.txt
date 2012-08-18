@@ -31,7 +31,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
-* Russian (ru_RU) - [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
+* Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
@@ -100,7 +100,7 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 
 = 3.3.7 =
 
-* IMPROVMENT: added Russian translation by [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
 
 = 3.3.6 =
 
