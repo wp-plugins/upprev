@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to: 3.4
-Stable tag: 3.3.6
+Tested up to: 3.4.1
+Stable tag: 3.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
