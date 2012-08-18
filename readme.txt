@@ -3,8 +3,10 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
-Tested up to: 3.3.2
-Stable tag: 3.3.6
+Tested up to: 3.4.1
+Stable tag: 3.3.7
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
 
@@ -29,9 +31,9 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
+* Russian (ru_RU) - [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
-
 
 If you have created your own language pack, or have an update of an existing one, you can send [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to me so that I can bundle it into upPrev. You can [download the latest POT file from here](http://plugins.svn.wordpress.org/upprev/trunk/languages/upprev.pot).
 
@@ -40,6 +42,51 @@ If you have created your own language pack, or have an update of an existing one
 1. Upload upPrev to your plugins directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Configure upPrev plugin using Apperance -> upPrev
+
+== Frequently Asked Questions ==
+
+= upPrev is turn on, but ther is no box, what now? =
+
+First of all, check your template. Rof proper work plugin requires function `wp_head` and `wp_footer`. If your template dont use one of theme, upPrev will not work. If you cant check this action in your templates manualy use this code to check it: https://gist.github.com/378450
+
+= My website is not in English, will upPrev work? =
+
+upPrev plugin will work on websites in the following languages:
+
+* Brazilian Portuguese
+* French
+* German
+* Polish
+* Russian
+* Turkish
+* Vietnamese
+
+= How to add default image to post without thumbnail? =
+
+Use the `iworks_upprev_image` action:
+`
+<?php
+add_action( 'iworks_upprev_image' , 'default_image' );
+function default_image()
+{
+    return '<img src="image.png" alt="" />';
+}
+`
+= How to change post thubnail to other image? =
+
+Use the `iworks_upprev_get_the_post_thumbnail` filter:
+`
+<?php
+add_filter( 'iworks_upprev_get_the_post_thumbnail' , 'change_thumbnail' );
+function change_thumbnail( $image )
+{
+    return '<img src="image.png" alt="" />';
+}
+`
+
+= How to add upPrev for pages or custom post types? =
+
+Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select post types` section.
 
 == Screenshots ==
 
@@ -50,6 +97,10 @@ If you have created your own language pack, or have an update of an existing one
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.7 =
+
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
 
 = 3.3.6 =
 
