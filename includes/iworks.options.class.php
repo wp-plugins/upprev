@@ -105,6 +105,9 @@ class IworksOptions
                 }
             }
             if ( ( $is_simple && $configuration == 'advance' ) || ( !$is_simple && $configuration == 'simple' ) ) {
+                if ( isset( $option['configuration'] ) && 'both' == $option['configuration'] ) {
+                    continue;
+                }
                 if( in_array( $option['type'], array( 
                     'radio',
                     'text',

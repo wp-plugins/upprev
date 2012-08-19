@@ -47,7 +47,8 @@ class IworksUpprev
                     'excerpt_show'    => false,
                     'thumb_width'     => 96,
                     'thumb_height'    => 96,
-                )
+                ),
+                'need_pro' => true
             )
         );
         /**
@@ -85,6 +86,7 @@ class IworksUpprev
 
     public function is_pro()
     {
+        return false;
         return true;
     }
 
@@ -190,6 +192,9 @@ class IworksUpprev
      */
     public function admin_menu()
     {
+        if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
+            $value .= '<br />';
+        }
         add_theme_page( __( 'upPrev', 'upprev' ), __( 'upPrev', 'upprev' ), $this->capability, $this->dir.'/admin/index.php');
     }
 
@@ -311,10 +316,6 @@ class IworksUpprev
             }
         }
         $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
-        if ( 'flyout' == $values['animation'] ) {
-            $content .= sprintf( '%s:-%dpx;', $values['position'], $values['width'] + $values['side'] + 50 );
-        }
-        $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
         $content .= '}'."\n";
         $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $this->options->get_option( 'css' ) ) ) );
         $content .= '</style>'."\n";
@@ -347,11 +348,12 @@ class IworksUpprev
          * set defaults
          */
         $thumb_height = 9999;
-        $class = 'default';
+        $box_classes = array( 'default' );
         /**
          * get used params
          */
         foreach( array(
+            'animation',
             'compare',
             'configuration',
             'excerpt_length',
@@ -378,8 +380,13 @@ class IworksUpprev
             foreach( $this->available_layouts[ $layout ]['defaults'] as $key => $value ) {
                 $$key = $value;
             }
+            $box_classes[] = $class;
         }
-
+        /**
+         * upprev_box class
+         */
+        $box_classes[] = 'compare-'.$compare;
+        $box_classes[] = 'animation-'.$animation;
         /**
          * admin mode?
          */
@@ -487,7 +494,7 @@ class IworksUpprev
         default:
             $show_taxonomy = false;
         }
-        $value = sprintf( '<div id="upprev_box" class="%s">', $class ) ;
+        $value = sprintf( '<div id="upprev_box" class="%s">', implode( ' ', $box_classes ) ) ;
         if ( 'yarpp' != $compare ) {
             if ( 'random' != $compare ) {
                 add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
@@ -564,11 +571,16 @@ class IworksUpprev
                     $url_sufix
                 );
                 if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
-                    $item_class[] = 'upprev_thumbnail';
+                    $a_class = '';
+                    if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
+                        $item_class[] = 'upprev_thumbnail';
+                        $a_class = 'upprev_thumbnail';
+                    }
                     $image = sprintf(
-                        '<a href="%s" title="%s" class="upprev_thumbnail"%s rel="%s">%s</a>',
+                        '<a href="%s" title="%s" class="%s"%s rel="%s">%s</a>',
                         $permalink,
                         wptexturize(get_the_title()),
+                        $a_class,
                         $ga_click_track,
                         $current_post_title,
                         apply_filters(
@@ -609,15 +621,15 @@ class IworksUpprev
         if ( $this->options->get_option( 'close_button_show' ) ) {
             $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
         }
-        if ( $this->options->get_option( 'promote' ) ) {
-            $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
-        }
-        ob_start();
-        do_action( 'iworks_upprev_box_after' );
-        $value .= ob_get_flush();
         if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
             $value .= '<br />';
         }
+        if ( $this->options->get_option( 'promote' ) ) {
+            $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
+        } 
+        ob_start();
+        do_action( 'iworks_upprev_box_after' );
+        $value .= ob_get_flush();
         $value .= '</div>';
         if ( !$compare != 'yarpp' ) {
             wp_reset_postdata();
@@ -672,13 +684,25 @@ class IworksUpprev
     {
         $this->working_mode = 'admin';
         $options = array();
+        $set_simple_as_default = false;
         foreach( $this->available_layouts as $key => $one ) {
-            $one = array(
-                'name'    => $one[ 'name' ],
-                'value'   => preg_replace( '/id="upprev_box" class="/', 'class="upprev_box ', $this->get_box( $key ) ),
-                'checked' => $key == $this->sanitize_layout( $layout )
+            $data = array(
+                'name'     => $one[ 'name' ],
+                'value'    => preg_replace( '/id="upprev_box" class="/', 'class="upprev_box ', $this->get_box( $key ) ),
+                'checked'  => $key == $this->sanitize_layout( $layout ),
+                'disabled' => false,
             );
-            $options[ $key ] = $one;
+            if ( !$this->is_pro && isset( $one['need_pro'] ) && $one['need_pro'] ) {
+                $data['disabled'] = true;
+                if ( $data['checked'] ) {
+                    $data['checked'] = false;
+                    $set_simple_as_default = true;
+                }
+            }
+            $options[ $key ] = $data;
+        }
+        if ( $set_simple_as_default ) {
+            $options['simple']['checked'] = true;
         }
         return $options;
     }

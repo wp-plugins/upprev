@@ -1,4 +1,5 @@
-function getScrollY() {
+function getScrollY()
+{
     scrOfY = 0;
     if( typeof( window.pageYOffset ) == "number" ) {
         scrOfY = window.pageYOffset;
@@ -78,35 +79,40 @@ jQuery(function($){
                  * horizontal
                  */
                 horizontal = box.height() + side_offset;
-                padding = 0;
-                if ( iworks_upprev.position_left ) {
-                    padding = box.css( 'padding-left' );
-                } else {
-                    padding = box.css( 'padding-right' );
-                }
-                padding.re( /px$/, '' );
-                alert( padding );
-
                 horizontal = '-' + horizontal + 'px';
                 /**
                  * vertical
                  */
-                vertical   = '-' + ( box.width()  + side_offset ) + 'px';
+                padding_side  = '0px';
+                position_side = '0px';
+                if ( iworks_upprev.position_left ) {
+                    padding_side  = box.css( 'padding-left' );
+                    position_side = box.css( 'left' );
+                } else {
+                    padding_side  = box.css( 'padding-right' );
+                    position_side = box.css( 'right' );
+                }
+                padding_side = parseInt( padding_side.replace( /px$/, '' ) );
+                position_side = parseInt( position_side.replace( /px$/, '' ) );
+                vertical = '-' + ( box.width()  + side_offset + padding_side + position_side ) + 'px';
+                /**
+                 * hide!
+                 */
                 switch ( iworks_upprev.position.all ) {
                     case 'left':
-                        box.stop().animate( { left: horizontal, bottom: vertical } );
+                        box.stop().animate( { left: vertical, bottom: horizontal } );
                         break;
                     case 'left-top':
-                        box.stop().animate( { left: horizontal, top: vertical } );
+                        box.stop().animate( { left: vertical, top: horizontal } );
                         break;
                     case 'right-top':
-                        box.stop().animate( { right: horizontal, top: vertical } );
+                        box.stop().animate( { right: vertical, top: horizontal } );
                         break;
                     case 'right-middle':
-                        box.stop().animate( { right: vertical } );
+                        box.stop().animate( { right: horizontal } );
                         break;
                     case 'right':
-                        box.stop().animate( { right: horizontal, bottom: vertical } );
+                        box.stop().animate( { right: vertical, bottom: horizontal } );
                         break;
                     default:
                         alert( iworks_upprev.position );
@@ -128,7 +134,8 @@ jQuery(function($){
     });
     $('#upprev_box').addClass( iworks_upprev.compare );
     if( iworks_upprev.url_new_window == 1 || iworks_upprev.ga_track_clicks == 1 ) {
-        $('#upprev_box a').click(function() {
+        $('#upprev_box a[id!=upprev_close]').click(function() {
+            $(this).attr('style','bacground-color:lime');
             if ( iworks_upprev.url_new_window == 1) {
                 window.open($(this).attr('href'));
             }
@@ -140,5 +147,53 @@ jQuery(function($){
             }
         });
     }
+    $(document).ready(function() {
+        if ( iworks_upprev.animation == 'fade' ) {
+            return;
+        }
+        box = $('#upprev_box');
+        /**
+         * vertical
+         */
+        padding_side  = '0px';
+        if ( iworks_upprev.position_left ) {
+            padding_side  = box.css( 'padding-left' );
+        } else {
+            padding_side  = box.css( 'padding-right' );
+        }
+        padding_side = parseInt( padding_side.replace( /px$/, '' ) );
+        vertical = '-' + ( box.width()  + side_offset + padding_side ) + 'px';
+
+        horizontal = 0;
+
+        console.log( 'css: right: ' +  box.css('right') ) ;
+        console.log( 'vertical: ' + vertical );
+        console.log( 'css: bottom: ' +  box.css('bottom') ) ;
+        console.log( 'horizontal: ' + horizontal );
+        /**
+         * move!
+         */
+        switch ( iworks_upprev.position.all ) {
+            case 'left':
+                box.css( { left: vertical, bottom: horizontal } );
+                break;
+            case 'left-top':
+                box.css( { left: vertical, top: horizontal } );
+                break;
+            case 'right-top':
+                box.css( { right: vertical, top: horizontal } );
+                break;
+            case 'right-middle':
+                box.css( { right: horizontal } );
+                break;
+            case 'right':
+                box.css( { right: vertical, bottom: horizontal } );
+                break;
+            default:
+                alert( iworks_upprev.position );
+                break;
+        }
+
+    });
 });
 

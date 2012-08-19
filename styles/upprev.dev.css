@@ -5,11 +5,12 @@
 #upprev_box
 ,.wp-admin .upprev_box
 {
-    text-align: left;
     background-color: #fff;
-    padding: 10px 20px 10px 10px;
-    border-top: 2px solid #000;
     border-left: 1px solid #f0f0f0;
+    border-top: 2px solid #000;
+    color: #000;
+    padding: 10px 20px 10px 10px;
+    text-align: left;
     z-index:9999999;
     -moz-box-shadow: 0 4px 10px #666;
     -webkit-box-shadow: 0 4px 10px #666;
@@ -28,13 +29,14 @@
 #upprev_box h6
 ,.wp-admin .upprev_box h6
 {
-    text-transform: uppercase;
+    color: inherit;
+    font-family: arial,helvetica,sans-serif;
     font-size: 10px;
     font-weight: bold;
-    font-family: arial,helvetica,sans-serif;
-    color: inherit;
-    padding:0;
     margin:0 0 10px 0;
+    opacity: .8;
+    padding:0;
+    text-transform: uppercase;
 }
 
 #upprev_box h6 .num
@@ -93,13 +95,20 @@
     width: 13px;
 }
 #upprev_box p.promote
+,.wp-admin .upprev_box p.promote
 {
     clear:both;
-    color:#888;
-    font-size:.9em;
+    font-size:11px;
     margin:0px;
     padding-top:5px;
     text-align:right;
+}
+#upprev_box p.promote
+,#upprev_box p.promote a
+,.wp-admin .upprev_box p.promote
+,.wp-admin .upprev_box p.promote a
+{
+    color:#888;
 }
 
 /**
@@ -110,11 +119,17 @@
 {
     clear: none;
     float: left;
-    height: 96px;
-    margin: 0 12px;
+    height: 98px;
+    margin: 0 10px;
     overflow: hidden;
     position: relative;
-    width: 96px;
+    width: 98px;
+    border: 1px solid #ddd;
+}
+#upprev_box.vertical-3 div:hover
+,.wp-admin .upprev_box.vertical-3 div:hover
+{
+    border-color: #000;
 }
 #upprev_box.vertical-3 div:first-child
 ,.wp-admin .upprev_box.vertical-3 div:first-child
@@ -127,7 +142,9 @@
 {
     background-color: #fff;
     bottom: 0;
+    clear: none;
     font-size: 11px;
+    font-weight: 400;
     max-height: 50px;
     line-height: 15px;
     margin: 0;
@@ -138,10 +155,21 @@
     text-align: center;
     width: 100%;
 }
+#upprev_box.vertical-3 div:hover h5
+,.wp-admin .upprev_box.vertical-3 div:hover h5
+{
+    opacity: 1;
+}
 #upprev_box.vertical-3 div a
 ,.wp-admin .upprev_box.vertical-3 div a
 {
     color: #000;
     text-decoration: none;
+}
+#upprev_box.vertical-3 img
+,.wp-admin .upprev_box.vertical-3 img
+{
+    margin: 1px;
+    display: block;
 }
 

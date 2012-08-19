@@ -29,6 +29,22 @@ function iworks_upprev_options()
                 'configuration'     => 'simple'
             ),
             array(
+                'name'              => 'position',
+                'type'              => 'radio',
+                'th'                => __('Position', 'upprev' ),
+                'default'           => 'right',
+                'radio'             => array(
+                    'right'         => array( 'label' => __('bottom right', 'upprev' ) ),
+                    'left'          => array( 'label' => __('bottom left',  'upprev' ) ),
+                    'right-top'     => array( 'label' => __('top right',    'upprev' ), 'disabled' => true ),
+                    'left-top'      => array( 'label' => __('top left',     'upprev' ), 'disabled' => true ),
+                    'right-middle'  => array( 'label' => __('middle right', 'upprev' ), 'disabled' => true ),
+                    'left-middle'   => array( 'label' => __('middle left',  'upprev' ), 'disabled' => true )
+                ),
+                'configuration'     => 'both',
+                'sanitize_callback' => 'esc_html'
+            ),
+            array(
                 'name'              => 'layout',
                 'type'              => 'serialize',
                 'th'                => __( 'Layout', 'upprev' ),
@@ -75,6 +91,7 @@ function iworks_upprev_options()
                     'right-middle'  => array( 'label' => __('middle right', 'upprev' ), 'disabled' => true ),
                     'left-middle'   => array( 'label' => __('middle left',  'upprev' ), 'disabled' => true )
                 ),
+                'configuration'     => 'both',
                 'sanitize_callback' => 'esc_html'
             ),
             array(
@@ -598,9 +615,10 @@ function iworks_upprev_callback_layout( $value )
     foreach( $options as $key => $one ) {
         $id = 'iworks_upprev_'.crc32( $key );
         $content .= sprintf(
-            '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s id="%s"><label for="%s"> %s</label>',
+            '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s%s id="%s"><label for="%s"> %s</label>',
             $key,
             $one['checked']? ' checked="checked"':'',
+            $one['disabled']? ' disabled="disabled"':'',
             $id,
             $id,
             $one['name']
