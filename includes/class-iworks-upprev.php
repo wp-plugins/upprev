@@ -124,7 +124,6 @@ class IworksUpprev
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
         add_action( 'wp_footer',                  array( &$this, 'the_box' ), PHP_INT_MAX, 0 );
         add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts'   ) );
-        add_action( 'wp_print_styles',            array( &$this, 'wp_print_styles'    ) );
         /**
          * filters
          */
@@ -260,7 +259,20 @@ class IworksUpprev
             }
         }
         $data = '';
-        foreach ( array( 'animation', 'offset_percent', 'offset_element', 'css_side', 'css_bottom', 'compare', 'url_new_window', 'ga_track_views', 'ga_track_clicks', 'ga_opt_noninteraction' ) as $key ) {
+        $params = array(
+            'animation',
+            'compare',
+            'css_bottom',
+            'css_side',
+            'css_width',
+            'ga_opt_noninteraction',
+            'ga_track_clicks',
+            'ga_track_views',
+            'offset_element',
+            'offset_percent',
+            'url_new_window',
+        );
+        foreach ( $params as $key ) {
             $value = $this->options->get_option( $key );
             $data .= sprintf(
                 '%s: %s, ',
@@ -297,47 +309,6 @@ class IworksUpprev
             $content.= '})();'."\n";
         }
         $content .= '</script>'."\n";
-        if ( $use_cache ) {
-            set_site_transient( $cache_key, $content, $this->options->get_option( 'cache_lifetime' ) );
-        }
-        echo $content;
-    }
-
-    public function wp_print_styles()
-    {
-        if ( $this->iworks_upprev_check() ) {
-            return;
-        }
-        $use_cache = $this->options->get_option( 'use_cache' );
-        if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'style_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
-            if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
-                print $content;
-                return;
-            }
-        }
-        $content = '<style type="text/css">'."\n";
-        $content .= '#upprev_box{';
-        $values = array();
-        foreach ( array( 'position', 'animation' ) as $key ) {
-            $values[$key] = $this->options->get_option( $key );
-        }
-        foreach ( array( 'bottom', 'width', 'side' ) as $key ) {
-            $values[$key] = $this->options->get_option( 'css_'.$key );
-            switch ( $key ) {
-            case 'position':
-                break;
-            case 'side':
-                $content .= sprintf( '%s:%dpx;', $values['position'], $values[ $key ] ) ;
-                break;
-            default:
-                $content .= sprintf( '%s:%dpx;', $key, $values[ $key ] ) ;
-            }
-        }
-        $content .= sprintf ( 'display:%s;', $values['animation'] == 'flyout'? 'block':'none' );
-        $content .= '}'."\n";
-        $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $this->options->get_option( 'css' ) ) ) );
-        $content .= '</style>'."\n";
         if ( $use_cache ) {
             set_site_transient( $cache_key, $content, $this->options->get_option( 'cache_lifetime' ) );
         }

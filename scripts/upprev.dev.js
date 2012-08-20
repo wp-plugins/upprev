@@ -11,6 +11,26 @@ function getScrollY()
     return scrOfY;
 }
 
+function iworks_upprev_get_horizontal( box, side_offset )
+{
+    return '-' + (
+            box.width()
+            + side_offset
+            + parseInt( box.css( 'padding-top'    ).replace( /px$/, '' ) )
+            + parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) )
+            ) + 'px';
+}
+
+function iworks_upprev_get_vertical( box, side_offset )
+{
+    return '-' + (
+            box.width()
+            + side_offset
+            + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
+            + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
+            ) + 'px';
+}
+
 jQuery(function($){
     if ( 'undefined' == typeof( iworks_upprev ) ) {
         return;
@@ -75,26 +95,8 @@ jQuery(function($){
             if ( iworks_upprev.animation == 'fade' ) {
                 box.fadeOut( 'slow' );
             } else {
-                /**
-                 * horizontal
-                 */
-                horizontal = box.height() + side_offset;
-                horizontal = '-' + horizontal + 'px';
-                /**
-                 * vertical
-                 */
-                padding_side  = '0px';
-                position_side = '0px';
-                if ( iworks_upprev.position_left ) {
-                    padding_side  = box.css( 'padding-left' );
-                    position_side = box.css( 'left' );
-                } else {
-                    padding_side  = box.css( 'padding-right' );
-                    position_side = box.css( 'right' );
-                }
-                padding_side = parseInt( padding_side.replace( /px$/, '' ) );
-                position_side = parseInt( position_side.replace( /px$/, '' ) );
-                vertical = '-' + ( box.width()  + side_offset + padding_side + position_side ) + 'px';
+                horizontal = iworks_upprev_get_horizontal( box, side_offset );
+                vertical = iworks_upprev_get_vertical( box, side_offset );
                 /**
                  * hide!
                  */
@@ -152,24 +154,9 @@ jQuery(function($){
             return;
         }
         box = $('#upprev_box');
-        /**
-         * vertical
-         */
-        padding_side  = '0px';
-        if ( iworks_upprev.position_left ) {
-            padding_side  = box.css( 'padding-left' );
-        } else {
-            padding_side  = box.css( 'padding-right' );
-        }
-        padding_side = parseInt( padding_side.replace( /px$/, '' ) );
-        vertical = '-' + ( box.width()  + side_offset + padding_side ) + 'px';
-
-        horizontal = 0;
-
-        console.log( 'css: right: ' +  box.css('right') ) ;
-        console.log( 'vertical: ' + vertical );
-        console.log( 'css: bottom: ' +  box.css('bottom') ) ;
-        console.log( 'horizontal: ' + horizontal );
+        box.css( { width: iworks_upprev.css_width } );
+        horizontal = iworks_upprev_get_horizontal( box, side_offset );
+        vertical = iworks_upprev_get_vertical( box, side_offset );
         /**
          * move!
          */
