@@ -110,6 +110,7 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 * IMPROVMENT: javascript & css files are minifized
 * IMPROVMENT: added remebering usage "close" button
 * IMPROVMENT: added free layouts: vertical-3
+* IMPROVMENT: added ajax request to load upPrevBox content
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name

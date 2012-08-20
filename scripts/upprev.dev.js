@@ -123,64 +123,86 @@ jQuery(function($){
             }
         }
     }
-    $( window ).bind( 'scroll', function() {
-        upprev_show_box();
-    });
-    if ($(window).height() == $(document).height()) {
-        upprev_show_box();
-    }
-    $("#upprev_close").click(function() {
-        $('#upprev_box').fadeOut("slow");
-        $(window).unbind('scroll');
-        return false;
-    });
-    $('#upprev_box').addClass( iworks_upprev.compare );
-    if( iworks_upprev.url_new_window == 1 || iworks_upprev.ga_track_clicks == 1 ) {
-        $('#upprev_box a[id!=upprev_close]').click(function() {
-            $(this).attr('style','bacground-color:lime');
-            if ( iworks_upprev.url_new_window == 1) {
-                window.open($(this).attr('href'));
-            }
-            if ( upprev_ga && iworks_upprev.ga_track_clicks == 1 ) {
-                _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1, upprev_ga_opt_noninteraction ] );
-            }
-            if ( iworks_upprev.url_new_window == 1) {
-                return false;
-            }
-        });
-    }
     $(document).ready(function() {
-        if ( iworks_upprev.animation == 'fade' ) {
-            return;
-        }
-        box = $('#upprev_box');
-        box.css( { width: iworks_upprev.css_width } );
-        horizontal = iworks_upprev_get_horizontal( box, side_offset );
-        vertical = iworks_upprev_get_vertical( box, side_offset );
-        /**
-         * move!
-         */
-        switch ( iworks_upprev.position.all ) {
-            case 'left':
-                box.css( { left: vertical, bottom: horizontal } );
-                break;
-            case 'left-top':
-                box.css( { left: vertical, top: horizontal } );
-                break;
-            case 'right-top':
-                box.css( { right: vertical, top: horizontal } );
-                break;
-            case 'right-middle':
-                box.css( { right: horizontal } );
-                break;
-            case 'right':
-                box.css( { right: vertical, bottom: horizontal } );
-                break;
-            default:
-                alert( iworks_upprev.position );
-                break;
-        }
-
+        $.get( iworks_upprev.url, function( data ) {
+            /**
+             * append data
+             */
+            $('body').append( data );
+            /**
+             * bind scroll
+             */
+            $( window ).bind( 'scroll', function() {
+                upprev_show_box();
+            });
+            /**
+             * bind close function
+             */
+            $("#upprev_close").click(function() {
+                $('#upprev_box').fadeOut("slow");
+                $(window).unbind('scroll');
+                return false;
+            });
+            /**
+             * force links to open in new window if needed
+             */
+            if( iworks_upprev.url_new_window == 1 || iworks_upprev.ga_track_clicks == 1 ) {
+                $('#upprev_box a[id!=upprev_close]').click(function() {
+                    $(this).attr('style','bacground-color:lime');
+                    if ( iworks_upprev.url_new_window == 1) {
+                        window.open($(this).attr('href'));
+                    }
+                    if ( upprev_ga && iworks_upprev.ga_track_clicks == 1 ) {
+                        _gaq.push( [ '_trackEvent', 'upPrev', iworks_upprev.title, $(this).html(), 1, upprev_ga_opt_noninteraction ] );
+                    }
+                    if ( iworks_upprev.url_new_window == 1) {
+                        return false;
+                    }
+                });
+            }
+            /**
+             * setup width
+             */
+            box = $('#upprev_box');
+            box.css( { width: iworks_upprev.css_width } );
+            /**
+             * out, is fade
+             */
+            if ( iworks_upprev.animation == 'flyout' ) {
+                /**
+                * setup init animation
+                */
+                horizontal = iworks_upprev_get_horizontal( box, side_offset );
+                vertical = iworks_upprev_get_vertical( box, side_offset );
+                /**
+                * move!
+                */
+                switch ( iworks_upprev.position.all ) {
+                    case 'left':
+                        box.css( { left: vertical, bottom: horizontal } );
+                        break;
+                    case 'left-top':
+                        box.css( { left: vertical, top: horizontal } );
+                        break;
+                    case 'right-top':
+                        box.css( { right: vertical, top: horizontal } );
+                        break;
+                    case 'right-middle':
+                        box.css( { right: horizontal } );
+                        break;
+                    case 'right':
+                        box.css( { right: vertical, bottom: horizontal } );
+                        break;
+                    default:
+                        alert( iworks_upprev.position );
+                        break;
+                }
+            }
+            /**
+             * maybe show?
+             */
+            upprev_show_box();
+        });
     });
 });
 

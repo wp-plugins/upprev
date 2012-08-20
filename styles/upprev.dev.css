@@ -12,6 +12,8 @@
     padding: 10px 20px 10px 10px;
     text-align: left;
     z-index:9999999;
+    line-height: 1.25em;
+    bottom: -999em;
     -moz-box-shadow: 0 4px 10px #666;
     -webkit-box-shadow: 0 4px 10px #666;
     box-shadow: 0 4px 10px #666;

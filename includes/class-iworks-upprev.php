@@ -105,7 +105,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-        return false;
+//        return false;
         return true;
     }
 
@@ -122,7 +122,6 @@ class IworksUpprev
         add_action( 'admin_menu',                 array( &$this, 'admin_menu'         ) );
         add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar'          ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
-        add_action( 'wp_footer',                  array( &$this, 'the_box' ), PHP_INT_MAX, 0 );
         add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts'   ) );
         /**
          * filters
@@ -294,6 +293,7 @@ class IworksUpprev
         $content .= 'var iworks_upprev = { ';
         $content .= $data;
         $content .= 'title: \''.esc_attr( get_the_title() ).'\'';
+        $content .= ', url: \''. plugins_url( 'box.php', dirname( __FILE__ ) ).'?p='.get_the_ID().'\'';
         $content .= ' };'."\n";
         /**
          * Google Analitics tracking code
