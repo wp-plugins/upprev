@@ -2,7 +2,7 @@
 /**
  * require
  */
-require_once dirname( __FILE__ ).'/iworks.upprev.class.php';
+require_once dirname( __FILE__ ).'/class-iworks-upprev.php';
 require_once dirname( dirname( __FILE__ )).'/etc/options.php';
 require_once dirname( __FILE__ ).'/iworks.options.class.php';
 require_once dirname( __FILE__ ).'/show_thubnail_on_admin_post_list.php';
