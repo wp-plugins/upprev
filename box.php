@@ -7,6 +7,7 @@ if ( isset( $_GET['p'] ) && $_GET['p'] ) {
     while ( have_posts() ) {
         the_post();
         $iworks_upprev->the_box();
+        echo '<a id="upprev_rise">&clubs;</a>';
     }
 }
 

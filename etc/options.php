@@ -496,10 +496,10 @@ function iworks_upprev_get_compare_option()
 {
     $data = array();
     if ( is_plugin_active(plugin_basename( 'yet-another-related-posts-plugin/yarpp.php' ) ) ) {
-        $data['yarpp'] = __( 'Related Posts (YARPP)', 'yarpp' );
-        $data['yarpp'] .= __( '. Works only with post and/or pages.', 'upprev' );
+        $data['yarpp']['label'] = __( 'Related Posts (YARPP)', 'yarpp' );
+        $data['yarpp']['label'] .= __( '. Works only with post and/or pages.', 'upprev' );
     } else {
-        $data['yarpp-disabled'] = __( 'Related Posts (YARPP)', 'upprev' );
+        $data['yarpp-disabled']['label'] = __( 'Related Posts (YARPP)', 'upprev' );
     }
     return $data;
 }

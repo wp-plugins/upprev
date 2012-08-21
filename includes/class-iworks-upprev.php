@@ -416,17 +416,15 @@ class IworksUpprev
          * YARPP
          */
         if ( 'yarpp' == $compare ) {
-            if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.3' ) > -1 ) {
-                $a = array();
-                if ( array_key_exists( 'post', $post_type ) && array_key_exists( 'page', $post_type ) ) {
-                    $yarpp_posts = related_entries( $a, $post->ID, false );
-                } else if ( array_key_exists( 'post', $post_type ) ) {
-                    $yarpp_posts = related_posts( $a, $post->ID, false );
-                } else if ( array_key_exists( 'page', $post_type ) ) {
-                    $yarpp_posts = related_pages( $a, $post->ID, false );
-                }
-                if ( !$yarpp_posts ) {
+            if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.5' ) > -1 ) {
+                if ( !yarpp_related_exist( $args ) ) {
                     return;
+                }
+                $args['fields'] = 'ids';
+                $a = yarpp_get_related( $args );
+                $yarpp_posts = array();
+                foreach( $a as $b ) {
+                    $yarpp_posts[] = $b->ID;
                 }
             } else {
                 $compare = 'simple';
@@ -485,85 +483,89 @@ class IworksUpprev
             $show_taxonomy = false;
         }
         $value = sprintf( '<div id="upprev_box" class="%s">', implode( ' ', $box_classes ) ) ;
-        if ( 'yarpp' != $compare ) {
-            if ( 'random' != $compare ) {
-                add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
+        if ( 'random' != $compare ) {
+            add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
+        }
+        add_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
+        if ( $excerpt_length > 0 ) {
+            add_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
+        }
+        /**
+         * YARPP
+         */
+        if ( 'yarpp' == $compare ) {
+            $args = array( 'post__in' => $yarpp_posts );
+        }
+        $upprev_query = new WP_Query( $args );
+        if ( !$upprev_query->have_posts() ) {
+            return;
+        }
+        /**
+         * remove any filter if needed
+         */
+        if ( $this->options->get_option( 'remove_all_filters' ) ) {
+            remove_all_filters( 'the_content' );
+        }
+        /**
+         * catch elements
+         */
+        ob_start();
+        do_action( 'iworks_upprev_box_before' );
+        $value .= ob_get_flush();
+        /**
+         * box title
+         */
+        $title = '';
+        if ( $this->options->get_option( 'header_show' ) ) {
+            $header_text = $this->options->get_option( 'header_text' );
+            if ( !empty( $header_text ) ) {
+                $title .= $header_text;
+            } else if ( count( $siblings ) ) {
+                $title .= sprintf ( '%s ', __('More in', 'upprev' ) );
+                $a = array();
+                foreach ( $siblings as $url => $name ) {
+                    $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
+                }
+                $title .= implode( ', ', $a);
+            } else if ( preg_match( '/^(random|yarpp)$/', $compare ) or 'vertical 3' == $layout ) {
+                $title .= __( 'Read more:', 'upprev' );
+            } else {
+                $title .= __( 'Read previous post:', 'upprev' );
             }
-            add_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
-
-            if ( $excerpt_length > 0 ) {
-                add_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
+        }
+        $title = apply_filters( 'iworks_upprev_box_title', $title );
+        if ( $title ) {
+            $value .= sprintf( '<h6>%s</h6>', $title );
+        }
+        /**
+         *
+         */
+        $i = 1;
+        $ga_click_track = '';
+        while ( $upprev_query->have_posts() ) {
+            $item = '';
+            $upprev_query->the_post();
+            $item_class = array();
+            if ( $excerpt_show ) {
+                $item_class[] = 'upprev_excerpt';
             }
-            $upprev_query = new WP_Query( $args );
-            if ( !$upprev_query->have_posts() ) {
-                return;
+            if ( $i > $number_of_posts ) {
+                break;
             }
-            /**
-             * remove any filter if needed
-             */
-            if ( $this->options->get_option( 'remove_all_filters' ) ) {
-                remove_all_filters( 'the_content' );
-            }
-            /**
-             * catch elements
-             */
-            ob_start();
-            do_action( 'iworks_upprev_box_before' );
-            $value .= ob_get_flush();
-            /**
-             * box title
-             */
-            $title = '';
-            if ( $this->options->get_option( 'header_show' ) ) {
-                $header_text = $this->options->get_option( 'header_text' );
-                if ( !empty( $header_text ) ) {
-                    $title .= $header_text;
-                } else if ( count( $siblings ) ) {
-                    $title .= sprintf ( '%s ', __('More in', 'upprev' ) );
-                    $a = array();
-                    foreach ( $siblings as $url => $name ) {
-                        $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
-                    }
-                    $title .= implode( ', ', $a);
-                } else if ( 'random' == $compare or 'vertical 3' == $layout ) {
-                    $title .= __( 'Read more:', 'upprev' );
-                } else {
-                    $title .= __( 'Read previous post:', 'upprev' );
+            if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
+                if ( $i++ < $number_of_posts ) {
+                    $item_class[] = 'upprev_space';
                 }
             }
-            $title = apply_filters( 'iworks_upprev_box_title', $title );
-            if ( $title ) {
-                $value .= sprintf( '<h6>%s</h6>', $title );
-            }
-            /**
-             *
-             */
-            $i = 1;
-            $ga_click_track = '';
-            while ( $upprev_query->have_posts() ) {
-                $item = '';
-                $upprev_query->the_post();
-                $item_class = array();
-                if ( $excerpt_show ) {
-                    $item_class[] = 'upprev_excerpt';
-                }
-                if ( $i > $number_of_posts ) {
-                    break;
-                }
-                if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
-                    if ( $i++ < $number_of_posts ) {
-                        $item_class[] = 'upprev_space';
-                    }
-                }
-                $image = '';
-                $permalink = sprintf(
-                    '%s%s%s',
-                    $url_prefix,
-                    get_permalink(),
-                    $url_sufix
-                );
-                if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
-                    $a_class = '';
+            $image = '';
+            $permalink = sprintf(
+                '%s%s%s',
+                $url_prefix,
+                get_permalink(),
+                $url_sufix
+            );
+            if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
+                $a_class = '';
                     if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
                         $item_class[] = 'upprev_thumbnail';
                         $a_class = 'upprev_thumbnail';
@@ -615,30 +617,26 @@ class IworksUpprev
                 $item .= '</div>';
                 $value .= apply_filters( 'iworks_upprev_box_item', $item );
             }
-        } else {
-            $value .= $yarpp_posts;
-        }
         if ( $this->options->get_option( 'close_button_show' ) ) {
             $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
         }
-        if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
-            $value .= '<br />';
-        }
         if ( $this->options->get_option( 'promote' ) ) {
             $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
-        } 
+        }
+        $value .= '<br />';
         ob_start();
         do_action( 'iworks_upprev_box_after' );
         $value .= ob_get_flush();
         $value .= '</div>';
-        if ( !$compare != 'yarpp' ) {
-            wp_reset_postdata();
-            remove_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
-            remove_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
-            if ( $excerpt_length > 0 ) {
-                remove_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
-            }
+        wp_reset_postdata();
+        remove_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
+        remove_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
+        if ( $excerpt_length > 0 ) {
+            remove_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
         }
+        /**
+         * cache
+         */
         if ( 'site' == $this->working_mode && $use_cache && $compare != 'random' ) {
             set_site_transient( $cache_key, $value, $this->options->get_option( 'cache_lifetime' ) );
         }

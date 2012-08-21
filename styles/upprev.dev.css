@@ -1,7 +1,6 @@
 #upprev_box
 {
-    bottom: -999em;
-    position:fixed;
+    position: fixed;
 }
 #upprev_box
 ,.wp-admin .upprev_box
@@ -189,4 +188,28 @@
     margin: 1px;
     display: block;
 }
-
+/**
+ *
+ */
+div.upprev_space
+{
+    clear: both;
+    margin-bottom: 20px;
+}
+/**
+ * upprev_rise
+ */
+#upprev_rise
+{
+    background-color: #fff !important;
+    color: #000 !important;
+    cursor: pointer;
+    display: none;
+    font-size: 14px !important;
+    font-weight: 400;
+    line-height: 18px;
+    position: fixed;
+    text-align: center;
+    text-decoration: none;
+    width: 18px;
+}
