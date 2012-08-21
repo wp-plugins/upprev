@@ -1,16 +1,3 @@
-function getScrollY()
-{
-    scrOfY = 0;
-    if( typeof( window.pageYOffset ) == "number" ) {
-        scrOfY = window.pageYOffset;
-    } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
-        scrOfY = document.body.scrollTop;
-    } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
-        scrOfY = document.documentElement.scrollTop;
-    }
-    return scrOfY;
-}
-
 function iworks_upprev_get_horizontal( box, side_offset )
 {
     return '-' + (
@@ -31,6 +18,11 @@ function iworks_upprev_get_vertical( box, side_offset )
             ) + 'px';
 }
 
+function iworks_upprev_get_html_offset( h )
+{
+    return parseInt( h.css( 'margin-top' ).replace( /px$/, '' ) ) - h.offset().top;
+}
+
 jQuery(function($){
     if ( 'undefined' == typeof( iworks_upprev ) ) {
         return;
@@ -46,12 +38,12 @@ jQuery(function($){
         var lastScreen = false;
         if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
             if ($(iworks_upprev.offset_element).length > 0) {
-                lastScreen = getScrollY() + $(window).height() > $(iworks_upprev.offset_element).offset().top;
+                lastScreen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
             } else {
-                lastScreen = getScrollY() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
+                lastScreen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            lastScreen = ( getScrollY() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
+            lastScreen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
         box = $('#upprev_box');
         if (lastScreen && !upprev_closed) {
@@ -93,7 +85,7 @@ console.log( 'h: ' + horizontal );
                 upprev_ga_track_view = false;
             }
         }
-        else if (upprev_closed && getScrollY() == 0) {
+        else if (upprev_closed && iworks_upprev_get_html_offset( $('html') ) == 0) {
             upprev_closed = false;
         }
         else if (!upprev_hidden) {
