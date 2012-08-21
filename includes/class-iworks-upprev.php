@@ -550,8 +550,10 @@ class IworksUpprev
                 if ( $i > $number_of_posts ) {
                     break;
                 }
-                if ( $i++ < $number_of_posts ) {
-                    $item_class[] = 'upprev_space';
+                if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
+                    if ( $i++ < $number_of_posts ) {
+                        $item_class[] = 'upprev_space';
+                    }
                 }
                 $image = '';
                 $permalink = sprintf(
@@ -578,8 +580,8 @@ class IworksUpprev
                                 get_the_ID(),
                                 array( $thumb_width, $thumb_height ),
                                 array(
-                                    'title'=>get_the_title(),
-                                    'class'=>'iworks_upprev_thumb'
+                                    'title' => get_the_title(),
+                                    'class' => 'iworks_upprev_thumb'
                                 )
                             )
                         )
@@ -589,7 +591,15 @@ class IworksUpprev
                     do_action( 'iworks_upprev_image' );
                     $image = ob_get_flush();
                 }
-                $item .= sprintf( '<div class="%s">%s', implode( ' ', $item_class ), $image );
+                if( empty( $image ) ) {
+                    $item_class[] = 'no-image';
+                }
+                $item .= '<div';
+                if ( count( $item ) ) {
+                    $item .= sprintf( ' class="%s"', implode( ' ', $item_class ) );
+                }
+                $item .= '>';
+                $item .= $image;
                 $item .= sprintf(
                     '<h5><a href="%s"%s rel="%s">%s</a></h5>',
                     $permalink,

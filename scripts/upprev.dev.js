@@ -59,22 +59,28 @@ jQuery(function($){
                 box.fadeIn("slow");
             } else {
                 horizontal = iworks_upprev.css_side + 'px';
+                vertical   = iworks_upprev.css_bottom + 'px';
+
+console.log( 'p: ' + iworks_upprev.position.all );
+console.log( 'v: ' + vertical );
+console.log( 'h: ' + horizontal );
+
                 switch ( iworks_upprev.position.all ) {
                     case 'left':
-                        box.stop().animate({left: horizontal, bottom: iworks_upprev.css_bottom + 'px' });
+                        box.stop().animate({left: horizontal, bottom: vertical });
                         break;
                     case 'left-top':
-                        box.stop().animate({left: horizontal, top: iworks_upprev.css_bottom + 'px' });
+                        box.stop().animate({left: horizontal, top: vertical });
                         break;
                     case 'right':
-                        box.stop().animate({right: horizontal, bottom: iworks_upprev.css_bottom + 'px' });
+                        box.stop().animate({right: horizontal, bottom: vertical });
                         break;
                     case 'right-middle':
                         box.css( 'top', ( ( $(window).height() + box.height() ) / 2 ) + 'px' );
                         box.stop().animate( { right: horizontal });
                         break;
                     case 'right-top':
-                        box.stop().animate({right: horizontal, top: iworks_upprev.css_bottom + 'px' });
+                        box.stop().animate({right: horizontal, top: vertical });
                         break;
                     default:
                         alert( iworks_upprev.position );
