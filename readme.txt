@@ -90,6 +90,66 @@ function change_thumbnail( $image )
 
 Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select post types` section.
 
+= How I can customize with my own styles? =
+
+Switch settings to **Advance** and go to '*Other*' tab to fill "**Custom CSS**" field.
+
+Example:
+
+`
+/* header */
+#upprev_box h6 a
+{
+    color: red;
+}
+/* header link: mouse over */
+#upprev_box h6 a:hover
+{
+    color: black;
+}
+/* headera link: visited */
+#upprev_box h6 a:visited
+{
+    color: gray;
+}
+/* container for title, thumbnail and excerpt */
+#upprev_box .upprev_excerpt
+{
+    font-size: 8px;
+}
+/* excerpt */
+#upprev_box .upprev_excerpt p
+{
+    line-height: 1em;
+}
+/* previous post link */
+#upprev_box .upprev_excerpt p a
+{
+    text-transform: uppercase;
+}
+/* previous post link: mouse over */
+#upprev_box .upprev_excerpt p a:hover
+{
+    text-decoration: underline;
+}
+/* previous post link: visited */
+#upprev_box .upprev_excerpt p a:visited
+{
+    color: gray;
+}
+/* thumbnail image */
+#upprev_box .upprev_thumb
+{
+    padding: 1px;
+    border: 1px dotted red;
+}
+/* close button */
+#upprev_close
+{
+    opacity: .7;
+}
+`
+
 == Screenshots ==
 
 1. upPrev on post
@@ -111,6 +171,7 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 * IMPROVMENT: added remebering usage "close" button
 * IMPROVMENT: added free layouts: vertical-3
 * IMPROVMENT: added ajax request to load upPrevBox content
+* IMPROVMENT: rework option page to easier configuration
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
@@ -289,6 +350,10 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 * INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
+
+= 4.0 =
+
+Added simple configuration screen. Rebuild option page to easier configuration. Created PRO version.
 
 = 3.3.3.1 =
 

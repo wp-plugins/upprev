@@ -1,5 +1,6 @@
 #upprev_box
 {
+    bottom: -999em;
     position:fixed;
 }
 #upprev_box
@@ -13,14 +14,11 @@
     text-align: left;
     z-index:9999999;
     line-height: 1.25em;
-    bottom: -999em;
     -moz-box-shadow: 0 4px 10px #666;
     -webkit-box-shadow: 0 4px 10px #666;
     box-shadow: 0 4px 10px #666;
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7)";
     filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7);
-    _position: absolute;
-    _top: 0;
 }
 .wp-admin .upprev_box
 {

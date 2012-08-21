@@ -9,6 +9,7 @@ function iworks_upprev_options()
      */
     $iworks_upprev_options['index'] = array(
         'use_tabs' => true,
+        'version'  => '0.0',
         'options'  => array(
             array(
                 'name'              => 'last_used_tab',
@@ -165,36 +166,6 @@ function iworks_upprev_options()
                 'label'             => __('Show close button.', 'upprev'),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
-            ),
-            array(
-                'name'              => 'css',
-                'type'              => 'textarea',
-                'class'             => 'large-text code',
-                'th'                => __('Custom CSS', 'upprev' ),
-                'sanitize_callback' => 'esc_html',
-                'rows'              => 10,
-                'default'           =>'
-/* header */
-#upprev_box h6 a { }
-/* header link: mouse over */
-#upprev_box h6 a:hover { }
-/* headera link: visited */
-#upprev_box h6 a:visited { }
-/* container for title, thumbnail and excerpt */
-#upprev_box .upprev_excerpt { }
-/* excerpt */
-#upprev_box .upprev_excerpt p { }
-/* previous post link */
-#upprev_box .upprev_excerpt p a { }
-/* previous post link: mouse over */
-#upprev_box .upprev_excerpt p a:hover { }
-/* previous post link: visited */
-#upprev_box .upprev_excerpt p a:visited { }
-/* thumbnail image */
-#upprev_box .upprev_thumb { }
-/* close button */
-#upprev_close { }
-'
             ),
             /**
              * content
@@ -398,37 +369,19 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
-             * cache
+             * Advance: css, cache, mobile devices
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Cache', 'upprev' ),
+                'label'             => __( 'Other', 'upprev' ),
                 'configuration'     => 'advance'
-            ),
-            array(
-                'name'              => 'use_cache',
-                'type'              => 'checkbox',
-                'th'                => __('Cache', 'upprev'),
-                'label'             => __('Use Transient Cache.', 'upprev'),
-                'description'       => __('Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
-                'default'           => 0,
-                'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
-            ),
-            array(
-                'name'              => 'cache_lifetime',
-                'type'              => 'text',
-                'label'             => __('Transients Cache Lifetime.', 'upprev' ),
-                'description'       => __('In seconds, default one hour (3600s).', 'upprev'),
-                'default'           => 3600,
-                'sanitize_callback' => 'absint'
             ),
             /**
-             * mobile devices
+             * Advance: mobile devices
              */
             array(
-                'type'              => 'heading',
+                'type'              => 'subheading',
                 'label'             => __( 'Mobile devices', 'upprev' ),
-                'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'mobile_hide',
@@ -448,11 +401,50 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
+             * Advance: css
+             */
+            array(
+                'type'              => 'subheading',
+                'label'             => __( 'Custom CSS', 'upprev' ),
+            ),
+            array(
+                'name'              => 'css',
+                'type'              => 'textarea',
+                'class'             => 'large-text code',
+                'th'                => __('Custom CSS', 'upprev' ),
+                'sanitize_callback' => 'esc_html',
+                'rows'              => 10,
+            /**
+             * Advance: cache
+             */
+            ),
+            array(
+                'type'              => 'subheading',
+                'label'             => __( 'Cache', 'upprev' ),
+            ),
+            array(
+                'name'              => 'use_cache',
+                'type'              => 'checkbox',
+                'th'                => __('Cache', 'upprev'),
+                'label'             => __('Use Transient Cache.', 'upprev'),
+                'description'       => __('Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
+                'default'           => 0,
+                'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
+            ),
+            array(
+                'name'              => 'cache_lifetime',
+                'type'              => 'text',
+                'label'             => __('Transients Cache Lifetime.', 'upprev' ),
+                'description'       => __('In seconds, default one hour (3600s).', 'upprev'),
+                'default'           => 3600,
+                'sanitize_callback' => 'absint'
+            ),
+            /**
              * promotion
              */
             array(
                 'type'              => 'heading',
-                'label'             => __( 'Other', 'upprev' )
+                'label'             => __( 'Promote', 'upprev' )
             ),
             array(
                 'name'              => 'promote',

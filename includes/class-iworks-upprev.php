@@ -696,5 +696,17 @@ class IworksUpprev
         }
         return $options;
     }
+
+    public function update()
+    {
+        $version = $this->options->get_option( 'version' );
+        if ( version_compare( $this->version, $version, '>' ) ) {
+            if ( version_compare( $version, '2.0', '<' ) ) {
+                $this->options->add_option( 'salt', wp_generate_password( 256, false, false ), false );
+            }
+            $this->options->update_option( 'version', $this->version );
+        }
+    }
+
 }
 

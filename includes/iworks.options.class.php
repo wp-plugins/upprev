@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.1.0';
+        $this->version              = '1.2.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -58,7 +58,7 @@ class IworksOptions
             echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks').'</strong></p></div>';
             return;
         }
-        $is_simple = 'simple' == get_option( 'iworks_upprev_configuration', 'advance' );
+        $is_simple = 'simple' == $this->get_option( 'configuration', 'index', 'advance' );
         $content   = '';
         $hidden    = '';
         $top       = '';
@@ -145,6 +145,8 @@ class IworksOptions
                     );
                     $content .= '<tbody>';
                 }
+                $content .= '<tr><td colspan="2">';
+            } else if ( $option['type'] == 'subheading' ) {
                 $content .= '<tr><td colspan="2">';
             } else if ( $option['type'] != 'hidden' ) {
                 $style = '';
@@ -291,6 +293,9 @@ class IworksOptions
                     $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
                 }
                 break;
+            case 'subheading':
+                $content .= sprintf( '<h4 class="title">%s</h4>', $option['label'] );
+                break;
             default:
                 $content .= sprintf('not implemented type: %s', $option['type']);
             }
@@ -368,11 +373,14 @@ class IworksOptions
         }
     }
 
-    public function get_option( $option_name, $option_group = 'index' )
+    public function get_option( $option_name, $option_group = 'index', $default_value = null )
     {
         $option_value = get_option( $this->option_prefix.$option_name, null );
-        if ( $option_value === null ) {
+        if ( null == $option_value ) {
             $option_value = $this->get_default_value( $option_name, $option_group );
+        }
+        if ( null == $option_value && !empty( $default_value ) ) {
+            $option_value = $default_value;
         }
         return $option_value;
     }
@@ -431,6 +439,12 @@ class IworksOptions
     public function update_option( $option_name, $option_value )
     {
         update_option( $this->option_prefix.$option_name, $option_value );
+    }
+
+    public function add_option( $option_name, $option_value, $autoload = true )
+    {
+        $autoload = $autoload? 'yes':'no';
+        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
     }
 }
 

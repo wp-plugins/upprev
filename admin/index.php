@@ -1,3 +1,4 @@
+<?php $iworks_upprev->update(); ?>
 <div class="wrap">
     <?php screen_icon(); ?>
     <h2><?php _e('upPrev', 'upprev') ?></h2>
