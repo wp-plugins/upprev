@@ -172,6 +172,7 @@ Example:
 * IMPROVMENT: added free layouts: vertical-3
 * IMPROVMENT: added ajax request to load upPrevBox content
 * IMPROVMENT: rework option page to easier configuration
+* IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
