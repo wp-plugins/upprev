@@ -84,12 +84,9 @@ function iworks_upprev_check()
      * check post types
      */
     $post_types = $iworks_upprev_options->get_option( 'post_type' );
-    if ( empty( $post_types ) ) {
-        $post_types = iworks_upprev_get_default_value( 'post_type' );
-    }
     if ( is_page() && $iworks_upprev_options->get_option( 'match_post_type' ) ) {
         return !array_key_exists( 'page', $post_types );
-    } else if ( $iworks_upprev_options->get_option( 'match_post_type' ) ) {
+    } else if ( $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
         global $post;
         return !array_key_exists( get_post_type( $post ), $post_types );
     }

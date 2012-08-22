@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 3.3.7
+Stable tag: 3.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
-* Russian (ru_RU) - [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
+* Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
@@ -98,9 +98,13 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 
 == Changelog ==
 
+= 3.3.8 =
+
+* BUGFIX: critical update, plugin crash site if choose no post types
+
 = 3.3.7 =
 
-* IMPROVMENT: added Russian translation by [Вадим Сохин](http://wordpress.org/support/profile/reprax/)
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
 
 = 3.3.6 =
 
@@ -272,6 +276,11 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 * INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
+
+= 3.3.8 =
+
+Critical update to prevent site crash!
+
 
 = 3.3.3.1 =
 
