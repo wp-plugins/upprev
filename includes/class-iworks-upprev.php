@@ -105,7 +105,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-//        return false;
+        return false;
         return true;
     }
 
@@ -126,7 +126,8 @@ class IworksUpprev
         /**
          * filters
          */
-        add_filter( 'index_iworks_upprev_position_data', array( &$this, 'index_iworks_upprev_position_data' ) );
+        add_filter( 'index_iworks_upprev_position_data',    array( &$this, 'index_iworks_upprev_position_data'    )        );
+        add_filter( 'index_iworks_upprev_position_content', array( &$this, 'index_iworks_upprev_position_content' ), 10, 5 );
     }
 
     public function after_setup_theme()
@@ -212,7 +213,7 @@ class IworksUpprev
         if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
             $value .= '<br />';
         }
-        add_theme_page( __( 'upPrev', 'upprev' ), __( 'upPrev', 'upprev' ), $this->capability, $this->dir.'/admin/index.php');
+        add_theme_page( __( 'upPrev', 'upprev' ), __( 'upPrev', 'upprev' ), $this->capability, $this->dir.'/admin/index.php' );
     }
 
     public function admin_init()
@@ -236,9 +237,9 @@ class IworksUpprev
         if ( !$this->is_pro ) {
             return $data;
         }
-        foreach( array( 'right', 'left' ) as $a ) {
-            foreach( array( 'top', 'middle' ) as $b ) {
-                $data[ $a . '-' . $b ]['disabled'] = false;
+        foreach( array_keys( $data ) as $key ) {
+            if ( isset( $data[ $key ]['disabled'] ) ) {
+                unset( $data[ $key ]['disabled'] );
             }
         }
         return $data;
@@ -714,6 +715,50 @@ class IworksUpprev
             }
             $this->options->update_option( 'version', $this->version );
         }
+    }
+
+    private function position_one_radio( $value, $input, $html_element_name, $option_name, $option_value )
+    {
+        $id = $option_name.'-'.$value;
+        $disabled = '';
+        if ( preg_match( '/\-disabled$/', $value ) ) {
+            $disabled = 'disabled="disabled"';
+        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+            $disabled = 'disabled="disabled"';
+        }
+        return sprintf (
+            '<td class="%s%s"><label for="%s" class="find-box-search"><input type="radio" name="%s" value="%s"%s id="%s" %s/> <span>%s</span></label></td>',
+            sanitize_title( $value ),
+            $disabled? ' disabled':'',
+            $id,
+            $html_element_name,
+            $value,
+            ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
+            $id,
+            $disabled,
+            $input['label']
+        );
+    }
+
+    public function index_iworks_upprev_position_content( $content, $data, $html_element_name, $option_name, $option_value )
+    {
+        $content = sprintf( '<table id="%s"><tbody><tr>', $html_element_name );
+        foreach( array( 'left-top', 'top', 'right-top' ) as $key ) {
+            $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
+        }
+        $content .= '</tr><tr>';
+        $key = 'left-middle';
+        $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
+        $content .= '<td>&nbsp;</td>';
+        $key = 'right-middle';
+        $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
+        $content .= '</tr><tr>';
+        foreach( array( 'left', 'bottom', 'right' ) as $key ) {
+            $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
+        }
+        $content .= '</tr><tr>';
+        $content .= '</tr></tbody></table>';
+        return $content;
     }
 
 }

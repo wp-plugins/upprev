@@ -51,21 +51,35 @@ jQuery(function($){
                 horizontal = iworks_upprev.css_side + 'px';
                 vertical   = iworks_upprev.css_bottom + 'px';
                 switch ( iworks_upprev.position.all ) {
-                    case 'left':
-                        box.stop().animate({left: horizontal, bottom: vertical });
-                        break;
-                    case 'left-top':
-                        box.stop().animate({left: horizontal, top: vertical });
+                    case 'bottom':
+                    case 'top':
+                        box.css( 'left', ( ( $(window).width() - box.width() - parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) ) - parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) ) ) / 2 ) + 'px' )
                         break;
                     case 'left-middle':
-                        box.css( 'top', ( ( $(window).height() - box.height() ) / 2 ) + 'px' );
+                    case 'right-middle':
+                        box.css( 'top', ( ( $(window).height() - box.height() - parseInt( box.css( 'padding-top'  ).replace( /px$/, '' ) ) - parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) ) ) / 2 ) + 'px' )
+                        break;
+                }
+                switch ( iworks_upprev.position.all ) {
+                    case 'left':
+                        box.stop().animate({ left: horizontal, bottom: vertical });
+                        break;
+                    case 'bottom':
+                        box.stop().animate({ bottom: vertical });
+                        break;
+                    case 'top':
+                        box.stop().animate({ top: vertical });
+                        break;
+                    case 'left-top':
+                        box.stop().animate({ left: horizontal, top: vertical });
+                        break;
+                    case 'left-middle':
                         box.stop().animate( { left: horizontal });
                         break;
                     case 'right':
-                        box.stop().animate({right: horizontal, bottom: vertical });
+                        box.stop().animate({ right: horizontal, bottom: vertical });
                         break;
                     case 'right-middle':
-                        box.css( 'top', ( ( $(window).height() + box.height() ) / 2 ) + 'px' );
                         box.stop().animate( { right: horizontal });
                         break;
                     case 'right-top':
@@ -98,6 +112,12 @@ jQuery(function($){
                 switch ( iworks_upprev.position.all ) {
                     case 'left':
                         box.stop().animate( { left: vertical, bottom: horizontal } );
+                        break;
+                    case 'bottom':
+                        box.stop().animate( { bottom: horizontal } );
+                        break;
+                    case 'top':
+                        box.stop().animate( { top: horizontal } );
                         break;
                     case 'left-top':
                         box.stop().animate( { left: vertical, top: horizontal } );
@@ -134,19 +154,21 @@ jQuery(function($){
                 upprev_show_box();
             });
             $( '#upprev_rise' ).click( function() {
-                upprev_show_box();
-                $( window ).bind( 'scroll', function() {
+                $(this).fadeOut('slow', function() {
                     upprev_show_box();
+                    $( window ).bind( 'scroll', function() {
+                        upprev_show_box();
+                    });
                 });
-                $(this).fadeOut();
             });
             /**
              * bind close function
              */
             $("#upprev_close").click(function() {
-                $('#upprev_box').fadeOut("slow");
-                $(window).unbind('scroll');
-                $('#upprev_rise').css({ display: 'block', bottom: 0, right: 0 });
+                $('#upprev_box').fadeOut("slow", function(){
+                    $(window).unbind('scroll');
+                    $('#upprev_rise').css({ bottom: 0, right: 0 }).fadeIn( 'slow' );
+                });
                 return false;
             });
             /**
@@ -186,6 +208,12 @@ jQuery(function($){
                 switch ( iworks_upprev.position.all ) {
                     case 'left':
                         box.css( { left: vertical, bottom: horizontal } );
+                        break;
+                    case 'bottom':
+                        box.css( { bottom: horizontal } );
+                        break;
+                    case 'top':
+                        box.css( { top: horizontal } );
                         break;
                     case 'left-top':
                         box.css( { left: vertical, top: horizontal } );

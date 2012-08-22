@@ -19,6 +19,7 @@
     box-shadow: 0 4px 10px #666;
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7)";
     filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, direction=270, strength=7);
+
 }
 .wp-admin .upprev_box
 {
@@ -130,11 +131,17 @@
     overflow: hidden;
     position: relative;
     width: 98px;
+    transition-duration: .5s;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
 }
 #upprev_box.vertical-3 div:hover
 ,.wp-admin .upprev_box.vertical-3 div:hover
 {
     border-color: #000;
+    -moz-transform: rotate(-6deg);
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
 }
 #upprev_box.vertical-3 div:first-child
 ,.wp-admin .upprev_box.vertical-3 div:first-child
@@ -151,11 +158,12 @@
     font-size: 11px;
     font-weight: 400;
     margin: 0;
-    opacity: .7;
+    opacity: .5;
     overflow: hidden;
     position: absolute;
     text-align: center;
     width: 100%;
+    -webkit-transition-duration: .5s;
 }
 #upprev_box.vertical-3 h5 a
 ,.wp-admin .upprev_box.vertical-3 h5 a
@@ -175,6 +183,7 @@
 {
     opacity: 1;
 }
+
 #upprev_box.vertical-3 div a
 ,.wp-admin .upprev_box.vertical-3 div a
 {
@@ -189,7 +198,7 @@
     display: block;
 }
 /**
- *
+ * spacer
  */
 div.upprev_space
 {
@@ -202,6 +211,9 @@ div.upprev_space
 #upprev_rise
 {
     background-color: #fff !important;
+    border-color: #aaa;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
     color: #000 !important;
     cursor: pointer;
     display: none;

@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.2.0';
+        $this->version              = '1.2.1';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -231,35 +231,39 @@ class IworksOptions
                 break;
             case 'radio':
                 $option_value = $this->get_option($option['name'], $option_group );
-                $radio = '<ul>';
                 $i = 0;
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
                 $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
-                foreach ($option['radio'] as $value => $input) {
-                    $id = $option['name'].$i++;
-                    $disabled = '';
-                    if ( preg_match( '/\-disabled$/', $value ) ) {
-                        $disabled = 'disabled="disabled"';
-                    } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
-                        $disabled = 'disabled="disabled"';
+                $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option['name'], $option_value );
+                if ( empty( $radio ) ) {
+                    foreach ($option['radio'] as $value => $input) {
+                        $id = $option['name'].$i++;
+                        $disabled = '';
+                        if ( preg_match( '/\-disabled$/', $value ) ) {
+                            $disabled = 'disabled="disabled"';
+                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                            $disabled = 'disabled="disabled"';
+                        }
+                        $radio .= sprintf
+                            (
+                                '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
+                                sanitize_title( $value ),
+                                $disabled? ' disabled':'',
+                                $id,
+                                $html_element_name,
+                                $value,
+                                ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
+                                $id,
+                                $disabled,
+                                $input['label']
+                            );
                     }
-                    $radio .= sprintf
-                        (
-                            '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
-                            sanitize_title( $value ),
-                            $disabled? ' disabled':'',
-                            $id,
-                            $html_element_name,
-                            $value,
-                            ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
-                            $id,
-                            $disabled,
-                            $input['label']
-                        );
+                    if ( $radio ) {
+                        $radio = '<ul>'.$radio.'</ul>';
+                    }
                 }
-                $radio .= '</ul>';
                 $content .= apply_filters( $filter_name, $radio );
                 break;
             case 'textarea':
@@ -278,7 +282,7 @@ class IworksOptions
                     $content .= sprintf(
                         '<h3 id="options-%s"%s>%s</h3>',
                         sanitize_title_with_dashes(remove_accents($option['label'])),
-                        get_option( $this->option_prefix.'last_used_tab', 0 ) == $label_index? ' class="selected"':'',
+                        $this->get_option( 'last_used_tab' ) == $label_index? ' class="selected"':'',
                         $option['label']
                     );
                     $label_index++;

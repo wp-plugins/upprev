@@ -37,7 +37,9 @@ function iworks_upprev_options()
                 'radio'             => array(
                     'right'         => array( 'label' => __('bottom right', 'upprev' ) ),
                     'left'          => array( 'label' => __('bottom left',  'upprev' ) ),
+                    'bottom'        => array( 'label' => __('bottom',       'upprev' ), 'disabled' => true ),
                     'right-top'     => array( 'label' => __('top right',    'upprev' ), 'disabled' => true ),
+                    'top'           => array( 'label' => __('top',          'upprev' ), 'disabled' => true ),
                     'left-top'      => array( 'label' => __('top left',     'upprev' ), 'disabled' => true ),
                     'right-middle'  => array( 'label' => __('middle right', 'upprev' ), 'disabled' => true ),
                     'left-middle'   => array( 'label' => __('middle left',  'upprev' ), 'disabled' => true )
@@ -87,7 +89,9 @@ function iworks_upprev_options()
                 'radio'             => array(
                     'right'         => array( 'label' => __('bottom right', 'upprev' ) ),
                     'left'          => array( 'label' => __('bottom left',  'upprev' ) ),
+                    'bottom'        => array( 'label' => __('bottom',       'upprev' ), 'disabled' => true ),
                     'right-top'     => array( 'label' => __('top right',    'upprev' ), 'disabled' => true ),
+                    'top'           => array( 'label' => __('top',          'upprev' ), 'disabled' => true ),
                     'left-top'      => array( 'label' => __('top left',     'upprev' ), 'disabled' => true ),
                     'right-middle'  => array( 'label' => __('middle right', 'upprev' ), 'disabled' => true ),
                     'left-middle'   => array( 'label' => __('middle left',  'upprev' ), 'disabled' => true )

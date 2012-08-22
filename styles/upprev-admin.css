@@ -57,3 +57,33 @@
     outline-width:medium;
 }
 
+#iworks_upprev_position input
+{
+    margin: 0 10px;
+}
+#iworks_upprev_position span
+{
+    line-height: 3em;
+}
+#iworks_upprev_position label
+{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-style: solid;
+    display: block;
+    height: 126px;
+    padding: 1px;
+    width: 140px;
+}
+
+#iworks_upprev_position .bottom       label { background-image: url(../images/position-bottom.png);       }
+#iworks_upprev_position .left-middel  label { background-image: url(../images/position-left-middel.png);  }
+#iworks_upprev_position .left-middle  label { background-image: url(../images/position-left-middle.png);  }
+#iworks_upprev_position .left-top     label { background-image: url(../images/position-left-top.png);     }
+#iworks_upprev_position .left         label { background-image: url(../images/position-left.png);         }
+#iworks_upprev_position .right-middel label { background-image: url(../images/position-right-middel.png); }
+#iworks_upprev_position .right-middle label { background-image: url(../images/position-right-middle.png); }
+#iworks_upprev_position .right-top    label { background-image: url(../images/position-right-top.png);    }
+#iworks_upprev_position .right        label { background-image: url(../images/position-right.png);        }
+#iworks_upprev_position .top          label { background-image: url(../images/position-top.png);          }
+
