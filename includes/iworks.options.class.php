@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.2.1';
+        $this->version              = '1.3.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -94,9 +94,20 @@ class IworksOptions
             /**
              * dismiss on special type
              */
-            if ( $option['type'] == 'special' ) {
+            if ( 'special' == $option['type'] ) {
                 continue;
             }
+            /**
+             * dismiss if have "callback_to_show" and return false
+             */
+            if ( isset( $option['callback_to_show'] ) && is_callable( $option['callback_to_show'] ) ) {
+                if ( false === $option['callback_to_show']( $this->get_option( $option['name'], $option_group ) ) ) {
+                    continue;
+                }
+            }
+            /**
+             * heading
+             */
             if ( $option['type'] == 'heading' ) {
                 if ( isset( $option['configuration'] ) ) {
                     $configuration = $option['configuration'];
@@ -108,7 +119,7 @@ class IworksOptions
                 if ( isset( $option['configuration'] ) && 'both' == $option['configuration'] ) {
                     continue;
                 }
-                if( in_array( $option['type'], array( 
+                if( in_array( $option['type'], array(
                     'radio',
                     'text',
                     'checkbox',
@@ -132,8 +143,9 @@ class IworksOptions
                         $content .= '</fieldset>';
                     }
                     $content .= sprintf(
-                        '<fieldset id="upprev_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom">',
-                        crc32( $option['label'] )
+                        '<fieldset id="upprev_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom"%s>',
+                        crc32( $option['label'] ),
+                        ( isset( $option['class'] ) && $option['class'] )? ' rel="'.$option['class'].'"':''
                     );
                     if ( !$use_tabs ) {
                         $content .= sprintf( '<h3>%s</h3>', $option['label'] );
@@ -279,10 +291,14 @@ class IworksOptions
                 break;
             case 'heading':
                 if ( isset( $option['label'] ) && $option['label'] ) {
+                    $classes = array();
+                    if ( $this->get_option( 'last_used_tab' ) == $label_index ) {
+                        $classes[] = 'selected';
+                    }
                     $content .= sprintf(
                         '<h3 id="options-%s"%s>%s</h3>',
                         sanitize_title_with_dashes(remove_accents($option['label'])),
-                        $this->get_option( 'last_used_tab' ) == $label_index? ' class="selected"':'',
+                        count( $classes )? ' class="'.implode( ' ', $classes ).'"':'',
                         $option['label']
                     );
                     $label_index++;

@@ -1,4 +1,4 @@
-#hasadmintabs ul.ui-tabs-nav 
+#hasadmintabs ul.ui-tabs-nav
 {
     border-bottom:1px solid #dfdfdf;
     font-size:12px;
@@ -11,7 +11,7 @@
     padding:0 0 0 8px;
 }
 
-#hasadmintabs ul.ui-tabs-nav li 
+#hasadmintabs ul.ui-tabs-nav li
 {
     display:block;
     float:left;
@@ -27,7 +27,7 @@
     width:auto;
 }
 
-#hasadmintabs ul.ui-tabs-nav li a 
+#hasadmintabs ul.ui-tabs-nav li a
 {
     background:transparent none no-repeat scroll 0 50%;
     border-bottom:1px solid #dfdfdf;
@@ -50,7 +50,7 @@
     padding:0 12px;
 }
 
-#hasadmintabs ul.ui-tabs-nav a:focus, a:active 
+#hasadmintabs ul.ui-tabs-nav a:focus, a:active
 {
     outline-color:-moz-use-text-color;
     outline-style:none;
@@ -76,14 +76,25 @@
     width: 140px;
 }
 
+#iworks_upprev_position td.disabled
+{
+    opacity: .5;
+}
+#iworks_upprev_position span
+{
+    display: none;
+}
 #iworks_upprev_position .bottom       label { background-image: url(../images/position-bottom.png);       }
-#iworks_upprev_position .left-middel  label { background-image: url(../images/position-left-middel.png);  }
 #iworks_upprev_position .left-middle  label { background-image: url(../images/position-left-middle.png);  }
 #iworks_upprev_position .left-top     label { background-image: url(../images/position-left-top.png);     }
 #iworks_upprev_position .left         label { background-image: url(../images/position-left.png);         }
-#iworks_upprev_position .right-middel label { background-image: url(../images/position-right-middel.png); }
 #iworks_upprev_position .right-middle label { background-image: url(../images/position-right-middle.png); }
 #iworks_upprev_position .right-top    label { background-image: url(../images/position-right-top.png);    }
 #iworks_upprev_position .right        label { background-image: url(../images/position-right.png);        }
 #iworks_upprev_position .top          label { background-image: url(../images/position-top.png);          }
 
+#tr_promote code
+{
+    display: block;
+    padding: 10px;
+}

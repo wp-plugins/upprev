@@ -105,7 +105,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-        return false;
+//        return false;
         return true;
     }
 
@@ -742,7 +742,11 @@ class IworksUpprev
 
     public function index_iworks_upprev_position_content( $content, $data, $html_element_name, $option_name, $option_value )
     {
-        $content = sprintf( '<table id="%s"><tbody><tr>', $html_element_name );
+        $content = '';
+        if ( !$this->is_pro ) {
+            $content .= '<p class="error-message">'.__( 'All positions are available in PRO version!', 'iworks_upprev' ).'</p>';
+        }
+        $content .= sprintf( '<table id="%s"><tbody><tr>', $html_element_name );
         foreach( array( 'left-top', 'top', 'right-top' ) as $key ) {
             $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
         }
