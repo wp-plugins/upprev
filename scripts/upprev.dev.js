@@ -1,16 +1,16 @@
-function iworks_upprev_get_horizontal( box, side_offset ) {
+function iworks_upprev_get_horizontal( box ) {
     return '-' + (
             box.width()
-            + side_offset
+            + iworks_upprev.side_offset
             + parseInt( box.css( 'padding-top'    ).replace( /px$/, '' ) )
             + parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) )
             ) + 'px';
 }
 
-function iworks_upprev_get_vertical( box, side_offset ) {
+function iworks_upprev_get_vertical( box ) {
     return '-' + (
             box.width()
-            + side_offset
+            + iworks_upprev.side_offset
             + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
             + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
             ) + 'px';
@@ -29,7 +29,6 @@ jQuery(function($){
     var upprev_ga_track_view         = true;
     var upprev_ga                    = typeof(_gaq ) != 'undefined';
     var upprev_ga_opt_noninteraction = iworks_upprev.ga_opt_noninteraction == 1;
-    var side_offset = 5;
 
     function upprev_show_box() {
         var lastScreen = false;
@@ -104,8 +103,8 @@ jQuery(function($){
             if ( iworks_upprev.animation == 'fade' ) {
                 box.fadeOut( 'slow' );
             } else {
-                horizontal = iworks_upprev_get_horizontal( box, side_offset );
-                vertical = iworks_upprev_get_vertical( box, side_offset );
+                horizontal = iworks_upprev_get_horizontal( box );
+                vertical = iworks_upprev_get_vertical( box );
                 /**
                  * hide!
                  */
@@ -200,8 +199,8 @@ jQuery(function($){
                 /**
                 * setup init animation
                 */
-                horizontal = iworks_upprev_get_horizontal( box, side_offset );
-                vertical = iworks_upprev_get_vertical( box, side_offset );
+                horizontal = iworks_upprev_get_horizontal( box );
+                vertical = iworks_upprev_get_vertical( box );
                 /**
                 * move!
                 */

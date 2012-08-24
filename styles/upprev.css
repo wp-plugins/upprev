@@ -21,4 +21,9 @@
 ,.wp-admin .upprev_box.vertical-3 .no-image a{max-height:96px;}#upprev_box.vertical-3 div:hover h5
 ,.wp-admin .upprev_box.vertical-3 div:hover h5{opacity:1;}#upprev_box.vertical-3 div a
 ,.wp-admin .upprev_box.vertical-3 div a{color:#000;min-height:15px;text-decoration:none;}#upprev_box.vertical-3 img
-,.wp-admin .upprev_box.vertical-3 img{margin:1px;display:block;}div.upprev_space{clear:both;margin-bottom:20px;}#upprev_rise{background-color:#fff !important;border-color:#aaa;border-style:solid;border-width:1px 0 0 1px;color:#000 !important;cursor:pointer;display:none;font-size:14px !important;font-weight:400;line-height:18px;position:fixed;text-align:center;text-decoration:none;width:18px;}
+,.wp-admin .upprev_box.vertical-3 img{margin:1px;display:block;}#upprev_box.bloginity
+,.wp-admin .upprev_box.bloginity{border:0;padding:5px 0;width:376px;}#upprev_box.bloginity div
+,.wp-admin .upprev_box.bloginity div{clear:none;float:left;margin:0 5px;width:84px;}#upprev_box.bloginity a
+,.wp-admin .upprev_box.bloginity a{color:#333 !important;display:block;font-size:10px !important;font-weight:400 !important;text-align:center !important;text-decoration:none !important;}#upprev_box.bloginity .no-image
+,.wp-admin .upprev_box.bloginity .no-image{background:transparent url( ../images/oxygen/64x64/mimetypes/unknown.png) no-repeat 50% 8px;padding-top:90px;}#upprev_box.bloginity div img
+,.wp-admin .upprev_box.bloginity img{float:none;margin:0;}div.upprev_space{clear:both;margin-bottom:20px;}#upprev_rise{background-color:#fff !important;border-color:#aaa;border-style:solid;border-width:1px 0 0 1px;color:#000 !important;cursor:pointer;display:none;font-size:14px !important;font-weight:400;line-height:18px;position:fixed;text-align:center;text-decoration:none;width:18px;}

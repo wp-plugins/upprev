@@ -623,24 +623,7 @@ function iworks_upprev_sanitize_callback_configuration( $option_value )
 function iworks_upprev_callback_layout( $value )
 {
     global $iworks_upprev;
-    $options = $iworks_upprev->build_layout_chooser( $value );
-    $content = '<ul>';
-    foreach( $options as $key => $one ) {
-        $id = 'iworks_upprev_'.crc32( $key );
-        $content .= sprintf(
-            '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s%s id="%s"><label for="%s"> %s</label>',
-            $key,
-            $one['checked']? ' checked="checked"':'',
-            $one['disabled']? ' disabled="disabled"':'',
-            $id,
-            $id,
-            $one['name']
-        );
-        $content .= $one['value'];
-        $content .= '</li>';
-    }
-    $content .= '</ul>';
-    return $content;
+    return $iworks_upprev->build_layout_chooser( $value );
 }
 /**
  * callback: donate

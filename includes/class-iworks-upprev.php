@@ -61,11 +61,30 @@ class IworksUpprev
                 'name'     => __( 'Vertical Three', 'iworks_upprev' ),
                 'defaults' => array(
                     'class'           => 'vertical-3',
+                    'excerpt_show'    => false,
+                    'make_break'      => false,
                     'number_of_posts' => 3,
                     'show_thumb'      => true,
-                    'excerpt_show'    => false,
-                    'thumb_width'     => 96,
                     'thumb_height'    => 96,
+                    'thumb_width'     => 96,
+                ),
+                'need_pro' => true
+            ),
+            'bloginity' => array(
+                'name'     => __( '"Bloginity" style', 'iworks_upprev' ),
+                'defaults' => array(
+                    'class'             => 'bloginity',
+                    'css_side'          => 0,
+                    'css_bottom'        => 0,
+                    'css_width'         => 376,
+                    'excerpt_show'      => false,
+                    'header_show'       => false,
+                    'make_break'        => false,
+                    'number_of_posts'   => 4,
+                    'show_close_button' => false,
+                    'show_thumb'        => true,
+                    'thumb_height'      => 84,
+                    'thumb_width'       => 84,
                 ),
                 'need_pro' => true
             )
@@ -109,9 +128,17 @@ class IworksUpprev
         return true;
     }
 
-    public function get_version()
+    public function get_version( $file = null )
     {
-        return ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE )? rand( 0, 99999 ):$this->version;
+        if ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) {
+
+            if ( null != $file ) {
+                $file = dirname( dirname ( __FILE__ ) ) . $file;
+                return md5_file( $file );
+            }
+            return rand( 0, 99999 );
+        }
+        return $this->version;
     }
 
     public function init()
@@ -175,8 +202,8 @@ class IworksUpprev
              * enqueue resources
              */
             wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array('jquery-ui-tabs'), $this->get_version() );
-            wp_enqueue_style ( 'upprev-admin-css', plugins_url( '/styles/upprev-admin.css', $this->base ), array(),                 $this->get_version() );
-            wp_enqueue_style ( 'upprev-css',       plugins_url( '/styles/upprev'.$this->dev.'.css', $this->base ), array(),         $this->get_version() );
+            $this->enqueue_style( 'upprev-admin' );
+            $this->enqueue_style( 'upprev' );
         }
     }
 
@@ -201,8 +228,9 @@ class IworksUpprev
         if ( $this->iworks_upprev_check() ) {
             return;
         }
-        wp_enqueue_script( 'upprev-js',  plugins_url( '/scripts/upprev'.$this->dev.'.js', $this->base ), array( 'jquery' ), $this->get_version() );
-        wp_enqueue_style ( 'upprev-css', plugins_url( '/styles/upprev'.$this->dev.'.css', $this->base ), array(),           $this->get_version() );
+        $file = '/scripts/upprev'.$this->dev.'.js';
+        wp_enqueue_script( 'upprev-js',  plugins_url( $file, $this->base ), array( 'jquery' ), $this->get_version( $file ) );
+        $this->enqueue_style( 'upprev' );
     }
 
     /**
@@ -210,9 +238,6 @@ class IworksUpprev
      */
     public function admin_menu()
     {
-        if ( preg_match( '/^(vertical 3)$/', $layout ) ) {
-            $value .= '<br />';
-        }
         add_theme_page( __( 'upPrev', 'upprev' ), __( 'upPrev', 'upprev' ), $this->capability, $this->dir.'/admin/index.php' );
     }
 
@@ -272,8 +297,9 @@ class IworksUpprev
             'offset_percent',
             'url_new_window',
         );
+        $defaults = $this->get_default_params();
         foreach ( $params as $key ) {
-            $value = $this->options->get_option( $key );
+            $value = isset( $defaults[ $key ] )? $defaults[ $key ] : $this->options->get_option( $key );
             $data .= sprintf(
                 '%s: %s, ',
                 $key,
@@ -338,8 +364,11 @@ class IworksUpprev
         /**
          * set defaults
          */
-        $thumb_height = 9999;
-        $box_classes = array( 'default' );
+        $box_classes       = array( 'default' );
+        $header_show       = $this->options->get_option( 'header_show' );
+        $make_break        = true;
+        $show_close_button = $this->options->get_option( 'close_button_show' );
+        $thumb_height      = 9999;
         /**
          * get used params
          */
@@ -368,9 +397,7 @@ class IworksUpprev
             } else {
                 $layout = $this->sanitize_layout( $this->options->get_option( 'layout' ) );
             }
-            foreach( $this->available_layouts[ $layout ]['defaults'] as $key => $value ) {
-                $$key = $value;
-            }
+            extract( $this->get_default_params( $layout ) );
             $box_classes[] = $class;
         }
         /**
@@ -517,7 +544,7 @@ class IworksUpprev
          * box title
          */
         $title = '';
-        if ( $this->options->get_option( 'header_show' ) ) {
+        if ( $header_show ) {
             $header_text = $this->options->get_option( 'header_text' );
             if ( !empty( $header_text ) ) {
                 $title .= $header_text;
@@ -567,62 +594,62 @@ class IworksUpprev
             );
             if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $a_class = '';
-                    if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
-                        $item_class[] = 'upprev_thumbnail';
-                        $a_class = 'upprev_thumbnail';
-                    }
-                    $image = sprintf(
-                        '<a href="%s" title="%s" class="%s"%s rel="%s">%s</a>',
-                        $permalink,
-                        wptexturize(get_the_title()),
-                        $a_class,
-                        $ga_click_track,
-                        $current_post_title,
-                        apply_filters(
-                            'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
-                                get_the_ID(),
-                                array( $thumb_width, $thumb_height ),
-                                array(
-                                    'title' => get_the_title(),
-                                    'class' => 'iworks_upprev_thumb'
-                                )
-                            )
-                        )
-                    );
-                } else {
-                    ob_start();
-                    do_action( 'iworks_upprev_image' );
-                    $image = ob_get_flush();
+                if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
+                    $item_class[] = 'upprev_thumbnail';
+                    $a_class = 'upprev_thumbnail';
                 }
-                if( empty( $image ) ) {
-                    $item_class[] = 'no-image';
-                }
-                $item .= '<div';
-                if ( count( $item ) ) {
-                    $item .= sprintf( ' class="%s"', implode( ' ', $item_class ) );
-                }
-                $item .= '>';
-                $item .= $image;
-                $item .= sprintf(
-                    '<h5><a href="%s"%s rel="%s">%s</a></h5>',
+                $image = sprintf(
+                    '<a href="%s" title="%s" class="%s"%s rel="%s">%s</a>',
                     $permalink,
+                    wptexturize(get_the_title()),
+                    $a_class,
                     $ga_click_track,
                     $current_post_title,
-                    get_the_title()
+                    apply_filters(
+                        'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
+                            get_the_ID(),
+                            array( $thumb_width, $thumb_height ),
+                            array(
+                                'title' => get_the_title(),
+                                'class' => 'iworks_upprev_thumb'
+                            )
+                        )
+                    )
                 );
-                if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
-                    $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
-                } else if ( $image && !preg_match( '/^(vertical 3)$/', $layout ) ) {
-                    $item .= '<br />';
-                }
-                $item .= '</div>';
-                $value .= apply_filters( 'iworks_upprev_box_item', $item );
+            } else {
+                ob_start();
+                do_action( 'iworks_upprev_image' );
+                $image = ob_get_flush();
             }
-        if ( $this->options->get_option( 'close_button_show' ) ) {
+            if( empty( $image ) ) {
+                $item_class[] = 'no-image';
+            }
+            $item .= '<div';
+            if ( count( $item ) ) {
+                $item .= sprintf( ' class="%s"', implode( ' ', $item_class ) );
+            }
+            $item .= '>';
+            $item .= $image;
+            $item .= sprintf(
+                '<h5><a href="%s"%s rel="%s">%s</a></h5>',
+                $permalink,
+                $ga_click_track,
+                $current_post_title,
+                get_the_title()
+            );
+            if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
+                $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
+            } else if ( $image && $make_break ) {
+                $item .= '<br />';
+            }
+            $item .= '</div>';
+            $value .= apply_filters( 'iworks_upprev_box_item', $item );
+        }
+        if ( $show_close_button ) {
             $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
         }
         if ( $this->options->get_option( 'promote' ) ) {
-            $value .= '<p class="promote"><small>'.__('Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev').'</small></p>';
+            $value .= '<p class="promote"><small>'.__( 'Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev' ).'</small></p>';
         }
         $value .= '<br />';
         ob_start();
@@ -703,7 +730,23 @@ class IworksUpprev
         if ( $set_simple_as_default ) {
             $options['simple']['checked'] = true;
         }
-        return $options;
+        $content = '<ul>';
+        foreach( $options as $key => $one ) {
+            $id = 'iworks_upprev_'.crc32( $key );
+            $content .= sprintf(
+                '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s%s id="%s"><label for="%s"> %s</label>',
+                $key,
+                $one['checked']? ' checked="checked"':'',
+                $one['disabled']? ' disabled="disabled"':'',
+                $id,
+                $id,
+                $one['name']
+            );
+            $content .= $one['value'];
+            $content .= '</li>';
+        }
+        $content .= '</ul>';
+        return $content;
     }
 
     public function update()
@@ -763,6 +806,23 @@ class IworksUpprev
         $content .= '</tr><tr>';
         $content .= '</tr></tbody></table>';
         return $content;
+    }
+
+    private function get_default_params( $layout = null )
+    {
+        if ( null == $layout ) {
+            $layout = $this->sanitize_layout( $this->options->get_option( 'layout' ) );
+        }
+        if ( isset( $this->available_layouts[ $layout ] ) && isset( $this->available_layouts[ $layout ]['defaults'] ) && is_array( $this->available_layouts[ $layout ]['defaults'] ) ) {
+            return $this->available_layouts[ $layout ]['defaults'];
+        }
+        return array();
+    }
+
+    private function enqueue_style( $name, $deps = null )
+    {
+        $file = '/styles/'.$name.$this->dev.'.css';
+        wp_enqueue_style ( $name, plugins_url( $file, $this->base ), $deps, $this->get_version( $file ) );
     }
 
 }

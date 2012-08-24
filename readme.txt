@@ -169,7 +169,8 @@ Example:
 * IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
 * IMPROVMENT: javascript & css files are minifized
 * IMPROVMENT: added remebering usage "close" button
-* IMPROVMENT: added free layouts: vertical-3
+* IMPROVMENT: added free layouts: "Vertical Three"
+* IMPROVMENT: added pro layouts: "Bloginity style"
 * IMPROVMENT: added ajax request to load upPrevBox content
 * IMPROVMENT: rework option page to easier configuration
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
