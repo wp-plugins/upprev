@@ -65,17 +65,6 @@ function iworks_upprev_options()
                 'configuration'     => 'advance'
             ),
             array(
-                'name'              => 'schema',
-                'type'              => 'radio',
-                'th'                => __( 'Schema', 'upprev' ),
-                'default'           => 'flyout',
-                'radio'             => array(
-                    'flyout' => array( 'label' => __( 'flyout', 'upprev' ) ),
-                    'fade'   => array( 'label' => __( 'fade in/out', 'upprev' ) ),
-                ),
-                'sanitize_callback' => 'esc_html'
-            ),
-            array(
                 'name'              => 'animation',
                 'type'              => 'radio',
                 'th'                => __( 'Animation style', 'upprev' ),

@@ -18,7 +18,7 @@ function iworks_upprev_get_html_offset( h ) {
     return parseInt( h.css( 'margin-top' ).replace( /px$/, '' ) ) - h.offset().top;
 }
 
-jQuery(function($){
+jQuery( function($) {
     if ( 'undefined' == typeof( iworks_upprev ) ) {
         return;
     }
@@ -27,24 +27,26 @@ jQuery(function($){
     var upprev_ga_track_view         = true;
     var upprev_ga                    = typeof(_gaq ) != 'undefined';
     var upprev_ga_opt_noninteraction = iworks_upprev.ga_opt_noninteraction == 1;
+    var upprev_fade_duration         = 1000;
+    var upprev_animate_duration      = 600;
 
     function upprev_show_box() {
-        var lastScreen = false;
-        if (iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
-            if ($(iworks_upprev.offset_element).length > 0) {
-                lastScreen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
+        var last_screen = false;
+        if ( iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
+            if ( $(iworks_upprev.offset_element).length > 0 ) {
+                last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
             } else {
-                lastScreen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
+                last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            lastScreen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
+            last_screen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
         box = $('#upprev_box');
-        if (lastScreen && !upprev_closed) {
-            box.css({ display: 'block' });
-            if (iworks_upprev.animation == "fade") {
-                box.fadeIn("slow");
+        if ( last_screen && !upprev_closed ) {
+            if ( 'fade' == iworks_upprev.animation ) {
+                box.fadeIn( upprev_fade_duration );
             } else {
+                box.css({ display: 'block' });
                 horizontal = iworks_upprev.css_side + 'px';
                 vertical   = iworks_upprev.css_bottom + 'px';
                 switch ( iworks_upprev.position.all ) {
@@ -57,35 +59,41 @@ jQuery(function($){
                         box.css( 'top', ( ( $(window).height() - box.height() - parseInt( box.css( 'padding-top'  ).replace( /px$/, '' ) ) - parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) ) ) / 2 ) + 'px' )
                         break;
                 }
+                var properites = {};
                 switch ( iworks_upprev.position.all ) {
                     case 'left':
-                        box.stop().animate({ left: horizontal, bottom: vertical });
+                        properites.left   = horizontal;
+                        properites.bottom = vertical;
                         break;
                     case 'bottom':
-                        box.stop().animate({ bottom: vertical });
+                        properites.bottom = vertical;
                         break;
                     case 'top':
-                        box.stop().animate({ top: vertical });
+                        properites.top = vertical;
                         break;
                     case 'left-top':
-                        box.stop().animate({ left: horizontal, top: vertical });
+                        properites.left = horizontal;
+                        properites.top  = vertical;
                         break;
                     case 'left-middle':
-                        box.stop().animate( { left: horizontal });
+                        properites.left = horizontal;
                         break;
                     case 'right':
-                        box.stop().animate({ right: horizontal, bottom: vertical });
+                        properites.right  = horizontal;
+                        properites.bottom = vertical;
                         break;
                     case 'right-middle':
-                        box.stop().animate( { right: horizontal });
+                        properites.right  = horizontal;
                         break;
                     case 'right-top':
-                        box.stop().animate({right: horizontal, top: vertical });
+                        properites.right  = horizontal;
+                        properites.top    = vertical;
                         break;
                     default:
                         alert( iworks_upprev.position );
                         break;
                 }
+                box.stop().animate( properites, upprev_animate_duration );
             }
             upprev_hidden = false;
             if ( upprev_ga && upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
@@ -99,7 +107,7 @@ jQuery(function($){
         else if (!upprev_hidden) {
             upprev_hidden = true;
             if ( iworks_upprev.animation == 'fade' ) {
-                box.fadeOut( 'slow' );
+                box.fadeOut( upprev_fade_duration );
             } else {
                 horizontal = iworks_upprev_get_horizontal( box );
                 vertical = iworks_upprev_get_vertical( box );
@@ -151,7 +159,7 @@ jQuery(function($){
                 upprev_show_box();
             });
             $( '#upprev_rise' ).click( function() {
-                $(this).fadeOut('slow', function() {
+                $(this).fadeOut( upprev_fade_duration, function() {
                     upprev_show_box();
                     $( window ).bind( 'scroll', function() {
                         upprev_show_box();
@@ -164,7 +172,7 @@ jQuery(function($){
             $("#upprev_close").click(function() {
                 $('#upprev_box').fadeOut("slow", function(){
                     $(window).unbind('scroll');
-                    $('#upprev_rise').css({ bottom: 0, right: 0 }).fadeIn( 'slow' );
+                    $('#upprev_rise').css({ bottom: 0, right: 0 }).fadeIn( upprev_fade_duration );
                 });
                 return false;
             });
@@ -199,7 +207,11 @@ jQuery(function($){
                 */
                 horizontal = iworks_upprev_get_horizontal( box );
                 vertical = iworks_upprev_get_vertical( box );
-console.log( horizontal + 'x' + vertical );                
+            } else if ( 'fade' == iworks_upprev.animation ) {
+                vertical   = iworks_upprev.css_side;
+                horizontal = iworks_upprev.css_bottom;
+                box.css( { display: 'none' } );
+            }
                 /**
                 * move!
                 */
@@ -231,7 +243,6 @@ console.log( horizontal + 'x' + vertical );
                         alert( iworks_upprev.position );
                         break;
                 }
-            }
             /**
              * maybe show?
              */
