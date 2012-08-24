@@ -1,7 +1,6 @@
 function iworks_upprev_get_horizontal( box ) {
     return '-' + (
             box.width()
-            + iworks_upprev.side_offset
             + parseInt( box.css( 'padding-top'    ).replace( /px$/, '' ) )
             + parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) )
             ) + 'px';
@@ -10,7 +9,6 @@ function iworks_upprev_get_horizontal( box ) {
 function iworks_upprev_get_vertical( box ) {
     return '-' + (
             box.width()
-            + iworks_upprev.side_offset
             + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
             + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
             ) + 'px';
@@ -201,6 +199,7 @@ jQuery(function($){
                 */
                 horizontal = iworks_upprev_get_horizontal( box );
                 vertical = iworks_upprev_get_vertical( box );
+console.log( horizontal + 'x' + vertical );                
                 /**
                 * move!
                 */
