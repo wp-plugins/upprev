@@ -400,7 +400,7 @@ class IworksOptions
             $option_value = $this->get_default_value( $option_name, $option_group );
         }
         if ( null == $option_value && !empty( $default_value ) ) {
-            $option_value = $default_value;
+            return $default_value;
         }
         return $option_value;
     }

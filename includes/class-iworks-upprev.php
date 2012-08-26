@@ -825,5 +825,35 @@ class IworksUpprev
         wp_enqueue_style ( $name, plugins_url( $file, $this->base ), $deps, $this->get_version( $file ) );
     }
 
+    /**
+     * exclude categories
+     */
+    public function build_exclude_categories( $value )
+    {
+        $args = array(
+            'hide_empty'   => false,
+            'hierarchical' => false,
+        );
+        $content = '';
+        if ( !$this->is_pro ) {
+            $args['number'] = 3;
+            $content .= '<li class="error-message">'.__( 'Exlude categories available in PRO version!', 'iworks_upprev' ).'</li>';
+        }
+        $categories = get_categories( $args );
+        foreach ( $categories as $category ) {
+            $id = sprintf( 'category_%04d', $category->term_id );
+            $content .= sprintf(
+                '<li><input type="checkbox" name="iworks_upprev_exclude_categories[%d]" id="%s"%s%s /><label for="%s"> %s <small>(%d)</small></label></li>',
+                $category->term_id,
+                $id,
+                is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
+                $this->is_pro? '':' disabled="disabled"',
+                $id,
+                $category->name,
+                $category->count
+            );
+        }
+        return '<ul>'.$content.'</li>';
+    }
 }
 

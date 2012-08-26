@@ -561,29 +561,7 @@ function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
 function iworks_upprev_exclude_categories( $values = array() )
 {
     global $iworks_upprev;
-    $args = array(
-        'hide_empty' => false,
-        'hierarchical' => false,
-    );
-    $content = '';
-    if ( !$iworks_upprev->is_pro() ) {
-        $args['number'] = 3;
-        $content .= '<li class="error-message">'.__( 'Exlude categories available in PRO version!', 'iworks_upprev' ).'</li>';
-    }
-    $categories = get_categories( $args );
-    foreach ( $categories as $category ) {
-        $id = sprintf( 'category_%04d', $category->term_id );
-        $content .= sprintf(
-            '<li><input type="checkbox" name="iworks_upprev_exclude_categories[%d]" id="%s"%s%s /><label for="%s"> %s</label></li>',
-            $category->term_id,
-            $id,
-            is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
-            $iworks_upprev->is_pro()? '':' disabled="disabled"',
-            $id,
-            $category->name
-        );
-    }
-    return '<ul>'.$content.'</li>';
+    return $iworks_upprev->build_exclude_categories( $values );
 }
 function iworks_upprev_exclude_categories_sanitize_callback( $values )
 {
