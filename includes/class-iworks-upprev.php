@@ -5,7 +5,7 @@
 Copyright 2011-2012 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
+it under the terms of the GNU General Public License, version 2, as
 published by the Free Software Foundation.
 
 This program is distributed in the hope that it will be useful,
@@ -201,7 +201,8 @@ class IworksUpprev
             /**
              * enqueue resources
              */
-            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array('jquery-ui-tabs'), $this->get_version() );
+            wp_enqueue_style( 'farbtastic' );
+            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array( 'jquery-ui-tabs', 'farbtastic'), $this->get_version() );
             $this->enqueue_style( 'upprev-admin' );
             $this->enqueue_style( 'upprev' );
         }
@@ -252,7 +253,9 @@ class IworksUpprev
             if ( !is_multisite() && current_user_can( $this->capability ) ) {
                 $links[] = '<a href="themes.php?page='.$this->dir.'/admin/index.php">' . __('Settings') . '</a>';
             }
-            $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
+            if ( !$this->is_pro ) {
+                $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
+            }
         }
         return $links;
     }
@@ -286,6 +289,7 @@ class IworksUpprev
         $data = '';
         $params = array(
             'animation',
+            'color_set',
             'compare',
             'css_bottom',
             'css_side',
@@ -297,6 +301,9 @@ class IworksUpprev
             'offset_percent',
             'url_new_window',
         );
+        if ( $this->is_pro && $this->options->get_option( 'color_set' ) ) {
+            $params = array_merge( $params, array( 'color', 'color_background', 'color_link' ) );
+        }
         $defaults = $this->get_default_params();
         foreach ( $params as $key ) {
             $value = isset( $defaults[ $key ] )? $defaults[ $key ] : $this->options->get_option( $key );

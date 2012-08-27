@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.3.0';
+        $this->version              = '1.4.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -316,6 +316,21 @@ class IworksOptions
             case 'subheading':
                 $content .= sprintf( '<h4 class="title">%s</h4>', $option['label'] );
                 break;
+            case 'farbtastic':
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
+                $content .= sprintf (
+                    '<div class="color-picker-container"><input type="text" name="%s" value="%s" class="%s"%s /> %s<div class="picker" id="%s_picker"></div></div>',
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['label'])?  $option['label']:'',
+                    $html_element_name
+                );
+                break;
             default:
                 $content .= sprintf('not implemented type: %s', $option['type']);
             }
@@ -442,7 +457,13 @@ class IworksOptions
         $options = call_user_func( $this->option_function_name );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
-                if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] ) {
+                if ( 'heading' == $option['type'] or !isset( $option['name'] ) or !$option['name'] ) {
+                    continue;
+                }
+                /**
+                 * prevent special options
+                 */
+                if ( isset( $option[ 'dont_deactivate' ] ) && $option[ 'dont_deactivate' ] ) {
                     continue;
                 }
                 delete_option( $this->option_prefix.$option['name'] );

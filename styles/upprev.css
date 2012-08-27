@@ -8,7 +8,7 @@
 ,.wp-admin .upprev_box div
 ,.wp-admin .upprev_box br{clear:both;}#upprev_box h5
 ,.wp-admin .upprev_box h5{margin-top:0;}#upprev_box div.upprev_thumbnail h5
-,.wp-admin div.upprev_thumbnail h5{clear:right;margin:0 0 .5em 0;}#upprev_close{background:#fff url(close.gif) no-repeat 0;border:none;display:block;height:13px;overflow:hidden;padding:0;position:absolute;right:5px;text-indent:-999em;top:5px;width:13px;}#upprev_box p.promote
+,.wp-admin div.upprev_thumbnail h5{clear:right;margin:0 0 .5em 0;}#upprev_close{background:transparent url(../images/close.gif) no-repeat 0;border:none;display:block;height:13px;overflow:hidden;padding:0;position:absolute;right:5px;text-indent:-999em;top:5px;width:13px;}#upprev_box p.promote
 ,.wp-admin .upprev_box p.promote{clear:both;font-size:11px;margin:0px;padding-top:5px;text-align:right;}#upprev_box p.promote
 ,#upprev_box p.promote a
 ,.wp-admin .upprev_box p.promote

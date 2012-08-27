@@ -114,6 +114,15 @@ jQuery( function($) {
             box = $('#upprev_box');
             box.css( { width: iworks_upprev.css_width } );
             /**
+             * apply custom colors
+             */
+            if ( iworks_upprev.color_set ) {
+                iworks_upprev_add_style( box, 'background-color: ' + iworks_upprev.color_background + ' !important;color: ' + iworks_upprev.color + ' !important'  );
+                $( '#upprev_box a' ).each( function() {
+                    iworks_upprev_add_style( $(this), 'color:' + iworks_upprev.color_link + ' !important' );
+                });
+            }
+            /**
              * out, is fade
              */
             if ( iworks_upprev.animation == 'flyout' ) {
@@ -191,6 +200,15 @@ jQuery( function($) {
                 break;
         }
         return upprev_properites;
+    }
+
+    function iworks_upprev_add_style( e, s ) {
+        e.attr( 'test', 'value' );
+        style = e.attr( 'style' );
+        if ( "undefined" != style ) {
+            style += ';';
+        }
+        e.attr( 'style', style + s );
     }
 
 });

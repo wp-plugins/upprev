@@ -24,6 +24,9 @@ function iworks_upprev_options()
                 'default'           => 'simple',
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_configuration'
             ),
+            /**
+             * Apperance: simple
+             */
             array(
                 'type'              => 'heading',
                 'label'             => __( 'Apperance', 'upprev' ),
@@ -36,6 +39,9 @@ function iworks_upprev_options()
                 'default'           => 'simple',
                 'callback'          => 'iworks_upprev_callback_layout',
             ),
+            /**
+             * Position: simple
+             */
             array(
                 'type'              => 'heading',
                 'label'             => __( 'Position', 'upprev' ),
@@ -59,6 +65,9 @@ function iworks_upprev_options()
                 'configuration'     => 'both',
                 'sanitize_callback' => 'esc_html'
             ),
+            /**
+             * Apperance: advance
+             */
             array(
                 'type'              => 'heading',
                 'label'             => __( 'Apperance', 'upprev' ),
@@ -166,7 +175,50 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
-             * content
+             * Colors: both
+             */
+            array(
+                'type'              => 'heading',
+                'label'             => __( 'Colors', 'upprev' ),
+                'configuration'     => 'both'
+            ),
+            array(
+                'name'              => 'color_set',
+                'type'              => 'checkbox',
+                'th'                => __( 'Set custom colors', 'upprev' ),
+                'label'             => __( 'Set custom colors.', 'upprev' ),
+                'default'           => 1,
+                'sanitize_callback' => 'absint'
+            ),
+            array(
+                'name'              => 'color',
+                'type'              => 'farbtastic',
+                'class'             => 'short-text',
+                'th'                => __( 'Text', 'upprev' ),
+                'default'           => '#000',
+                'sanitize_callback' => 'esc_html',
+                'use_name_as_id'    => true,
+            ),
+            array(
+                'name'              => 'color_background',
+                'type'              => 'farbtastic',
+                'class'             => 'short-text',
+                'th'                => __( 'Background', 'upprev' ),
+                'default'           => '#fff',
+                'sanitize_callback' => 'esc_html',
+                'use_name_as_id'    => true,
+            ),
+            array(
+                'name'              => 'color_link',
+                'type'              => 'farbtastic',
+                'class'             => 'short-text',
+                'th'                => __( 'Links', 'upprev' ),
+                'sanitize_callback' => 'esc_html',
+                'default'           => '#000',
+                'use_name_as_id'    => true,
+            ),
+            /**
+             * Content: advance
              */
             array(
                 'type'              => 'heading',
@@ -289,7 +341,7 @@ function iworks_upprev_options()
                 'check_supports'    => array( 'post-thumbnails' )
             ),
             /**
-             * tracking
+             * Links: advance
              */
             array(
                 'type'              => 'heading',

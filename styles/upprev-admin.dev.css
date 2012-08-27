@@ -1,3 +1,8 @@
+tr.disabled
+{
+    opacity: .5;
+}
+
 #hasadmintabs ul.ui-tabs-nav
 {
     border-bottom:1px solid #dfdfdf;
@@ -98,3 +103,19 @@
     display: block;
     padding: 10px;
 }
+
+/**
+ * farbtastic
+ */
+
+.color-picker-container
+{
+    position: relative;
+}
+.color-picker-container .picker
+{
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+
