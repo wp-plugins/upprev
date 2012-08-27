@@ -1,23 +1,3 @@
-function iworks_upprev_get_horizontal( box ) {
-    return '-' + (
-            box.width()
-            + parseInt( box.css( 'padding-top'    ).replace( /px$/, '' ) )
-            + parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) )
-            ) + 'px';
-}
-
-function iworks_upprev_get_vertical( box ) {
-    return '-' + (
-            box.width()
-            + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
-            + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
-            ) + 'px';
-}
-
-function iworks_upprev_get_html_offset( h ) {
-    return parseInt( h.css( 'margin-top' ).replace( /px$/, '' ) ) - h.offset().top;
-}
-
 jQuery( function($) {
     if ( 'undefined' == typeof( iworks_upprev ) ) {
         return;
@@ -31,24 +11,24 @@ jQuery( function($) {
     var upprev_animate_duration      = 600;
 
     function upprev_show_box() {
-        var last_screen = false;
+        var upprev_last_screen = false;
         if ( iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
             if ( $(iworks_upprev.offset_element).length > 0 ) {
-                last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
+                upprev_last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
             } else {
-                last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
+                upprev_last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            last_screen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
+            upprev_last_screen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
         box = $('#upprev_box');
-        if ( last_screen && !upprev_closed ) {
+        if ( upprev_last_screen && !upprev_closed ) {
             if ( 'fade' == iworks_upprev.animation ) {
                 box.fadeIn( upprev_fade_duration );
             } else {
                 box.css({ display: 'block' });
-                horizontal = iworks_upprev.css_side + 'px';
-                vertical   = iworks_upprev.css_bottom + 'px';
+                upprev_horizontal = iworks_upprev.css_side + 'px';
+                upprev_vertical   = iworks_upprev.css_bottom + 'px';
                 switch ( iworks_upprev.position.all ) {
                     case 'bottom':
                     case 'top':
@@ -59,41 +39,7 @@ jQuery( function($) {
                         box.css( 'top', ( ( $(window).height() - box.height() - parseInt( box.css( 'padding-top'  ).replace( /px$/, '' ) ) - parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) ) ) / 2 ) + 'px' )
                         break;
                 }
-                var properites = {};
-                switch ( iworks_upprev.position.all ) {
-                    case 'left':
-                        properites.left   = horizontal;
-                        properites.bottom = vertical;
-                        break;
-                    case 'bottom':
-                        properites.bottom = vertical;
-                        break;
-                    case 'top':
-                        properites.top = vertical;
-                        break;
-                    case 'left-top':
-                        properites.left = horizontal;
-                        properites.top  = vertical;
-                        break;
-                    case 'left-middle':
-                        properites.left = horizontal;
-                        break;
-                    case 'right':
-                        properites.right  = horizontal;
-                        properites.bottom = vertical;
-                        break;
-                    case 'right-middle':
-                        properites.right  = horizontal;
-                        break;
-                    case 'right-top':
-                        properites.right  = horizontal;
-                        properites.top    = vertical;
-                        break;
-                    default:
-                        alert( iworks_upprev.position );
-                        break;
-                }
-                box.stop().animate( properites, upprev_animate_duration );
+                box.stop().animate( iworks_upprev_setup_position( upprev_horizontal, upprev_vertical ), upprev_animate_duration );
             }
             upprev_hidden = false;
             if ( upprev_ga && upprev_ga_track_view && iworks_upprev.ga_track_views == 1 ) {
@@ -109,40 +55,9 @@ jQuery( function($) {
             if ( iworks_upprev.animation == 'fade' ) {
                 box.fadeOut( upprev_fade_duration );
             } else {
-                horizontal = iworks_upprev_get_horizontal( box );
-                vertical = iworks_upprev_get_vertical( box );
-                /**
-                 * hide!
-                 */
-                switch ( iworks_upprev.position.all ) {
-                    case 'left':
-                        box.stop().animate( { left: vertical, bottom: horizontal } );
-                        break;
-                    case 'bottom':
-                        box.stop().animate( { bottom: horizontal } );
-                        break;
-                    case 'top':
-                        box.stop().animate( { top: horizontal } );
-                        break;
-                    case 'left-top':
-                        box.stop().animate( { left: vertical, top: horizontal } );
-                        break;
-                    case 'left-middle':
-                        box.stop().animate( { left: vertical } );
-                        break;
-                    case 'right-top':
-                        box.stop().animate( { right: vertical, top: horizontal } );
-                        break;
-                    case 'right-middle':
-                        box.stop().animate( { right: vertical} );
-                        break;
-                    case 'right':
-                        box.stop().animate( { right: vertical, bottom: horizontal } );
-                        break;
-                    default:
-                        alert( iworks_upprev.position );
-                        break;
-                }
+                upprev_horizontal = iworks_upprev_get_horizontal( box );
+                upprev_vertical   = iworks_upprev_get_vertical( box );
+                box.stop().animate( iworks_upprev_setup_position( upprev_horizontal, upprev_vertical ), upprev_animate_duration );
             }
         }
     }
@@ -203,51 +118,80 @@ jQuery( function($) {
              */
             if ( iworks_upprev.animation == 'flyout' ) {
                 /**
-                * setup init animation
-                */
-                horizontal = iworks_upprev_get_horizontal( box );
-                vertical = iworks_upprev_get_vertical( box );
+                 * setup init animation
+                 */
+                upprev_horizontal = iworks_upprev_get_horizontal( box );
+                upprev_vertical = iworks_upprev_get_vertical( box );
             } else if ( 'fade' == iworks_upprev.animation ) {
-                vertical   = iworks_upprev.css_side;
-                horizontal = iworks_upprev.css_bottom;
+                upprev_vertical   = iworks_upprev.css_side;
+                upprev_horizontal = iworks_upprev.css_bottom;
                 box.css( { display: 'none' } );
             }
-                /**
-                * move!
-                */
-                switch ( iworks_upprev.position.all ) {
-                    case 'left':
-                        box.css( { left: vertical, bottom: horizontal } );
-                        break;
-                    case 'bottom':
-                        box.css( { bottom: horizontal } );
-                        break;
-                    case 'top':
-                        box.css( { top: horizontal } );
-                        break;
-                    case 'left-top':
-                        box.css( { left: vertical, top: horizontal } );
-                        break;
-                    case 'left-middle':
-                        box.css( { left: vertical } );
-                    case 'right-top':
-                        box.css( { right: vertical, top: horizontal } );
-                        break;
-                    case 'right-middle':
-                        box.css( { right: vertical } );
-                        break;
-                    case 'right':
-                        box.css( { right: vertical, bottom: horizontal } );
-                        break;
-                    default:
-                        alert( iworks_upprev.position );
-                        break;
-                }
+            box.css( iworks_upprev_setup_position( upprev_horizontal, upprev_vertical ) );
             /**
              * maybe show?
              */
             upprev_show_box();
         });
     });
+
+    function iworks_upprev_get_horizontal( box ) {
+        return '-' + (
+                box.width()
+                + parseInt( box.css( 'padding-top'    ).replace( /px$/, '' ) )
+                + parseInt( box.css( 'padding-bottom' ).replace( /px$/, '' ) )
+                ) + 'px';
+    }
+
+    function iworks_upprev_get_vertical( box ) {
+        return '-' + (
+                box.width()
+                + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
+                + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
+                ) + 'px';
+    }
+
+    function iworks_upprev_get_html_offset( h ) {
+        return parseInt( h.css( 'margin-top' ).replace( /px$/, '' ) ) - h.offset().top;
+    }
+
+    function iworks_upprev_setup_position( upprev_vertical, upprev_horizontal ) {
+        upprev_properites = {};
+        switch ( iworks_upprev.position.all ) {
+            case 'left':
+                upprev_properites.left   = upprev_horizontal;
+                upprev_properites.bottom = upprev_vertical;
+                break;
+            case 'bottom':
+                upprev_properites.bottom = upprev_vertical;
+                break;
+            case 'top':
+                upprev_properites.top    = upprev_vertical;
+                break;
+            case 'left-top':
+                upprev_properites.left   = upprev_horizontal;
+                upprev_properites.top    = upprev_vertical;
+                break;
+            case 'left-middle':
+                upprev_properites.left   = upprev_horizontal;
+                break;
+            case 'right':
+                upprev_properites.right  = upprev_horizontal;
+                upprev_properites.bottom = upprev_vertical;
+                break;
+            case 'right-middle':
+                upprev_properites.right  = upprev_horizontal;
+                break;
+            case 'right-top':
+                upprev_properites.right  = upprev_horizontal;
+                upprev_properites.top    = upprev_vertical;
+                break;
+            default:
+                alert( iworks_upprev.position );
+                break;
+        }
+        return upprev_properites;
+    }
+
 });
 
