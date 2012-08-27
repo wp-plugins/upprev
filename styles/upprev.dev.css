@@ -83,10 +83,11 @@
 }
 #upprev_close
 {
-    background: transparent url(../images/close.gif) no-repeat 0;
+    background: #fff url(../images/close.gif) no-repeat 0;
     border: none;
     display:block;
     height: 13px;
+    opacity: .7;
     overflow: hidden;
     padding: 0;
     position: absolute;

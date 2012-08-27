@@ -186,8 +186,8 @@ function iworks_upprev_options()
                 'name'              => 'color_set',
                 'type'              => 'checkbox',
                 'th'                => __( 'Set custom colors', 'upprev' ),
-                'label'             => __( 'Set custom colors.', 'upprev' ),
-                'default'           => 1,
+                'label'             => __( 'Turn on custom colors.', 'upprev' ),
+                'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
             array(
