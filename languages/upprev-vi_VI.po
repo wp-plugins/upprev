@@ -291,8 +291,8 @@ msgid "Not recomended!"
 msgstr "Không khuyến khích !"
 
 #: includes/options.php:298
-msgid "Google Analitics"
-msgstr "Google Analitics"
+msgid "Google Analytics"
+msgstr "Google Analytics"
 
 #: includes/options.php:299
 msgid "I don't have GA tracking on site."
@@ -304,8 +304,8 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Hãy bật nếu bạn không sử dụng bất kỳ GA plugin nào khác"
 
 #: includes/options.php:307
-msgid "Google Analitics Account"
-msgstr "Tài khoản Google Analitics"
+msgid "Google Analytics Account"
+msgstr "Tài khoản Google Analytics"
 
 #: includes/options.php:308
 msgid "Replace UA-XXXXX-X with your web property ID."

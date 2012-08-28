@@ -378,7 +378,7 @@ function iworks_upprev_options()
             array(
                 'name'              => 'ga_status',
                 'type'              => 'checkbox',
-                'th'                => __( 'Google Analitics', 'upprev' ),
+                'th'                => __( 'Google Analytics', 'upprev' ),
                 'label'             => __( 'I don\'t have GA tracking on site.', 'upprev' ),
                 'description'       => __( 'Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
                 'default'           => 0,
@@ -387,7 +387,7 @@ function iworks_upprev_options()
             array(
                 'name'              => 'ga_account',
                 'type'              => 'text',
-                'label'             => __( 'Google Analitics Account', 'upprev' ),
+                'label'             => __( 'Google Analytics Account', 'upprev' ),
                 'description'       => __( 'Replace UA-XXXXX-X with your web property ID.', 'upprev' ),
                 'class'             => 'regular-text',
                 'default'           => 'UA-XXXXX-X',

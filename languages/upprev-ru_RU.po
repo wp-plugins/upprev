@@ -302,8 +302,8 @@ msgid "Not recomended!"
 msgstr "Не рекомендуется!"
 
 #: includes/options.php:298
-msgid "Google Analitics"
-msgstr "Google Analitics"
+msgid "Google Analytics"
+msgstr "Google Analytics"
 
 #: includes/options.php:299
 msgid "I don't have GA tracking on site."
@@ -314,8 +314,8 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Включите, если вы не используете любой другой плагин отслеживания GA."
 
 #: includes/options.php:307
-msgid "Google Analitics Account"
-msgstr "Аккаунт Google Analitics"
+msgid "Google Analytics Account"
+msgstr "Аккаунт Google Analytics"
 
 #: includes/options.php:308
 msgid "Replace UA-XXXXX-X with your web property ID."

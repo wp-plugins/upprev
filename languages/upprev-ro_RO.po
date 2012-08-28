@@ -461,7 +461,7 @@ msgid "Not recomended!"
 msgstr "Nu e recomandat!"
 
 #: etc/options.php:381
-msgid "Google Analitics"
+msgid "Google Analytics"
 msgstr "Google Analytics"
 
 #: etc/options.php:382
@@ -474,7 +474,7 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Activează dacă nu folosește niciun plugin de supraveghere a traficului cu GA (Google Analytics)."
 
 #: etc/options.php:390
-msgid "Google Analitics Account"
+msgid "Google Analytics Account"
 msgstr "Contul de Google Analytics"
 
 #: etc/options.php:391

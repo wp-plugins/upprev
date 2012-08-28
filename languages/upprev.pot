@@ -457,7 +457,7 @@ msgid "Not recomended!"
 msgstr ""
 
 #: etc/options.php:381
-msgid "Google Analitics"
+msgid "Google Analytics"
 msgstr ""
 
 #: etc/options.php:382
@@ -469,7 +469,7 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr ""
 
 #: etc/options.php:390
-msgid "Google Analitics Account"
+msgid "Google Analytics Account"
 msgstr ""
 
 #: etc/options.php:391

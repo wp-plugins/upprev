@@ -288,7 +288,7 @@ msgid "Not recomended!"
 msgstr "Önerilmez!"
 
 #: includes/options.php:298
-msgid "Google Analitics"
+msgid "Google Analytics"
 msgstr "Google Analytics"
 
 #: includes/options.php:299
@@ -301,7 +301,7 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Eğer başka bir GA takip eklentisi kullanmıyorsanız bu seçeneği seçin."
 
 #: includes/options.php:307
-msgid "Google Analitics Account"
+msgid "Google Analytics Account"
 msgstr "Google Analytics Hesabı"
 
 #: includes/options.php:308

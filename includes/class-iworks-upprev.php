@@ -330,7 +330,7 @@ class IworksUpprev
         $content .= ', url: \''. plugins_url( 'box.php', dirname( __FILE__ ) ).'?p='.get_the_ID().'\'';
         $content .= ' };'."\n";
         /**
-         * Google Analitics tracking code
+         * Google Analytics tracking code
          */
         $ga_account = $this->options->get_option( 'ga_account' );
         if ( $ga_account && $this->options->get_option( 'ga_status' )) {

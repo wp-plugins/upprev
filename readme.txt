@@ -180,6 +180,7 @@ Example:
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
+* TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
 = 3.3.9 =
 

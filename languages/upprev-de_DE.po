@@ -375,8 +375,8 @@ msgid "Not recomended!"
 msgstr "Nicht empfohlen!"
 
 #: etc/options.php:331
-msgid "Google Analitics"
-msgstr "Google Analitics"
+msgid "Google Analytics"
+msgstr "Google Analytics"
 
 #: etc/options.php:332
 msgid "I don't have GA tracking on site."
@@ -388,8 +388,8 @@ msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Schalten Sie es ein wenn sie kein anderes GA Tracking plugin verwenden."
 
 #: etc/options.php:340
-msgid "Google Analitics Account"
-msgstr "Google Analitics Account"
+msgid "Google Analytics Account"
+msgstr "Google Analytics Account"
 
 #: etc/options.php:341
 msgid "Replace UA-XXXXX-X with your web property ID."
