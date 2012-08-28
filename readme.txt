@@ -1,16 +1,18 @@
 === upPrev ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
-Tags: next post, previous post, notification, related, upPrev
+Tags: next post, previous post, notification, related, upPrev, flyout, new york times, NYTimes, animated, featured, related content
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-When a reader scrolls to the bottom of a single post, page or custom post type, show previous posts in the selected configuration.
+Display cool, animated flyout or fade box with related content. Just like New York Times.
 
 == Description ==
+
+Display cool, animated flyout or fade box with related content. Just like New York Times.
 
 When a reader scrolls to the bottom of a single post, page or custom post
 type, a button animates in the page’s bottom right or left corner,
@@ -31,6 +33,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
+* Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
@@ -57,6 +60,7 @@ upPrev plugin will work on websites in the following languages:
 * French
 * German
 * Polish
+* Romanian
 * Russian
 * Turkish
 * Vietnamese
@@ -88,6 +92,66 @@ function change_thumbnail( $image )
 
 Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select post types` section.
 
+= How I can customize with my own styles? =
+
+Switch settings to **Advance** and go to '*Other*' tab to fill "**Custom CSS**" field.
+
+Example:
+
+`
+/* header */
+#upprev_box h6 a
+{
+    color: red;
+}
+/* header link: mouse over */
+#upprev_box h6 a:hover
+{
+    color: black;
+}
+/* headera link: visited */
+#upprev_box h6 a:visited
+{
+    color: gray;
+}
+/* container for title, thumbnail and excerpt */
+#upprev_box .upprev_excerpt
+{
+    font-size: 8px;
+}
+/* excerpt */
+#upprev_box .upprev_excerpt p
+{
+    line-height: 1em;
+}
+/* previous post link */
+#upprev_box .upprev_excerpt p a
+{
+    text-transform: uppercase;
+}
+/* previous post link: mouse over */
+#upprev_box .upprev_excerpt p a:hover
+{
+    text-decoration: underline;
+}
+/* previous post link: visited */
+#upprev_box .upprev_excerpt p a:visited
+{
+    color: gray;
+}
+/* thumbnail image */
+#upprev_box .upprev_thumb
+{
+    padding: 1px;
+    border: 1px dotted red;
+}
+/* close button */
+#upprev_close
+{
+    opacity: .7;
+}
+`
+
 == Screenshots ==
 
 1. upPrev on post
@@ -97,6 +161,10 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.9 =
+
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
 
 = 3.3.8 =
 
@@ -277,10 +345,13 @@ Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select 
 
 == Upgrade Notice ==
 
+= 3.3.9 =
+
+Add Romanian translation.
+
 = 3.3.8 =
 
 Critical update to prevent site crash!
-
 
 = 3.3.3.1 =
 
