@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: next post, previous post, notification, related, upPrev, flyout, new york times, NYTimes, animated, featured, related content
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
+* Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
@@ -59,6 +60,7 @@ upPrev plugin will work on websites in the following languages:
 * French
 * German
 * Polish
+* Romanian
 * Russian
 * Turkish
 * Vietnamese
@@ -178,6 +180,10 @@ Example:
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
+
+= 3.3.9 =
+
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
 
 = 3.3.8 =
 
@@ -361,6 +367,10 @@ Example:
 = 4.0 =
 
 Added simple configuration screen. Rebuild option page to easier configuration. Created PRO version.
+
+= 3.3.9 =
+
+Add Romanian translation.
 
 = 3.3.8 =
 
