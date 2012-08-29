@@ -112,12 +112,12 @@ jQuery( function($) {
              * setup width
              */
             box = $('#upprev_box');
-            box.css( { width: iworks_upprev.css_width } );
+            box.css( { width: iworks_upprev.css_width, borderWidth: iworks_upprev.css_border_width } );
             /**
              * apply custom colors
              */
             if ( iworks_upprev.color_set ) {
-                iworks_upprev_add_style( box, 'background-color: ' + iworks_upprev.color_background + ' !important;color: ' + iworks_upprev.color + ' !important'  );
+                iworks_upprev_add_style( box, 'background-color: ' + iworks_upprev.color_background + ' !important;color: ' + iworks_upprev.color + ' !important;border-color:' + iworks_upprev.color_border + ' !important;' );
                 $( '#upprev_box a' ).each( function() {
                     iworks_upprev_add_style( $(this), 'color:' + iworks_upprev.color_link + ' !important' );
                 });

@@ -420,6 +420,25 @@ class IworksOptions
         return $option_value;
     }
 
+    public function get_values( $option_name, $option_group = 'index' )
+    {
+        $this->option_group = $option_group;
+        $data = $this->get_option_array( $option_group );
+        $data = $data['options'];
+        foreach( $data as $one ) {
+            if ( $one[ 'name' ] != $option_name ) {
+                continue;
+            }
+            switch( $one['type'] ) {
+            case 'checkbox_group':
+                return $one['options'];
+            case 'radio':
+                return $one['radio'];
+            }
+        }
+        return;
+    }
+
     public function get_default_value( $option_name, $option_group = 'index' )
     {
         $this->option_group = $option_group;

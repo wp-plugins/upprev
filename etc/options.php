@@ -55,12 +55,12 @@ function iworks_upprev_options()
                 'radio'             => array(
                     'right'         => array( 'label' => __( 'bottom right', 'upprev' ) ),
                     'left'          => array( 'label' => __( 'bottom left',  'upprev' ) ),
-                    'bottom'        => array( 'label' => __( 'bottom',       'upprev' ), 'disabled' => true ),
-                    'right-top'     => array( 'label' => __( 'top right',    'upprev' ), 'disabled' => true ),
-                    'top'           => array( 'label' => __( 'top',          'upprev' ), 'disabled' => true ),
-                    'left-top'      => array( 'label' => __( 'top left',     'upprev' ), 'disabled' => true ),
-                    'right-middle'  => array( 'label' => __( 'middle right', 'upprev' ), 'disabled' => true ),
-                    'left-middle'   => array( 'label' => __( 'middle left',  'upprev' ), 'disabled' => true )
+                    'bottom'        => array( 'label' => __( 'bottom',       'upprev' ), 'need_pro' => true ),
+                    'right-top'     => array( 'label' => __( 'top right',    'upprev' ), 'need_pro' => true ),
+                    'top'           => array( 'label' => __( 'top',          'upprev' ), 'need_pro' => true ),
+                    'left-top'      => array( 'label' => __( 'top left',     'upprev' ), 'need_pro' => true ),
+                    'right-middle'  => array( 'label' => __( 'middle right', 'upprev' ), 'need_pro' => true ),
+                    'left-middle'   => array( 'label' => __( 'middle left',  'upprev' ), 'need_pro' => true )
                 ),
                 'configuration'     => 'both',
                 'sanitize_callback' => 'esc_html'
@@ -92,12 +92,12 @@ function iworks_upprev_options()
                 'radio'             => array(
                     'right'         => array( 'label' => __( 'bottom right', 'upprev' ) ),
                     'left'          => array( 'label' => __( 'bottom left',  'upprev' ) ),
-                    'bottom'        => array( 'label' => __( 'bottom',       'upprev' ), 'disabled' => true ),
-                    'right-top'     => array( 'label' => __( 'top right',    'upprev' ), 'disabled' => true ),
-                    'top'           => array( 'label' => __( 'top',          'upprev' ), 'disabled' => true ),
-                    'left-top'      => array( 'label' => __( 'top left',     'upprev' ), 'disabled' => true ),
-                    'right-middle'  => array( 'label' => __( 'middle right', 'upprev' ), 'disabled' => true ),
-                    'left-middle'   => array( 'label' => __( 'middle left',  'upprev' ), 'disabled' => true )
+                    'bottom'        => array( 'label' => __( 'bottom',       'upprev' ), 'need_pro' => true ),
+                    'right-top'     => array( 'label' => __( 'top right',    'upprev' ), 'need_pro' => true ),
+                    'top'           => array( 'label' => __( 'top',          'upprev' ), 'need_pro' => true ),
+                    'left-top'      => array( 'label' => __( 'top left',     'upprev' ), 'need_pro' => true ),
+                    'right-middle'  => array( 'label' => __( 'middle right', 'upprev' ), 'need_pro' => true ),
+                    'left-middle'   => array( 'label' => __( 'middle left',  'upprev' ), 'need_pro' => true )
                 ),
                 'configuration'     => 'both',
                 'sanitize_callback' => 'esc_html'
@@ -180,7 +180,8 @@ function iworks_upprev_options()
             array(
                 'type'              => 'heading',
                 'label'             => __( 'Colors', 'upprev' ),
-                'configuration'     => 'both'
+                'configuration'     => 'both',
+                'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
             array(
                 'name'              => 'color_set',
@@ -188,7 +189,7 @@ function iworks_upprev_options()
                 'th'                => __( 'Set custom colors', 'upprev' ),
                 'label'             => __( 'Turn on custom colors.', 'upprev' ),
                 'default'           => 0,
-                'sanitize_callback' => 'absint'
+                'sanitize_callback' => 'absint',
             ),
             array(
                 'name'              => 'color',
@@ -213,6 +214,15 @@ function iworks_upprev_options()
                 'type'              => 'farbtastic',
                 'class'             => 'short-text',
                 'th'                => __( 'Links', 'upprev' ),
+                'sanitize_callback' => 'esc_html',
+                'default'           => '#000',
+                'use_name_as_id'    => true,
+            ),
+            array(
+                'name'              => 'color_border',
+                'type'              => 'farbtastic',
+                'class'             => 'short-text',
+                'th'                => __( 'Border', 'upprev' ),
                 'sanitize_callback' => 'esc_html',
                 'default'           => '#000',
                 'use_name_as_id'    => true,
@@ -615,6 +625,7 @@ function iworks_upprev_exclude_categories( $values = array() )
     global $iworks_upprev;
     return $iworks_upprev->build_exclude_categories( $values );
 }
+
 function iworks_upprev_exclude_categories_sanitize_callback( $values )
 {
     if ( is_array( $values ) ) {

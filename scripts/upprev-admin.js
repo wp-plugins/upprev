@@ -61,6 +61,13 @@ jQuery(document).ready(function($) {
         $('#iworks_upprev_color_link_picker').fadeIn();
     });
     /**
+     * color_border
+     */
+    $('#iworks_upprev_color_border_picker').farbtastic('#iworks_upprev_color_border');
+    $('#iworks_upprev_color_border').click(function() {
+        $('#iworks_upprev_color_border_picker').fadeIn();
+    });
+    /**
      * color controlls
      */
     $('#iworks_upprev_color_set').bind( 'click', function() {

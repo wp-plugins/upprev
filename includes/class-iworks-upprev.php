@@ -53,14 +53,16 @@ class IworksUpprev
             'simple' => array(
                 'name'     => __( 'Default simple layout', 'iworks_upprev' ),
                 'defaults' => array(
-                    'class'           => 'simple',
-                    'number_of_posts' => 1
+                    'class'            => 'simple',
+                    'css_border_width' => '2px 0 0 0',
+                    'number_of_posts'  => 1,
                 )
             ),
             'vertical 3' => array(
                 'name'     => __( 'Vertical Three', 'iworks_upprev' ),
                 'defaults' => array(
                     'class'           => 'vertical-3',
+                    'css_border_width' => '2px 0 0 0',
                     'excerpt_show'    => false,
                     'make_break'      => false,
                     'number_of_posts' => 3,
@@ -124,7 +126,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-//        return false;
+        return false;
         return true;
     }
 
@@ -218,7 +220,7 @@ class IworksUpprev
             array(
                 'parent' => 'appearance',
                 'id'     => 'upprev',
-                'title'  => __('upPrev', 'upprev'),
+                'title'  => __( 'upPrev', 'upprev' ),
                 'href'   => admin_url( 'themes.php?page=' . $this->dir . '/admin/index.php' )
             )
         );
@@ -251,10 +253,10 @@ class IworksUpprev
     {
         if ( $this->dir.'/upprev.php' == $file ) {
             if ( !is_multisite() && current_user_can( $this->capability ) ) {
-                $links[] = '<a href="themes.php?page='.$this->dir.'/admin/index.php">' . __('Settings') . '</a>';
+                $links[] = '<a href="themes.php?page='.$this->dir.'/admin/index.php">' . __( 'Settings' ) . '</a>';
             }
             if ( !$this->is_pro ) {
-                $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __('Donate') . '</a>';
+                $links[] = '<a href="http://iworks.pl/donate/upprev.php">' . __( 'Donate' ) . '</a>';
             }
         }
         return $links;
@@ -262,12 +264,12 @@ class IworksUpprev
 
     public function index_iworks_upprev_position_data( $data )
     {
-        if ( !$this->is_pro ) {
+        if ( $this->is_pro ) {
             return $data;
         }
         foreach( array_keys( $data ) as $key ) {
-            if ( isset( $data[ $key ]['disabled'] ) ) {
-                unset( $data[ $key ]['disabled'] );
+            if ( isset( $data[ $key ]['need_pro'] ) && $data[ $key ]['need_pro'] ) {
+                $data[ $key ]['disabled'] = true;
             }
         }
         return $data;
@@ -280,7 +282,7 @@ class IworksUpprev
         }
         $use_cache = $this->options->get_option( 'use_cache' );
         if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$this->options->get_option('cache_stamp');
+            $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
             if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
                 print $content;
                 return;
@@ -291,6 +293,7 @@ class IworksUpprev
             'animation',
             'color_set',
             'compare',
+            'css_border_width',
             'css_bottom',
             'css_side',
             'css_width',
@@ -302,7 +305,7 @@ class IworksUpprev
             'url_new_window',
         );
         if ( $this->is_pro && $this->options->get_option( 'color_set' ) ) {
-            $params = array_merge( $params, array( 'color', 'color_background', 'color_link' ) );
+            $params = array_merge( $params, array( 'color', 'color_background', 'color_link', 'color_border' ) );
         }
         $defaults = $this->get_default_params();
         foreach ( $params as $key ) {
@@ -313,7 +316,7 @@ class IworksUpprev
                 is_numeric($value)? $value:(sprintf("'%s'", $value))
             );
         }
-        $postition = $this->options->get_option( 'position' );
+        $postition = $this->sanitize_position( $this->options->get_option( 'position' ) );
         $data .= ' position: { ';
         foreach( array( 'top', 'left', 'center', 'middle' ) as $key ) {
             $re = sprintf( '/%s/', $key );
@@ -483,7 +486,7 @@ class IworksUpprev
                 $siblings[ get_category_link( $categories[$i]->term_id ) ] = $categories[$i]->name;
                 $ids[] = $categories[$i]->cat_ID;
             }
-            $args['cat'] = implode(',',$ids);
+            $args['cat'] = implode( ',',$ids );
             break;
         case 'tag':
             $count_args = array ( 'taxonomy' => 'post_tag' );
@@ -556,7 +559,7 @@ class IworksUpprev
             if ( !empty( $header_text ) ) {
                 $title .= $header_text;
             } else if ( count( $siblings ) ) {
-                $title .= sprintf ( '%s ', __('More in', 'upprev' ) );
+                $title .= sprintf ( '%s ', __( 'More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
                     $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
@@ -588,7 +591,7 @@ class IworksUpprev
                 break;
             }
             if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
-                if ( $i++ < $number_of_posts ) {
+                if ( $i < $number_of_posts ) {
                     $item_class[] = 'upprev_space';
                 }
             }
@@ -599,7 +602,7 @@ class IworksUpprev
                 get_permalink(),
                 $url_sufix
             );
-            if ( current_theme_supports('post-thumbnails') && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
+            if ( current_theme_supports( 'post-thumbnails' ) && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $a_class = '';
                 if ( !preg_match( '/^(vertical 3)$/', $layout ) ) {
                     $item_class[] = 'upprev_thumbnail';
@@ -651,9 +654,10 @@ class IworksUpprev
             }
             $item .= '</div>';
             $value .= apply_filters( 'iworks_upprev_box_item', $item );
+            $i++;
         }
         if ( $show_close_button ) {
-            $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __('Close', 'upprev') );
+            $value .= sprintf( '<a id="upprev_close" href="#" rel="close">%s</a>', __( 'Close', 'upprev' ) );
         }
         if ( $this->options->get_option( 'promote' ) ) {
             $value .= '<p class="promote"><small>'.__( 'Previous posts box brought to you by <a href="http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/">upPrev plugin</a>.', 'upprev' ).'</small></p>';
@@ -699,12 +703,26 @@ class IworksUpprev
 
     public function the_box()
     {
+        echo "\n";
+        printf( '<!-- upPrev: %s/%s -->', IWORKS_UPPREV_VERSION, $this->version );
+        echo "\n";
         echo $this->get_box();
+        $layout = $this->sanitize_layout( $this->options->get_option( 'layout' ) );
+        extract( $this->get_default_params( $layout ) );
+        if ( !isset( $show_close_button ) || $show_close_button ) {
+            echo '<a id="upprev_rise">&clubs;</a>';
+        }
     }
 
     private function sanitize_layout( $layout )
     {
         if ( array_key_exists( $layout, $this->available_layouts ) ) {
+            if ( $this->is_pro ) {
+                return $layout;
+            }
+            if ( isset( $this->available_layouts[ $layout ][ 'need_pro' ] ) && $this->available_layouts[ $layout ][ 'need_pro' ] ) {
+                return 'simple';
+            }
             return $layout;
         }
         return 'simple';
@@ -769,11 +787,10 @@ class IworksUpprev
 
     private function position_one_radio( $value, $input, $html_element_name, $option_name, $option_value )
     {
+        $option_value = $this->sanitize_position( $option_value );
         $id = $option_name.'-'.$value;
         $disabled = '';
-        if ( preg_match( '/\-disabled$/', $value ) ) {
-            $disabled = 'disabled="disabled"';
-        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+        if ( isset( $input['disabled'] ) && $input['disabled'] ) {
             $disabled = 'disabled="disabled"';
         }
         return sprintf (
@@ -830,6 +847,18 @@ class IworksUpprev
     {
         $file = '/styles/'.$name.$this->dev.'.css';
         wp_enqueue_style ( $name, plugins_url( $file, $this->base ), $deps, $this->get_version( $file ) );
+    }
+
+    private function sanitize_position( $position )
+    {
+        $positions = $this->options->get_values( 'position' );
+        if ( $this->is_pro && array_key_exists( $position, $positions ) ) {
+            return $position;
+        }
+        if ( isset( $positions[ $postition ][ 'need_pro' ] ) && !$positions[ $postition ][ 'need_pro' ] ) {
+            return $position;
+        }
+        return 'right';
     }
 
     /**

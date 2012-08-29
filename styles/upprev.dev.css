@@ -6,8 +6,9 @@
 ,.wp-admin .upprev_box
 {
     background-color: #fff;
-    border-left: 1px solid #f0f0f0;
-    border-top: 2px solid #000;
+    border-style: solid;
+    border-color: #000;
+    border-width: 2px 0 0 0;
     color: #000;
     padding: 10px 20px 10px 10px;
     text-align: left;
@@ -33,7 +34,7 @@
     color: inherit;
     font-family: arial,helvetica,sans-serif;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 700;
     margin:0 0 10px 0;
     opacity: .8;
     padding:0;
@@ -204,7 +205,7 @@
 #upprev_box.bloginity
 ,.wp-admin .upprev_box.bloginity
 {
-    border: 0;
+    border: 1px solid #aaa;
     padding: 5px 0;
     width: 376px;
 }
@@ -237,6 +238,11 @@
 {
     float: none;
     margin: 0;
+}
+#upprev_box.bloginity .upprev_thumbnail h5
+,.wp-admin .upprev_box.bloginity .upprev_thumbnail h5
+{
+    margin-bottom: 0;
 }
 /**
  * spacer
