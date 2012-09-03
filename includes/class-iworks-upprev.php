@@ -165,7 +165,7 @@ class IworksUpprev
             foreach( $this->available_layouts as $key => $layout ) {
                 if( isset( $layout['defaults']['thumb_width'] ) and isset( $layout['defaults']['thumb_height'] ) ) {
                     add_image_size(
-                        'iworks-upprev-'.$layout['class'],
+                        'iworks-upprev-'.$layout['defaults']['class'],
                         $layout['defaults']['thumb_width'],
                         $layout['defaults']['thumb_height'],
                         true
@@ -316,13 +316,13 @@ class IworksUpprev
                 is_numeric($value)? $value:(sprintf("'%s'", $value))
             );
         }
-        $postition = $this->sanitize_position( $this->options->get_option( 'position' ) );
+        $position = $this->sanitize_position( $this->options->get_option( 'position' ) );
         $data .= ' position: { ';
         foreach( array( 'top', 'left', 'center', 'middle' ) as $key ) {
             $re = sprintf( '/%s/', $key );
-            $data .= sprintf( '%s: %d, ', $key, preg_match( $re, $postition ) );
+            $data .= sprintf( '%s: %d, ', $key, preg_match( $re, $position ) );
         }
-        $data .= sprintf( "all: '%s' }, ", $postition );
+        $data .= sprintf( "all: '%s' }, ", $position );
         /**
          * print
          */
@@ -421,7 +421,7 @@ class IworksUpprev
 
         $show_taxonomy   = true;
         $siblings        = array();
-
+        global $post;
         $args = array(
             'ignore_sticky_posts' => $ignore_sticky_posts,
             'orderby'             => 'date',
@@ -855,7 +855,7 @@ class IworksUpprev
         if ( $this->is_pro && array_key_exists( $position, $positions ) ) {
             return $position;
         }
-        if ( isset( $positions[ $postition ][ 'need_pro' ] ) && !$positions[ $postition ][ 'need_pro' ] ) {
+        if ( isset( $positions[ $position ] ) && isset( $positions[ $position ][ 'need_pro' ] ) && !$positions[ $position ][ 'need_pro' ] ) {
             return $position;
         }
         return 'right';
