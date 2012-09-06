@@ -198,16 +198,16 @@ class IworksOptions
                 break;
             case 'checkbox':
                 $related_to[ $option['name'] ] = $this->get_option( $option['name'], $option_group );
-                $content .= sprintf
-                    (
-                        '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
-                        $html_element_name,
-                        $html_element_name,
-                        $html_element_name,
-                        $related_to[ $option['name'] ]? ' checked="checked"':'',
-                        isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
-                        isset($option['label'])?  $option['label']:''
-                    );
+                $checkbox = sprintf (
+                    '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
+                    $html_element_name,
+                    $html_element_name,
+                    $html_element_name,
+                    $related_to[ $option['name'] ]? ' checked="checked"':'',
+                    ( ( isset($option['disabled']) && $option['disabled'] ) or ( isset( $option['need_pro'] ) && $option['need_pro'] ) )? ' disabled="disabled"':'',
+                    isset($option['label'])?  $option['label']:''
+                );
+                $content .= apply_filters( $filter_name, $checkbox );
                 break;
             case 'checkbox_group':
                 $option_value = $this->get_option($option['name'], $option_group );
@@ -321,15 +321,17 @@ class IworksOptions
                 if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
                     $id = sprintf( ' id="%s"', $html_element_name );
                 }
-                $content .= sprintf (
-                    '<div class="color-picker-container"><input type="text" name="%s" value="%s" class="%s"%s /> %s<div class="picker" id="%s_picker"></div></div>',
+                $farbastic = sprintf (
+                    '<div class="color-picker-container"><input type="text" name="%s" value="%s" class="%s"%s%s /> %s<div class="picker" id="%s_picker"></div></div>',
                     $html_element_name,
                     $this->get_option( $option['name'], $option_group ),
                     isset($option['class']) && $option['class']? $option['class']:'',
                     $id,
+                    ( isset( $option['need_pro'] ) and $option['need_pro'] )? ' disabled="disabled"':'',
                     isset($option['label'])?  $option['label']:'',
                     $html_element_name
                 );
+                $content .= apply_filters( $filter_name, $farbastic );
                 break;
             default:
                 $content .= sprintf('not implemented type: %s', $option['type']);

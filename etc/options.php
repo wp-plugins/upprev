@@ -190,6 +190,7 @@ function iworks_upprev_options()
                 'label'             => __( 'Turn on custom colors.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint',
+                'need_pro'          => true,
             ),
             array(
                 'name'              => 'color',
@@ -199,6 +200,7 @@ function iworks_upprev_options()
                 'default'           => '#000',
                 'sanitize_callback' => 'esc_html',
                 'use_name_as_id'    => true,
+                'need_pro'          => true,
             ),
             array(
                 'name'              => 'color_background',
@@ -208,6 +210,7 @@ function iworks_upprev_options()
                 'default'           => '#fff',
                 'sanitize_callback' => 'esc_html',
                 'use_name_as_id'    => true,
+                'need_pro'          => true,
             ),
             array(
                 'name'              => 'color_link',
@@ -217,6 +220,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html',
                 'default'           => '#000',
                 'use_name_as_id'    => true,
+                'need_pro'          => true,
             ),
             array(
                 'name'              => 'color_border',
@@ -226,6 +230,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html',
                 'default'           => '#000',
                 'use_name_as_id'    => true,
+                'need_pro'          => true,
             ),
             /**
              * Content: advance

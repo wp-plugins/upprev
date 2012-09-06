@@ -155,8 +155,13 @@ class IworksUpprev
         /**
          * filters
          */
-        add_filter( 'index_iworks_upprev_position_data',    array( &$this, 'index_iworks_upprev_position_data'    )        );
+        add_filter( 'index_iworks_upprev_color_background', array( &$this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_border',     array( &$this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_link',       array( &$this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_set',        array( &$this, 'index_iworks_upprev_color_set' ) );
+        add_filter( 'index_iworks_upprev_color',            array( &$this, 'index_iworks_upprev_colors'    ) );
         add_filter( 'index_iworks_upprev_position_content', array( &$this, 'index_iworks_upprev_position_content' ), 10, 5 );
+        add_filter( 'index_iworks_upprev_position_data',    array( &$this, 'index_iworks_upprev_position_data'    )        );
     }
 
     public function after_setup_theme()
@@ -203,8 +208,12 @@ class IworksUpprev
             /**
              * enqueue resources
              */
-            wp_enqueue_style( 'farbtastic' );
-            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), array( 'jquery-ui-tabs', 'farbtastic'), $this->get_version() );
+            $scripts = array( 'jquery-ui-tabs' );
+            if ( $this->is_pro ) {
+                wp_enqueue_style( 'farbtastic' );
+                $scripts[] = 'farbtastic';
+            }
+            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), $scripts, $this->get_version() );
             $this->enqueue_style( 'upprev-admin' );
             $this->enqueue_style( 'upprev' );
         }
@@ -832,6 +841,22 @@ class IworksUpprev
         return $content;
     }
 
+    public function index_iworks_upprev_colors( $content )
+    {
+        if ( !$this->is_pro ) {
+            return $content;
+        }
+        return preg_replace( '/ disabled="disabled"/', '', $content );
+    }
+
+    public function index_iworks_upprev_color_set( $content )
+    {
+        if ( !$this->is_pro ) {
+            return '<p class="error-message">'.__( 'Colors setup is available in PRO version!', 'iworks_upprev' ).'</p>'.$content;
+        }
+        return preg_replace( '/ disabled="disabled"/', '', $content );
+    }
+
     private function get_default_params( $layout = null )
     {
         if ( null == $layout ) {
@@ -891,5 +916,6 @@ class IworksUpprev
         }
         return '<ul>'.$content.'</li>';
     }
+
 }
 
