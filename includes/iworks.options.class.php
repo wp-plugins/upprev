@@ -13,7 +13,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.4.0';
+        $this->version              = '1.4.1';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -428,7 +428,7 @@ class IworksOptions
         $data = $this->get_option_array( $option_group );
         $data = $data['options'];
         foreach( $data as $one ) {
-            if ( $one[ 'name' ] != $option_name ) {
+            if ( isset( $one[ 'name' ] ) && $one[ 'name' ] != $option_name ) {
                 continue;
             }
             switch( $one['type'] ) {
