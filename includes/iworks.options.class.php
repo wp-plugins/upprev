@@ -378,10 +378,10 @@ class IworksOptions
         if ( $use_tabs ) {
             $content .= '</div>';
         }
-        $content .= sprintf(
-            '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
-            __( 'Save Changes' )
-        );
+        /**
+         * submit button
+         */
+        $content .= get_submit_button( __( 'Save Changes' ) );
         /* print ? */
         if ( $echo ) {
             echo $content;
