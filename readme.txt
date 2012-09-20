@@ -343,6 +343,7 @@ Example:
 * BUGFIX: fixed translation load
 * IMPROVMENT: added show box header option
 * IMPROVMENT: added stamp for cache key
+* IMPROVMENT: added Polish translation by [Marcin Pietrzak](http://iworks.pl/)
 
 = 2.0 =
 
