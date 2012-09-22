@@ -55,20 +55,24 @@ class IworksUpprev
                 'defaults' => array(
                     'class'            => 'simple',
                     'css_border_width' => '2px 0 0 0',
+                    'css_bottom'       => 10,
+                    'css_side'         => 10,
                     'number_of_posts'  => 1,
                 )
             ),
             'vertical 3' => array(
                 'name'     => __( 'Vertical Three', 'iworks_upprev' ),
                 'defaults' => array(
-                    'class'           => 'vertical-3',
+                    'class'            => 'vertical-3',
                     'css_border_width' => '2px 0 0 0',
-                    'excerpt_show'    => false,
-                    'make_break'      => false,
-                    'number_of_posts' => 3,
-                    'show_thumb'      => true,
-                    'thumb_height'    => 96,
-                    'thumb_width'     => 96,
+                    'css_bottom'       => 10,
+                    'css_side'         => 10,
+                    'excerpt_show'     => false,
+                    'make_break'       => false,
+                    'number_of_posts'  => 3,
+                    'show_thumb'       => true,
+                    'thumb_height'     => 96,
+                    'thumb_width'      => 96,
                 ),
                 'need_pro' => true
             ),
@@ -126,14 +130,13 @@ class IworksUpprev
 
     public function is_pro()
     {
-        return false;
+#        return false;
         return true;
     }
 
     public function get_version( $file = null )
     {
         if ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) {
-
             if ( null != $file ) {
                 $file = dirname( dirname ( __FILE__ ) ) . $file;
                 return md5_file( $file );

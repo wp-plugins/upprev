@@ -181,7 +181,6 @@ function iworks_upprev_options()
                 'type'              => 'heading',
                 'label'             => __( 'Colors', 'upprev' ),
                 'configuration'     => 'both',
-                'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
             array(
                 'name'              => 'color_set',
@@ -509,7 +508,8 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __( 'Promote', 'upprev' )
+                'label'             => __( 'Promote', 'upprev' ),
+                'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
             array(
                 'name'              => 'promote',
@@ -526,6 +526,9 @@ function iworks_upprev_options()
                 'value'             => __( 'You can buy me some special coffees if you appreciate my work, thank you! <a href="http://iworks.pl/donate/upprev.php">Donate to this plugin.</a>', 'upprev' ),
                 'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
+            /**
+             * Excludes
+             */
             array(
                 'type'              => 'heading',
                 'label'             => __( 'Excludes', 'upprev' ),

@@ -39,6 +39,10 @@ function iworks_upprev_tabulator_init()
 jQuery(document).ready(function($) {
     $('.color-picker-container .picker').hide();
 
+    if( 'yes' != $('#upprev_is_pro').val() ) {
+        return;
+    }
+
     /**
      * color
      */

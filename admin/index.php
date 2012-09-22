@@ -9,6 +9,7 @@ if( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) {
 }
 ?>
     <form method="post" action="options.php" id="iworks_upprev_admin_index">
+        <input type="hidden" name="is_pro" id="upprev_is_pro" value="<?php echo $iworks_upprev->is_pro()? 'yes':'no'; ?>" />
         <div class="postbox-container" style="width:75%">
 <?php
 $option_name = basename( __FILE__, '.php');
