@@ -54,6 +54,7 @@ class IworksUpprev
                 'name'     => __( 'Default simple layout', 'iworks_upprev' ),
                 'defaults' => array(
                     'class'            => 'simple',
+                    'compare'          => 'simple_or_yarpp',
                     'css_border_width' => '2px 0 0 0',
                     'css_bottom'       => 10,
                     'css_side'         => 10,
@@ -64,6 +65,7 @@ class IworksUpprev
                 'name'     => __( 'Vertical Three', 'iworks_upprev' ),
                 'defaults' => array(
                     'class'            => 'vertical-3',
+                    'compare'          => 'simple_or_yarpp',
                     'css_border_width' => '2px 0 0 0',
                     'css_bottom'       => 10,
                     'css_side'         => 10,
@@ -80,8 +82,9 @@ class IworksUpprev
                 'name'     => __( '"Bloginity" style', 'iworks_upprev' ),
                 'defaults' => array(
                     'class'             => 'bloginity',
-                    'css_side'          => 0,
+                    'compare'           => 'simple_or_yarpp',
                     'css_bottom'        => 0,
+                    'css_side'          => 0,
                     'css_width'         => 376,
                     'excerpt_show'      => false,
                     'header_show'       => false,
@@ -423,6 +426,10 @@ class IworksUpprev
             $box_classes[] = $class;
         }
         /**
+         * select compare method
+         */
+        $compare = $this->sanitize_compare( apply_filters( 'iworks_upprev_compare', $compare ) );
+        /**
          * upprev_box class
          */
         $box_classes[] = 'compare-'.$compare;
@@ -463,27 +470,12 @@ class IworksUpprev
             }
         }
         /**
-         * YARPP
-         */
-        if ( 'yarpp' == $compare ) {
-            if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.5' ) > -1 ) {
-                if ( !yarpp_related_exist( $args ) ) {
-                    return;
-                }
-                $args['fields'] = 'ids';
-                $a = yarpp_get_related( $args );
-                $yarpp_posts = array();
-                foreach( $a as $b ) {
-                    $yarpp_posts[] = $b->ID;
-                }
-            } else {
-                $compare = 'simple';
-            }
-        }
-        /**
          * comparation method
          */
         switch ( $compare ) {
+        /**
+         * category
+         */
         case 'category':
             $categories = get_the_category();
             if ( !$categories ) {
@@ -500,6 +492,9 @@ class IworksUpprev
             }
             $args['cat'] = implode( ',',$ids );
             break;
+        /**
+         * tag
+         */
         case 'tag':
             $count_args = array ( 'taxonomy' => 'post_tag' );
             $tags = get_the_tags();
@@ -526,9 +521,29 @@ class IworksUpprev
                 $args['tag__in'] = $ids;
             }
             break;
+        /**
+         * random
+         */
         case 'random':
             $args['orderby'] = 'rand';
             unset($args['order']);
+        /**
+         * YARPP
+         */
+        case 'yarpp':
+            if ( !yarpp_related_exist( $args ) ) {
+                return;
+            }
+            $args['fields'] = 'ids';
+            $a = yarpp_get_related( $args );
+            $yarpp_posts = array();
+            foreach( $a as $b ) {
+                if ( $b->ID == $post->ID ) {
+                    continue;
+                }
+                $yarpp_posts[] = $b->ID;
+            }
+            break;
         default:
             $show_taxonomy = false;
         }
@@ -544,7 +559,7 @@ class IworksUpprev
          * YARPP
          */
         if ( 'yarpp' == $compare ) {
-            $args = array( 'post__in' => $yarpp_posts );
+            $args = array( 'post__in' => $yarpp_posts, 'ignore_sticky_posts' => 1 );
         }
         $upprev_query = new WP_Query( $args );
         if ( !$upprev_query->have_posts() ) {
@@ -887,6 +902,23 @@ class IworksUpprev
             return $position;
         }
         return 'right';
+    }
+
+    /**
+     * sanitize_compare
+     */
+    private function sanitize_compare( $compare )
+    {
+        if ( !preg_match( '/^(simple|category|tag|random|yarpp|simple_or_yarpp)$/', $compare ) ) {
+            return 'simple';
+        }
+        if ( preg_match( '/^(simple_or_yarpp|yarpp)$/', $compare ) ) {
+            if ( defined( 'YARPP_VERSION' ) && version_compare( YARPP_VERSION, '3.5' ) > -1 ) {
+                return 'yarpp';
+            }
+            return 'simple';
+        }
+        return $compare;
     }
 
     /**
