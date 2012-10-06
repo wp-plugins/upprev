@@ -549,7 +549,7 @@ function iworks_upprev_options()
                 'label'             => __( 'Buy PRO!', 'upprev' ),
                 'configuration'     => 'special',
                 'class'             => 'error-message',
-                'callback'          => 'iworks_upprev_buy_pro',
+                'filter'            => 'iworks_upprev_buy_pro',
                 'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
         ),
@@ -632,6 +632,15 @@ function iworks_upprev_exclude_categories( $values = array() )
 {
     global $iworks_upprev;
     return $iworks_upprev->build_exclude_categories( $values );
+}
+
+/**
+ * buy pro page
+ */
+function iworks_upprev_buy_pro()
+{
+    global $iworks_upprev;
+    return $iworks_upprev->buy_pro_page();
 }
 
 function iworks_upprev_exclude_categories_sanitize_callback( $values )

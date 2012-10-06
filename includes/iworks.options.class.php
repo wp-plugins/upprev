@@ -347,6 +347,15 @@ class IworksOptions
                 $content .= '</tr>';
             }
         }
+        /**
+         * filter
+         */
+        if ( isset( $option['filter'] ) ) {
+            $content .= apply_filters( $option['filter'], '' );
+        }
+        /**
+         * content
+         */
         if ($content) {
             if ( isset ( $options['label'] ) && $options['label'] && !$use_tabs ) {
                 $top .= sprintf('<h3>%s</h3>', $options['label']);

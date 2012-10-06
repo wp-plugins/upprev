@@ -101,8 +101,9 @@ class IworksUpprev
         /**
          * generate
          */
-        add_action( 'init', array( &$this, 'init' ) );
-        add_action( 'after_setup_theme',          array( &$this, 'after_setup_theme'  ) );
+        add_action( 'init',                  array( &$this, 'init' ) );
+        add_action( 'after_setup_theme',     array( &$this, 'after_setup_theme'  ) );
+        add_filter( 'iworks_upprev_buy_pro', array( &$this, 'buy_pro_page' ) );
         /**
          * global option object
          */
@@ -133,7 +134,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-#        return false;
+        return false;
         return true;
     }
 
@@ -952,5 +953,30 @@ class IworksUpprev
         return '<ul>'.$content.'</li>';
     }
 
+    /**
+     * Buy PRO page
+     */
+    public function buy_pro_page( $content = '' )
+    {
+        return include dirname( $this->base ).'/admin/buy_pro.php';
+    }
+
+    /**
+     * Buy PRO link
+     */
+    public function link_buy( $type = 'this-site' )
+    {
+        $params = array();
+        $link = 'http://upprev.com/buy/';
+        if( defined( 'WPLANG' ) && WPLANG ) {
+            $params['lang'] = WPLANG;
+        }
+        $params['admin_email'] = get_option( 'admin_email' );
+        $params['home_url']    = home_url();
+        $params['language']    = get_option( 'language' );
+        $params['type']        = $type;
+        $params['version']     = get_option( 'version' );
+        echo add_query_arg( 'iworks_upprev', urlencode( base64_encode( gzcompress( serialize( $params ) ) ) ), $link );
+    }
 }
 
