@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: upPrev
-Plugin URI: http://upprev.com/
+Plugin URI: http://iworks.pl/upprev/
 Description: When scrolling post down upPrev will display a flyout box with a link to post in choosen configuration.
 Version: trunk
 Author: Marcin Pietrzak
@@ -48,4 +48,3 @@ $iworks_upprev = new IworksUpprev();
  */
 register_activation_hook  ( __FILE__, 'iworks_upprev_activate'   );
 register_deactivation_hook( __FILE__, 'iworks_upprev_deactivate' );
-

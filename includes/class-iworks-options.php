@@ -1,4 +1,34 @@
 <?php
+/*
+Class Name: upPrev
+Class URI: http://iworks.pl/
+Description: Option class to manage opsions.
+Version: trunk
+Author: Marcin Pietrzak
+Author URI: http://iworks.pl/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Copyright 2011-2012 Marcin Pietrzak (marcin@iworks.pl)
+
+this program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+ */
+
+if ( !defined( 'WPINC' ) ) {
+    die;
+}
 
 if ( class_exists( 'IworksOptions' ) ) {
     return;
@@ -13,7 +43,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.4.1';
+        $this->version              = '1.5.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -54,7 +84,7 @@ class IworksOptions
         /**
          * check options exists?
          */
-        if(!is_array($options['options'])) {
+        if ( !is_array($options['options'] ) ) {
             echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks').'</strong></p></div>';
             return;
         }
@@ -457,12 +487,12 @@ class IworksOptions
         /**
          * check options exists?
          */
-        if(!is_array($options['options'])) {
+        if ( !is_array( $options['options'] ) ) {
             return null;
         }
         foreach ( $options['options'] as $option ) {
             if ( isset( $option['name'] ) && $option['name'] == $option_name ) {
-                return isset($option['default'])? $option['default']:null;
+                return isset( $option['default'] )? $option['default']:null;
             }
         }
         return null;
@@ -509,6 +539,14 @@ class IworksOptions
 
     public function update_option( $option_name, $option_value )
     {
+		/**
+		 * delete if option have a default value
+		 */
+		$default_value = $this->get_default_value( $this->option_prefix.$option_name );
+		if ( $option_name === $default_value ) {
+			delete_option( $this->option_prefix.$option_name );
+			return;
+		}
         update_option( $this->option_prefix.$option_name, $option_value );
     }
 
@@ -518,4 +556,3 @@ class IworksOptions
         add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
     }
 }
-
