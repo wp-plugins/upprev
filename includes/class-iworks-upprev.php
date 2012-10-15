@@ -903,7 +903,7 @@ class IworksUpprev
         if ( $this->is_pro && array_key_exists( $position, $positions ) ) {
             return $position;
         }
-        if ( isset( $positions[ $position ] ) && isset( $positions[ $position ][ 'need_pro' ] ) && !$positions[ $position ][ 'need_pro' ] ) {
+        if ( isset( $positions[ $position ] ) && ( !isset( $positions[ $position ][ 'need_pro' ] ) || isset( $positions[ $position ][ 'need_pro' ] ) && !$positions[ $position ][ 'need_pro' ] ) ) {
             return $position;
         }
         return 'right';

@@ -29,20 +29,21 @@ function iworks_upprev_tabulator_init()
     jQuery('#hasadmintabs ul a').click(function(i){
         jQuery('#hasadmintabs input[name=iworks_upprev_last_used_tab]').val(jQuery(this).parent().index());
     });
-    jQuery( 'input[name="iworks_upprev_configuration"]' ).change( function() {
-        jQuery(this).parents( 'form' ).submit();
-    });
 }
-/**
- * farbtastic
- */
 jQuery(document).ready(function($) {
+    /**
+     * configuration
+     */
+    $( 'input[name="iworks_upprev_configuration"]' ).change( function() {
+        $('#iworks_upprev_admin_index').submit();
+    });
+    /**
+     * farbtastic
+     */
     $('.color-picker-container .picker').hide();
-
     if( 'yes' != $('#upprev_is_pro').val() ) {
         return;
     }
-
     /**
      * color
      */

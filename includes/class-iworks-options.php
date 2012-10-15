@@ -420,7 +420,7 @@ class IworksOptions
         /**
          * submit button
          */
-        $content .= get_submit_button( __( 'Save Changes' ) );
+        $content .= get_submit_button( __( 'Save Changes' ), 'primary', 'submit_button' );
         /* print ? */
         if ( $echo ) {
             echo $content;
