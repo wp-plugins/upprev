@@ -1,7 +1,7 @@
 === upPrev ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
-Tags: next post, previous post, notification, related, upPrev, flyout, new york times, NYTimes, animated, featured, related content
+Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
 Requires at least: 3.1
 Tested up to: 3.4.1
 Stable tag: 3.3.9
