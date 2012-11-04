@@ -162,7 +162,8 @@ Example:
 
 = 4.0.0 =
 
-* IMPROVMENT: added category exclude (only PRO version)
+* IMPROVMENT: added categories exclude (only PRO version)
+* IMPROVMENT: added tags exclude (only PRO version)
 * IMPROVMENT: added settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
 * IMPROVMENT: check variable iworks_upprev in javascript before use it
 * IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)

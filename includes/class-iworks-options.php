@@ -43,7 +43,7 @@ class IworksOptions
 
     public function __construct()
     {
-        $this->version              = '1.5.0';
+        $this->version              = '1.6.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -341,6 +341,12 @@ class IworksOptions
             case 'serialize':
                 if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
                     $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
+                }
+                else if ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
+                    ob_start();
+                    call_user_func_array( $option[ 'call_user_func' ], $option[ 'call_user_data' ] );
+                    $content .= ob_get_contents();
+                    ob_end_clean();
                 }
                 break;
             case 'subheading':

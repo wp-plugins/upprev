@@ -541,6 +541,13 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'iworks_upprev_exclude_categories_sanitize_callback',
                 'callback'          => 'iworks_upprev_exclude_categories',
             ),
+            array(
+                'name'              => 'exclude_tags',
+                'type'              => 'serialize',
+                'th'                => __( 'Tags', 'upprev' ),
+                'sanitize_callback' => 'iworks_upprev_exclude_tags_sanitize_callback',
+                'callback'          => 'iworks_upprev_exclude_tags',
+            ),
             /**
              * buy pro version
              */
@@ -626,15 +633,6 @@ function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
 }
 
 /**
- * exclude_categories
- */
-function iworks_upprev_exclude_categories( $values = array() )
-{
-    global $iworks_upprev;
-    return $iworks_upprev->build_exclude_categories( $values );
-}
-
-/**
  * buy pro page
  */
 function iworks_upprev_buy_pro()
@@ -643,6 +641,14 @@ function iworks_upprev_buy_pro()
     return $iworks_upprev->buy_pro_page();
 }
 
+/**
+ * exclude_categories
+ */
+function iworks_upprev_exclude_categories( $values = array() )
+{
+    global $iworks_upprev;
+    return $iworks_upprev->build_exclude_categories( $values );
+}
 function iworks_upprev_exclude_categories_sanitize_callback( $values )
 {
     if ( is_array( $values ) ) {
@@ -654,6 +660,27 @@ function iworks_upprev_exclude_categories_sanitize_callback( $values )
     }
     return null;
 }
+
+/**
+ * exclude_tags
+ */
+function iworks_upprev_exclude_tags( $values = array() )
+{
+    global $iworks_upprev;
+    return $iworks_upprev->build_exclude_tags( $values );
+}
+function iworks_upprev_exclude_tags_sanitize_callback( $values )
+{
+    if ( is_array( $values ) ) {
+        $ids = array();
+        foreach( $values as $id => $value ) {
+            $ids[] = $id;
+        }
+        return $ids;
+    }
+    return null;
+}
+
 /**
  * sanitize_callback: configuration
  */

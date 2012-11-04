@@ -138,7 +138,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-        return false;
+        //return false;
         return true;
     }
 
@@ -472,6 +472,15 @@ class IworksUpprev
             $exclude_categories = $this->options->get_option( 'exclude_categories' );
             if ( is_array( $exclude_categories ) && !empty( $exclude_categories ) ) {
                 $args[ 'category__not_in' ] = $exclude_categories;
+            }
+        }
+        /**
+         * exclude tags
+         */
+        if( $this->is_pro ) {
+            $exclude_tags = $this->options->get_option( 'exclude_tags' );
+            if ( is_array( $exclude_tags ) && !empty( $exclude_tags ) ) {
+                $args[ 'tag__not_in' ] = $exclude_tags;
             }
         }
         /**
@@ -929,7 +938,7 @@ class IworksUpprev
     /**
      * exclude categories
      */
-    public function build_exclude_categories( $value )
+    public function build_exclude_categories( $values )
     {
         $args = array(
             'hide_empty'   => false,
@@ -954,6 +963,43 @@ class IworksUpprev
                 $category->count
             );
         }
+        if ( !$this->is_pro ) {
+            $content .= '<li>...</li>';
+        }
+        return '<ul>'.$content.'</li>';
+    }
+
+    /**
+     * exclude tags
+     */
+    public function build_exclude_tags( $values )
+    {
+        $args = array(
+            'hide_empty'   => false,
+            'hierarchical' => false,
+        );
+        $content = '';
+        if ( !$this->is_pro ) {
+            $args['number'] = 3;
+            $content .= '<li class="error-message">'.__( 'Exlude tags available in PRO version!', 'iworks_upprev' ).'</li>';
+        }
+        $tags = get_tags( $args );
+        foreach ( $tags as $category ) {
+            $id = sprintf( 'category_%04d', $category->term_id );
+            $content .= sprintf(
+                '<li><input type="checkbox" name="iworks_upprev_exclude_tags[%d]" id="%s"%s%s /><label for="%s"> %s <small>(%d)</small></label></li>',
+                $category->term_id,
+                $id,
+                is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
+                $this->is_pro? '':' disabled="disabled"',
+                $id,
+                $category->name,
+                $category->count
+            );
+        }
+        if ( !$this->is_pro ) {
+            $content .= '<li>...</li>';
+        }
         return '<ul>'.$content.'</li>';
     }
 
@@ -962,6 +1008,9 @@ class IworksUpprev
      */
     public function buy_pro_page( $content = '' )
     {
+        if ( $this->is_pro ) {
+            return;
+        }
         return include dirname( $this->base ).'/admin/buy_pro.php';
     }
 
@@ -972,7 +1021,7 @@ class IworksUpprev
     {
         $params = array();
         $link = 'http://upprev.com/buy/';
-        if( defined( 'WPLANG' ) && WPLANG ) {
+        if ( defined( 'WPLANG' ) && WPLANG ) {
             $params['lang'] = WPLANG;
         }
         $params['admin_email'] = get_option( 'admin_email' );

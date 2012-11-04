@@ -21,7 +21,7 @@ if( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) {
         <div class="postbox-container" style="width:75%">
 <?php
 
-call_user_func_array( 'post_tags_meta_box', array( null, __('Tags' ) ) );
+wp_enqueue_script('post');
 
 $option_name = basename( __FILE__, '.php');
 $iworks_upprev_options->settings_fields( $option_name );
