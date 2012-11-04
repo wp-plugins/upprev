@@ -1,4 +1,12 @@
-<?php $iworks_upprev->update(); ?>
+<?php
+
+include_once ABSPATH.'/wp-admin/includes/meta-boxes.php';
+
+
+$iworks_upprev->update(); 
+
+
+?>
 <div class="wrap">
     <?php screen_icon(); ?>
     <h2><?php _e('upPrev', 'upprev') ?></h2>
@@ -12,6 +20,9 @@ if( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) {
         <input type="hidden" name="is_pro" id="upprev_is_pro" value="<?php echo $iworks_upprev->is_pro()? 'yes':'no'; ?>" />
         <div class="postbox-container" style="width:75%">
 <?php
+
+call_user_func_array( 'post_tags_meta_box', array( null, __('Tags' ) ) );
+
 $option_name = basename( __FILE__, '.php');
 $iworks_upprev_options->settings_fields( $option_name );
 $iworks_upprev_options->build_options( $option_name );
