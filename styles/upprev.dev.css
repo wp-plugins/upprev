@@ -115,6 +115,15 @@
 }
 
 /**
+ * default
+ */
+#upprev_box.default img
+{
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/**
  * vertical-3
  */
 #upprev_box.vertical-3
