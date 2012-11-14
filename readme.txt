@@ -1,9 +1,9 @@
 === upPrev ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
-Tags: next post, previous post, notification, related, upPrev, flyout, new york times, NYTimes, animated, featured, related content
+Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
 Requires at least: 3.1
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: 3.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,8 +24,6 @@ in the selected configuration:
 3. Previous in tag
 4. Random
 5. Related using YARPP (only post/pages)
-
-Plugin based on "upPrev Previous Post Animated Notification"
 
 = Translators =
 
@@ -329,6 +327,7 @@ Example:
 * BUGFIX: fixed translation load
 * IMPROVMENT: added show box header option
 * IMPROVMENT: added stamp for cache key
+* IMPROVMENT: added Polish translation by [Marcin Pietrzak](http://iworks.pl/)
 
 = 2.0 =
 
@@ -351,9 +350,13 @@ Example:
 
 == Upgrade Notice ==
 
+= 3.3.10 =
+
+Add Spanish translation.
+
 = 3.3.9 =
 
-Add Romanian translation.
+Add Russian translation.
 
 = 3.3.8 =
 
