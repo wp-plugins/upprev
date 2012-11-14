@@ -33,6 +33,7 @@ in the selected configuration:
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
+* Spanish (er_ES) - Ramón Rautenstrauch, [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
@@ -60,6 +61,7 @@ upPrev plugin will work on websites in the following languages:
 * Polish
 * Romanian
 * Russian
+* Spanish
 * Turkish
 * Vietnamese
 
@@ -181,9 +183,13 @@ Example:
 * BUGFIX: fixed bug with removing filter name
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
+= 3.3.10 =
+
+* IMPROVMENT: added Spanish translation by [Ramón Rautenstrauch](http://www.apasionadosdelmarketing.es/about/)
+
 = 3.3.9 =
 
-* IMPROVMENT: added Romanian translation by [Florin Arjocu](http://drumliber.ro/)
+* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
 
 = 3.3.8 =
 
@@ -369,9 +375,13 @@ Example:
 
 Added simple configuration screen. Rebuild option page to easier configuration. Created PRO version.
 
+= 3.3.10 =
+
+Add Spanish translation.
+
 = 3.3.9 =
 
-Add Romanian translation.
+Add Russian translation.
 
 = 3.3.8 =
 
