@@ -35,6 +35,7 @@ Plugin based on "upPrev Previous Post Animated Notification"
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
+* Spanish (er_ES) - Ramón Rautenstrauch, [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
@@ -62,6 +63,7 @@ upPrev plugin will work on websites in the following languages:
 * Polish
 * Romanian
 * Russian
+* Spanish
 * Turkish
 * Vietnamese
 
@@ -161,6 +163,10 @@ Example:
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.10 =
+
+* IMPROVMENT: added Spanish translation by [Ramón Rautenstrauch](http://www.apasionadosdelmarketing.es/about/)
 
 = 3.3.9 =
 
