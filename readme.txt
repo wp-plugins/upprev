@@ -189,7 +189,7 @@ Example:
 
 = 3.3.9 =
 
-* IMPROVMENT: added Russian translation by [Вадим Сохин](http://webbizreshenie.ru/)
+* IMPROVMENT: added Romanian translation by [Florin Arjocu](http://drumliber.ro/)
 
 = 3.3.8 =
 
