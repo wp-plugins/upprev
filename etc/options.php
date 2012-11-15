@@ -243,7 +243,7 @@ function iworks_upprev_options()
                 'name'              => 'number_of_posts',
                 'type'              => 'text',
                 'class'             => 'small-text',
-                'th'                => __( 'Number of posts to show ', 'upprev' ),
+                'th'                => __( 'Number of posts to show', 'upprev' ),
                 'description'       => __( 'Not affected if using YARPP as choose method.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'

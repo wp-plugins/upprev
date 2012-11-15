@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-09-20 13:38:58+00:00\n"
+"POT-Creation-Date: 2012-11-15 09:25:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -139,271 +139,271 @@ msgstr ""
 msgid "Colors"
 msgstr ""
 
-#: etc/options.php:189
+#: etc/options.php:188
 msgid "Set custom colors"
 msgstr ""
 
-#: etc/options.php:190
+#: etc/options.php:189
 msgid "Turn on custom colors."
 msgstr ""
 
-#: etc/options.php:199
+#: etc/options.php:198
 msgid "Text"
 msgstr ""
 
-#: etc/options.php:209
+#: etc/options.php:208
 msgid "Background"
 msgstr ""
 
-#: etc/options.php:219 etc/options.php:363
+#: etc/options.php:218 etc/options.php:362
 msgid "Links"
 msgstr ""
 
-#: etc/options.php:229
+#: etc/options.php:228
 msgid "Border"
 msgstr ""
 
-#: etc/options.php:240
+#: etc/options.php:239
 msgid "Content"
 msgstr ""
 
-#: etc/options.php:247
-msgid "Number of posts to show "
+#: etc/options.php:246
+msgid "Number of posts to show"
 msgstr ""
 
-#: etc/options.php:248
+#: etc/options.php:247
 msgid "Not affected if using YARPP as choose method."
 msgstr ""
 
-#: etc/options.php:255
+#: etc/options.php:254
 msgid "Content filters"
 msgstr ""
 
-#: etc/options.php:256
+#: etc/options.php:255
 msgid "Remove all filters."
 msgstr ""
 
-#: etc/options.php:257
+#: etc/options.php:256
 msgid ""
 "Untick this if you have some strange things in upPrev box, but unticked have "
 "a lot of chances breaks your layout."
 msgstr ""
 
-#: etc/options.php:264
+#: etc/options.php:263
 msgid "Previous entry choose method"
 msgstr ""
 
-#: etc/options.php:267
+#: etc/options.php:266
 msgid "Just previous."
 msgstr ""
 
-#: etc/options.php:268
+#: etc/options.php:267
 msgid "Previous in category."
 msgstr ""
 
-#: etc/options.php:269
+#: etc/options.php:268
 msgid "Previous in tag."
 msgstr ""
 
-#: etc/options.php:270
+#: etc/options.php:269
 msgid "Random entry."
 msgstr ""
 
-#: etc/options.php:279
+#: etc/options.php:278
 msgid "Taxonomy limit"
 msgstr ""
 
-#: etc/options.php:280
+#: etc/options.php:279
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr ""
 
-#: etc/options.php:281
+#: etc/options.php:280
 msgid "Default value: 0 (no limit)."
 msgstr ""
 
-#: etc/options.php:288
+#: etc/options.php:287
 msgid "Match post type"
 msgstr ""
 
-#: etc/options.php:289
+#: etc/options.php:288
 msgid "Display only for selected post types."
 msgstr ""
 
-#: etc/options.php:296
+#: etc/options.php:295
 msgid "Select post types"
 msgstr ""
 
-#: etc/options.php:297
+#: etc/options.php:296
 msgid "Show posts."
 msgstr ""
 
-#: etc/options.php:298
+#: etc/options.php:297
 msgid "If not any, then default value is \"post\"."
 msgstr ""
 
-#: etc/options.php:301
+#: etc/options.php:300
 msgid "Posts."
 msgstr ""
 
-#: etc/options.php:302
+#: etc/options.php:301
 msgid "Pages."
 msgstr ""
 
-#: etc/options.php:303
+#: etc/options.php:302
 msgid "Any post type (include custom post types)."
 msgstr ""
 
-#: etc/options.php:313
+#: etc/options.php:312
 msgid "Sticky posts"
 msgstr ""
 
-#: etc/options.php:314
+#: etc/options.php:313
 msgid "Ignore sticky posts."
 msgstr ""
 
-#: etc/options.php:324
+#: etc/options.php:323
 msgid "Excerpt"
 msgstr ""
 
-#: etc/options.php:325
+#: etc/options.php:324
 msgid "Show excerpt."
 msgstr ""
 
-#: etc/options.php:334
+#: etc/options.php:333
 msgid "Number of words to show."
 msgstr ""
 
-#: etc/options.php:343
+#: etc/options.php:342
 msgid "Featured image"
 msgstr ""
 
-#: etc/options.php:344
+#: etc/options.php:343
 msgid "Show featured image."
 msgstr ""
 
-#: etc/options.php:353
+#: etc/options.php:352
 msgid "Featured image width."
 msgstr ""
 
-#: etc/options.php:369
+#: etc/options.php:368
 msgid "URL prefix"
 msgstr ""
 
-#: etc/options.php:371
+#: etc/options.php:370
 msgid "Will be added before link."
 msgstr ""
 
-#: etc/options.php:378
+#: etc/options.php:377
 msgid "URL sufix"
 msgstr ""
 
-#: etc/options.php:380
+#: etc/options.php:379
 msgid "Will be added after link."
 msgstr ""
 
-#: etc/options.php:387
+#: etc/options.php:386
 msgid "Open link"
 msgstr ""
 
-#: etc/options.php:388
+#: etc/options.php:387
 msgid "Open link in new window."
 msgstr ""
 
-#: etc/options.php:389
+#: etc/options.php:388
 msgid "Not recomended!"
 msgstr ""
 
-#: etc/options.php:396
+#: etc/options.php:395
 msgid "Google Analytics"
 msgstr ""
 
-#: etc/options.php:397
+#: etc/options.php:396
 msgid "I don't have GA tracking on site."
 msgstr ""
 
-#: etc/options.php:398 etc/options.php:424
+#: etc/options.php:397 etc/options.php:423
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr ""
 
-#: etc/options.php:405
+#: etc/options.php:404
 msgid "Google Analytics Account"
 msgstr ""
 
-#: etc/options.php:406
+#: etc/options.php:405
 msgid "Replace UA-XXXXX-X with your web property ID."
 msgstr ""
 
-#: etc/options.php:415
+#: etc/options.php:414
 msgid "Track views"
 msgstr ""
 
-#: etc/options.php:416
+#: etc/options.php:415
 msgid "Track showing of upPrev box."
 msgstr ""
 
-#: etc/options.php:423
+#: etc/options.php:422
 msgid "Track clicks"
 msgstr ""
 
-#: etc/options.php:431
+#: etc/options.php:430
 msgid "Prevent bounce-rate"
 msgstr ""
 
-#: etc/options.php:432
+#: etc/options.php:431
 msgid ""
 "Turn it on to indicate that the event hit will not be used in bounce-rate "
 "calculation."
 msgstr ""
 
-#: etc/options.php:441
+#: etc/options.php:440
 msgid "Other"
 msgstr ""
 
-#: etc/options.php:449 etc/options.php:454
+#: etc/options.php:448 etc/options.php:453
 msgid "Mobile devices"
 msgstr ""
 
-#: etc/options.php:455
+#: etc/options.php:454
 msgid "Hide for mobile devices."
 msgstr ""
 
-#: etc/options.php:462
+#: etc/options.php:461
 msgid "Tablets"
 msgstr ""
 
-#: etc/options.php:463
+#: etc/options.php:462
 msgid "Hide for tablets too."
 msgstr ""
 
-#: etc/options.php:464
+#: etc/options.php:463
 msgid "Works only when hidding for mobile devices is turn on."
 msgstr ""
 
-#: etc/options.php:473 etc/options.php:479
+#: etc/options.php:472 etc/options.php:478
 msgid "Custom CSS"
 msgstr ""
 
-#: etc/options.php:488 etc/options.php:493
+#: etc/options.php:487 etc/options.php:492
 msgid "Cache"
 msgstr ""
 
-#: etc/options.php:494
+#: etc/options.php:493
 msgid "Use Transient Cache."
 msgstr ""
 
-#: etc/options.php:495
+#: etc/options.php:494
 msgid "Using on large site (more than 1000 posts) may crash website."
 msgstr ""
 
-#: etc/options.php:502
+#: etc/options.php:501
 msgid "Transients Cache Lifetime."
 msgstr ""
 
-#: etc/options.php:503
+#: etc/options.php:502
 msgid "In seconds, default one hour (3600s)."
 msgstr ""
 
-#: etc/options.php:512 etc/options.php:517
+#: etc/options.php:511 etc/options.php:517
 msgid "Promote"
 msgstr ""
 
@@ -420,7 +420,7 @@ msgid ""
 "greatly appreciated.</span>"
 msgstr ""
 
-#: etc/options.php:525 includes/class-iworks-upprev.php:268
+#: etc/options.php:525 includes/class-iworks-upprev.php:279
 msgid "Donate"
 msgstr ""
 
@@ -430,159 +430,199 @@ msgid ""
 "href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
 msgstr ""
 
-#: etc/options.php:531
+#: etc/options.php:534
 msgid "Excludes"
 msgstr ""
 
-#: etc/options.php:537
+#: etc/options.php:540
 msgid "Categories"
 msgstr ""
 
-#: etc/options.php:546
+#: etc/options.php:547
+msgid "Tags"
+msgstr ""
+
+#: etc/options.php:556
 msgid "Buy PRO!"
 msgstr ""
 
-#: etc/options.php:565
+#: etc/options.php:575
 msgid "Custom post type: "
 msgstr ""
 
-#: etc/options.php:576 etc/options.php:579
+#: etc/options.php:586 etc/options.php:589
 msgid "Related Posts (YARPP)"
 msgstr ""
 
-#: etc/options.php:577
+#: etc/options.php:587
 msgid ". Works only with post and/or pages."
+msgstr ""
+
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
+msgstr ""
+
+#: admin/buy_pro.php:12
+msgid "Single site licence"
+msgstr ""
+
+#: admin/buy_pro.php:15
+msgid "Price"
+msgstr ""
+
+#: admin/buy_pro.php:21
+msgid "Benefits"
+msgstr ""
+
+#: admin/buy_pro.php:23
+msgid "All templates available."
+msgstr ""
+
+#: admin/buy_pro.php:24
+msgid "All positions available."
+msgstr ""
+
+#: admin/buy_pro.php:25
+msgid "You can set up colors."
+msgstr ""
+
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
 msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:4 includes/class-iworks-upprev.php:232
-#: includes/class-iworks-upprev.php:253
+#: admin/index.php:12 includes/class-iworks-upprev.php:243
+#: includes/class-iworks-upprev.php:264
 msgid "upPrev"
 msgstr ""
 
-#: admin/index.php:8
+#: admin/index.php:16
 msgid "upPrev options saved."
 msgstr ""
 
-#: admin/index.php:29
+#: admin/index.php:41
 msgid "Choose configuration mode"
 msgstr ""
 
-#: admin/index.php:31 admin/index.php:41
+#: admin/index.php:43 admin/index.php:53
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
 
-#: admin/index.php:33
+#: admin/index.php:45
 msgid "simple"
 msgstr ""
 
-#: admin/index.php:34
+#: admin/index.php:46
 msgid "advance"
 msgstr ""
 
-#: admin/index.php:39
+#: admin/index.php:51
 msgid "Loved this Plugin?"
 msgstr ""
 
-#: admin/index.php:43
+#: admin/index.php:55
 msgid "Give it a 5 star on Wordpress.org"
 msgstr ""
 
-#: admin/index.php:44
+#: admin/index.php:56
 msgid "Link to it so others can easily find it"
 msgstr ""
 
-#: admin/index.php:49
+#: admin/index.php:61
 msgid "Need Assistance?"
 msgstr ""
 
-#: admin/index.php:51
+#: admin/index.php:63
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr ""
 
-#: admin/index.php:53
+#: admin/index.php:65
 msgid "Wordpress Help Forum"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:54
+#: includes/class-iworks-upprev.php:58
 msgid "Default simple layout"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:62
+#: includes/class-iworks-upprev.php:69
 msgid "Vertical Three"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:76
+#: includes/class-iworks-upprev.php:86
 msgid "\"Bloginity\" style"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:190
+#: includes/class-iworks-upprev.php:201
 msgid ""
 "<p>upPrev settings allows you to set the proprites of user notification "
 "showed when reader scroll down the page.</p>"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:193
+#: includes/class-iworks-upprev.php:204
 msgid "Overview"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:202
+#: includes/class-iworks-upprev.php:213
 msgid "For more information:"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:203
+#: includes/class-iworks-upprev.php:214
 msgid ""
 "<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
 "\">Plugin Homepage</a>"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:204
+#: includes/class-iworks-upprev.php:215
 msgid ""
 "<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
 "Forums</a>"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:205
+#: includes/class-iworks-upprev.php:216
 msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:265
+#: includes/class-iworks-upprev.php:276
 msgid "Settings"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:571
+#: includes/class-iworks-upprev.php:603
 msgid "More in"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:578
+#: includes/class-iworks-upprev.php:610
 msgid "Read more:"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:580
+#: includes/class-iworks-upprev.php:612
 msgid "Read previous post:"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:669
+#: includes/class-iworks-upprev.php:701
 msgid "Close"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:672
+#: includes/class-iworks-upprev.php:704
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 msgstr ""
 
-#: includes/class-iworks-upprev.php:823
+#: includes/class-iworks-upprev.php:855
 msgid "All positions are available in PRO version!"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:855
+#: includes/class-iworks-upprev.php:887
 msgid "Colors setup is available in PRO version!"
 msgstr ""
 
-#: includes/class-iworks-upprev.php:901
+#: includes/class-iworks-upprev.php:950
 msgid "Exlude categories available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:984
+msgid "Exlude tags available in PRO version!"
 msgstr ""
 
 #: includes/show_thubnail_on_admin_post_list.php:5
@@ -593,16 +633,16 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: includes/iworks.options.class.php:58
+#: includes/class-iworks-options.php:88
 msgid "An error occurred while getting the configuration."
 msgstr ""
 
-#: includes/iworks.options.class.php:384
+#: includes/class-iworks-options.php:429
 msgid "Save Changes"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://iworks.pl/upprev/"
+msgid "http://upprev.com/"
 msgstr ""
 
 #. Description of the plugin/theme
