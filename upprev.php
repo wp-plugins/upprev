@@ -323,14 +323,14 @@ function iworks_upprev_box()
         case 'tag':
             $count_args = array ( 'taxonomy' => 'post_tag' );
             $tags = get_the_tags();
-            $max = count( $tags );
-            if ( $max < 1 ) {
-                break;
-            }
-            if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
-                $max = $taxonomy_limit;
-            }
-            if ( count( $tags ) ) {
+            if ( is_array( $tags ) && count( $tags ) ) {
+                $max = count( $tags );
+                if ( $max < 1 ) {
+                    break;
+                }
+                if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
+                    $max = $taxonomy_limit;
+                }
                 $ids = array();
                 $i = 1;
                 foreach( $tags as $tag ) {
