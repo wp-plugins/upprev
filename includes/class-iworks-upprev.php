@@ -510,7 +510,6 @@ class IworksUpprev
          * tag
          */
         case 'tag':
-            $count_args = array ( 'taxonomy' => 'post_tag' );
             $tags = get_the_tags();
             if ( !$tags ) {
                 break;
