@@ -4,120 +4,118 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev 3.3.6ru\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-02-17 15:48:07+00:00\n"
+"POT-Creation-Date: 2012-12-11 15:44:58+00:00\n"
+"PO-Revision-Date: 2012-12-10 12:39+0200\n"
+"Last-Translator: Martin Halachev <mhalachev@gmail.com>\n"
+"Language-Team: upprev-language-team@iworks.pl\n"
+"Language: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-12-10 12:39+0200\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"Language: Bulgarian\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.4\n"
-"Language-Team: \n"
 
-#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:214 upprev.php:215 upprev.php:526
-msgid "upPrev"
-msgstr "upPrev"
-
-#: admin/index.php:7
-msgid "upPrev options saved."
-msgstr "Настройките на upPrev са запазени."
-
-#: includes/common.php:18
-msgid ""
-"<p>upPrev settings allows you to set the proprites of user notification "
-"showed when reader scroll down the page.</p>"
-msgstr ""
-"<p>Настройките на upPrev ви позволяват да променяте свойствата на "
-"съобщенията, които се появяват при превъртане на страницата надолу.</p>"
-
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Миниатюра"
-
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Няма"
-
-#: includes/iworks.options.class.php:58
-msgid "An error occurred while getting the configuration."
-msgstr "Възникна грешка при зареждане на конфигурацията."
-
-#: includes/iworks.options.class.php:291
-msgid "Save Changes"
-msgstr "Запис на промените"
-
-#: includes/options.php:15
+#: etc/options.php:32 etc/options.php:73
 msgid "Apperance"
 msgstr "Изглед"
 
-#: includes/options.php:27
-msgid "Animation style"
-msgstr "Стил на анимацията"
-
-#: includes/options.php:30
-msgid "flyout"
+#: etc/options.php:38
+#, fuzzy
+msgid "Layout"
 msgstr "прелитане (flyout)"
 
-#: includes/options.php:31
-msgid "fade in/out"
-msgstr "преливане (fade in/out)"
-
-#: includes/options.php:38
+#: etc/options.php:47 etc/options.php:53 etc/options.php:90
 msgid "Position"
 msgstr "Позиция"
 
-#: includes/options.php:41
-msgid "right"
+#: etc/options.php:56 etc/options.php:93
+msgid "bottom right"
+msgstr ""
+
+#: etc/options.php:57 etc/options.php:94
+msgid "bottom left"
+msgstr ""
+
+#: etc/options.php:58 etc/options.php:95
+#, fuzzy
+msgid "bottom"
+msgstr "Долно поле"
+
+#: etc/options.php:59 etc/options.php:96
+#, fuzzy
+msgid "top right"
 msgstr "отдясно"
 
-#: includes/options.php:42
-msgid "left"
+#: etc/options.php:60 etc/options.php:97
+msgid "top"
+msgstr ""
+
+#: etc/options.php:61 etc/options.php:98
+#, fuzzy
+msgid "top left"
 msgstr "отляво"
 
-#: includes/options.php:50
+#: etc/options.php:62 etc/options.php:99
+msgid "middle right"
+msgstr ""
+
+#: etc/options.php:63 etc/options.php:100
+msgid "middle left"
+msgstr ""
+
+#: etc/options.php:79
+msgid "Animation style"
+msgstr "Стил на анимацията"
+
+#: etc/options.php:82
+msgid "flyout"
+msgstr "прелитане (flyout)"
+
+#: etc/options.php:83
+msgid "fade in/out"
+msgstr "преливане (fade in/out)"
+
+#: etc/options.php:109
 msgid "Margin bottom"
 msgstr "Долно поле"
 
-#: includes/options.php:51 includes/options.php:60 includes/options.php:70
+#: etc/options.php:110 etc/options.php:119 etc/options.php:129
 msgid "px"
 msgstr "px"
 
-#: includes/options.php:59
+#: etc/options.php:118
 msgid "Margin side"
 msgstr "Странични полета"
 
-#: includes/options.php:61
+#: etc/options.php:120
 msgid "Left or right depending on position."
 msgstr "Отляво или отдясно, в зависимост от позицията."
 
-#: includes/options.php:69
+#: etc/options.php:128
 msgid "Box width"
 msgstr "Широчина на прозореца"
 
-#: includes/options.php:78
+#: etc/options.php:137
 msgid "Offset"
 msgstr "Отместване"
 
-#: includes/options.php:79
+#: etc/options.php:138
 msgid "%"
 msgstr "%"
 
-#: includes/options.php:80
+#: etc/options.php:139
 msgid "Percentage of the page required to be scrolled to display a box."
 msgstr ""
 "Процентно съотношение на страницата, което се изисква да бъде превъртяно, за "
 "да се покаже прозореца."
 
-#: includes/options.php:88
+#: etc/options.php:147
 msgid "Before HTML element."
 msgstr "Преди HTML елемент."
 
-#: includes/options.php:89
+#: etc/options.php:148
 msgid ""
 "If empty, all page length is taken for calculation. If not empty, make sure "
 "to use the ID or class of an existing element. Put # \"hash\" before the ID, "
@@ -128,47 +126,80 @@ msgstr ""
 "съществуващ елемент. Поставете # \"hash \" преди ID, или. \"dot \" пред "
 "името на класа."
 
-#: includes/options.php:96
+#: etc/options.php:155
 msgid "Box header"
 msgstr "Заглавие на прозореца"
 
-#: includes/options.php:97
+#: etc/options.php:156
 msgid "Show box header."
 msgstr "Показване заглавието на прозореца."
 
-#: includes/options.php:104
+#: etc/options.php:164
+msgid "Header tekst."
+msgstr ""
+
+#: etc/options.php:165
+msgid "Leave blank to allow plugin set the heading text."
+msgstr ""
+
+#: etc/options.php:172
 msgid "Close button"
 msgstr "Бутон  \"Затваряне\""
 
-#: includes/options.php:105
+#: etc/options.php:173
 msgid "Show close button."
 msgstr "Показване на бутон \"Затваряне\"."
 
-#: includes/options.php:113
-msgid "Custom CSS"
-msgstr "Потребителски CSS"
+#: etc/options.php:182
+msgid "Colors"
+msgstr ""
 
-#: includes/options.php:144
+#: etc/options.php:188
+msgid "Set custom colors"
+msgstr ""
+
+#: etc/options.php:189
+msgid "Turn on custom colors."
+msgstr ""
+
+#: etc/options.php:198
+msgid "Text"
+msgstr ""
+
+#: etc/options.php:208
+msgid "Background"
+msgstr ""
+
+#: etc/options.php:218 etc/options.php:362
+msgid "Links"
+msgstr "Връзки"
+
+#: etc/options.php:228
+msgid "Border"
+msgstr ""
+
+#: etc/options.php:239
 msgid "Content"
 msgstr "Съдържание"
 
-#: includes/options.php:150
-msgid "Number of posts to show "
+#: etc/options.php:246
+#, fuzzy
+msgid "Number of posts to show"
 msgstr "Брой публикации за показване"
 
-#: includes/options.php:151
+#: etc/options.php:247
 msgid "Not affected if using YARPP as choose method."
 msgstr "Няма да бъде приложено, ако се използва YARPP като избран метод."
 
-#: includes/options.php:158
+#: etc/options.php:254
 msgid "Content filters"
 msgstr "Филтри на съдържание"
 
-#: includes/options.php:159
+#: etc/options.php:255
 msgid "Remove all filters."
 msgstr "Премахване на всички филтри"
 
-#: includes/options.php:160
+#: etc/options.php:256
 msgid ""
 "Untick this if you have some strange things in upPrev box, but unticked have "
 "a lot of chances breaks your layout."
@@ -176,171 +207,169 @@ msgstr ""
 "Отмаркирайте при проблеми с upPrev, но в този случай съществува вероятност "
 "да бъде засегнато оформлението."
 
-#: includes/options.php:167
+#: etc/options.php:263
 msgid "Previous entry choose method"
 msgstr "Метод за избор на предишна публикация"
 
-#: includes/options.php:170
+#: etc/options.php:266
 msgid "Just previous."
 msgstr "Предишна по ред."
 
-#: includes/options.php:171
+#: etc/options.php:267
 msgid "Previous in category."
 msgstr "Предишна по категория."
 
-#: includes/options.php:172
+#: etc/options.php:268
 msgid "Previous in tag."
 msgstr "Предишна по етикет."
 
-#: includes/options.php:173
+#: etc/options.php:269
 msgid "Random entry."
 msgstr "Произволна публикация."
 
-#: includes/options.php:182
+#: etc/options.php:278
 msgid "Taxonomy limit"
 msgstr "Лимит на таксономии"
 
-#: includes/options.php:183
+#: etc/options.php:279
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr "Брой таксономии (етикети или категории) за показване"
 
-#: includes/options.php:184
+#: etc/options.php:280
 msgid "Default value: 0 (no limit)."
 msgstr "Стойност по подразбиране: 0 (без ограничения)."
 
-#: includes/options.php:191
+#: etc/options.php:287
 msgid "Match post type"
 msgstr "Съответствие по тип на публикацията"
 
-#: includes/options.php:192
+#: etc/options.php:288
 msgid "Display only for selected post types."
 msgstr "Показване само за избрани типове публикации."
 
-#: includes/options.php:199
+#: etc/options.php:295
 msgid "Select post types"
 msgstr "Избор на тип публикации"
 
-#: includes/options.php:200
+#: etc/options.php:296
 msgid "Show posts."
 msgstr "Показване на публикации"
 
-#: includes/options.php:201
+#: etc/options.php:297
 msgid "If not any, then default value is \"post\"."
 msgstr "Ако не е избран, стойността по подразбиране е  \"Публикация\"."
 
-#: includes/options.php:204
+#: etc/options.php:300
 msgid "Posts."
 msgstr "Публикации."
 
-#: includes/options.php:205
+#: etc/options.php:301
 msgid "Pages."
 msgstr "Страници."
 
-#: includes/options.php:206
+#: etc/options.php:302
 msgid "Any post type (include custom post types)."
 msgstr "Всички видове публикации (включително дефинирани от потребителя)."
 
-#: includes/options.php:216
+#: etc/options.php:312
 msgid "Sticky posts"
 msgstr "Бележки"
 
-#: includes/options.php:217
+#: etc/options.php:313
 msgid "Ignore sticky posts."
 msgstr "игнорирай бележките."
 
-#: includes/options.php:227
+#: etc/options.php:323
 msgid "Excerpt"
 msgstr "Откъс"
 
-#: includes/options.php:228
+#: etc/options.php:324
 msgid "Show excerpt."
 msgstr "Показване на откъс."
 
-#: includes/options.php:237
+#: etc/options.php:333
 msgid "Number of words to show."
 msgstr "Брой думи за показване."
 
-#: includes/options.php:246
+#: etc/options.php:342
 msgid "Featured image"
 msgstr "Картинка на публикацията"
 
-#: includes/options.php:247
+#: etc/options.php:343
 msgid "Show featured image."
 msgstr "Показване на картинката."
 
-#: includes/options.php:256
+#: etc/options.php:352
 msgid "Featured image width."
 msgstr "Широчина на картинката (пиксели)."
 
-#: includes/options.php:266
-msgid "Links"
-msgstr "Връзки"
-
-#: includes/options.php:271
+#: etc/options.php:368
 msgid "URL prefix"
 msgstr "URL префикс"
 
-#: includes/options.php:273
+#: etc/options.php:370
 msgid "Will be added before link."
 msgstr "Ще бъде добавен преди връзката."
 
-#: includes/options.php:280
+#: etc/options.php:377
 msgid "URL sufix"
 msgstr "URL суфикс"
 
-#: includes/options.php:282
+#: etc/options.php:379
 msgid "Will be added after link."
 msgstr "Ще бъде добавен след връзката."
 
-#: includes/options.php:289
+#: etc/options.php:386
 msgid "Open link"
 msgstr "Отваряне на връзка"
 
-#: includes/options.php:290
+#: etc/options.php:387
 msgid "Open link in new window."
 msgstr "Отваряне на връзка в нов прозорец."
 
-#: includes/options.php:291
+#: etc/options.php:388
 msgid "Not recomended!"
 msgstr "Не се препоръчва!"
 
-#: includes/options.php:298
-msgid "Google Analitics"
+#: etc/options.php:395
+#, fuzzy
+msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: includes/options.php:299
+#: etc/options.php:396
 msgid "I don't have GA tracking on site."
 msgstr "Нямам GA проследяване на сайта."
 
-#: includes/options.php:300 includes/options.php:326
+#: etc/options.php:397 etc/options.php:423
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "Включете, ако не използвате никакво друго GA разширение."
 
-#: includes/options.php:307
-msgid "Google Analitics Account"
+#: etc/options.php:404
+#, fuzzy
+msgid "Google Analytics Account"
 msgstr "Акаунт в Google Analytics"
 
-#: includes/options.php:308
+#: etc/options.php:405
 msgid "Replace UA-XXXXX-X with your web property ID."
 msgstr "Заменете UA-XXXXX-X със своето ID."
 
-#: includes/options.php:317
+#: etc/options.php:414
 msgid "Track views"
 msgstr "Засичане на показванията"
 
-#: includes/options.php:318
+#: etc/options.php:415
 msgid "Track showing of upPrev box."
 msgstr "Засичане на показванията на upPrev."
 
-#: includes/options.php:325
+#: etc/options.php:422
 msgid "Track clicks"
 msgstr "Засичане на кликове"
 
-#: includes/options.php:333
+#: etc/options.php:430
 msgid "Prevent bounce-rate"
 msgstr "Игнориране на случайни преходи (bounce-rate)"
 
-#: includes/options.php:334
+#: etc/options.php:431
 msgid ""
 "Turn it on to indicate that the event hit will not be used in bounce-rate "
 "calculation."
@@ -348,60 +377,64 @@ msgstr ""
 "При активиране на тази опция засечените събития няма да бъдат ползвани за "
 "калкулиране на случайни преходи."
 
-#: includes/options.php:343 includes/options.php:348
+#: etc/options.php:440
+msgid "Other"
+msgstr "Други"
+
+#: etc/options.php:448 etc/options.php:453
+msgid "Mobile devices"
+msgstr "Мобилни устройства"
+
+#: etc/options.php:454
+msgid "Hide for mobile devices."
+msgstr "Скриване от мобилни устройства."
+
+#: etc/options.php:461
+msgid "Tablets"
+msgstr "Таблети"
+
+#: etc/options.php:462
+msgid "Hide for tablets too."
+msgstr "Скриване от таблети."
+
+#: etc/options.php:463
+msgid "Works only when hidding for mobile devices is turn on."
+msgstr "Работи само при включено скриване от мобилни устройства."
+
+#: etc/options.php:472 etc/options.php:478
+msgid "Custom CSS"
+msgstr "Потребителски CSS"
+
+#: etc/options.php:487 etc/options.php:492
 msgid "Cache"
 msgstr "Кеширане"
 
-#: includes/options.php:349
+#: etc/options.php:493
 msgid "Use Transient Cache."
 msgstr "Ползване на преходно кеширане (transient cache)."
 
-#: includes/options.php:350
+#: etc/options.php:494
 msgid "Using on large site (more than 1000 posts) may crash website."
 msgstr ""
 "При големи сайтове (над 1000 публикации) може да доведе до блокиране сайта."
 
-#: includes/options.php:357
+#: etc/options.php:501
 msgid "Transients Cache Lifetime."
 msgstr "Време на валидност на преходното кеширане."
 
-#: includes/options.php:358
+#: etc/options.php:502
 msgid "In seconds, default one hour (3600s)."
 msgstr "В секунди, по подразбиране е един час (3600s)."
 
-#: includes/options.php:367 includes/options.php:372
-msgid "Mobile devices"
-msgstr "Мобилни устройства"
-
-#: includes/options.php:373
-msgid "Hide for mobile devices."
-msgstr "Скриване от мобилни устройства."
-
-#: includes/options.php:380
-msgid "Tablets"
-msgstr "Таблети"
-
-#: includes/options.php:381
-msgid "Hide for tablets too."
-msgstr "Скриване от таблети."
-
-#: includes/options.php:382
-msgid "Works only when hidding for mobile devices is turn on."
-msgstr "Работи само при включено скриване от мобилни устройства."
-
-#: includes/options.php:391
-msgid "Other"
-msgstr "Други"
-
-#: includes/options.php:396
+#: etc/options.php:511 etc/options.php:517
 msgid "Promote"
 msgstr "Популяризиране"
 
-#: includes/options.php:397
+#: etc/options.php:518
 msgid "Help promote upPrev plugin?"
 msgstr "Съдействие за популяризиране на разширението upPrev"
 
-#: includes/options.php:398
+#: etc/options.php:519
 msgid ""
 "This option will add the code <code>Previous posts box brought to you by &lt;"
 "a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev "
@@ -415,11 +448,11 @@ msgstr ""
 "запишете настройките, ще видите пример отдясно. Ценя високо тези връзки, а "
 "също така и подаръците! Благодаря!</span>"
 
-#: includes/options.php:404 upprev.php:513
+#: etc/options.php:525 includes/class-iworks-upprev.php:279
 msgid "Donate"
 msgstr "Дарение"
 
-#: includes/options.php:405
+#: etc/options.php:526
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
 "href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
@@ -428,35 +461,182 @@ msgstr ""
 "Благодаря Ви! <a href=\"http://iworks.pl/donate/upprev.php\">Подарък за това "
 "разширение.</a>"
 
-#: includes/options.php:420
+#: etc/options.php:534
+msgid "Excludes"
+msgstr ""
+
+#: etc/options.php:540
+msgid "Categories"
+msgstr ""
+
+#: etc/options.php:547
+msgid "Tags"
+msgstr ""
+
+#: etc/options.php:556
+msgid "Buy PRO!"
+msgstr ""
+
+#: etc/options.php:575
 msgid "Custom post type: "
 msgstr "Потребителски тип публикация"
 
-#: includes/options.php:431 includes/options.php:434
+#: etc/options.php:586 etc/options.php:589
 msgid "Related Posts (YARPP)"
 msgstr "Публикации по темата (YARPP)"
 
-#: includes/options.php:432
+#: etc/options.php:587
 msgid ". Works only with post and/or pages."
 msgstr ". Работи само с публикации и/или страници."
 
-#: upprev.php:383
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
+msgstr ""
+
+#: admin/buy_pro.php:12
+msgid "Single site licence"
+msgstr ""
+
+#: admin/buy_pro.php:15
+msgid "Price"
+msgstr ""
+
+#: admin/buy_pro.php:21
+msgid "Benefits"
+msgstr ""
+
+#: admin/buy_pro.php:23
+msgid "All templates available."
+msgstr ""
+
+#: admin/buy_pro.php:24
+msgid "All positions available."
+msgstr ""
+
+#: admin/buy_pro.php:25
+msgid "You can set up colors."
+msgstr ""
+
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
+msgstr ""
+
+#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/index.php:12 includes/class-iworks-upprev.php:243
+#: includes/class-iworks-upprev.php:264
+msgid "upPrev"
+msgstr "upPrev"
+
+#: admin/index.php:16
+msgid "upPrev options saved."
+msgstr "Настройките на upPrev са запазени."
+
+#: admin/index.php:41
+msgid "Choose configuration mode"
+msgstr ""
+
+#: admin/index.php:43 admin/index.php:53
+msgid "Below are some links to help spread this plugin to other users"
+msgstr ""
+
+#: admin/index.php:45
+msgid "simple"
+msgstr ""
+
+#: admin/index.php:46
+msgid "advance"
+msgstr ""
+
+#: admin/index.php:51
+msgid "Loved this Plugin?"
+msgstr ""
+
+#: admin/index.php:55
+msgid "Give it a 5 star on Wordpress.org"
+msgstr ""
+
+#: admin/index.php:56
+msgid "Link to it so others can easily find it"
+msgstr ""
+
+#: admin/index.php:61
+msgid "Need Assistance?"
+msgstr ""
+
+#: admin/index.php:63
+msgid "Problems? The links bellow can be very helpful to you"
+msgstr ""
+
+#: admin/index.php:65
+msgid "Wordpress Help Forum"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:58
+msgid "Default simple layout"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:69
+msgid "Vertical Three"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:86
+msgid "\"Bloginity\" style"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:201
+msgid ""
+"<p>upPrev settings allows you to set the proprites of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+"<p>Настройките на upPrev ви позволяват да променяте свойствата на "
+"съобщенията, които се появяват при превъртане на страницата надолу.</p>"
+
+#: includes/class-iworks-upprev.php:204
+msgid "Overview"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:213
+msgid "For more information:"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:214
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Plugin Homepage</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:215
+msgid ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
+"Forums</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:216
+msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:276
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/class-iworks-upprev.php:603
 msgid "More in"
 msgstr "Повече в"
 
-#: upprev.php:390
+#: includes/class-iworks-upprev.php:610
 msgid "Read more:"
 msgstr "Прочетете още:"
 
-#: upprev.php:392
+#: includes/class-iworks-upprev.php:612
 msgid "Read previous post:"
 msgstr "Предишна публикация:"
 
-#: upprev.php:462
+#: includes/class-iworks-upprev.php:701
 msgid "Close"
 msgstr "Затвори"
 
-#: upprev.php:465
+#: includes/class-iworks-upprev.php:704
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -464,19 +644,48 @@ msgstr ""
 "Прозорец с предходни публикации, представен от <a href=\"http://iworks.pl/"
 "produkty/wordpress/wtyczki/upprev/en/\">разширението upPrev</a>."
 
-#: upprev.php:511
-msgid "Settings"
-msgstr "Настройки"
+#: includes/class-iworks-upprev.php:855
+msgid "All positions are available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:887
+msgid "Colors setup is available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:950
+msgid "Exlude categories available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:984
+msgid "Exlude tags available in PRO version!"
+msgstr ""
+
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Няма"
+
+#: includes/class-iworks-options.php:88
+msgid "An error occurred while getting the configuration."
+msgstr "Възникна грешка при зареждане на конфигурацията."
+
+#: includes/class-iworks-options.php:429
+msgid "Save Changes"
+msgstr "Запис на промените"
 
 #. Plugin URI of the plugin/theme
-msgid "http://iworks.pl/upprev/"
+#, fuzzy
+msgid "http://upprev.com/"
 msgstr "http://iworks.pl/upprev/"
 
 #. Description of the plugin/theme
+#, fuzzy
 msgid ""
-"When scrolling post down upPrev will display a flyout box with a link to the "
-"previous post from the same category. Based on upPrev Previous Post Animated "
-"Notification by Jason Pelker, Grzegorz Krzyminski"
+"When scrolling post down upPrev will display a flyout box with a link to "
+"post in choosen configuration."
 msgstr ""
 "При превъртане на страницата надолу се появява изскачащ прозорец с препратка "
 "към предишната публикация от същата категория, подобно на upPrev Previous "
