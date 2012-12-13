@@ -25,11 +25,11 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_configuration'
             ),
             /**
-             * Apperance: simple
+             * Appearance: simple
              */
             array(
                 'type'              => 'heading',
-                'label'             => __( 'Apperance', 'upprev' ),
+                'label'             => __( 'Appearance', 'upprev' ),
                 'configuration'     => 'simple'
             ),
             array(
@@ -66,11 +66,11 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             /**
-             * Apperance: advance
+             * Appearance: advance
              */
             array(
                 'type'              => 'heading',
-                'label'             => __( 'Apperance', 'upprev' ),
+                'label'             => __( 'Appearance', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(

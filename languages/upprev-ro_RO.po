@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-15 09:20:53+00:00\n"
+"POT-Creation-Date: 2012-12-13 20:42:16+00:00\n"
 "PO-Revision-Date: 2012-08-27 23:49+0200\n"
 "Last-Translator: Florin Arjocu <florin@drumliber.ro>\n"
 "Language-Team: Marcin Pietrzak <marcin@iworks.pl>\n"
@@ -13,8 +13,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: includes/class-iworks-options.php:88
+msgid "An error occurred while getting the configuration."
+msgstr "Am întâmpinat o eroare în timpul preluării configurațiilor."
+
+#: includes/class-iworks-options.php:429
+msgid "Save Changes"
+msgstr "Salvează modificările"
+
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Icoană (poza micșorată)"
+
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Niciunul"
+
+#: includes/class-iworks-upprev.php:58
+msgid "Default simple layout"
+msgstr "Interfața simplă standard"
+
+#: includes/class-iworks-upprev.php:69
+msgid "Vertical Three"
+msgstr "Arbore vertical"
+
+#: includes/class-iworks-upprev.php:86
+msgid "\"Bloginity\" style"
+msgstr "Stil \"Bloginity\""
+
+#: includes/class-iworks-upprev.php:201
+msgid ""
+"<p>upPrev settings allows you to set the proprites of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+"<p>Setările upPrev îți permit să setezi felul în care utilizatorul este "
+"notificat atunci când derulează pagina în jos.</p>"
+
+#: includes/class-iworks-upprev.php:204
+msgid "Overview"
+msgstr "Verifică"
+
+#: includes/class-iworks-upprev.php:213
+msgid "For more information:"
+msgstr "Pentru mai multe informații:"
+
+#: includes/class-iworks-upprev.php:214
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Plugin Homepage</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Pagina plugin-ului</a>"
+
+#: includes/class-iworks-upprev.php:215
+msgid ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
+"Forums</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Forumul de "
+"suport</a>"
+
+#: includes/class-iworks-upprev.php:216
+msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
+msgstr ""
+"<a href=\"http://iworks.pl/en/\" target=\"_blank\">ieși pe internet</a>"
+
+#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-iworks-upprev.php:243 includes/class-iworks-upprev.php:264
+#: admin/index.php:12
+msgid "upPrev"
+msgstr "upPrev"
+
+#: includes/class-iworks-upprev.php:276
+msgid "Settings"
+msgstr "Setări"
+
+#: includes/class-iworks-upprev.php:279 etc/options.php:525
+msgid "Donate"
+msgstr "Donează"
+
+#: includes/class-iworks-upprev.php:602
+msgid "More in"
+msgstr "Mai multe despre "
+
+#: includes/class-iworks-upprev.php:609
+msgid "Read more:"
+msgstr "Citește mai multe:"
+
+#: includes/class-iworks-upprev.php:611
+msgid "Read previous post:"
+msgstr "Citește articolul precedent:"
+
+#: includes/class-iworks-upprev.php:700
+msgid "Close"
+msgstr "Închide"
+
+#: includes/class-iworks-upprev.php:703
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr ""
+"Căsuța cu articolele precedente este prezentată de <a href=\"http://iworks."
+"pl/produkty/wordpress/wtyczki/upprev/en/\">plugin-ul upPrev</a>."
+
+#: includes/class-iworks-upprev.php:854
+msgid "All positions are available in PRO version!"
+msgstr "Toate pozițiile sunt disponibile în versiunea PRO!"
+
+#: includes/class-iworks-upprev.php:886
+#, fuzzy
+msgid "Colors setup is available in PRO version!"
+msgstr "Toate pozițiile sunt disponibile în versiunea PRO!"
+
+#: includes/class-iworks-upprev.php:949
+msgid "Exlude categories available in PRO version!"
+msgstr "Exclude categoriile disponibile în versiunea PRO!"
+
+#: includes/class-iworks-upprev.php:983
+#, fuzzy
+msgid "Exlude tags available in PRO version!"
+msgstr "Exclude categoriile disponibile în versiunea PRO!"
+
 #: etc/options.php:32 etc/options.php:73
-msgid "Apperance"
+msgid "Appearance"
 msgstr "Aspect"
 
 #: etc/options.php:38
@@ -442,10 +564,6 @@ msgstr ""
 "apoi vezi codul din exemplu în dreapta. Link-urile acestea și donațiile sunt "
 "foarte apreciate.</span>"
 
-#: etc/options.php:525 includes/class-iworks-upprev.php:279
-msgid "Donate"
-msgstr "Donează"
-
 #: etc/options.php:526
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
@@ -482,47 +600,6 @@ msgstr "Articole relaționate (cu plugin-ul YARPP)"
 #: etc/options.php:587
 msgid ". Works only with post and/or pages."
 msgstr ". Funționează doar cu articole și/sau pagini."
-
-#: admin/buy_pro.php:10
-msgid "Buy Pro Version"
-msgstr ""
-
-#: admin/buy_pro.php:12
-msgid "Single site licence"
-msgstr ""
-
-#: admin/buy_pro.php:15
-msgid "Price"
-msgstr ""
-
-#: admin/buy_pro.php:21
-msgid "Benefits"
-msgstr ""
-
-#: admin/buy_pro.php:23
-msgid "All templates available."
-msgstr ""
-
-#: admin/buy_pro.php:24
-#, fuzzy
-msgid "All positions available."
-msgstr "Toate pozițiile sunt disponibile în versiunea PRO!"
-
-#: admin/buy_pro.php:25
-#, fuzzy
-msgid "You can set up colors."
-msgstr "Activează culorile personalizate."
-
-#: admin/buy_pro.php:26
-msgid "You can exclude categories."
-msgstr ""
-
-#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: admin/index.php:12 includes/class-iworks-upprev.php:243
-#: includes/class-iworks-upprev.php:264
-msgid "upPrev"
-msgstr "upPrev"
 
 #: admin/index.php:16
 msgid "upPrev options saved."
@@ -566,119 +643,46 @@ msgstr ""
 "Întâmpini probleme? Link-urile de mai jos s-ar putea să îți fie de folos"
 
 #: admin/index.php:65
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://wordpress.org/tags/upprev"
+
+#: admin/index.php:65
 msgid "Wordpress Help Forum"
 msgstr "Forumul de pe Wordpress (english)"
 
-#: includes/class-iworks-upprev.php:58
-msgid "Default simple layout"
-msgstr "Interfața simplă standard"
-
-#: includes/class-iworks-upprev.php:69
-msgid "Vertical Three"
-msgstr "Arbore vertical"
-
-#: includes/class-iworks-upprev.php:86
-msgid "\"Bloginity\" style"
-msgstr "Stil \"Bloginity\""
-
-#: includes/class-iworks-upprev.php:201
-msgid ""
-"<p>upPrev settings allows you to set the proprites of user notification "
-"showed when reader scroll down the page.</p>"
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
 msgstr ""
-"<p>Setările upPrev îți permit să setezi felul în care utilizatorul este "
-"notificat atunci când derulează pagina în jos.</p>"
 
-#: includes/class-iworks-upprev.php:204
-msgid "Overview"
-msgstr "Verifică"
-
-#: includes/class-iworks-upprev.php:213
-msgid "For more information:"
-msgstr "Pentru mai multe informații:"
-
-#: includes/class-iworks-upprev.php:214
-msgid ""
-"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
-"\">Plugin Homepage</a>"
+#: admin/buy_pro.php:12
+msgid "Single site licence"
 msgstr ""
-"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
-"\">Pagina plugin-ului</a>"
 
-#: includes/class-iworks-upprev.php:215
-msgid ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
-"Forums</a>"
+#: admin/buy_pro.php:15
+msgid "Price"
 msgstr ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Forumul de "
-"suport</a>"
 
-#: includes/class-iworks-upprev.php:216
-msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
+#: admin/buy_pro.php:21
+msgid "Benefits"
 msgstr ""
-"<a href=\"http://iworks.pl/en/\" target=\"_blank\">ieși pe internet</a>"
 
-#: includes/class-iworks-upprev.php:276
-msgid "Settings"
-msgstr "Setări"
-
-#: includes/class-iworks-upprev.php:603
-msgid "More in"
-msgstr "Mai multe despre "
-
-#: includes/class-iworks-upprev.php:610
-msgid "Read more:"
-msgstr "Citește mai multe:"
-
-#: includes/class-iworks-upprev.php:612
-msgid "Read previous post:"
-msgstr "Citește articolul precedent:"
-
-#: includes/class-iworks-upprev.php:701
-msgid "Close"
-msgstr "Închide"
-
-#: includes/class-iworks-upprev.php:704
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+#: admin/buy_pro.php:23
+msgid "All templates available."
 msgstr ""
-"Căsuța cu articolele precedente este prezentată de <a href=\"http://iworks."
-"pl/produkty/wordpress/wtyczki/upprev/en/\">plugin-ul upPrev</a>."
 
-#: includes/class-iworks-upprev.php:855
-msgid "All positions are available in PRO version!"
+#: admin/buy_pro.php:24
+#, fuzzy
+msgid "All positions available."
 msgstr "Toate pozițiile sunt disponibile în versiunea PRO!"
 
-#: includes/class-iworks-upprev.php:887
+#: admin/buy_pro.php:25
 #, fuzzy
-msgid "Colors setup is available in PRO version!"
-msgstr "Toate pozițiile sunt disponibile în versiunea PRO!"
+msgid "You can set up colors."
+msgstr "Activează culorile personalizate."
 
-#: includes/class-iworks-upprev.php:950
-msgid "Exlude categories available in PRO version!"
-msgstr "Exclude categoriile disponibile în versiunea PRO!"
-
-#: includes/class-iworks-upprev.php:984
-#, fuzzy
-msgid "Exlude tags available in PRO version!"
-msgstr "Exclude categoriile disponibile în versiunea PRO!"
-
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Icoană (poza micșorată)"
-
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Niciunul"
-
-#: includes/class-iworks-options.php:88
-msgid "An error occurred while getting the configuration."
-msgstr "Am întâmpinat o eroare în timpul preluării configurațiilor."
-
-#: includes/class-iworks-options.php:429
-msgid "Save Changes"
-msgstr "Salvează modificările"
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 #, fuzzy

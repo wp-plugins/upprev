@@ -44,7 +44,7 @@ If you have created your own language pack, or have an update of an existing one
 
 1. Upload upPrev to your plugins directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure upPrev plugin using Apperance -> upPrev
+3. Configure upPrev plugin using Appearance -> upPrev
 
 == Frequently Asked Questions ==
 
@@ -92,7 +92,7 @@ function change_thumbnail( $image )
 
 = How to add upPrev for pages or custom post types? =
 
-Yes. Just select post types on `Apperance -> upPrev -> Content` page in `Select post types` section.
+Yes. Just select post types on `Appearance -> upPrev -> Content` page in `Select post types` section.
 
 = How I can customize with my own styles? =
 
