@@ -77,7 +77,7 @@ msgid "Save Changes"
 msgstr ""
 
 #: includes/options.php:27 includes/options.php:43
-msgid "Apperance"
+msgid "Appearance"
 msgstr ""
 
 #: includes/options.php:33

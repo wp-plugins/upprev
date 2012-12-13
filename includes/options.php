@@ -24,7 +24,7 @@ function iworks_upprev_options()
             ),
             array(
                 'type'              => 'heading',
-                'label'             => __('Apperance', 'upprev' ),
+                'label'             => __('Appearance', 'upprev' ),
                 'configuration'     => 'simple'
             ),
             array(
@@ -40,7 +40,7 @@ function iworks_upprev_options()
             ),
             array(
                 'type'              => 'heading',
-                'label'             => __('Apperance', 'upprev' ),
+                'label'             => __('Appearance', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(

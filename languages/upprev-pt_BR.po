@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
+"POT-Creation-Date: 2012-12-13 20:34:01+00:00\n"
 "PO-Revision-Date: 2012-04-22 00:16-0300\n"
 "Last-Translator: Leonardo Antonioli <leo@tobeguarany.com>\n"
 "Language-Team: Leo Antonioli <leo@tobeguarany.com>\n"
@@ -16,48 +16,43 @@ msgstr ""
 "X-Poedit-Country: BRAZIL\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
+#. #-#-#-#-#  3.3.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
+#: upprev.php:212 upprev.php:213 upprev.php:528 admin/index.php:3
 msgid "upPrev"
 msgstr "upPrev"
 
-#: admin/index.php:7
-msgid "upPrev options saved."
-msgstr "Opções do upPrev gravadas."
+#: upprev.php:385
+msgid "More in"
+msgstr "Mais em"
 
-#: admin/index.php:24
-msgid "Loved this Plugin?"
+#: upprev.php:392
+msgid "Read more:"
+msgstr "Leia mais:"
+
+#: upprev.php:394
+msgid "Read previous post:"
+msgstr "Leia o post anterior:"
+
+#: upprev.php:464
+msgid "Close"
+msgstr "Fechar"
+
+#: upprev.php:467
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 msgstr ""
+"Um oferecimento do <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/"
+"upprev/en/\">upPrev plugin</a>."
 
-#: admin/index.php:26
-msgid "Below are some links to help spread this plugin to other users"
-msgstr ""
+#: upprev.php:513
+msgid "Settings"
+msgstr "Configurações"
 
-#: admin/index.php:28
-msgid "Give it a 5 star on Wordpress.org"
-msgstr ""
-
-#: admin/index.php:29
-msgid "Link to it so others can easily find it"
-msgstr ""
-
-#: admin/index.php:34
-msgid "Need Assistance?"
-msgstr ""
-
-#: admin/index.php:36
-msgid "Problems? The links bellow can be very helpful to you"
-msgstr ""
-
-#: admin/index.php:38
-#, fuzzy
-msgid "http://wordpress.org/tags/upprev"
-msgstr "http://iworks.pl/upprev/"
-
-#: admin/index.php:38
-msgid "Wordpress Help Forum"
-msgstr ""
+#: upprev.php:515 includes/options.php:430
+msgid "Donate"
+msgstr "Doações"
 
 #: includes/common.php:18
 msgid ""
@@ -75,16 +70,8 @@ msgstr "Miniatura"
 msgid "None"
 msgstr "Nenhuma"
 
-#: includes/iworks.options.class.php:58
-msgid "An error occurred while getting the configuration."
-msgstr "Um erro ocorreu ao tentar recuperar a configuração."
-
-#: includes/iworks.options.class.php:309
-msgid "Save Changes"
-msgstr "Salvar Alterações"
-
 #: includes/options.php:27 includes/options.php:43
-msgid "Apperance"
+msgid "Appearance"
 msgstr "Aparência"
 
 #: includes/options.php:33
@@ -452,10 +439,6 @@ msgstr ""
 "veja um exemplo do código à direita. Estes links e doações são imensamente "
 "apreciados.</span>"
 
-#: includes/options.php:430 upprev.php:515
-msgid "Donate"
-msgstr "Doações"
-
 #: includes/options.php:431
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
@@ -476,33 +459,50 @@ msgstr "Post relacionado (YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Funciona apenas com post e/ou páginas."
 
-#: upprev.php:385
-msgid "More in"
-msgstr "Mais em"
+#: includes/iworks.options.class.php:58
+msgid "An error occurred while getting the configuration."
+msgstr "Um erro ocorreu ao tentar recuperar a configuração."
 
-#: upprev.php:392
-msgid "Read more:"
-msgstr "Leia mais:"
+#: includes/iworks.options.class.php:309
+msgid "Save Changes"
+msgstr "Salvar Alterações"
 
-#: upprev.php:394
-msgid "Read previous post:"
-msgstr "Leia o post anterior:"
+#: admin/index.php:7
+msgid "upPrev options saved."
+msgstr "Opções do upPrev gravadas."
 
-#: upprev.php:464
-msgid "Close"
-msgstr "Fechar"
-
-#: upprev.php:467
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+#: admin/index.php:24
+msgid "Loved this Plugin?"
 msgstr ""
-"Um oferecimento do <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/"
-"upprev/en/\">upPrev plugin</a>."
 
-#: upprev.php:513
-msgid "Settings"
-msgstr "Configurações"
+#: admin/index.php:26
+msgid "Below are some links to help spread this plugin to other users"
+msgstr ""
+
+#: admin/index.php:28
+msgid "Give it a 5 star on Wordpress.org"
+msgstr ""
+
+#: admin/index.php:29
+msgid "Link to it so others can easily find it"
+msgstr ""
+
+#: admin/index.php:34
+msgid "Need Assistance?"
+msgstr ""
+
+#: admin/index.php:36
+msgid "Problems? The links bellow can be very helpful to you"
+msgstr ""
+
+#: admin/index.php:38
+#, fuzzy
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://iworks.pl/upprev/"
+
+#: admin/index.php:38
+msgid "Wordpress Help Forum"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
