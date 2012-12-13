@@ -62,7 +62,7 @@ if ( !preg_match( '/^(advance|simple)$/', $configuration ) ) {
                     <div class="inside">
                         <p><?php _e( 'Problems? The links bellow can be very helpful to you', 'upprev' ); ?></p>
                         <ul>
-                            <li><a href="http://wordpress.org/tags/upprev"><?php _e( 'Wordpress Help Forum', 'upprev' ); ?></a></li>
+                            <li><a href="<?php _e( 'http://wordpress.org/tags/upprev', 'upprev' ); ?>"><?php _e( 'Wordpress Help Forum', 'upprev' ); ?></a></li>
                         </ul>
                     </div>
                 </div>

@@ -547,7 +547,7 @@ class IworksUpprev
             if ( !yarpp_related_exist( $args ) ) {
                 return;
             }
-            $args['fields'] = 'ids';
+            $args['limit'] = $number_of_posts;
             $a = yarpp_get_related( $args );
             $yarpp_posts = array();
             foreach( $a as $b ) {
