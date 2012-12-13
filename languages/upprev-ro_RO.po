@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-14 10:51:43+00:00\n"
+"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
 "PO-Revision-Date: 2012-08-27 23:49+0200\n"
 "Last-Translator: Florin Arjocu <florin@drumliber.ro>\n"
 "Language-Team: Marcin Pietrzak <marcin@iworks.pl>\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:524
+#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -47,6 +47,11 @@ msgstr "Ai nevoie de asistență?"
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr ""
 "Întâmpini probleme? Link-urile de mai jos s-ar putea să îți fie de folos"
+
+#: admin/index.php:38
+#, fuzzy
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://iworks.pl/upprev/"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
@@ -187,7 +192,10 @@ msgid "Number of posts to show "
 msgstr "Numărul de articole pe care îl afișăm"
 
 #: includes/options.php:174
-msgid "Not affected if using YARPP as choose method."
+#, fuzzy
+msgid ""
+"Not affected if using YARPP as choose method and YARPP version is lower than "
+"4.0."
 msgstr "Nu e afectat dacă folosești YARPP ca metodă de alegere a articolelor."
 
 #: includes/options.php:181
@@ -449,7 +457,7 @@ msgstr ""
 "apoi vezi codul din exemplu în dreapta. Link-urile acestea și donațiile sunt "
 "foarte apreciate.</span>"
 
-#: includes/options.php:430 upprev.php:511
+#: includes/options.php:430 upprev.php:515
 msgid "Donate"
 msgstr "Donează"
 
@@ -474,23 +482,23 @@ msgstr "Articole relaționate (cu plugin-ul YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Funționează doar cu articole și/sau pagini."
 
-#: upprev.php:381
+#: upprev.php:385
 msgid "More in"
 msgstr "Mai multe despre "
 
-#: upprev.php:388
+#: upprev.php:392
 msgid "Read more:"
 msgstr "Citește mai multe:"
 
-#: upprev.php:390
+#: upprev.php:394
 msgid "Read previous post:"
 msgstr "Citește articolul precedent:"
 
-#: upprev.php:460
+#: upprev.php:464
 msgid "Close"
 msgstr "Închide"
 
-#: upprev.php:463
+#: upprev.php:467
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -498,7 +506,7 @@ msgstr ""
 "Căsuța cu articolele precedente este prezentată de <a href=\"http://iworks."
 "pl/produkty/wordpress/wtyczki/upprev/en/\">plugin-ul upPrev</a>."
 
-#: upprev.php:509
+#: upprev.php:513
 msgid "Settings"
 msgstr "Setări"
 

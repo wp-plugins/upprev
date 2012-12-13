@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Turkish lang\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-14 10:51:43+00:00\n"
+"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
 "PO-Revision-Date: 2012-02-20 10:00+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: WPDestek <wpdestek@wpdestek.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:524
+#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -46,6 +46,11 @@ msgstr ""
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr ""
+
+#: admin/index.php:38
+#, fuzzy
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://iworks.pl/upprev/"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
@@ -183,7 +188,10 @@ msgid "Number of posts to show "
 msgstr "Gösterilecek yazı sayısı"
 
 #: includes/options.php:174
-msgid "Not affected if using YARPP as choose method."
+#, fuzzy
+msgid ""
+"Not affected if using YARPP as choose method and YARPP version is lower than "
+"4.0."
 msgstr "YARPP yöntemi seçilirse etkilemeyecektir."
 
 #: includes/options.php:181
@@ -442,7 +450,7 @@ msgstr ""
 "sağ tarafta bir kod örneği göreceksiniz. Bu bağlantıları ve bağışı takdir "
 "ediyoruz."
 
-#: includes/options.php:430 upprev.php:511
+#: includes/options.php:430 upprev.php:515
 msgid "Donate"
 msgstr "Bağış"
 
@@ -467,23 +475,23 @@ msgstr "Benzer Yazılar (YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Sadece yazı ve/veya sayfalarla çalışır."
 
-#: upprev.php:381
+#: upprev.php:385
 msgid "More in"
 msgstr "Daha fazla"
 
-#: upprev.php:388
+#: upprev.php:392
 msgid "Read more:"
 msgstr "Devamını oku:"
 
-#: upprev.php:390
+#: upprev.php:394
 msgid "Read previous post:"
 msgstr "Önceki yazıyı okuyun:"
 
-#: upprev.php:460
+#: upprev.php:464
 msgid "Close"
 msgstr "Kapat"
 
-#: upprev.php:463
+#: upprev.php:467
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -491,7 +499,7 @@ msgstr ""
 "Önceki yazı kutusu &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/"
 "upprev/en/'&gt;upPrev eklentisi&lt;/a&gt; ile gösteriliyor."
 
-#: upprev.php:509
+#: upprev.php:513
 msgid "Settings"
 msgstr "Seçenekler"
 

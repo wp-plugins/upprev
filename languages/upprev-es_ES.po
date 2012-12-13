@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ramón\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-14 10:51:43+00:00\n"
+"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
 "PO-Revision-Date: 2012-11-13 19:35+0100\n"
 "Last-Translator: Ramon <marketing@apasionados.es>\n"
 "Language-Team: Apasionados del Marketing <info@apasionados.es>\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:524
+#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -49,6 +49,11 @@ msgstr "Necesitas ayuda?"
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr "¿Problemas? Los enlaces abajo pueden ser muy útiles."
+
+#: admin/index.php:38
+#, fuzzy
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://iworks.pl/upprev/"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
@@ -191,7 +196,10 @@ msgid "Number of posts to show "
 msgstr "Número de entradas a mostrar"
 
 #: includes/options.php:174
-msgid "Not affected if using YARPP as choose method."
+#, fuzzy
+msgid ""
+"Not affected if using YARPP as choose method and YARPP version is lower than "
+"4.0."
 msgstr ""
 "No tenido en cuenta si se ha seleccionado YARPP cómo método de selección."
 
@@ -451,7 +459,7 @@ msgstr ""
 "opciones y ver el código de ejemplo a la derecha. Estos enlaces y donaciones "
 "son muy apreciados.</span>"
 
-#: includes/options.php:430 upprev.php:511
+#: includes/options.php:430 upprev.php:515
 msgid "Donate"
 msgstr "Donar"
 
@@ -476,23 +484,23 @@ msgstr "Entradas relacionas (YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Solo funciona con entradsa y/o páginas."
 
-#: upprev.php:381
+#: upprev.php:385
 msgid "More in"
 msgstr "Más en"
 
-#: upprev.php:388
+#: upprev.php:392
 msgid "Read more:"
 msgstr "Leer más"
 
-#: upprev.php:390
+#: upprev.php:394
 msgid "Read previous post:"
 msgstr "Leer entrada anterior"
 
-#: upprev.php:460
+#: upprev.php:464
 msgid "Close"
 msgstr "Cerrar"
 
-#: upprev.php:463
+#: upprev.php:467
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -500,7 +508,7 @@ msgstr ""
 "La caja con las entradas anteriores es gentileza del <a href=\"http://iworks."
 "pl/produkty/wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 
-#: upprev.php:509
+#: upprev.php:513
 msgid "Settings"
 msgstr "Opciones"
 

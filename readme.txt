@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
 Requires at least: 3.1
-Tested up to: 3.4.2
-Stable tag: 3.3.11
+Tested up to: 3.5
+Stable tag: 3.3.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -163,6 +163,12 @@ Example:
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.12 =
+
+* BUGFIX: fixed compatybility errors with YARPP 4.x version thx to [adamdport](http://wordpress.org/support/profile/adamdport)
+* IMPROVMENT: add css to changed tabs class in WordPress 3.5
+* IMPROVMENT: check upPrev compatybility with WordPress 3.5
 
 = 3.3.11 =
 
@@ -355,6 +361,14 @@ Example:
 * INIT: copy and massive refactoring of plugin [upPrev Previous Post Animated Notification](http://wordpress.org/extend/plugins/upprev-nytimes-style-next-post-jquery-animated-fly-in-button/)
 
 == Upgrade Notice ==
+
+= 3.3.12 =
+
+Fixed using YARPP 4.x. Check upPrev compatybility with WordPress 3.5.
+
+= 3.3.11 =
+
+Add Bulgarian translation.
 
 = 3.3.10 =
 

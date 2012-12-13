@@ -1,10 +1,10 @@
-# Copyright (C) 2010 upPrev Previous Post Animated Notification
-# This file is distributed under the same license as the upPrev Previous Post Animated Notification package.
+# Copyright (C) 2011-2012 upPrev
+# This file is distributed under the same license as the upPrev package.
 msgid ""
 msgstr ""
 "Project-Id-Version: upPrev Previous Post Animated Notification 1.4.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-14 10:51:43+00:00\n"
+"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
 "PO-Revision-Date: 2012-02-20 10:00+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:524
+#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -27,31 +27,35 @@ msgstr "Zapisano konfigurację upPrev."
 
 #: admin/index.php:24
 msgid "Loved this Plugin?"
-msgstr ""
+msgstr "Czy lubisz tę wtyczkę?"
 
 #: admin/index.php:26
 msgid "Below are some links to help spread this plugin to other users"
-msgstr ""
+msgstr "Poniżej znajdują się odnośniki, które mogą pomóc innym użytkownikom"
 
 #: admin/index.php:28
 msgid "Give it a 5 star on Wordpress.org"
-msgstr ""
+msgstr "Daj wtyczce 5 gwiazdek na wordpress.org"
 
 #: admin/index.php:29
 msgid "Link to it so others can easily find it"
-msgstr ""
+msgstr "Odnośnik do wtyczki - żeby łatwo było znaleźć"
 
 #: admin/index.php:34
 msgid "Need Assistance?"
-msgstr ""
+msgstr "Potrzebujesz pomocy?"
 
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
-msgstr ""
+msgstr "Problemy? Poszukaj pomocy poniżej"
+
+#: admin/index.php:38
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://pl.wordpress.org/tags/upprev"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
-msgstr ""
+msgstr "Forum Wtyczki"
 
 #: includes/common.php:18
 msgid ""
@@ -84,7 +88,7 @@ msgstr "Wygląd"
 
 #: includes/options.php:33
 msgid "Schema"
-msgstr ""
+msgstr "Schemat"
 
 #: includes/options.php:36 includes/options.php:52
 msgid "flyout"
@@ -187,8 +191,12 @@ msgid "Number of posts to show "
 msgstr "Liczba pokazywanych wpisów"
 
 #: includes/options.php:174
-msgid "Not affected if using YARPP as choose method."
-msgstr "Nieużywane jeżeli wybrano YARPP dla wybierania poprzednich wpisów."
+msgid ""
+"Not affected if using YARPP as choose method and YARPP version is lower than "
+"4.0."
+msgstr ""
+"Nieużywane jeżeli wybrano YARPP i wtyczka YARPP jest w niższej wersji niż "
+"4.0."
 
 #: includes/options.php:181
 msgid "Content filters"
@@ -450,7 +458,7 @@ msgstr ""
 "wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;. Włącz i zobacz różnicę w "
 "wyświetlanym powiadomieniu."
 
-#: includes/options.php:430 upprev.php:511
+#: includes/options.php:430 upprev.php:515
 msgid "Donate"
 msgstr "Złóż datek"
 
@@ -474,23 +482,23 @@ msgstr "Powiązane wpisy (YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Działa tylko dla wpisów oraz stron."
 
-#: upprev.php:381
+#: upprev.php:385
 msgid "More in"
 msgstr "Więcej w"
 
-#: upprev.php:388
+#: upprev.php:392
 msgid "Read more:"
 msgstr "Przeczytaj inne:"
 
-#: upprev.php:390
+#: upprev.php:394
 msgid "Read previous post:"
 msgstr "Przeczytaj poprzedni wpis:"
 
-#: upprev.php:460
+#: upprev.php:464
 msgid "Close"
 msgstr "Zamknij"
 
-#: upprev.php:463
+#: upprev.php:467
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -498,7 +506,7 @@ msgstr ""
 "Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/"
 "wtyczki/upprev/\">wtyczki upPrev</a>."
 
-#: upprev.php:509
+#: upprev.php:513
 msgid "Settings"
 msgstr "Ustawienia"
 

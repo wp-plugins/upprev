@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev trunk\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-11-14 10:51:43+00:00\n"
+"POT-Creation-Date: 2012-12-13 10:58:18+00:00\n"
 "PO-Revision-Date: 2012-02-20 10:00+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: \n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:524
+#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
 msgid "upPrev"
 msgstr "upPrev"
 
@@ -46,6 +46,11 @@ msgstr ""
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr ""
+
+#: admin/index.php:38
+#, fuzzy
+msgid "http://wordpress.org/tags/upprev"
+msgstr "http://iworks.pl/upprev/"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
@@ -187,7 +192,10 @@ msgid "Number of posts to show "
 msgstr "Nombre d'articles à montrer"
 
 #: includes/options.php:174
-msgid "Not affected if using YARPP as choose method."
+#, fuzzy
+msgid ""
+"Not affected if using YARPP as choose method and YARPP version is lower than "
+"4.0."
 msgstr "Non affecté si vous avez choisi d'utiliser la méthode YARPP."
 
 #: includes/options.php:181
@@ -443,7 +451,7 @@ msgstr ""
 "voyez le code dans l'exemple à droite. Ces liens et donations sont "
 "grandement appréciés."
 
-#: includes/options.php:430 upprev.php:511
+#: includes/options.php:430 upprev.php:515
 msgid "Donate"
 msgstr "Donations"
 
@@ -467,23 +475,23 @@ msgstr "Related Posts (YARPP)"
 msgid ". Works only with post and/or pages."
 msgstr ". Fonctionne seulement avec les articles et/ou pages."
 
-#: upprev.php:381
+#: upprev.php:385
 msgid "More in"
 msgstr "Plus dans"
 
-#: upprev.php:388
+#: upprev.php:392
 msgid "Read more:"
 msgstr "Lire plus :"
 
-#: upprev.php:390
+#: upprev.php:394
 msgid "Read previous post:"
 msgstr "Lire les articles précédents :"
 
-#: upprev.php:460
+#: upprev.php:464
 msgid "Close"
 msgstr "Fermer"
 
-#: upprev.php:463
+#: upprev.php:467
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -491,7 +499,7 @@ msgstr ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
 
-#: upprev.php:509
+#: upprev.php:513
 msgid "Settings"
 msgstr "Paramètres"
 
