@@ -193,7 +193,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'color',
-                'type'              => 'farbtastic',
+                'type'              => 'wpColorPicker',
                 'class'             => 'short-text',
                 'th'                => __( 'Text', 'upprev' ),
                 'default'           => '#000',
@@ -203,7 +203,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'color_background',
-                'type'              => 'farbtastic',
+                'type'              => 'wpColorPicker',
                 'class'             => 'short-text',
                 'th'                => __( 'Background', 'upprev' ),
                 'default'           => '#fff',
@@ -213,7 +213,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'color_link',
-                'type'              => 'farbtastic',
+                'type'              => 'wpColorPicker',
                 'class'             => 'short-text',
                 'th'                => __( 'Links', 'upprev' ),
                 'sanitize_callback' => 'esc_html',
@@ -223,7 +223,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'color_border',
-                'type'              => 'farbtastic',
+                'type'              => 'wpColorPicker',
                 'class'             => 'short-text',
                 'th'                => __( 'Border', 'upprev' ),
                 'sanitize_callback' => 'esc_html',

@@ -76,6 +76,7 @@ tr.disabled
     background-position: 50% 50%;
     background-repeat: no-repeat;
     border-style: solid;
+    border-width: 1px;
     display: block;
     height: 126px;
     padding: 1px;

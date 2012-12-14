@@ -30,7 +30,9 @@ function iworks_upprev_tabulator_init()
         jQuery('#hasadmintabs input[name=iworks_upprev_last_used_tab]').val(jQuery(this).parent().index());
     });
 }
-jQuery(document).ready(function($) {
+
+jQuery( document ).ready( function( $ ) {
+
     /**
      * configuration
      */
@@ -38,68 +40,8 @@ jQuery(document).ready(function($) {
         $('#iworks_upprev_admin_index').submit();
     });
     /**
-     * farbtastic
-     */
-    $('.color-picker-container .picker').hide();
-    if( 'yes' != $('#upprev_is_pro').val() ) {
-        return;
-    }
-    /**
      * color
      */
-    $('#iworks_upprev_color_picker').farbtastic('#iworks_upprev_color');
-    $('#iworks_upprev_color').click(function() {
-        $('#iworks_upprev_color_picker').fadeIn();
-    });
-    /**
-     * color_background
-     */
-    $('#iworks_upprev_color_background_picker').farbtastic('#iworks_upprev_color_background');
-    $('#iworks_upprev_color_background').click(function() {
-        $('#iworks_upprev_color_background_picker').fadeIn();
-    });
-    /**
-     * color_link
-     */
-    $('#iworks_upprev_color_link_picker').farbtastic('#iworks_upprev_color_link');
-    $('#iworks_upprev_color_link').click(function() {
-        $('#iworks_upprev_color_link_picker').fadeIn();
-    });
-    /**
-     * color_border
-     */
-    $('#iworks_upprev_color_border_picker').farbtastic('#iworks_upprev_color_border');
-    $('#iworks_upprev_color_border').click(function() {
-        $('#iworks_upprev_color_border_picker').fadeIn();
-    });
-    /**
-     * color controlls
-     */
-    $('#iworks_upprev_color_set').bind( 'click', function() {
-        iworks_upprev_admin_color_picker_setter( $(this) );
-    });
-    $(document).mousedown(function() {
-        $('.color-picker-container .picker').each(function() {
-            var display = $(this).css('display');
-            if ( display == 'block' )
-            $(this).fadeOut();
-        });
-    });
-
-    iworks_upprev_admin_color_picker_setter( $('#iworks_upprev_color_set' ) );
-
-    function iworks_upprev_admin_color_picker_setter( el ) {
-        if( el.attr('checked') ) {
-            $('table tr[id^=tr_color] input[type=text]').each( function() {
-                $(this).removeAttr( 'disabled' ).removeClass( 'disabled' );
-                $(this).parent().parent().parent().removeClass( 'disabled' );
-            });
-        } else {
-            $('table tr[id^=tr_color] input[type=text]').each( function() {
-                $(this).attr( 'disabled', 'disabled' ).addClass( 'disabled' );
-                $(this).parent().parent().parent().addClass( 'disabled' );
-            });
-        }
-    }
+    $('.wpColorPicker').wpColorPicker();
 });
 

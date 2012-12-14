@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-12-13 20:42:16+00:00\n"
+"POT-Creation-Date: 2012-12-14 12:23:31+00:00\n"
 "PO-Revision-Date: 2012-04-22 00:16-0300\n"
 "Last-Translator: Leonardo Antonioli <leo@tobeguarany.com>\n"
 "Language-Team: Leo Antonioli <leo@tobeguarany.com>\n"
@@ -15,121 +15,6 @@ msgstr ""
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: BRAZIL\n"
 "X-Poedit-SourceCharset: utf-8\n"
-
-#: includes/class-iworks-options.php:88
-msgid "An error occurred while getting the configuration."
-msgstr "Um erro ocorreu ao tentar recuperar a configuração."
-
-#: includes/class-iworks-options.php:429
-msgid "Save Changes"
-msgstr "Salvar Alterações"
-
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Miniatura"
-
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Nenhuma"
-
-#: includes/class-iworks-upprev.php:58
-msgid "Default simple layout"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:69
-msgid "Vertical Three"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:86
-msgid "\"Bloginity\" style"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:201
-msgid ""
-"<p>upPrev settings allows you to set the proprites of user notification "
-"showed when reader scroll down the page.</p>"
-msgstr ""
-"<p>As configurações do upPrev permitem definir as propriedades da "
-"notificação exibida ao usuário quando ele rola a página para baixo.</p>"
-
-#: includes/class-iworks-upprev.php:204
-msgid "Overview"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:213
-msgid "For more information:"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:214
-msgid ""
-"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
-"\">Plugin Homepage</a>"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:215
-msgid ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
-"Forums</a>"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:216
-msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
-msgstr ""
-
-#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: includes/class-iworks-upprev.php:243 includes/class-iworks-upprev.php:264
-#: admin/index.php:12
-msgid "upPrev"
-msgstr "upPrev"
-
-#: includes/class-iworks-upprev.php:276
-msgid "Settings"
-msgstr "Configurações"
-
-#: includes/class-iworks-upprev.php:279 etc/options.php:525
-msgid "Donate"
-msgstr "Doações"
-
-#: includes/class-iworks-upprev.php:602
-msgid "More in"
-msgstr "Mais em"
-
-#: includes/class-iworks-upprev.php:609
-msgid "Read more:"
-msgstr "Leia mais:"
-
-#: includes/class-iworks-upprev.php:611
-msgid "Read previous post:"
-msgstr "Leia o post anterior:"
-
-#: includes/class-iworks-upprev.php:700
-msgid "Close"
-msgstr "Fechar"
-
-#: includes/class-iworks-upprev.php:703
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
-msgstr ""
-"Um oferecimento do <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/"
-"upprev/en/\">upPrev plugin</a>."
-
-#: includes/class-iworks-upprev.php:854
-msgid "All positions are available in PRO version!"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:886
-msgid "Colors setup is available in PRO version!"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:949
-msgid "Exlude categories available in PRO version!"
-msgstr ""
-
-#: includes/class-iworks-upprev.php:983
-msgid "Exlude tags available in PRO version!"
-msgstr ""
 
 #: etc/options.php:32 etc/options.php:73
 msgid "Appearance"
@@ -557,6 +442,10 @@ msgstr ""
 "veja um exemplo do código à direita. Estes links e doações são imensamente "
 "apreciados.</span>"
 
+#: etc/options.php:525 includes/class-iworks-upprev.php:279
+msgid "Donate"
+msgstr "Doações"
+
 #: etc/options.php:526
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
@@ -592,6 +481,45 @@ msgstr "Post relacionado (YARPP)"
 #: etc/options.php:587
 msgid ". Works only with post and/or pages."
 msgstr ". Funciona apenas com post e/ou páginas."
+
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
+msgstr ""
+
+#: admin/buy_pro.php:12
+msgid "Single site licence"
+msgstr ""
+
+#: admin/buy_pro.php:15
+msgid "Price"
+msgstr ""
+
+#: admin/buy_pro.php:21
+msgid "Benefits"
+msgstr ""
+
+#: admin/buy_pro.php:23
+msgid "All templates available."
+msgstr ""
+
+#: admin/buy_pro.php:24
+msgid "All positions available."
+msgstr ""
+
+#: admin/buy_pro.php:25
+msgid "You can set up colors."
+msgstr ""
+
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
+msgstr ""
+
+#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/index.php:12 includes/class-iworks-upprev.php:243
+#: includes/class-iworks-upprev.php:264
+msgid "upPrev"
+msgstr "upPrev"
 
 #: admin/index.php:16
 msgid "upPrev options saved."
@@ -641,37 +569,109 @@ msgstr "http://wordpress.org/tags/upprev"
 msgid "Wordpress Help Forum"
 msgstr ""
 
-#: admin/buy_pro.php:10
-msgid "Buy Pro Version"
+#: includes/class-iworks-upprev.php:58
+msgid "Default simple layout"
 msgstr ""
 
-#: admin/buy_pro.php:12
-msgid "Single site licence"
+#: includes/class-iworks-upprev.php:69
+msgid "Vertical Three"
 msgstr ""
 
-#: admin/buy_pro.php:15
-msgid "Price"
+#: includes/class-iworks-upprev.php:86
+msgid "\"Bloginity\" style"
 msgstr ""
 
-#: admin/buy_pro.php:21
-msgid "Benefits"
+#: includes/class-iworks-upprev.php:201
+msgid ""
+"<p>upPrev settings allows you to set the proprites of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+"<p>As configurações do upPrev permitem definir as propriedades da "
+"notificação exibida ao usuário quando ele rola a página para baixo.</p>"
+
+#: includes/class-iworks-upprev.php:204
+msgid "Overview"
 msgstr ""
 
-#: admin/buy_pro.php:23
-msgid "All templates available."
+#: includes/class-iworks-upprev.php:213
+msgid "For more information:"
 msgstr ""
 
-#: admin/buy_pro.php:24
-msgid "All positions available."
+#: includes/class-iworks-upprev.php:214
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Plugin Homepage</a>"
 msgstr ""
 
-#: admin/buy_pro.php:25
-msgid "You can set up colors."
+#: includes/class-iworks-upprev.php:215
+msgid ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
+"Forums</a>"
 msgstr ""
 
-#: admin/buy_pro.php:26
-msgid "You can exclude categories."
+#: includes/class-iworks-upprev.php:216
+msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
 msgstr ""
+
+#: includes/class-iworks-upprev.php:276
+msgid "Settings"
+msgstr "Configurações"
+
+#: includes/class-iworks-upprev.php:602
+msgid "More in"
+msgstr "Mais em"
+
+#: includes/class-iworks-upprev.php:609
+msgid "Read more:"
+msgstr "Leia mais:"
+
+#: includes/class-iworks-upprev.php:611
+msgid "Read previous post:"
+msgstr "Leia o post anterior:"
+
+#: includes/class-iworks-upprev.php:700
+msgid "Close"
+msgstr "Fechar"
+
+#: includes/class-iworks-upprev.php:703
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr ""
+"Um oferecimento do <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/"
+"upprev/en/\">upPrev plugin</a>."
+
+#: includes/class-iworks-upprev.php:854
+msgid "All positions are available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:886
+msgid "Colors setup is available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:949
+msgid "Exlude categories available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:983
+msgid "Exlude tags available in PRO version!"
+msgstr ""
+
+#: includes/show_thubnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: includes/show_thubnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Nenhuma"
+
+#: includes/class-iworks-options.php:88
+msgid "An error occurred while getting the configuration."
+msgstr "Um erro ocorreu ao tentar recuperar a configuração."
+
+#: includes/class-iworks-options.php:435
+msgid "Save Changes"
+msgstr "Salvar Alterações"
 
 #. Plugin URI of the plugin/theme
 #, fuzzy

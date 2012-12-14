@@ -561,7 +561,7 @@ class IworksUpprev
             $show_taxonomy = false;
         }
         $value = sprintf( '<div id="upprev_box" class="%s">', implode( ' ', $box_classes ) ) ;
-        if ( 'random' != $compare ) {
+        if ( !preg_match( '/^(yarpp|random)$/', $compare ) ) {
             add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
         }
         add_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
@@ -834,7 +834,7 @@ class IworksUpprev
             $disabled = 'disabled="disabled"';
         }
         return sprintf (
-            '<td class="%s%s"><label for="%s" class="find-box-search"><input type="radio" name="%s" value="%s"%s id="%s" %s/> <span>%s</span></label></td>',
+            '<td class="%s%s"><label for="%s" class="imgedit-group"><input type="radio" name="%s" value="%s"%s id="%s" %s/> <span>%s</span></label></td>',
             sanitize_title( $value ),
             $disabled? ' disabled':'',
             $id,
