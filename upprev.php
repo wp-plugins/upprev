@@ -2,7 +2,7 @@
 /*
 Plugin Name: upPrev
 Plugin URI: http://upprev.com/
-Description: When scrolling post down upPrev will display a flyout box with a link to post in choosen configuration.
+Description: When scrolling post down upPrev will display a flyout box with a link to post in chosen configuration.
 Version: trunk
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/

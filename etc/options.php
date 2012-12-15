@@ -161,7 +161,7 @@ function iworks_upprev_options()
                 'name'              => 'header_text',
                 'type'              => 'text',
                 'class'             => 'regular-text',
-                'label'             => __( 'Header tekst.', 'upprev' ),
+                'label'             => __( 'Header text.', 'upprev' ),
                 'description'       => __( 'Leave blank to allow plugin set the heading text.', 'upprev' ),
                 'default'           => false,
                 'sanitize_callback' => 'esc_html'
@@ -372,9 +372,9 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'esc_html'
             ),
             array(
-                'name'              => 'url_sufix',
+                'name'              => 'url_suffix',
                 'type'              => 'text',
-                'th'                => __( 'URL sufix', 'upprev' ),
+                'th'                => __( 'URL suffix', 'upprev' ),
                 'class'             => 'regular-text',
                 'description'       => __( 'Will be added after link.', 'upprev' ),
                 'default'           => '',
@@ -385,7 +385,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __( 'Open link', 'upprev' ),
                 'label'             => __( 'Open link in new window.', 'upprev' ),
-                'description'       => __( 'Not recomended!', 'upprev' ),
+                'description'       => __( 'Not recommended!', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
@@ -460,7 +460,7 @@ function iworks_upprev_options()
                 'type'              => 'checkbox',
                 'th'                => __( 'Tablets', 'upprev' ),
                 'label'             => __( 'Hide for tablets too.', 'upprev' ),
-                'description'       => __( 'Works only when hidding for mobile devices is turn on.', 'upprev' ),
+                'description'       => __( 'Works only when hiding for mobile devices is turn on.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),

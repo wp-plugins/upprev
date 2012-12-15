@@ -130,7 +130,7 @@ class IworksOptions
             /**
              * dismiss if have "callback_to_show" and return false
              */
-            if ( isset( $option['callback_to_show'] ) && is_callable( $option['callback_to_show'] ) ) {
+            if ( !preg_match( '/^(heading|info)$/', $option[ 'type' ] ) && isset( $option['callback_to_show'] ) && is_callable( $option['callback_to_show'] ) ) {
                 if ( false === $option['callback_to_show']( $this->get_option( $option['name'], $option_group ) ) ) {
                     continue;
                 }
@@ -138,7 +138,7 @@ class IworksOptions
             /**
              * heading
              */
-            if ( $option['type'] == 'heading' ) {
+            if ( 'heading' == $option['type'] ) {
                 if ( isset( $option['configuration'] ) ) {
                     $configuration = $option['configuration'];
                 } else {

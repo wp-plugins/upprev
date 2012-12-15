@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev 3.3.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2012-12-14 12:23:31+00:00\n"
+"POT-Creation-Date: 2012-12-15 07:15:50+00:00\n"
 "PO-Revision-Date: 2012-08-27 20:36+0100\n"
 "Last-Translator: Marcin Pietrzak <marcin@iworks.pl>\n"
 "Language-Team: upprev-language-team@iworks.pl\n"
@@ -14,6 +14,126 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+
+#: includes/class-iworks-options.php:88
+msgid "An error occurred while getting the configuration."
+msgstr "Błąd w pobieraniu konfiguracji."
+
+#: includes/class-iworks-options.php:435
+msgid "Save Changes"
+msgstr "Zapisz zmiany"
+
+#: includes/show_thumbnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "Miniaturka"
+
+#: includes/show_thumbnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "Brak"
+
+#: includes/class-iworks-upprev.php:58
+msgid "Default simple layout"
+msgstr "Szablon domyślny"
+
+#: includes/class-iworks-upprev.php:69
+msgid "Vertical Three"
+msgstr "Trzy poziomo"
+
+#: includes/class-iworks-upprev.php:86
+msgid "\"Bloginity\" style"
+msgstr "Styl: \"Bloginity\""
+
+#: includes/class-iworks-upprev.php:201
+msgid ""
+"<p>upPrev settings allows you to set the proprieties of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+"<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o "
+"poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do "
+"odpowiedniego miejsca.</p>"
+
+#: includes/class-iworks-upprev.php:204
+msgid "Overview"
+msgstr "Podgląd"
+
+#: includes/class-iworks-upprev.php:213
+msgid "For more information:"
+msgstr "\"Więcej informacji:"
+
+#: includes/class-iworks-upprev.php:214
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Plugin Homepage</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Strona domowa wtyczki</a>"
+
+#: includes/class-iworks-upprev.php:215
+msgid ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
+"Forums</a>"
+msgstr ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Forum "
+"wsparcia (en)</a>"
+
+#: includes/class-iworks-upprev.php:216
+msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
+msgstr "<a href=\"http://iworks.pl/\" target=\"_blank\">przełam sieć</a>"
+
+#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-iworks-upprev.php:243 includes/class-iworks-upprev.php:264
+#: admin/index.php:12
+msgid "upPrev"
+msgstr "upPrev"
+
+#: includes/class-iworks-upprev.php:276
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: includes/class-iworks-upprev.php:279 etc/options.php:525
+msgid "Donate"
+msgstr "Złóż datek"
+
+#: includes/class-iworks-upprev.php:609
+msgid "More in"
+msgstr "Więcej w"
+
+#: includes/class-iworks-upprev.php:616
+msgid "Read more:"
+msgstr "Przeczytaj inne:"
+
+#: includes/class-iworks-upprev.php:618
+msgid "Read previous post:"
+msgstr "Przeczytaj poprzedni wpis:"
+
+#: includes/class-iworks-upprev.php:707
+msgid "Close"
+msgstr "Zamknij"
+
+#: includes/class-iworks-upprev.php:710
+msgid ""
+"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
+"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
+msgstr ""
+"Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/"
+"wtyczki/upprev/\">wtyczki upPrev</a>."
+
+#: includes/class-iworks-upprev.php:864
+msgid "All positions are available in PRO version!"
+msgstr "Wszystkie pozycje dostępne w wersji PRO!"
+
+#: includes/class-iworks-upprev.php:896
+msgid "Colors setup is available in PRO version!"
+msgstr "Możliwość ustawiania kolorów jest dostępna w wersji PRO!"
+
+#: includes/class-iworks-upprev.php:959
+msgid "Exclude categories available in PRO version!"
+msgstr "Wyłączanie kategorii jest dostępne w wersji PRO!"
+
+#: includes/class-iworks-upprev.php:993
+msgid "Exclude tags available in PRO version!"
+msgstr "Wyłączanie tagów jest dostępne w wersji PRO!"
 
 #: etc/options.php:32 etc/options.php:73
 msgid "Appearance"
@@ -128,7 +248,7 @@ msgid "Show box header."
 msgstr "Pokaż nagłówek."
 
 #: etc/options.php:164
-msgid "Header tekst."
+msgid "Header text."
 msgstr "Tekst nagłówka."
 
 #: etc/options.php:165
@@ -307,7 +427,7 @@ msgid "Will be added before link."
 msgstr "Prefiks będzie dodany przed odnośnikiem."
 
 #: etc/options.php:377
-msgid "URL sufix"
+msgid "URL suffix"
 msgstr "Sufiks adresu"
 
 #: etc/options.php:379
@@ -323,7 +443,7 @@ msgid "Open link in new window."
 msgstr "Otwórz odnośnik w nowym oknie"
 
 #: etc/options.php:388
-msgid "Not recomended!"
+msgid "Not recommended!"
 msgstr "Nie polecam użycia tej opcji!"
 
 #: etc/options.php:395
@@ -391,7 +511,7 @@ msgid "Hide for tablets too."
 msgstr "Ukryj również dla tabletów."
 
 #: etc/options.php:463
-msgid "Works only when hidding for mobile devices is turn on."
+msgid "Works only when hiding for mobile devices is turn on."
 msgstr ""
 "Opcja działa tylko wtedy kiedy włączone jest ukrywanie dla urządzeń "
 "mobilnych."
@@ -443,10 +563,6 @@ msgstr ""
 "wtyczki/upprev/\"&gt;wtyczki upPrev&lt;/a&gt;.</code> Włącz i zobacz różnicę "
 "w wyświetlanym powiadomieniu."
 
-#: etc/options.php:525 includes/class-iworks-upprev.php:279
-msgid "Donate"
-msgstr "Złóż datek"
-
 #: etc/options.php:526
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
@@ -482,45 +598,6 @@ msgstr "Powiązane wpisy (YARPP)"
 #: etc/options.php:587
 msgid ". Works only with post and/or pages."
 msgstr ". Działa tylko dla wpisów oraz stron."
-
-#: admin/buy_pro.php:10
-msgid "Buy Pro Version"
-msgstr "Kup wersję Pro"
-
-#: admin/buy_pro.php:12
-msgid "Single site licence"
-msgstr "Licencja na jeden serwis"
-
-#: admin/buy_pro.php:15
-msgid "Price"
-msgstr "Cena"
-
-#: admin/buy_pro.php:21
-msgid "Benefits"
-msgstr "Korzyści"
-
-#: admin/buy_pro.php:23
-msgid "All templates available."
-msgstr "Możliwość wyboru dowolnego szablonu."
-
-#: admin/buy_pro.php:24
-msgid "All positions available."
-msgstr "Możliwość wyboru każdej pozcycji."
-
-#: admin/buy_pro.php:25
-msgid "You can set up colors."
-msgstr "Możliwość ustawienia własnych kolorów."
-
-#: admin/buy_pro.php:26
-msgid "You can exclude categories."
-msgstr "Możliwość wyłaczenia wybranych kategorii."
-
-#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: admin/index.php:12 includes/class-iworks-upprev.php:243
-#: includes/class-iworks-upprev.php:264
-msgid "upPrev"
-msgstr "upPrev"
 
 #: admin/index.php:16
 msgid "upPrev options saved."
@@ -570,114 +647,37 @@ msgstr "http://pl.wordpress.org/tags/upprev"
 msgid "Wordpress Help Forum"
 msgstr "Forum Wordpressa"
 
-#: includes/class-iworks-upprev.php:58
-msgid "Default simple layout"
-msgstr "Szablon domyślny"
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
+msgstr "Kup wersję Pro"
 
-#: includes/class-iworks-upprev.php:69
-msgid "Vertical Three"
-msgstr "Trzy poziomo"
+#: admin/buy_pro.php:12
+msgid "Single site licence"
+msgstr "Licencja na jeden serwis"
 
-#: includes/class-iworks-upprev.php:86
-msgid "\"Bloginity\" style"
-msgstr "Styl: \"Bloginity\""
+#: admin/buy_pro.php:15
+msgid "Price"
+msgstr "Cena"
 
-#: includes/class-iworks-upprev.php:201
-msgid ""
-"<p>upPrev settings allows you to set the proprites of user notification "
-"showed when reader scroll down the page.</p>"
-msgstr ""
-"<p>Ustawienia dotyczą wyskakującego elementu, powiadamiającego użytkownika o "
-"poprzednim dostępnym wpisie, po tym jak strona zostanie przewinięta do "
-"odpowiedniego miejsca.</p>"
+#: admin/buy_pro.php:21
+msgid "Benefits"
+msgstr "Korzyści"
 
-#: includes/class-iworks-upprev.php:204
-msgid "Overview"
-msgstr "Podgląd"
+#: admin/buy_pro.php:23
+msgid "All templates available."
+msgstr "Możliwość wyboru dowolnego szablonu."
 
-#: includes/class-iworks-upprev.php:213
-msgid "For more information:"
-msgstr "\"Więcej informacji:"
+#: admin/buy_pro.php:24
+msgid "All positions available."
+msgstr "Możliwość wyboru każdej pozcycji."
 
-#: includes/class-iworks-upprev.php:214
-msgid ""
-"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
-"\">Plugin Homepage</a>"
-msgstr ""
-"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
-"\">Strona domowa wtyczki</a>"
+#: admin/buy_pro.php:25
+msgid "You can set up colors."
+msgstr "Możliwość ustawienia własnych kolorów."
 
-#: includes/class-iworks-upprev.php:215
-msgid ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
-"Forums</a>"
-msgstr ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Forum "
-"wsparcia (en)</a>"
-
-#: includes/class-iworks-upprev.php:216
-msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
-msgstr "<a href=\"http://iworks.pl/\" target=\"_blank\">przełam sieć</a>"
-
-#: includes/class-iworks-upprev.php:276
-msgid "Settings"
-msgstr "Ustawienia"
-
-#: includes/class-iworks-upprev.php:602
-msgid "More in"
-msgstr "Więcej w"
-
-#: includes/class-iworks-upprev.php:609
-msgid "Read more:"
-msgstr "Przeczytaj inne:"
-
-#: includes/class-iworks-upprev.php:611
-msgid "Read previous post:"
-msgstr "Przeczytaj poprzedni wpis:"
-
-#: includes/class-iworks-upprev.php:700
-msgid "Close"
-msgstr "Zamknij"
-
-#: includes/class-iworks-upprev.php:703
-msgid ""
-"Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
-"wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
-msgstr ""
-"Dodatek zrealizowany za pomocą <a href=\"http://iworks.pl/produkty/wordpress/"
-"wtyczki/upprev/\">wtyczki upPrev</a>."
-
-#: includes/class-iworks-upprev.php:854
-msgid "All positions are available in PRO version!"
-msgstr "Wszystkie pozycje dostępne w wersji PRO!"
-
-#: includes/class-iworks-upprev.php:886
-msgid "Colors setup is available in PRO version!"
-msgstr "Możliwość ustawiania kolorów jest dostępna w wersji PRO!"
-
-#: includes/class-iworks-upprev.php:949
-msgid "Exlude categories available in PRO version!"
-msgstr "Wyłączanie kategorii jest dostępne w wersji PRO!"
-
-#: includes/class-iworks-upprev.php:983
-msgid "Exlude tags available in PRO version!"
-msgstr "Wyłączanie tagów jest dostępne w wersji PRO!"
-
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "Miniaturka"
-
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "Brak"
-
-#: includes/class-iworks-options.php:88
-msgid "An error occurred while getting the configuration."
-msgstr "Błąd w pobieraniu konfiguracji."
-
-#: includes/class-iworks-options.php:435
-msgid "Save Changes"
-msgstr "Zapisz zmiany"
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
+msgstr "Możliwość wyłaczenia wybranych kategorii."
 
 #. Plugin URI of the plugin/theme
 msgid "http://upprev.com/"
@@ -686,7 +686,7 @@ msgstr "http://upprev.com/pl/"
 #. Description of the plugin/theme
 msgid ""
 "When scrolling post down upPrev will display a flyout box with a link to "
-"post in choosen configuration."
+"post in chosen configuration."
 msgstr ""
 "W czasie przewijania pokazuje odnośnik do poprzedniego lub podobnego wpisu."
 

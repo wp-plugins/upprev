@@ -55,7 +55,7 @@ class IworksUpprev
          */
         $this->available_layouts = array(
             'simple' => array(
-                'name'     => __( 'Default simple layout', 'iworks_upprev' ),
+                'name'     => __( 'Default simple layout', 'upprev' ),
                 'defaults' => array(
                     'class'            => 'simple',
                     'compare'          => 'simple_or_yarpp',
@@ -66,7 +66,7 @@ class IworksUpprev
                 )
             ),
             'vertical 3' => array(
-                'name'     => __( 'Vertical Three', 'iworks_upprev' ),
+                'name'     => __( 'Vertical Three', 'upprev' ),
                 'defaults' => array(
                     'class'            => 'vertical-3',
                     'compare'          => 'simple_or_yarpp',
@@ -83,7 +83,7 @@ class IworksUpprev
                 'need_pro' => true
             ),
             'bloginity' => array(
-                'name'     => __( '"Bloginity" style', 'iworks_upprev' ),
+                'name'     => __( '"Bloginity" style', 'upprev' ),
                 'defaults' => array(
                     'class'             => 'bloginity',
                     'compare'           => 'simple_or_yarpp',
@@ -198,7 +198,7 @@ class IworksUpprev
             /**
              * make help
              */
-            $help = '<p>' .  __( '<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>', 'upprev' ) . '</p>';
+            $help = '<p>' .  __( '<p>upPrev settings allows you to set the proprieties of user notification showed when reader scroll down the page.</p>', 'upprev' ) . '</p>';
             $screen->add_help_tab( array(
                 'id'      => 'overview',
                 'title'   => __( 'Overview', 'upprev' ),
@@ -414,7 +414,7 @@ class IworksUpprev
             'taxonomy_limit',
             'thumb_width',
             'url_prefix',
-            'url_sufix'
+            'url_suffix'
         ) as $key ) {
             $$key = $this->options->get_option( $key );
         }
@@ -442,19 +442,26 @@ class IworksUpprev
         /**
          * admin mode?
          */
-
         $show_taxonomy   = true;
         $siblings        = array();
-        global $post;
         $args = array(
             'ignore_sticky_posts' => $ignore_sticky_posts,
             'orderby'             => 'date',
             'order'               => 'DESC',
-            'post__not_in'        => array( $post->ID ),
             'posts_per_page'      => $number_of_posts,
             'post_status'         => 'publish',
             'post_type'           => array(),
         );
+        /**
+         * exclude one id if singular
+         */
+        if( is_singular() ) {
+            global $post;
+            $args['post__not_in'] = array( $post->ID );
+        }
+        /**
+         * check & set post type
+         */
         $post_type = $this->options->get_option( 'post_type' );
         if ( !empty( $post_type ) ) {
             if ( array_key_exists( 'any', $post_type ) ) {
@@ -640,7 +647,7 @@ class IworksUpprev
                 '%s%s%s',
                 $url_prefix,
                 get_permalink(),
-                $url_sufix
+                $url_suffix
             );
             if ( current_theme_supports( 'post-thumbnails' ) && $show_thumb && has_post_thumbnail( get_the_ID() ) ) {
                 $a_class = '';
@@ -724,6 +731,9 @@ class IworksUpprev
 
     public function posts_where( $where = '' )
     {
+        if ( !is_singular() ) {
+            return $where;
+        }
         global $post;
         if ( $post->post_date ) {
             $where .= " AND post_date < '" . $post->post_date . "'";
@@ -851,7 +861,7 @@ class IworksUpprev
     {
         $content = '';
         if ( !$this->is_pro ) {
-            $content .= '<p class="error-message">'.__( 'All positions are available in PRO version!', 'iworks_upprev' ).'</p>';
+            $content .= '<p class="error-message">'.__( 'All positions are available in PRO version!', 'upprev' ).'</p>';
         }
         $content .= sprintf( '<table id="%s"><tbody><tr>', $html_element_name );
         foreach( array( 'left-top', 'top', 'right-top' ) as $key ) {
@@ -883,7 +893,7 @@ class IworksUpprev
     public function index_iworks_upprev_color_set( $content )
     {
         if ( !$this->is_pro ) {
-            return '<p class="error-message">'.__( 'Colors setup is available in PRO version!', 'iworks_upprev' ).'</p>'.$content;
+            return '<p class="error-message">'.__( 'Colors setup is available in PRO version!', 'upprev' ).'</p>'.$content;
         }
         return preg_replace( '/ disabled="disabled"/', '', $content );
     }
@@ -946,7 +956,7 @@ class IworksUpprev
         $content = '';
         if ( !$this->is_pro ) {
             $args['number'] = 3;
-            $content .= '<li class="error-message">'.__( 'Exlude categories available in PRO version!', 'iworks_upprev' ).'</li>';
+            $content .= '<li class="error-message">'.__( 'Exclude categories available in PRO version!', 'upprev' ).'</li>';
         }
         $categories = get_categories( $args );
         foreach ( $categories as $category ) {
@@ -980,7 +990,7 @@ class IworksUpprev
         $content = '';
         if ( !$this->is_pro ) {
             $args['number'] = 3;
-            $content .= '<li class="error-message">'.__( 'Exlude tags available in PRO version!', 'iworks_upprev' ).'</li>';
+            $content .= '<li class="error-message">'.__( 'Exclude tags available in PRO version!', 'upprev' ).'</li>';
         }
         $tags = get_tags( $args );
         foreach ( $tags as $category ) {
