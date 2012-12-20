@@ -14,13 +14,14 @@ jQuery( function($) {
         var upprev_last_screen = false;
         if ( iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
             if ( $(iworks_upprev.offset_element).length > 0 ) {
-                upprev_last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() > $(iworks_upprev.offset_element).offset().top;
+                upprev_last_screen = $(window).scrollTop() + $(window).height() > $(iworks_upprev.offset_element).offset().top;
             } else {
-                upprev_last_screen = iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
+                upprev_last_screen = $(window).scrollTop() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            upprev_last_screen = ( iworks_upprev_get_html_offset( $('html') ) + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
+            upprev_last_screen = ( $(window).scrollTop() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
         }
+        console.log( 'upprev_last_screen: '+upprev_last_screen );
         box = $('#upprev_box');
         if ( upprev_last_screen && !upprev_closed ) {
             if ( 'fade' == iworks_upprev.animation ) {
@@ -47,7 +48,7 @@ jQuery( function($) {
                 upprev_ga_track_view = false;
             }
         }
-        else if (upprev_closed && iworks_upprev_get_html_offset( $('html') ) == 0) {
+        else if (upprev_closed && $(window).scrollTop() == 0) {
             upprev_closed = false;
         }
         else if (!upprev_hidden) {
@@ -158,10 +159,6 @@ jQuery( function($) {
                 + parseInt( box.css( 'padding-left'  ).replace( /px$/, '' ) )
                 + parseInt( box.css( 'padding-right' ).replace( /px$/, '' ) )
                 ) + 'px';
-    }
-
-    function iworks_upprev_get_html_offset( h ) {
-        return parseInt( h.css( 'margin-top' ).replace( /px$/, '' ) ) - h.offset().top;
     }
 
     function iworks_upprev_setup_position( upprev_vertical, upprev_horizontal ) {

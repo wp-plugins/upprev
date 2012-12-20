@@ -115,6 +115,10 @@ class IworksUpprev
         $this->options = $iworks_upprev_options;
     }
 
+    /**
+     * return false to display
+     * return true to hide
+     */
     private function iworks_upprev_check()
     {
         if ( !is_singular() ) {
@@ -123,7 +127,12 @@ class IworksUpprev
         /**
          * check mobile devices
          */
-        if ( iworks_upprev_check_mobile_device() ) {
+        require_once 'Mobile_Detect.php';
+        $detect = new Mobile_Detect;
+        if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->get_option( 'mobile_hide' ) ) {
+            return true;
+        }
+        if ( $detect->isTablet() && 1 == $this->get_option( 'mobile_tablets' ) ) {
             return true;
         }
         /**
@@ -138,8 +147,7 @@ class IworksUpprev
 
     public function is_pro()
     {
-        //return false;
-        return true;
+        return false;
     }
 
     public function get_version( $file = null )

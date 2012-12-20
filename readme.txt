@@ -180,9 +180,11 @@ Example:
 * IMPROVMENT: rework option page to easier configuration
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: added color chooser (only PRO version)
+* IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
+* BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
 = 3.3.12 =
