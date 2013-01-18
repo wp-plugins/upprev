@@ -129,10 +129,10 @@ class IworksUpprev
          */
         require_once 'Mobile_Detect.php';
         $detect = new Mobile_Detect;
-        if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->get_option( 'mobile_hide' ) ) {
+        if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->options->get_option( 'mobile_hide' ) ) {
             return true;
         }
-        if ( $detect->isTablet() && 1 == $this->get_option( 'mobile_tablets' ) ) {
+        if ( $detect->isTablet() && 1 == $this->options->get_option( 'mobile_tablets' ) ) {
             return true;
         }
         /**
