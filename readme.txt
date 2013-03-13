@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 3.3.13
+Stable tag: 3.3.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -188,6 +188,10 @@ Example:
 * BUGFIX: fixed bug with removing filter name
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.14 =
+
+* BUGFIX: fixed limit for taxonomies thx to [darkjedipete](http://wordpress.org/support/profile/darkjedipete)
 
 = 3.3.13 =
 
@@ -395,7 +399,7 @@ Example:
 
 Added simple configuration screen. Rebuild option page to easier configuration. Created PRO version.
 
-= 3.3.11 =
+= 3.3.13 =
 
 Add Czech translation.
 

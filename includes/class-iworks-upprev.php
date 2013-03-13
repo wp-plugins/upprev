@@ -533,7 +533,7 @@ class IworksUpprev
             if ( $max < 1 ) {
                 break;
             }
-            if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
+            if ( $taxonomy_limit > 0 && $taxonomy_limit < $max ) {
                 $max = $taxonomy_limit;
             }
             if ( count( $tags ) ) {
