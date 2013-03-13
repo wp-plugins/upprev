@@ -314,7 +314,7 @@ function iworks_upprev_box()
                 break;
             }
             $max = count( $categories );
-            if ( $taxonomy_limit > 0 && $taxonomy_limit > $max ) {
+            if ( $taxonomy_limit > 0 && $taxonomy_limit < $max ) {
                 $max = $taxonomy_limit;
             }
             $ids = array();
