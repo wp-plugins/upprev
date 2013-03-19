@@ -32,6 +32,7 @@ in the selected configuration:
 * Czech (cs_CZ) - [Michal Bláha](http://michalblaha.cz/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
+* Hebrew (he_IL) - [עמיעד](http://hatul.info)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
@@ -62,6 +63,7 @@ upPrev plugin will work on websites in the following languages:
 * Czech
 * French
 * German
+* Hebrew
 * Polish
 * Romanian
 * Russian
@@ -165,6 +167,10 @@ Example:
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.15 =
+
+* IMPROVMENT: added Hebrew translation by [עמיעד](http://hatul.info)
 
 = 3.3.14 =
 

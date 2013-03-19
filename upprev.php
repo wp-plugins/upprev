@@ -353,7 +353,10 @@ function iworks_upprev_box()
         default:
             $show_taxonomy   = false;
     }
-    $value = '<div id="upprev_box">';
+    $value = sprintf(
+        '<div id="upprev_box"%s>',
+        is_rtl()? ' class="rtl"':''
+    );
     if ( $compare != 'yarpp' ) {
         if ( $compare != 'random' ) {
             add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
