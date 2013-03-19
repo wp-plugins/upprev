@@ -28,22 +28,22 @@
     font-weight: bold;
     font-family: arial,helvetica,sans-serif;
     color: inherit;
-    padding:0;
-    margin:0 0 10px 0;
+    padding: 0;
+    margin: 0 0 10px 0;
 }
 
 #upprev_box h6 .num
 {
     font-size: inherit;
-    font-weight:normal;
+    font-weight: 400;
     font-family: inherit;
-    color:#888;
+    color: #888;
 }
 
 #upprev_box .upprev_excerpt p
 {
-    overflow:hidden;
-    margin:0
+    overflow: hidden;
+    margin: 0;
 }
 
 #upprev_box a.upprev_thumbnail img
@@ -62,8 +62,9 @@
 #upprev_box div
 ,#upprev_box div.upprev_thumbnail br
 {
-    clear:both;
+    clear: both;
 }
+
 #upprev_box h5
 {
     margin-top: 0;
@@ -91,11 +92,13 @@
     top: 5px;
     width: 13px;
 }
-#upprev_close
+
+#upprev_close.rtl
 {
     right: auto;
     left: 5px;
 }
+
 #upprev_box p.promote
 {
     clear: both;
