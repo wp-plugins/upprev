@@ -1,10 +1,10 @@
 === upPrev ===
 Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
-Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
+Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 3.3.14
+Stable tag: 3.3.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,7 @@ in the selected configuration:
 * Czech (cs_CZ) - [Michal Bláha](http://michalblaha.cz/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
+* Hebrew (he_IL) - [עמיעד](http://hatul.info)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
@@ -62,6 +63,7 @@ upPrev plugin will work on websites in the following languages:
 * Czech
 * French
 * German
+* Hebrew
 * Polish
 * Romanian
 * Russian
@@ -188,6 +190,10 @@ Example:
 * BUGFIX: fixed bug with removing filter name
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.15 =
+
+* IMPROVMENT: added Hebrew translation by [עמיעד](http://hatul.info)
 
 = 3.3.14 =
 
