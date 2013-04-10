@@ -104,7 +104,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'css_bottom',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Margin bottom', 'upprev' ),
                 'label'             => __( 'px', 'upprev' ),
@@ -113,7 +113,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'css_side',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Margin side', 'upprev' ),
                 'label'             => __( 'px', 'upprev' ),
@@ -123,7 +123,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'css_width',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Box width', 'upprev' ),
                 'label'             => __( 'px', 'upprev' ),
@@ -132,7 +132,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'offset_percent',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Offset', 'upprev' ),
                 'label'             => __( '%', 'upprev' ),
@@ -241,7 +241,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'number_of_posts',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Number of posts to show', 'upprev' ),
                 'description'       => __( 'Not affected if using YARPP as choose method.', 'upprev' ),
@@ -273,7 +273,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'taxonomy_limit',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Taxonomy limit', 'upprev' ),
                 'label'             => __( 'Number of taxonomies (tags or categories) to show.', 'upprev' ),
@@ -327,7 +327,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'excerpt_length',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'default'           => 20,
                 'label'             => __( 'Number of words to show.', 'upprev' ),
@@ -347,7 +347,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'thumb_width',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'label'             => __( 'Featured image width.', 'upprev' ),
                 'default'           => 96,
@@ -497,7 +497,7 @@ function iworks_upprev_options()
             ),
             array(
                 'name'              => 'cache_lifetime',
-                'type'              => 'text',
+                'type'              => 'number',
                 'label'             => __( 'Transients Cache Lifetime.', 'upprev' ),
                 'description'       => __( 'In seconds, default one hour (3600s).', 'upprev' ),
                 'default'           => 3600,

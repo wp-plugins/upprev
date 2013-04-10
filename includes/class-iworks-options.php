@@ -150,9 +150,10 @@ class IworksOptions
                     continue;
                 }
                 if( in_array( $option['type'], array(
+                    'checkbox',
+                    'number',
                     'radio',
                     'text',
-                    'checkbox',
                     'textarea'
                 ) ) ) {
                     $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
@@ -210,8 +211,9 @@ class IworksOptions
                         isset($option['dynamic']) && $option['dynamic']? $this->get_option( $option['name'], $option_group ):$option['default']
                     );
                 break;
-            case 'text':
+            case 'number':
             case 'password':
+            case 'text':
                 $id = '';
                 if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
                     $id = sprintf( ' id="%s"', $html_element_name );
