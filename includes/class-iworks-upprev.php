@@ -121,24 +121,38 @@ class IworksUpprev
      */
     private function iworks_upprev_check()
     {
-        if ( !is_singular() ) {
+        /**
+         * check base and exclude streams
+         */
+        if ( !is_singular() && !is_front_page() ) {
             return true;
         }
         /**
          * check mobile devices
          */
-        require_once 'Mobile_Detect.php';
-        $detect = new Mobile_Detect;
-        if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->options->get_option( 'mobile_hide' ) ) {
-            return true;
+        if ( 1 == $this->options->get_option( 'mobile_hide' ) || 1 == $this->options->get_option( 'mobile_tablets' ) ) {
+            require_once 'Mobile_Detect.php';
+            $detect = new Mobile_Detect;
+            if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->options->get_option( 'mobile_hide' ) ) {
+                return true;
+            }
+            if ( $detect->isTablet() && 1 == $this->options->get_option( 'mobile_tablets' ) ) {
+                return true;
+            }
         }
-        if ( $detect->isTablet() && 1 == $this->options->get_option( 'mobile_tablets' ) ) {
-            return true;
+        /**
+         * get allowed post types
+         */
+        $post_types = $this->options->get_option( 'post_type' );
+        /**
+         * check front page
+         */
+        if ( is_front_page() && $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
+            return !in_array( 'post', $post_types );
         }
         /**
          * check post types
          */
-        $post_types = $this->options->get_option( 'post_type' );
         if ( $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
             return !is_singular( $post_types );
         }
@@ -383,9 +397,6 @@ class IworksUpprev
     private function get_box( $layout = false )
     {
         if ( 'site' == $this->working_mode ) {
-            if ( $this->iworks_upprev_check() ) {
-                return;
-            }
             $use_cache = $this->options->get_option( 'use_cache' );
             if ( $use_cache ) {
                 $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
@@ -463,9 +474,8 @@ class IworksUpprev
         /**
          * exclude one id if singular
          */
-        if( is_singular() ) {
-            global $post;
-            $args['post__not_in'] = array( $post->ID );
+        if( isset( $_GET['p'] ) && preg_match( '/^\d+$/', $_GET['p'] ) ) {
+            $args['post__not_in'] = array( $_GET['p'] );
         }
         /**
          * check & set post type

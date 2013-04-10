@@ -185,6 +185,7 @@ Example:
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: added color chooser (only PRO version)
 * IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
+# IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
