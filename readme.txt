@@ -168,6 +168,10 @@ Example:
 
 == Changelog ==
 
+= 3.3.16 =
+
+* IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
+
 = 3.3.15 =
 
 * IMPROVMENT: added Hebrew translation by [עמיעד](http://hatul.info)

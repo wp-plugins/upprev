@@ -67,7 +67,7 @@ function iworks_upprev_init()
 
 function iworks_upprev_check()
 {
-    if ( !is_single() && !is_page() ) {
+    if ( !is_single() && !is_page() && !is_front_page() ) {
         return true;
     }
     /**
