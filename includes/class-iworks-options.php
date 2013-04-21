@@ -1,6 +1,6 @@
 <?php
 /*
-Class Name: upPrev
+Class Name: iWorks Options
 Class URI: http://iworks.pl/
 Description: Option class to manage opsions.
 Version: trunk
@@ -9,7 +9,7 @@ Author URI: http://iworks.pl/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2011-2012 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2011-2013 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -40,13 +40,17 @@ class IworksOptions
     private $option_function_name;
     private $option_group;
     private $option_prefix;
+    public $notices;
 
     public function __construct()
     {
-        $this->version              = '1.6.0';
+        $this->notices              = array();
+        $this->version              = '1.7.0';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
+
+        add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
     }
 
     public function get_version()
@@ -174,7 +178,7 @@ class IworksOptions
                         $content .= '</fieldset>';
                     }
                     $content .= sprintf(
-                        '<fieldset id="upprev_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom"%s>',
+                        '<fieldset id="iworks_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom"%s>',
                         crc32( $option['label'] ),
                         ( isset( $option['class'] ) && $option['class'] )? ' rel="'.$option['class'].'"':''
                     );
@@ -274,7 +278,7 @@ class IworksOptions
                 $content .= '</ul>';
                 break;
             case 'radio':
-                $option_value = $this->get_option($option['name'], $option_group );
+                $option_value = $this->get_option( $option['name'], $option_group );
                 $i = 0;
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
@@ -309,6 +313,45 @@ class IworksOptions
                     }
                 }
                 $content .= apply_filters( $filter_name, $radio );
+                break;
+            case 'select':
+                $option_value = $this->get_option( $option['name'], $option_group );
+
+                if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
+                    $option['options'] = array_merge( $option['options'], $option['extra_options']());
+                }
+                $option['options'] = apply_filters( $filter_name.'_data', $option['options'] );
+
+                $select = apply_filters( $filter_name.'_content', null, $option['options'], $html_element_name, $option['name'], $option_value );
+                if ( empty( $select ) ) {
+                    foreach ($option['options'] as $key => $value ) {
+                        $disabled = '';
+                        if ( preg_match( '/\-disabled$/', $value ) ) {
+                            $disabled = 'disabled="disabled"';
+                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                            $disabled = 'disabled="disabled"';
+                        }
+                        $select .= sprintf
+                            (
+                                '<option %s value="%s" %s %s >%s</option>',
+                                $disabled? 'class="disabled"':'',
+                                $key,
+                                ($option_value == $key or ( empty( $option_value ) and isset( $option['default'] ) and $key == $option['default'] ) )? ' selected="selected"':'',
+                                $disabled,
+                                $value
+                            );
+                    }
+                    if ( $select ) {
+                        $select = sprintf
+                            (
+                                '<select id="%s" name="%s">%s</select>',
+                                $html_element_name,
+                                $html_element_name,
+                                $select
+                            );
+                    }
+                }
+                $content .= apply_filters( $filter_name, $select );
                 break;
             case 'textarea':
                 $value = $this->get_option($option['name'], $option_group);
@@ -553,14 +596,14 @@ class IworksOptions
 
     public function update_option( $option_name, $option_value )
     {
-		/**
-		 * delete if option have a default value
-		 */
-		$default_value = $this->get_default_value( $this->option_prefix.$option_name );
-		if ( $option_name === $default_value ) {
-			delete_option( $this->option_prefix.$option_name );
-			return;
-		}
+        /**
+         * delete if option have a default value
+         */
+        $default_value = $this->get_default_value( $this->option_prefix.$option_name );
+        if ( $option_name === $default_value ) {
+            delete_option( $this->option_prefix.$option_name );
+            return;
+        }
         update_option( $this->option_prefix.$option_name, $option_value );
     }
 
@@ -569,4 +612,16 @@ class IworksOptions
         $autoload = $autoload? 'yes':'no';
         add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
     }
+
+    public function admin_notices()
+    {
+        if ( empty( $this->notices ) ) {
+            return;
+        }
+        foreach( $this->notices as $notice ) {
+            printf( '<div class="error"><p>%s</p></div>', $notice );
+        }
+    }
+
 }
+
