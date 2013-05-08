@@ -45,7 +45,7 @@ class IworksOptions
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.0';
+        $this->version              = '1.7.1';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -294,19 +294,25 @@ class IworksOptions
                         } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
                             $disabled = 'disabled="disabled"';
                         }
-                        $radio .= sprintf
-                            (
-                                '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
-                                sanitize_title( $value ),
-                                $disabled? ' disabled':'',
-                                $id,
-                                $html_element_name,
-                                $value,
-                                ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
-                                $id,
-                                $disabled,
-                                $input['label']
+                        $radio .= sprintf(
+                            '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label>',
+                            sanitize_title( $value ),
+                            $disabled? ' disabled':'',
+                            $id,
+                            $html_element_name,
+                            $value,
+                            ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
+                            $id,
+                            $disabled,
+                            $input['label']
+                        );
+                        if ( isset( $input['description'] ) ) {
+                            $radio .= sprintf(
+                                '<br /><span class="description">%s</span>',
+                                $input['description']
                             );
+                        }
+                        $radio .= '</li>';
                     }
                     if ( $radio ) {
                         $radio = '<ul>'.$radio.'</ul>';
