@@ -193,6 +193,10 @@ Example:
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
+= 3.3.16 =
+
+* UPGRADE: upgrade [Mobile Detect](http://mobiledetect.net) to 2.6.0
+
 = 3.3.15 =
 
 * IMPROVMENT: added Hebrew translation by [עמיעד](http://hatul.info)
