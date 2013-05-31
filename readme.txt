@@ -158,6 +158,10 @@ Example:
 }
 `
 
+= Need more snippets? =
+
+Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
+
 == Screenshots ==
 
 1. upPrev on post
@@ -185,13 +189,18 @@ Example:
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: added color chooser (only PRO version)
 * IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
-* IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 * IMPROVMENT: upgrade iWorks Option Class to version: 1.7.1
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.16 =
+
+* BUGFIX: Excerpt number of words to show option not working for a concrete excerpt. thx to [gyalokai](http://wordpress.org/support/profile/gyalokai) [Excerpt number of words to show option not working](http://wordpress.org/support/topic/excerpt-number-of-words-to-show-option-not-working)
+* IMPROVMENT: update IworksOptionClass to 1.7.2
+* IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 
 = 3.3.15 =
 

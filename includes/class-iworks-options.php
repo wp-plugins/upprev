@@ -45,7 +45,7 @@ class IworksOptions
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.1';
+        $this->version              = '1.7.2';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -216,6 +216,22 @@ class IworksOptions
                     );
                 break;
             case 'number':
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
+                $content .= sprintf (
+                    '<input type="%s" name="%s" value="%s" class="%s"%s %s %s /> %s',
+                    $option['type'],
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['min'])?  'min="'.$option['min'].'"':'',
+                    isset($option['max'])?  'max="'.$option['max'].'"':'',
+                    isset($option['label'])?  $option['label']:''
+                );
+                break;
             case 'password':
             case 'text':
                 $id = '';
@@ -630,4 +646,15 @@ class IworksOptions
     }
 
 }
+/**
+
+== Changelog ==
+
+= 1.7.2  (2013-05-31) =
+
+* IMPROVMENT: add min/max attributes to filed type "number"
+
+*/
+
+
 

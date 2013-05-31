@@ -124,7 +124,7 @@ class IworksUpprev
         /**
          * check base and exclude streams
          */
-        if ( !is_singular() && !is_front_page() ) {
+        if ( !is_singular() && 'page' != get_option( 'show_on_front' ) ) {
             return true;
         }
         /**
@@ -589,10 +589,6 @@ class IworksUpprev
         if ( !preg_match( '/^(yarpp|random)$/', $compare ) ) {
             add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
         }
-        add_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
-        if ( $excerpt_length > 0 ) {
-            add_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
-        }
         /**
          * YARPP
          */
@@ -713,7 +709,7 @@ class IworksUpprev
                 get_the_title()
             );
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
-                $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
+                $item .= sprintf( '<p>%s</p>', wp_trim_words( get_the_excerpt(), $this->options->get_option( 'excerpt_length' ), '...' ) );
             } else if ( $image && $make_break ) {
                 $item .= '<br />';
             }
@@ -734,10 +730,6 @@ class IworksUpprev
         $value .= '</div>';
         wp_reset_postdata();
         remove_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
-        remove_filter( 'excerpt_more', array( &$this, 'excerpt_more' ), 72, 1 );
-        if ( $excerpt_length > 0 ) {
-            remove_filter( 'excerpt_length', array( &$this, 'excerpt_length' ), 72, 1 );
-        }
         /**
          * cache
          */
@@ -758,17 +750,6 @@ class IworksUpprev
         }
         return $where;
     }
-
-    public function excerpt_more( $more )
-    {
-        return '...';
-    }
-
-    public function excerpt_length( $length )
-    {
-        return $this->options->get_option( 'excerpt_length' );
-    }
-
     public function the_box()
     {
         echo "\n";
