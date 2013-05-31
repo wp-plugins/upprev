@@ -24,82 +24,82 @@ function iworks_upprev_options()
             ),
             array(
                 'type'              => 'heading',
-                'label'             => __('Appearance', 'upprev' ),
+                'label'             => __( 'Appearance', 'upprev' ),
                 'configuration'     => 'simple'
             ),
             array(
                 'name'              => 'schema',
                 'type'              => 'radio',
-                'th'                => __('Schema', 'upprev' ),
+                'th'                => __( 'Schema', 'upprev' ),
                 'default'           => 'flyout',
                 'radio'             => array(
-                    'flyout' => __('flyout', 'upprev'),
-                    'fade'   => __('fade in/out', 'upprev'),
+                    'flyout' => array( 'label' => __( 'flyout', 'upprev' ) ),
+                    'fade'   => array( 'label' => __( 'fade in/out', 'upprev' ) ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
             array(
                 'type'              => 'heading',
-                'label'             => __('Appearance', 'upprev' ),
+                'label'             => __( 'Appearance', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'animation',
                 'type'              => 'radio',
-                'th'                => __('Animation style', 'upprev' ),
+                'th'                => __( 'Animation style', 'upprev' ),
                 'default'           => 'flyout',
                 'radio'             => array(
-                    'flyout' => __('flyout', 'upprev'),
-                    'fade'   => __('fade in/out', 'upprev'),
+                    'flyout' => array( 'label' => __( 'flyout', 'upprev' ) ),
+                    'fade'   => array( 'label' => __( 'fade in/out', 'upprev' ) ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
             array(
                 'name'              => 'position',
                 'type'              => 'radio',
-                'th'                => __('Position', 'upprev' ),
+                'th'                => __( 'Position', 'upprev' ),
                 'default'           => 'right',
                 'radio'             => array(
-                    'right' => __('right', 'upprev'),
-                    'left'  => __('left', 'upprev'),
+                    'right' => array( 'label' => __( 'right', 'upprev' ) ),
+                    'left'  => array( 'label' => __( 'left', 'upprev' ) ),
                 ),
                 'sanitize_callback' => 'esc_html'
             ),
             array(
                 'name'              => 'css_bottom',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'th'                => __('Margin bottom', 'upprev' ),
-                'label'             => __('px', 'upprev' ),
+                'th'                => __( 'Margin bottom', 'upprev' ),
+                'label'             => __( 'px', 'upprev' ),
                 'default'           => 5,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'css_side',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'th'                => __('Margin side', 'upprev' ),
-                'label'             => __('px', 'upprev' ),
-                'description'       => __('Left or right depending on position.', 'upprev' ),
+                'th'                => __( 'Margin side', 'upprev' ),
+                'label'             => __( 'px', 'upprev' ),
+                'description'       => __( 'Left or right depending on position.', 'upprev' ),
                 'default'           => 5,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'css_width',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'th'                => __('Box width', 'upprev' ),
-                'label'             => __('px', 'upprev' ),
+                'th'                => __( 'Box width', 'upprev' ),
+                'label'             => __( 'px', 'upprev' ),
                 'default'           => 360,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'offset_percent',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'th'                => __('Offset', 'upprev' ),
-                'label'             => __('%', 'upprev' ),
-                'description'       => __('Percentage of the page required to be scrolled to display a box.', 'upprev' ),
+                'th'                => __( 'Offset', 'upprev' ),
+                'label'             => __( '%', 'upprev' ),
+                'description'       => __( 'Percentage of the page required to be scrolled to display a box.', 'upprev' ),
                 'default'           => 75,
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_offset_percent'
             ),
@@ -107,24 +107,24 @@ function iworks_upprev_options()
                 'name'              => 'offset_element',
                 'type'              => 'text',
                 'class'             => 'regular-text',
-                'label'             => __('Before HTML element.', 'upprev' ),
-                'description'       => __('If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # "hash" before the ID, or . "dot" before a class name.', 'upprev' ),
+                'label'             => __( 'Before HTML element.', 'upprev' ),
+                'description'       => __( 'If empty, all page length is taken for calculation. If not empty, make sure to use the ID or class of an existing element. Put # "hash" before the ID, or . "dot" before a class name.', 'upprev' ),
                 'default'           => '#comments',
                 'sanitize_callback' => 'esc_html'
             ),
             array(
                 'name'              => 'header_show',
                 'type'              => 'checkbox',
-                'th'                => __('Box header', 'upprev' ),
-                'label'             => __('Show box header.', 'upprev'),
+                'th'                => __( 'Box header', 'upprev' ),
+                'label'             => __( 'Show box header.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'close_button_show',
                 'type'              => 'checkbox',
-                'th'                => __('Close button', 'upprev' ),
-                'label'             => __('Show close button.', 'upprev'),
+                'th'                => __( 'Close button', 'upprev' ),
+                'label'             => __( 'Show close button.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -132,7 +132,7 @@ function iworks_upprev_options()
                 'name'              => 'css',
                 'type'              => 'textarea',
                 'class'             => 'large-text code',
-                'th'                => __('Custom CSS', 'upprev' ),
+                'th'                => __( 'Custom CSS', 'upprev' ),
                 'sanitize_callback' => 'esc_html',
                 'rows'              => 10,
                 'default'           =>'
@@ -163,12 +163,12 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Content', 'upprev' ),
+                'label'             => __( 'Content', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'number_of_posts',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'th'                => __( 'Number of posts to show ', 'upprev' ),
                 'description'       => __( 'Not affected if using YARPP as choose method and YARPP version is lower than 4.0.', 'upprev' ),
@@ -178,50 +178,51 @@ function iworks_upprev_options()
             array(
                 'name'              => 'remove_all_filters',
                 'type'              => 'checkbox',
-                'th'                => __('Content filters', 'upprev' ),
-                'label'             => __('Remove all filters.', 'upprev' ),
-                'description'       =>  __('Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout.' , 'upprev'),
+                'th'                => __( 'Content filters', 'upprev' ),
+                'label'             => __( 'Remove all filters.', 'upprev' ),
+                'description'       =>  __( 'Untick this if you have some strange things in upPrev box, but unticked have a lot of chances breaks your layout.' , 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
             ),
             array(
                 'name'              => 'compare',
                 'type'              => 'radio',
-                'th'                => __('Previous entry choose method', 'upprev' ),
+                'th'                => __( 'Previous entry choose method', 'upprev' ),
                 'default'           => 'simple',
                 'radio'             => array(
-                    'simple'   => __( 'Just previous.',        'upprev' ),
-                    'category' => __( 'Previous in category.', 'upprev' ),
-                    'tag'      => __( 'Previous in tag.',      'upprev' ),
-                    'random'   => __( 'Random entry.',         'upprev' )
+                    'simple'   => array( 'label' => __( 'Just previous.',        'upprev' ) ),
+                    'category' => array( 'label' => __( 'Previous in category.', 'upprev' ) ),
+                    'tag'      => array( 'label' => __( 'Previous in tag.',      'upprev' ) ),
+                    'random'   => array( 'label' => __( 'Random entry.',         'upprev' ) )
                 ),
                 'sanitize_callback' => 'esc_html',
                 'extra_options'    => 'iworks_upprev_get_compare_option'
             ),
             array(
                 'name'              => 'taxonomy_limit',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'th'                => __('Taxonomy limit', 'upprev' ),
-                'label'             => __('Number of taxonomies (tags or categories) to show.', 'upprev' ),
-                'description'       => __('Default value: 0 (no limit).', 'upprev'),
+                'th'                => __( 'Taxonomy limit', 'upprev' ),
+                'label'             => __( 'Number of taxonomies (tags or categories) to show.', 'upprev' ),
+                'description'       => __( 'Default value: 0 (no limit).', 'upprev' ),
                 'default'           => 0,
+                'min'               => 0,
                 'sanitize_callback' => 'absint',
             ),
             array(
                 'name'              => 'match_post_type',
                 'type'              => 'checkbox',
-                'th'                => __('Match post type', 'upprev' ),
-                'label'             => __('Display only for selected post types.', 'upprev'),
+                'th'                => __( 'Match post type', 'upprev' ),
+                'label'             => __( 'Display only for selected post types.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint',
             ),
             array(
                 'name'              => 'post_type',
                 'type'              => 'checkbox_group',
-                'th'                => __('Select post types', 'upprev' ),
-                'label'             => __('Show posts.', 'upprev' ),
-                'description'       => __('If not any, then default value is "post".', 'upprev'),
+                'th'                => __( 'Select post types', 'upprev' ),
+                'label'             => __( 'Show posts.', 'upprev' ),
+                'description'       => __( 'If not any, then default value is "post".', 'upprev' ),
                 'default'           => array( 'post' => 'post' ),
                 'options'           => array(
                     'post' => __( 'Posts.',                                'upprev' ),
@@ -236,8 +237,8 @@ function iworks_upprev_options()
             array(
                 'name'              => 'ignore_sticky_posts',
                 'type'              => 'checkbox',
-                'th'                => __('Sticky posts', 'upprev' ),
-                'label'             => __('Ignore sticky posts.', 'upprev'),
+                'th'                => __( 'Sticky posts', 'upprev' ),
+                'label'             => __( 'Ignore sticky posts.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -247,17 +248,18 @@ function iworks_upprev_options()
             array(
                 'name'              => 'excerpt_show',
                 'type'              => 'checkbox',
-                'th'                => __('Excerpt', 'upprev' ),
-                'label'             => __('Show excerpt.', 'upprev'),
+                'th'                => __( 'Excerpt', 'upprev' ),
+                'label'             => __( 'Show excerpt.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'excerpt_length',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
                 'default'           => 20,
-                'label'             => __('Number of words to show.', 'upprev' ),
+                'min'               => 1,
+                'label'             => __( 'Number of words to show.', 'upprev' ),
                 'sanitize_callback' => 'absint'
             ),
             /**
@@ -266,18 +268,19 @@ function iworks_upprev_options()
             array(
                 'name'              => 'show_thumb',
                 'type'              => 'checkbox',
-                'th'                => __('Featured image', 'upprev' ),
-                'label'             => __('Show featured image.', 'upprev'),
+                'th'                => __( 'Featured image', 'upprev' ),
+                'label'             => __( 'Show featured image.', 'upprev' ),
                 'sanitize_callback' => 'absint',
                 'default'           => 1,
                 'check_supports'    => array( 'post-thumbnails' )
             ),
             array(
                 'name'              => 'thumb_width',
-                'type'              => 'text',
+                'type'              => 'number',
                 'class'             => 'small-text',
-                'label'             => __('Featured image width.', 'upprev'),
+                'label'             => __( 'Featured image width.', 'upprev' ),
                 'default'           => 48,
+                'min'               => 1,
                 'sanitize_callback' => 'absint',
                 'check_supports'    => array( 'post-thumbnails' )
             ),
@@ -286,13 +289,13 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Links', 'upprev' ),
+                'label'             => __( 'Links', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'url_prefix',
                 'type'              => 'text',
-                'th'                => __('URL prefix', 'upprev' ),
+                'th'                => __( 'URL prefix', 'upprev' ),
                 'class'             => 'regular-text',
                 'description'       => __( 'Will be added before link.', 'upprev' ),
                 'default'           => '',
@@ -301,7 +304,7 @@ function iworks_upprev_options()
             array(
                 'name'              => 'url_sufix',
                 'type'              => 'text',
-                'th'                => __('URL sufix', 'upprev' ),
+                'th'                => __( 'URL sufix', 'upprev' ),
                 'class'             => 'regular-text',
                 'description'       => __( 'Will be added after link.', 'upprev' ),
                 'default'           => '',
@@ -310,26 +313,26 @@ function iworks_upprev_options()
             array(
                 'name'              => 'url_new_window',
                 'type'              => 'checkbox',
-                'th'                => __('Open link', 'upprev' ),
-                'label'             => __('Open link in new window.', 'upprev'),
-                'description'       => __('Not recomended!', 'upprev' ),
+                'th'                => __( 'Open link', 'upprev' ),
+                'label'             => __( 'Open link in new window.', 'upprev' ),
+                'description'       => __( 'Not recomended!', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'ga_status',
                 'type'              => 'checkbox',
-                'th'                => __('Google Analitics', 'upprev' ),
-                'label'             => __('I don\'t have GA tracking on site.', 'upprev'),
-                'description'       => __('Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
+                'th'                => __( 'Google Analitics', 'upprev' ),
+                'label'             => __( 'I don\'t have GA tracking on site.', 'upprev' ),
+                'description'       => __( 'Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'ga_account',
                 'type'              => 'text',
-                'label'             => __('Google Analitics Account', 'upprev' ),
-                'description'       => __('Replace UA-XXXXX-X with your web property ID.', 'upprev' ),
+                'label'             => __( 'Google Analitics Account', 'upprev' ),
+                'description'       => __( 'Replace UA-XXXXX-X with your web property ID.', 'upprev' ),
                 'class'             => 'regular-text',
                 'default'           => 'UA-XXXXX-X',
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_ga_account',
@@ -338,24 +341,24 @@ function iworks_upprev_options()
             array(
                 'name'              => 'ga_track_views',
                 'type'              => 'checkbox',
-                'label'             => __('Track views', 'upprev'),
-                'description'       => __('Track showing of upPrev box.', 'upprev' ),
+                'label'             => __( 'Track views', 'upprev' ),
+                'description'       => __( 'Track showing of upPrev box.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'ga_track_clicks',
                 'type'              => 'checkbox',
-                'label'             => __('Track clicks', 'upprev'),
-                'description'       => __('Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
+                'label'             => __( 'Track clicks', 'upprev' ),
+                'description'       => __( 'Turn it on if you don\'t use any other GA tracking plugin.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'ga_opt_noninteraction',
                 'type'              => 'checkbox',
-                'label'             => __('Prevent bounce-rate', 'upprev'),
-                'description'       => __('Turn it on to indicate that the event hit will not be used in bounce-rate calculation.', 'upprev' ),
+                'label'             => __( 'Prevent bounce-rate', 'upprev' ),
+                'description'       => __( 'Turn it on to indicate that the event hit will not be used in bounce-rate calculation.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
@@ -364,24 +367,25 @@ function iworks_upprev_options()
              */
             array(
                 'type'              => 'heading',
-                'label'             => __('Cache', 'upprev' ),
+                'label'             => __( 'Cache', 'upprev' ),
                 'configuration'     => 'advance'
             ),
             array(
                 'name'              => 'use_cache',
                 'type'              => 'checkbox',
-                'th'                => __('Cache', 'upprev'),
-                'label'             => __('Use Transient Cache.', 'upprev'),
-                'description'       => __('Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
+                'th'                => __( 'Cache', 'upprev' ),
+                'label'             => __( 'Use Transient Cache.', 'upprev' ),
+                'description'       => __( 'Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
             ),
             array(
                 'name'              => 'cache_lifetime',
-                'type'              => 'text',
-                'label'             => __('Transients Cache Lifetime.', 'upprev' ),
-                'description'       => __('In seconds, default one hour (3600s).', 'upprev'),
+                'type'              => 'number',
+                'label'             => __( 'Transients Cache Lifetime.', 'upprev' ),
+                'description'       => __( 'In seconds, default one hour (3600s).', 'upprev' ),
                 'default'           => 3600,
+                'min'               => 0,
                 'sanitize_callback' => 'absint'
             ),
             /**
@@ -395,16 +399,16 @@ function iworks_upprev_options()
             array(
                 'name'              => 'mobile_hide',
                 'type'              => 'checkbox',
-                'th'                => __('Mobile devices', 'upprev'),
-                'label'             => __('Hide for mobile devices.', 'upprev'),
+                'th'                => __( 'Mobile devices', 'upprev' ),
+                'label'             => __( 'Hide for mobile devices.', 'upprev' ),
                 'default'           => 1,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'name'              => 'mobile_tablets',
                 'type'              => 'checkbox',
-                'th'                => __('Tablets', 'upprev'),
-                'label'             => __('Hide for tablets too.', 'upprev'),
+                'th'                => __( 'Tablets', 'upprev' ),
+                'label'             => __( 'Hide for tablets too.', 'upprev' ),
                 'description'       => __( 'Works only when hidding for mobile devices is turn on.', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
@@ -419,16 +423,16 @@ function iworks_upprev_options()
             array(
                 'name'              => 'promote',
                 'type'              => 'checkbox',
-                'th'                => __('Promote', 'upprev'),
-                'label'             => __('Help promote upPrev plugin?', 'upprev'),
-                'description'       => __('This option will add the code <code>Previous posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev'),
+                'th'                => __( 'Promote', 'upprev' ),
+                'label'             => __( 'Help promote upPrev plugin?', 'upprev' ),
+                'description'       => __( 'This option will add the code <code>Previous posts box brought to you by &lt;a href=\'http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/\'&gt;upPrev plugin&lt;/a&gt;.</code>. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated.</span>', 'upprev' ),
                 'default'           => 0,
                 'sanitize_callback' => 'absint'
             ),
             array(
                 'type'              => 'info',
-                'th'                => __('Donate', 'upprev'),
-                'value'             => __('You can buy me some special coffees if you appreciate my work, thank you! <a href="http://iworks.pl/donate/upprev.php">Donate to this plugin.</a>', 'upprev' )
+                'th'                => __( 'Donate', 'upprev' ),
+                'value'             => __( 'You can buy me some special coffees if you appreciate my work, thank you! <a href="http://iworks.pl/donate/upprev.php">Donate to this plugin.</a>', 'upprev' )
             ),
         ),
     );
@@ -453,11 +457,10 @@ function iworks_upprev_get_post_types()
 function iworks_upprev_get_compare_option()
 {
     $data = array();
-    if ( is_plugin_active(plugin_basename( 'yet-another-related-posts-plugin/yarpp.php' ) ) ) {
-        $data['yarpp'] = __( 'Related Posts (YARPP)', 'yarpp' );
-        $data['yarpp'] .= __( '. Works only with post and/or pages.', 'upprev' );
-    } else {
-        $data['yarpp-disabled'] = __( 'Related Posts (YARPP)', 'upprev' );
+    $data['yarpp']['label'] = __( 'Related Posts (YARPP)', 'yarpp' );
+    $data['yarpp']['label'] .= __( '. Works only with post and/or pages.', 'upprev' );
+    if ( !is_plugin_active(plugin_basename( 'yet-another-related-posts-plugin/yarpp.php' ) ) ) {
+        $data['yarpp']['disabled'] = true;
     }
     return $data;
 }

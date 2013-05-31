@@ -1,4 +1,34 @@
 <?php
+/*
+Class Name: iWorks Options
+Class URI: http://iworks.pl/
+Description: Option class to manage opsions.
+Version: trunk
+Author: Marcin Pietrzak
+Author URI: http://iworks.pl/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Copyright 2011-2013 Marcin Pietrzak (marcin@iworks.pl)
+
+this program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+ */
+
+if ( !defined( 'WPINC' ) ) {
+    die;
+}
 
 if ( class_exists( 'IworksOptions' ) ) {
     return;
@@ -10,13 +40,17 @@ class IworksOptions
     private $option_function_name;
     private $option_group;
     private $option_prefix;
+    public $notices;
 
     public function __construct()
     {
-        $this->version              = '1.0.1';
+        $this->notices              = array();
+        $this->version              = '1.7.2';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
+
+        add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
     }
 
     public function get_version()
@@ -54,11 +88,11 @@ class IworksOptions
         /**
          * check options exists?
          */
-        if(!is_array($options['options'])) {
+        if ( !is_array($options['options'] ) ) {
             echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks').'</strong></p></div>';
             return;
         }
-        $is_simple = 'simple' == get_option( 'iworks_upprev_configuration', 'advance' );
+        $is_simple = 'simple' == $this->get_option( 'configuration', 'index', 'advance' );
         $content   = '';
         $hidden    = '';
         $top       = '';
@@ -94,10 +128,21 @@ class IworksOptions
             /**
              * dismiss on special type
              */
-            if ( $option['type'] == 'special' ) {
+            if ( 'special' == $option['type'] ) {
                 continue;
             }
-            if ( $option['type'] == 'heading' ) {
+            /**
+             * dismiss if have "callback_to_show" and return false
+             */
+            if ( !preg_match( '/^(heading|info)$/', $option[ 'type' ] ) && isset( $option['callback_to_show'] ) && is_callable( $option['callback_to_show'] ) ) {
+                if ( false === $option['callback_to_show']( $this->get_option( $option['name'], $option_group ) ) ) {
+                    continue;
+                }
+            }
+            /**
+             * heading
+             */
+            if ( 'heading' == $option['type'] ) {
                 if ( isset( $option['configuration'] ) ) {
                     $configuration = $option['configuration'];
                 } else {
@@ -105,6 +150,24 @@ class IworksOptions
                 }
             }
             if ( ( $is_simple && $configuration == 'advance' ) || ( !$is_simple && $configuration == 'simple' ) ) {
+                if ( isset( $option['configuration'] ) && 'both' == $option['configuration'] ) {
+                    continue;
+                }
+                if( in_array( $option['type'], array(
+                    'checkbox',
+                    'number',
+                    'radio',
+                    'text',
+                    'textarea'
+                ) ) ) {
+                    $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
+                    $content .= sprintf (
+                        '<input type="hidden" name="%s" value="%s" /> %s',
+                        $html_element_name,
+                        $this->get_option( $option['name'], $option_group ),
+                        "\n"
+                    );
+                }
                 continue;
             }
             if ( $option['type'] == 'heading' ) {
@@ -115,8 +178,9 @@ class IworksOptions
                         $content .= '</fieldset>';
                     }
                     $content .= sprintf(
-                        '<fieldset id="upprev_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom">',
-                        crc32( $option['label'] )
+                        '<fieldset id="iworks_%s" class="ui-tabs-panel ui-widget-content ui-corner-bottom"%s>',
+                        crc32( $option['label'] ),
+                        ( isset( $option['class'] ) && $option['class'] )? ' rel="'.$option['class'].'"':''
                     );
                     if ( !$use_tabs ) {
                         $content .= sprintf( '<h3>%s</h3>', $option['label'] );
@@ -129,6 +193,8 @@ class IworksOptions
                     $content .= '<tbody>';
                 }
                 $content .= '<tr><td colspan="2">';
+            } else if ( $option['type'] == 'subheading' ) {
+                $content .= '<tr><td colspan="2">';
             } else if ( $option['type'] != 'hidden' ) {
                 $style = '';
                 if ( isset($option['related_to'] ) && isset( $related_to[ $option['related_to'] ] ) && $related_to[ $option['related_to'] ] == 0 ) {
@@ -139,6 +205,7 @@ class IworksOptions
                 $content .= '<td>';
             }
             $html_element_name = isset($option['name']) && $option['name']? $this->option_prefix.$option['name']:'';
+            $filter_name = $html_element_name? $option_group.'_'.$html_element_name : null;
             switch ( $option['type'] ) {
             case 'hidden':
                 $hidden .= sprintf
@@ -148,35 +215,51 @@ class IworksOptions
                         isset($option['dynamic']) && $option['dynamic']? $this->get_option( $option['name'], $option_group ):$option['default']
                     );
                 break;
-            case 'text':
-            case 'password':
+            case 'number':
                 $id = '';
                 if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
                     $id = sprintf( ' id="%s"', $html_element_name );
                 }
-                $content .= sprintf
-                    (
-                        '<input type="%s" name="%s" value="%s" class="%s"%s /> %s',
-                        $option['type'],
-                        $html_element_name,
-                        $this->get_option( $option['name'], $option_group ),
-                        isset($option['class']) && $option['class']? $option['class']:'',
-                        $id,
-                        isset($option['label'])?  $option['label']:''
-                    );
+                $content .= sprintf (
+                    '<input type="%s" name="%s" value="%s" class="%s"%s %s %s /> %s',
+                    $option['type'],
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['min'])?  'min="'.$option['min'].'"':'',
+                    isset($option['max'])?  'max="'.$option['max'].'"':'',
+                    isset($option['label'])?  $option['label']:''
+                );
+                break;
+            case 'password':
+            case 'text':
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
+                $content .= sprintf (
+                    '<input type="%s" name="%s" value="%s" class="%s"%s /> %s',
+                    $option['type'],
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['label'])?  $option['label']:''
+                );
                 break;
             case 'checkbox':
                 $related_to[ $option['name'] ] = $this->get_option( $option['name'], $option_group );
-                $content .= sprintf
-                    (
-                        '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
-                        $html_element_name,
-                        $html_element_name,
-                        $html_element_name,
-                        $related_to[ $option['name'] ]? ' checked="checked"':'',
-                        isset($option['disabled']) && $option['disabled']? ' disabled="disabled"':'',
-                        isset($option['label'])?  $option['label']:''
-                    );
+                $checkbox = sprintf (
+                    '<label for="%s"><input type="checkbox" name="%s" id="%s" value="1"%s%s /> %s</label>',
+                    $html_element_name,
+                    $html_element_name,
+                    $html_element_name,
+                    $related_to[ $option['name'] ]? ' checked="checked"':'',
+                    ( ( isset($option['disabled']) && $option['disabled'] ) or ( isset( $option['need_pro'] ) && $option['need_pro'] ) )? ' disabled="disabled"':'',
+                    isset($option['label'])?  $option['label']:''
+                );
+                $content .= apply_filters( $filter_name, $checkbox );
                 break;
             case 'checkbox_group':
                 $option_value = $this->get_option($option['name'], $option_group );
@@ -211,27 +294,86 @@ class IworksOptions
                 $content .= '</ul>';
                 break;
             case 'radio':
-                $option_value = $this->get_option($option['name'], $option_group );
-                $content .= '<ul>';
+                $option_value = $this->get_option( $option['name'], $option_group );
                 $i = 0;
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
-                foreach ($option['radio'] as $value => $label) {
-                    $id = $option['name'].$i++;
-                    $content .= sprintf
-                        (
-                            '<li><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label></li>',
+                $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
+                $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option['name'], $option_value );
+                if ( empty( $radio ) ) {
+                    foreach ($option['radio'] as $value => $input) {
+                        $id = $option['name'].$i++;
+                        $disabled = '';
+                        if ( preg_match( '/\-disabled$/', $value ) ) {
+                            $disabled = 'disabled="disabled"';
+                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                            $disabled = 'disabled="disabled"';
+                        }
+                        $radio .= sprintf(
+                            '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label>',
+                            sanitize_title( $value ),
+                            $disabled? ' disabled':'',
                             $id,
                             $html_element_name,
                             $value,
                             ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
                             $id,
-                            preg_match( '/\-disabled$/', $value )? 'disabled="disabled"':'',
-                            $label
+                            $disabled,
+                            $input['label']
                         );
+                        if ( isset( $input['description'] ) ) {
+                            $radio .= sprintf(
+                                '<br /><span class="description">%s</span>',
+                                $input['description']
+                            );
+                        }
+                        $radio .= '</li>';
+                    }
+                    if ( $radio ) {
+                        $radio = '<ul>'.$radio.'</ul>';
+                    }
                 }
-                $content .= '</ul>';
+                $content .= apply_filters( $filter_name, $radio );
+                break;
+            case 'select':
+                $option_value = $this->get_option( $option['name'], $option_group );
+
+                if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
+                    $option['options'] = array_merge( $option['options'], $option['extra_options']());
+                }
+                $option['options'] = apply_filters( $filter_name.'_data', $option['options'] );
+
+                $select = apply_filters( $filter_name.'_content', null, $option['options'], $html_element_name, $option['name'], $option_value );
+                if ( empty( $select ) ) {
+                    foreach ($option['options'] as $key => $value ) {
+                        $disabled = '';
+                        if ( preg_match( '/\-disabled$/', $value ) ) {
+                            $disabled = 'disabled="disabled"';
+                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                            $disabled = 'disabled="disabled"';
+                        }
+                        $select .= sprintf
+                            (
+                                '<option %s value="%s" %s %s >%s</option>',
+                                $disabled? 'class="disabled"':'',
+                                $key,
+                                ($option_value == $key or ( empty( $option_value ) and isset( $option['default'] ) and $key == $option['default'] ) )? ' selected="selected"':'',
+                                $disabled,
+                                $value
+                            );
+                    }
+                    if ( $select ) {
+                        $select = sprintf
+                            (
+                                '<select id="%s" name="%s">%s</select>',
+                                $html_element_name,
+                                $html_element_name,
+                                $select
+                            );
+                    }
+                }
+                $content .= apply_filters( $filter_name, $select );
                 break;
             case 'textarea':
                 $value = $this->get_option($option['name'], $option_group);
@@ -246,10 +388,14 @@ class IworksOptions
                 break;
             case 'heading':
                 if ( isset( $option['label'] ) && $option['label'] ) {
+                    $classes = array();
+                    if ( $this->get_option( 'last_used_tab' ) == $label_index ) {
+                        $classes[] = 'selected';
+                    }
                     $content .= sprintf(
                         '<h3 id="options-%s"%s>%s</h3>',
                         sanitize_title_with_dashes(remove_accents($option['label'])),
-                        get_option( $this->option_prefix.'last_used_tab', 0 ) == $label_index? ' class="selected"':'',
+                        count( $classes )? ' class="'.implode( ' ', $classes ).'"':'',
                         $option['label']
                     );
                     $label_index++;
@@ -258,6 +404,43 @@ class IworksOptions
                 break;
             case 'info':
                 $content .= $option['value'];
+                break;
+            case 'serialize':
+                if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
+                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
+                }
+                else if ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
+                    ob_start();
+                    call_user_func_array( $option[ 'call_user_func' ], $option[ 'call_user_data' ] );
+                    $content .= ob_get_contents();
+                    ob_end_clean();
+                }
+                break;
+            case 'subheading':
+                $content .= sprintf( '<h4 class="title">%s</h4>', $option['label'] );
+                break;
+            case 'wpColorPicker':
+                if ( is_admin() ) {
+                    wp_enqueue_style( 'wp-color-picker' );
+                    wp_enqueue_script( 'wp-color-picker' );
+                }
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
+                $content .= apply_filters(
+                    $filter_name,
+                    sprintf (
+                        '<input type="text" name="%s" value="%s" class="wpColorPicker %s"%s%s /> %s',
+                        $html_element_name,
+                        $this->get_option( $option['name'], $option_group ),
+                        isset($option['class']) && $option['class']? $option['class']:'',
+                        $id,
+                        ( isset( $option['need_pro'] ) and $option['need_pro'] )? ' disabled="disabled"':'',
+                        isset($option['label'])?  $option['label']:'',
+                        $html_element_name
+                    )
+                );
                 break;
             default:
                 $content .= sprintf('not implemented type: %s', $option['type']);
@@ -273,6 +456,15 @@ class IworksOptions
                 $content .= '</tr>';
             }
         }
+        /**
+         * filter
+         */
+        if ( isset( $option['filter'] ) ) {
+            $content .= apply_filters( $option['filter'], '' );
+        }
+        /**
+         * content
+         */
         if ($content) {
             if ( isset ( $options['label'] ) && $options['label'] && !$use_tabs ) {
                 $top .= sprintf('<h3>%s</h3>', $options['label']);
@@ -304,10 +496,10 @@ class IworksOptions
         if ( $use_tabs ) {
             $content .= '</div>';
         }
-        $content .= sprintf(
-            '<p class="submit"><input type="submit" class="button-primary" value="%s" /></p>',
-            __( 'Save Changes' )
-        );
+        /**
+         * submit button
+         */
+        $content .= get_submit_button( __( 'Save Changes' ), 'primary', 'submit_button' );
         /* print ? */
         if ( $echo ) {
             echo $content;
@@ -336,13 +528,35 @@ class IworksOptions
         }
     }
 
-    public function get_option( $option_name, $option_group = 'index' )
+    public function get_option( $option_name, $option_group = 'index', $default_value = null )
     {
         $option_value = get_option( $this->option_prefix.$option_name, null );
-        if ( $option_value === null ) {
+        if ( null == $option_value ) {
             $option_value = $this->get_default_value( $option_name, $option_group );
         }
+        if ( null == $option_value && !empty( $default_value ) ) {
+            return $default_value;
+        }
         return $option_value;
+    }
+
+    public function get_values( $option_name, $option_group = 'index' )
+    {
+        $this->option_group = $option_group;
+        $data = $this->get_option_array( $option_group );
+        $data = $data['options'];
+        foreach( $data as $one ) {
+            if ( isset( $one[ 'name' ] ) && $one[ 'name' ] != $option_name ) {
+                continue;
+            }
+            switch( $one['type'] ) {
+            case 'checkbox_group':
+                return $one['options'];
+            case 'radio':
+                return $one['radio'];
+            }
+        }
+        return;
     }
 
     public function get_default_value( $option_name, $option_group = 'index' )
@@ -352,12 +566,12 @@ class IworksOptions
         /**
          * check options exists?
          */
-        if(!is_array($options['options'])) {
+        if ( !is_array( $options['options'] ) ) {
             return null;
         }
         foreach ( $options['options'] as $option ) {
             if ( isset( $option['name'] ) && $option['name'] == $option_name ) {
-                return isset($option['default'])? $option['default']:null;
+                return isset( $option['default'] )? $option['default']:null;
             }
         }
         return null;
@@ -382,7 +596,13 @@ class IworksOptions
         $options = call_user_func( $this->option_function_name );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
-                if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] ) {
+                if ( 'heading' == $option['type'] or !isset( $option['name'] ) or !$option['name'] ) {
+                    continue;
+                }
+                /**
+                 * prevent special options
+                 */
+                if ( isset( $option[ 'dont_deactivate' ] ) && $option[ 'dont_deactivate' ] ) {
                     continue;
                 }
                 delete_option( $this->option_prefix.$option['name'] );
@@ -398,7 +618,43 @@ class IworksOptions
 
     public function update_option( $option_name, $option_value )
     {
+        /**
+         * delete if option have a default value
+         */
+        $default_value = $this->get_default_value( $this->option_prefix.$option_name );
+        if ( $option_name === $default_value ) {
+            delete_option( $this->option_prefix.$option_name );
+            return;
+        }
         update_option( $this->option_prefix.$option_name, $option_value );
     }
+
+    public function add_option( $option_name, $option_value, $autoload = true )
+    {
+        $autoload = $autoload? 'yes':'no';
+        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
+    }
+
+    public function admin_notices()
+    {
+        if ( empty( $this->notices ) ) {
+            return;
+        }
+        foreach( $this->notices as $notice ) {
+            printf( '<div class="error"><p>%s</p></div>', $notice );
+        }
+    }
+
 }
+/**
+
+== Changelog ==
+
+= 1.7.2  (2013-05-31) =
+
+* IMPROVMENT: add min/max attributes to filed type "number"
+
+*/
+
+
 

@@ -158,6 +158,10 @@ Example:
 }
 `
 
+= Need more snippets? =
+
+Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
+
 == Screenshots ==
 
 1. upPrev on post
@@ -170,6 +174,8 @@ Example:
 
 = 3.3.16 =
 
+* BUGFIX: Excerpt number of words to show option not working for a concrete excerpt. thx to [gyalokai](http://wordpress.org/support/profile/gyalokai) [Excerpt number of words to show option not working](http://wordpress.org/support/topic/excerpt-number-of-words-to-show-option-not-working)
+* IMPROVMENT: update IworksOptionClass to 1.7.2
 * IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 
 = 3.3.15 =

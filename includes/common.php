@@ -2,7 +2,7 @@
 
 require_once dirname( __FILE__ ).'/options.php';
 if ( !class_exists( 'IworksOptions' ) ) {
-    require_once dirname( __FILE__ ).'/iworks.options.class.php';
+    require_once dirname( __FILE__ ).'/class-iworks-options.php';
 }
 require_once dirname( __FILE__ ).'/show_thubnail_on_admin_post_list.php';
 

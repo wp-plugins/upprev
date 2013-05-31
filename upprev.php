@@ -67,7 +67,7 @@ function iworks_upprev_init()
 
 function iworks_upprev_check()
 {
-    if ( !is_single() && !is_page() && !is_front_page() ) {
+    if ( !is_singular() && 'page' != get_option( 'show_on_front' ) ) {
         return true;
     }
     /**
@@ -86,11 +86,11 @@ function iworks_upprev_check()
     $post_types = $iworks_upprev_options->get_option( 'post_type' );
     if ( is_page() && $iworks_upprev_options->get_option( 'match_post_type' ) ) {
         return !array_key_exists( 'page', $post_types );
-    } else if ( $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
+    } else if ( is_singular() && $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
         global $post;
         return !array_key_exists( get_post_type( $post ), $post_types );
     }
-    return false;
+    return !is_singular();
 }
 
 function iworks_upprev_enqueue_scripts()
@@ -361,11 +361,6 @@ function iworks_upprev_box()
         if ( $compare != 'random' ) {
             add_filter( 'posts_where',  'iworks_upprev_filter_where',   72, 1 );
         }
-        add_filter( 'excerpt_more', 'iworks_upprev_excerpt_more',   72, 1 );
-
-        if ( $excerpt_length > 0 ) {
-            add_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
-        }
         $upprev_query = new WP_Query( $args );
         if (!$upprev_query->have_posts()) {
             return;
@@ -453,7 +448,7 @@ function iworks_upprev_box()
                 get_the_title()
             );
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
-                $item .= sprintf( '<p>%s</p>', get_the_excerpt() );
+                $item .= sprintf( '<p>%s</p>', wp_trim_words( get_the_excerpt(), $iworks_upprev_options->get_option( 'excerpt_length' ), '...' ) );
             } else if ( $image ) {
                 $item .= '<br />';
             }
@@ -475,27 +470,12 @@ function iworks_upprev_box()
     $value .= '</div>';
     if ( !$compare != 'yarpp' ) {
         wp_reset_postdata();
-        remove_filter( 'excerpt_more',   'iworks_upprev_filter_where', 72, 1 );
-        remove_filter( 'excerpt_more',   'iworks_upprev_excerpt_more', 72, 1 );
-        if ( $excerpt_length > 0 ) {
-            remove_filter( 'excerpt_length', 'iworks_upprev_excerpt_length', 72, 1 );
-        }
+        remove_filter( 'posts_where', 'iworks_upprev_filter_where', 72, 1 );
     }
     if ( $use_cache && $compare != 'random' ) {
         set_site_transient( $cache_key, $value, $iworks_upprev_options->get_option( 'cache_lifetime' ) );
     }
     echo apply_filters( 'iworks_upprev_box', $value );
-}
-
-function iworks_upprev_excerpt_more($more)
-{
-    return '...';
-}
-
-function iworks_upprev_excerpt_length($length)
-{
-    global $iworks_upprev_options;
-    return $iworks_upprev_options->get_option( 'excerpt_length' );
 }
 
 function iworks_upprev_filter_where( $where = '' )
