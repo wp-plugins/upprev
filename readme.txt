@@ -189,7 +189,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: added color chooser (only PRO version)
 * IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
-* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.1
+* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.3
 * REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name

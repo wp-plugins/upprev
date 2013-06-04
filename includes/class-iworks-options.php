@@ -45,7 +45,7 @@ class IworksOptions
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.2';
+        $this->version              = '1.7.3';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -216,22 +216,6 @@ class IworksOptions
                     );
                 break;
             case 'number':
-                $id = '';
-                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
-                    $id = sprintf( ' id="%s"', $html_element_name );
-                }
-                $content .= sprintf (
-                    '<input type="%s" name="%s" value="%s" class="%s"%s %s %s /> %s',
-                    $option['type'],
-                    $html_element_name,
-                    $this->get_option( $option['name'], $option_group ),
-                    isset($option['class']) && $option['class']? $option['class']:'',
-                    $id,
-                    isset($option['min'])?  'min="'.$option['min'].'"':'',
-                    isset($option['max'])?  'max="'.$option['max'].'"':'',
-                    isset($option['label'])?  $option['label']:''
-                );
-                break;
             case 'password':
             case 'text':
                 $id = '';
@@ -245,7 +229,7 @@ class IworksOptions
                     $this->get_option( $option['name'], $option_group ),
                     isset($option['class']) && $option['class']? $option['class']:'',
                     $id,
-                    isset($option['label'])?  $option['label']:''
+                    isset($option['label'])? $option['label']:''
                 );
                 break;
             case 'checkbox':
@@ -528,10 +512,10 @@ class IworksOptions
         }
     }
 
-    public function get_option( $option_name, $option_group = 'index', $default_value = null )
+    public function get_option( $option_name, $option_group = 'index', $default_value = null, $forece_default = false )
     {
         $option_value = get_option( $this->option_prefix.$option_name, null );
-        if ( null == $option_value ) {
+        if ( $forece_default && null == $option_value ) {
             $option_value = $this->get_default_value( $option_name, $option_group );
         }
         if ( null == $option_value && !empty( $default_value ) ) {
@@ -645,16 +629,23 @@ class IworksOptions
         }
     }
 
+    public function get_option_name( $name )
+    {
+        return sprintf( '%s%s', $this->option_prefix, $name );
+    }
 }
+
 /**
+ * CHANGELOG
 
-== Changelog ==
+== 1.7.3 (2013-06-04) ==
 
-= 1.7.2  (2013-05-31) =
+* #BUGFIX: repair get_option, to prevent return always default if null
+* #IMPROVMENT: add force_default to get_option method
 
-* IMPROVMENT: add min/max attributes to filed type "number"
+== 1.7.2 (2013-05-23) ==
 
-*/
+* #IMPROVMENT: add get_option_name method
 
-
+ */
 
