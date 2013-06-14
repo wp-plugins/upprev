@@ -1,10 +1,20 @@
 <?php
 /**
- * require
+ * require: IworksUpprev Class
  */
-require_once dirname( __FILE__ ).'/class-iworks-upprev.php';
+if ( !class_exists( 'IworksUpprev' ) ) {
+    require_once dirname( __FILE__ ).'/class-iworks-upprev.php';
+}
+/**
+ * configuration
+ */
 require_once dirname( dirname( __FILE__ )).'/etc/options.php';
-require_once dirname( __FILE__ ).'/class-iworks-options.php';
+/**
+ * require: IworksOptions Class
+ */
+if ( !class_exists( 'IworksOptions' ) ) {
+    require_once dirname( __FILE__ ).'/class-iworks-options.php';
+}
 require_once dirname( __FILE__ ).'/show_thumbnail_on_admin_post_list.php';
 
 /**
