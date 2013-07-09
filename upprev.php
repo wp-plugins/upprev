@@ -60,9 +60,9 @@ function iworks_upprev_init()
     add_action( 'admin_menu',                 'iworks_upprev_add_pages' );
     add_action( 'wp_before_admin_bar_render', 'iworks_upprev_add_to_admin_bar' );
     add_action( 'wp_enqueue_scripts',         'iworks_upprev_enqueue_scripts' );
-    add_action( 'wp_footer',                  'iworks_upprev_box', PHP_INT_MAX, 0 );
+    add_action( 'wp_footer',                  'iworks_upprev_box', PHP_INT_MAX );
     add_action( 'wp_print_scripts',           'iworks_upprev_print_scripts' );
-    add_action( 'wp_print_styles',            'iworks_upprev_print_styles' );
+    add_action( 'wp_head',                    'iworks_upprev_print_styles', PHP_INT_MAX );
 }
 
 function iworks_upprev_check()
