@@ -179,12 +179,13 @@ class IworksUpprev
     public function init()
     {
         add_action( 'admin_enqueue_scripts',      array( &$this, 'admin_enqueue_scripts' ) );
-        add_action( 'admin_init',                 array( &$this, 'admin_init'         ) );
+        add_action( 'admin_init',                 array( &$this, 'admin_init' ) );
         add_action( 'admin_init',                 'iworks_upprev_options_init' );
-        add_action( 'admin_menu',                 array( &$this, 'admin_menu'         ) );
-        add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar'          ) );
+        add_action( 'admin_menu',                 array( &$this, 'admin_menu' ) );
+        add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar' ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
-        add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts'   ) );
+        add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts' ) );
+        add_action( 'wp_head',                    array( &$this, 'print_custom_style'), PHP_INT_MAX );
         /**
          * filters
          */
@@ -895,6 +896,17 @@ class IworksUpprev
             return '<p class="error-message">'.__( 'Colors setup is available in PRO version!', 'upprev' ).'</p>'.$content;
         }
         return preg_replace( '/ disabled="disabled"/', '', $content );
+    }
+
+    public function print_custom_style()
+    {
+        if ( $this->iworks_upprev_check() ) {
+            return;
+        }
+        $content = '<style type="text/css">'.PHP_EOL;
+        $content .= preg_replace( '/\s\s+/s', ' ', preg_replace( '/#[^\{]+ \{ \}/', '', preg_replace( '@/\*[^\*]+\*/@', '', $this->options->get_option( 'css' ) ) ) );
+        $content .= '</style>'.PHP_EOL;
+        echo $content;
     }
 
     private function get_default_params( $layout = null )
