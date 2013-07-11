@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: upPrev branch/3.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
-"POT-Creation-Date: 2013-03-19 16:21:53+00:00\n"
+"POT-Creation-Date: 2013-07-11 05:59:45+00:00\n"
 "PO-Revision-Date: 2013-03-19 16:26+0300\n"
 "Last-Translator: Amiad Bareli <amiad at hatul.info>\n"
 "Language-Team: Hebrew\n"
@@ -24,133 +24,190 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
+#: admin/buy_pro.php:10
+msgid "Buy Pro Version"
+msgstr ""
+
+#: admin/buy_pro.php:12
+msgid "Single site licence"
+msgstr ""
+
+#: admin/buy_pro.php:15
+msgid "Price"
+msgstr ""
+
+#: admin/buy_pro.php:21
+msgid "Benefits"
+msgstr ""
+
+#: admin/buy_pro.php:23
+msgid "All templates available."
+msgstr ""
+
+#: admin/buy_pro.php:24
+msgid "All positions available."
+msgstr ""
+
+#: admin/buy_pro.php:25
+msgid "You can set up colors."
+msgstr ""
+
+#: admin/buy_pro.php:26
+msgid "You can exclude categories."
+msgstr ""
+
+#. #-#-#-#-#  upprev.pot (upPrev trunk)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/index.php:3 upprev.php:212 upprev.php:213 upprev.php:528
+#: admin/index.php:12 includes/class-iworks-upprev.php:266
+#: includes/class-iworks-upprev.php:287
 msgid "upPrev"
 msgstr "upPrev"
 
-#: admin/index.php:7
+#: admin/index.php:16
 msgid "upPrev options saved."
 msgstr "אפשרויות upPrev נשמרו."
 
-#: admin/index.php:24
-msgid "Loved this Plugin?"
-msgstr "אוהב את התוסף הזה?"
+#: admin/index.php:41
+msgid "Choose configuration mode"
+msgstr ""
 
-#: admin/index.php:26
+#: admin/index.php:43 admin/index.php:53
 msgid "Below are some links to help spread this plugin to other users"
 msgstr "למטה יש כמה קישורים שיעזרו להפיץ את התוסף הזה למשתמשים אחרים"
 
-#: admin/index.php:28
-msgid "Give it a 5 star on Wordpress.org"
+#: admin/index.php:45
+msgid "simple"
+msgstr ""
+
+#: admin/index.php:46
+msgid "advance"
+msgstr ""
+
+#: admin/index.php:51
+msgid "Loved this Plugin?"
+msgstr "אוהב את התוסף הזה?"
+
+#: admin/index.php:55
+msgid "Give it a five stars on Wordpress.org"
 msgstr "דרג אותו ב־5 כוכבים ב־Wordpress.org"
 
-#: admin/index.php:29
+#: admin/index.php:56
 msgid "Link to it so others can easily find it"
 msgstr "קשר אליו כדי שאחרים יוכלו למצוא אותו בקלות"
 
-#: admin/index.php:34
+#: admin/index.php:61
 msgid "Need Assistance?"
 msgstr "צריך עזרה?"
 
-#: admin/index.php:36
+#: admin/index.php:63
 msgid "Problems? The links bellow can be very helpful to you"
 msgstr "בעיות? הקישורים למטה יכולים לעזור לך מאוד"
 
-#: admin/index.php:38
+#: admin/index.php:65
 msgid "http://wordpress.org/tags/upprev"
 msgstr "http://wordpress.org/tags/upprev"
 
-#: admin/index.php:38
+#: admin/index.php:65
 msgid "Wordpress Help Forum"
 msgstr "פורום העזרה של וורדפרס"
 
-#: includes/common.php:18
-msgid ""
-"<p>upPrev settings allows you to set the proprites of user notification "
-"showed when reader scroll down the page.</p>"
-msgstr ""
-"<p>הגדרות upPrev מאפשרות לך להגדיר לך את ההעדפות של ההודעה שתוצג למשתמש "
-"כשהוא גולל את הדף למטה.</p>"
-
-#: includes/iworks.options.class.php:58
-msgid "An error occurred while getting the configuration."
-msgstr "אירעה שגיאה בעת קבלת התצורה."
-
-#: includes/iworks.options.class.php:309
-msgid "Save Changes"
-msgstr "שמור שינויים"
-
-#: includes/options.php:27 includes/options.php:43
+#: etc/options.php:32 etc/options.php:73
 msgid "Appearance"
 msgstr "מראה"
 
-#: includes/options.php:33
-msgid "Schema"
-msgstr "תרשים"
-
-#: includes/options.php:36 includes/options.php:52
-msgid "flyout"
+#: etc/options.php:38
+#, fuzzy
+msgid "Layout"
 msgstr "ריחוף פנימה"
 
-#: includes/options.php:37 includes/options.php:53
-msgid "fade in/out"
-msgstr "התבהרות/התעממות"
-
-#: includes/options.php:49
-msgid "Animation style"
-msgstr "סגנון הנפשה"
-
-#: includes/options.php:60
+#: etc/options.php:47 etc/options.php:53 etc/options.php:90
 msgid "Position"
 msgstr "מיקום"
 
-#: includes/options.php:63
-msgid "right"
+#: etc/options.php:56 etc/options.php:93
+msgid "bottom right"
+msgstr ""
+
+#: etc/options.php:57 etc/options.php:94
+msgid "bottom left"
+msgstr ""
+
+#: etc/options.php:58 etc/options.php:95
+#, fuzzy
+msgid "bottom"
+msgstr "רווח למטה"
+
+#: etc/options.php:59 etc/options.php:96
+#, fuzzy
+msgid "top right"
 msgstr "ימין"
 
-#: includes/options.php:64
-msgid "left"
+#: etc/options.php:60 etc/options.php:97
+msgid "top"
+msgstr ""
+
+#: etc/options.php:61 etc/options.php:98
+#, fuzzy
+msgid "top left"
 msgstr "שמאל"
 
-#: includes/options.php:72
+#: etc/options.php:62 etc/options.php:99
+msgid "middle right"
+msgstr ""
+
+#: etc/options.php:63 etc/options.php:100
+msgid "middle left"
+msgstr ""
+
+#: etc/options.php:79
+msgid "Animation style"
+msgstr "סגנון הנפשה"
+
+#: etc/options.php:82
+msgid "flyout"
+msgstr "ריחוף פנימה"
+
+#: etc/options.php:83
+msgid "fade in/out"
+msgstr "התבהרות/התעממות"
+
+#: etc/options.php:109
 msgid "Margin bottom"
 msgstr "רווח למטה"
 
-#: includes/options.php:73 includes/options.php:82 includes/options.php:92
+#: etc/options.php:110 etc/options.php:119 etc/options.php:129
 msgid "px"
 msgstr "פיקסלים"
 
-#: includes/options.php:81
+#: etc/options.php:118
 msgid "Margin side"
 msgstr "רווח בצד"
 
-#: includes/options.php:83
+#: etc/options.php:120
 msgid "Left or right depending on position."
 msgstr "שמאל או ימין תלוי במיקום."
 
-#: includes/options.php:91
+#: etc/options.php:128
 msgid "Box width"
 msgstr "רוחב תיבה"
 
-#: includes/options.php:100
+#: etc/options.php:137
 msgid "Offset"
 msgstr "היסט"
 
-#: includes/options.php:101
+#: etc/options.php:138
 msgid "%"
 msgstr "%"
 
-#: includes/options.php:102
+#: etc/options.php:139
 msgid "Percentage of the page required to be scrolled to display a box."
 msgstr "אחוז העמוד שצריך להיגלל לפני הצגת התיבה."
 
-#: includes/options.php:110
+#: etc/options.php:147
 msgid "Before HTML element."
 msgstr "לפני אלמנט HTML."
 
-#: includes/options.php:111
+#: etc/options.php:148
 msgid ""
 "If empty, all page length is taken for calculation. If not empty, make sure "
 "to use the ID or class of an existing element. Put # \"hash\" before the ID, "
@@ -159,49 +216,81 @@ msgstr ""
 "אם ריק, כל אורך העמוד יילקח בחשבון. אם לא ריק, היה בטוח שאתה משתמש במזהה או "
 "מחלקה של אלמנט קיים. שים # סולמית לפני מזהה או . נקודה לפני שם מחלקה."
 
-#: includes/options.php:118
+#: etc/options.php:155
 msgid "Box header"
 msgstr "כותרת תיבה"
 
-#: includes/options.php:119
+#: etc/options.php:156
 msgid "Show box header."
 msgstr "הצג כותרת תיבה."
 
-#: includes/options.php:126
+#: etc/options.php:164
+msgid "Header text."
+msgstr ""
+
+#: etc/options.php:165
+msgid "Leave blank to allow plugin set the heading text."
+msgstr ""
+
+#: etc/options.php:172
 msgid "Close button"
 msgstr "כפתור סגירה"
 
-#: includes/options.php:127
+#: etc/options.php:173
 msgid "Show close button."
 msgstr "הצג כפתור סגירה"
 
-#: includes/options.php:135
-msgid "Custom CSS"
-msgstr "CSS מותאם אישית"
+#: etc/options.php:182
+msgid "Colors"
+msgstr ""
 
-#: includes/options.php:166
+#: etc/options.php:188
+msgid "Set custom colors"
+msgstr ""
+
+#: etc/options.php:189
+msgid "Turn on custom colors."
+msgstr ""
+
+#: etc/options.php:198
+msgid "Text"
+msgstr ""
+
+#: etc/options.php:208
+msgid "Background"
+msgstr ""
+
+#: etc/options.php:218 etc/options.php:362
+msgid "Links"
+msgstr "קישורים"
+
+#: etc/options.php:228
+msgid "Border"
+msgstr ""
+
+#: etc/options.php:239
 msgid "Content"
 msgstr "תוכן"
 
-#: includes/options.php:173
-msgid "Number of posts to show "
+#: etc/options.php:246
+#, fuzzy
+msgid "Number of posts to show"
 msgstr "מספר פוסטים להצגה"
 
-#: includes/options.php:174
-msgid ""
-"Not affected if using YARPP as choose method and YARPP version is lower than "
-"4.0."
+#: etc/options.php:247
+#, fuzzy
+msgid "Not affected if using YARPP as choose method."
 msgstr "לא משפיע אם אתה משתמש ב־YARPP כשיטת בחירה וגרסת YARPP נמוכה מ־4.0."
 
-#: includes/options.php:181
+#: etc/options.php:254
 msgid "Content filters"
 msgstr "מסנני תוכן"
 
-#: includes/options.php:182
+#: etc/options.php:255
 msgid "Remove all filters."
 msgstr "הסר את כל המסננים."
 
-#: includes/options.php:183
+#: etc/options.php:256
 msgid ""
 "Untick this if you have some strange things in upPrev box, but unticked have "
 "a lot of chances breaks your layout."
@@ -209,237 +298,234 @@ msgstr ""
 "הסר את הסימון אם קורים דברים מוזרים בתיבת upPrev, אבל רוב הסיכויים שהסרת "
 "הסימון תשבור את הפריסה שלך."
 
-#: includes/options.php:190
+#: etc/options.php:263
 msgid "Previous entry choose method"
 msgstr "שיטת בחירת פוסט קודם"
 
-#: includes/options.php:193
+#: etc/options.php:266
 msgid "Just previous."
 msgstr "פשוט קודם."
 
-#: includes/options.php:194
+#: etc/options.php:267
 msgid "Previous in category."
 msgstr "קודם בקטגוריה."
 
-#: includes/options.php:195
+#: etc/options.php:268
 msgid "Previous in tag."
 msgstr "קודם בתגית."
 
-#: includes/options.php:196
+#: etc/options.php:269
 msgid "Random entry."
 msgstr "פוסט אקראי."
 
-#: includes/options.php:205
+#: etc/options.php:278
 msgid "Taxonomy limit"
 msgstr "הגבלת טקסנומיות"
 
-#: includes/options.php:206
+#: etc/options.php:279
 msgid "Number of taxonomies (tags or categories) to show."
 msgstr "מספר טקסונומית (תגיות או קטגוריות) להצגה."
 
-#: includes/options.php:207
+#: etc/options.php:280
 msgid "Default value: 0 (no limit)."
 msgstr "ערך בררת מחדל: 0 (ללא הגבלה)."
 
-#: includes/options.php:214
+#: etc/options.php:287
 msgid "Match post type"
 msgstr "התאמת סוג פוסט"
 
-#: includes/options.php:215
+#: etc/options.php:288
 msgid "Display only for selected post types."
 msgstr "הצג רק מסוגי הפוסט הנבחרים."
 
-#: includes/options.php:222
+#: etc/options.php:295
 msgid "Select post types"
 msgstr "בחר סוגי פוסט"
 
-#: includes/options.php:223
+#: etc/options.php:296
 msgid "Show posts."
 msgstr "הצג פוסטים."
 
-#: includes/options.php:224
+#: etc/options.php:297
 msgid "If not any, then default value is \"post\"."
 msgstr "אם לא נבחר אז ערך בררת המחדל הוא „פוסט”."
 
-#: includes/options.php:227
+#: etc/options.php:300
 msgid "Posts."
 msgstr "פוסטים."
 
-#: includes/options.php:228
+#: etc/options.php:301
 msgid "Pages."
 msgstr "עמודים."
 
-#: includes/options.php:229
+#: etc/options.php:302
 msgid "Any post type (include custom post types)."
 msgstr "כל סוג פוסט (כולל סוגי פוסטים מותאמים אישית)."
 
-#: includes/options.php:239
+#: etc/options.php:312
 msgid "Sticky posts"
 msgstr "פוסטים דביקים"
 
-#: includes/options.php:240
+#: etc/options.php:313
 msgid "Ignore sticky posts."
 msgstr "התעלם מפוסטים דביקים."
 
-#: includes/options.php:250
+#: etc/options.php:323
 msgid "Excerpt"
 msgstr "תקציר"
 
-#: includes/options.php:251
+#: etc/options.php:324
 msgid "Show excerpt."
 msgstr "הצג תקציר."
 
-#: includes/options.php:260
+#: etc/options.php:333
 msgid "Number of words to show."
 msgstr "מספר מילים להצגה"
 
-#: includes/options.php:269
+#: etc/options.php:342
 msgid "Featured image"
 msgstr "תמונה ממוזערת"
 
-#: includes/options.php:270
+#: etc/options.php:343
 msgid "Show featured image."
 msgstr "הצג תמונה ממוזערת."
 
-#: includes/options.php:279
+#: etc/options.php:352
 msgid "Featured image width."
 msgstr "רוחב תמונה ממוזערת."
 
-#: includes/options.php:289
-msgid "Links"
-msgstr "קישורים"
-
-#: includes/options.php:295
+#: etc/options.php:368
 msgid "URL prefix"
 msgstr "תחילית כתובת"
 
-#: includes/options.php:297
+#: etc/options.php:370
 msgid "Will be added before link."
 msgstr "יתווסף לפני הקישור"
 
-#: includes/options.php:304
-msgid "URL sufix"
+#: etc/options.php:377
+#, fuzzy
+msgid "URL suffix"
 msgstr "סיומת כתובת"
 
-#: includes/options.php:306
+#: etc/options.php:379
 msgid "Will be added after link."
 msgstr "יתווסף אחרי הקישור"
 
-#: includes/options.php:313
+#: etc/options.php:386
 msgid "Open link"
 msgstr "פתח קישור"
 
-#: includes/options.php:314
+#: etc/options.php:387
 msgid "Open link in new window."
 msgstr "פתח קישור בחלון חדש"
 
-#: includes/options.php:315
-msgid "Not recomended!"
+#: etc/options.php:388
+#, fuzzy
+msgid "Not recommended!"
 msgstr "לא מומלץ!"
 
-#: includes/options.php:322
-msgid "Google Analitics"
+#: etc/options.php:395
+#, fuzzy
+msgid "Google Analytics"
 msgstr "Google Analitics"
 
-#: includes/options.php:323
+#: etc/options.php:396
 msgid "I don't have GA tracking on site."
 msgstr "אין מעקב של Google Analitics באתר"
 
-#: includes/options.php:324 includes/options.php:350
+#: etc/options.php:397 etc/options.php:423
 msgid "Turn it on if you don't use any other GA tracking plugin."
 msgstr "הפעל אם אינך משתמש בתוסף אחר של Google Analitics."
 
-#: includes/options.php:331
-msgid "Google Analitics Account"
+#: etc/options.php:404
+#, fuzzy
+msgid "Google Analytics Account"
 msgstr "חשבון Google Analitics"
 
-#: includes/options.php:332
+#: etc/options.php:405
 msgid "Replace UA-XXXXX-X with your web property ID."
 msgstr "החלף את UA-XXXXX-X במזהה שלך."
 
-#: includes/options.php:341
+#: etc/options.php:414
 msgid "Track views"
 msgstr "מעקב צפיות"
 
-#: includes/options.php:342
+#: etc/options.php:415
 msgid "Track showing of upPrev box."
 msgstr "מעקב אחרי הצגת תיבת upPrev"
 
-#: includes/options.php:349
+#: etc/options.php:422
 msgid "Track clicks"
 msgstr "מעקב לחיצות"
 
-#: includes/options.php:357
+#: etc/options.php:430
 msgid "Prevent bounce-rate"
 msgstr "מנע שיעור נטישה"
 
-#: includes/options.php:358
+#: etc/options.php:431
 msgid ""
 "Turn it on to indicate that the event hit will not be used in bounce-rate "
 "calculation."
 msgstr "הפעל כדי שלחיצה לא תספר בחישוב שיעור הנטישה."
 
-#: includes/options.php:367 includes/options.php:373
-msgid "Cache"
-msgstr "מטמון"
-
-#: includes/options.php:374
-msgid "Use Transient Cache."
-msgstr "השתמש במטמון Transient."
-
-#: includes/options.php:375
-msgid "Using on large site (more than 1000 posts) may crash website."
-msgstr "שימוש באתר גדול (יותר מ־1000 פוסטים) אולי יפיל את האתר."
-
-#: includes/options.php:382
-msgid "Transients Cache Lifetime."
-msgstr "זמן מטמון של Transients."
-
-#: includes/options.php:383
-msgid "In seconds, default one hour (3600s)."
-msgstr "בשניות, בררת המחדל היא שעה (3600 שניות)."
-
-#: includes/options.php:392 includes/options.php:398
-msgid "Mobile devices"
-msgstr "התקנים ניידים"
-
-#: includes/options.php:399
-msgid "Hide for mobile devices."
-msgstr "הסתר בטלפונים ניידים"
-
-#: includes/options.php:406
-msgid "Tablets"
-msgstr "מחשבי לוח"
-
-#: includes/options.php:407
-msgid "Hide for tablets too."
-msgstr "הסתר גם במחשבי לוח"
-
-#: includes/options.php:408
-msgid "Works only when hidding for mobile devices is turn on."
-msgstr "עובד רק כשההסתרה בטלפונים ניידים מופעלת."
-
-#: includes/options.php:417
+#: etc/options.php:440
 msgid "Other"
 msgstr "אחר"
 
-#: includes/options.php:422
-msgid "Right-to-Left Language Support"
-msgstr ""
+#: etc/options.php:448 etc/options.php:453
+msgid "Mobile devices"
+msgstr "התקנים ניידים"
 
-#: includes/options.php:423
-msgid "Add support for language written in a right-to-left direction."
-msgstr ""
+#: etc/options.php:454
+msgid "Hide for mobile devices."
+msgstr "הסתר בטלפונים ניידים"
 
-#: includes/options.php:430
+#: etc/options.php:461
+msgid "Tablets"
+msgstr "מחשבי לוח"
+
+#: etc/options.php:462
+msgid "Hide for tablets too."
+msgstr "הסתר גם במחשבי לוח"
+
+#: etc/options.php:463
+#, fuzzy
+msgid "Works only when hiding for mobile devices is turn on."
+msgstr "עובד רק כשההסתרה בטלפונים ניידים מופעלת."
+
+#: etc/options.php:472 etc/options.php:478
+msgid "Custom CSS"
+msgstr "CSS מותאם אישית"
+
+#: etc/options.php:487 etc/options.php:492
+msgid "Cache"
+msgstr "מטמון"
+
+#: etc/options.php:493
+msgid "Use Transient Cache."
+msgstr "השתמש במטמון Transient."
+
+#: etc/options.php:494
+msgid "Using on large site (more than 1000 posts) may crash website."
+msgstr "שימוש באתר גדול (יותר מ־1000 פוסטים) אולי יפיל את האתר."
+
+#: etc/options.php:501
+msgid "Transients Cache Lifetime."
+msgstr "זמן מטמון של Transients."
+
+#: etc/options.php:502
+msgid "In seconds, default one hour (3600s)."
+msgstr "בשניות, בררת המחדל היא שעה (3600 שניות)."
+
+#: etc/options.php:511 etc/options.php:517
 msgid "Promote"
 msgstr "קידום"
 
-#: includes/options.php:431
+#: etc/options.php:518
 msgid "Help promote upPrev plugin?"
 msgstr "עזרה בקידום התוסף upPrev?"
 
-#: includes/options.php:432
+#: etc/options.php:519
 msgid ""
 "This option will add the code <code>Previous posts box brought to you by &lt;"
 "a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/en/'&gt;upPrev "
@@ -452,11 +538,11 @@ msgstr ""
 "code>. נסה להפעיל את זה, לעדכן את האפשרויות שלך ולראות את הקוד בדוגמה משמאל. "
 "הקישורים האלה והתרומות מוערכים מאוד.</span>"
 
-#: includes/options.php:438 upprev.php:515
+#: etc/options.php:525 includes/class-iworks-upprev.php:302
 msgid "Donate"
 msgstr "תרום"
 
-#: includes/options.php:439
+#: etc/options.php:526
 msgid ""
 "You can buy me some special coffees if you appreciate my work, thank you! <a "
 "href=\"http://iworks.pl/donate/upprev.php\">Donate to this plugin.</a>"
@@ -464,43 +550,108 @@ msgstr ""
 "אתה יכול לקנות לי קפה מיוחד אם אתה מעריך את עבודתי, תודה! <a href=\"http://"
 "iworks.pl/donate/upprev.php\">תרום לתוסף.</a>"
 
-#: includes/options.php:454
+#: etc/options.php:534
+msgid "Excludes"
+msgstr ""
+
+#: etc/options.php:540
+msgid "Categories"
+msgstr ""
+
+#: etc/options.php:547
+msgid "Tags"
+msgstr ""
+
+#: etc/options.php:556
+msgid "Buy PRO!"
+msgstr ""
+
+#: etc/options.php:575
 msgid "Custom post type: "
 msgstr "סוג פוסט מותאם אישית:"
 
-#: includes/options.php:465 includes/options.php:468
+#: etc/options.php:586 etc/options.php:589
 msgid "Related Posts (YARPP)"
 msgstr "פוסטים קשורים (YARPP)"
 
-#: includes/options.php:466
+#: etc/options.php:587
 msgid ". Works only with post and/or pages."
 msgstr ". עובד רק עם פוסט ו/או עמודים."
 
-#: includes/show_thubnail_on_admin_post_list.php:5
-msgid "Thumbnail"
-msgstr "תמונה ממוזערת"
+#: includes/class-iworks-options.php:92
+msgid "An error occurred while getting the configuration."
+msgstr "אירעה שגיאה בעת קבלת התצורה."
 
-#: includes/show_thubnail_on_admin_post_list.php:19
-msgid "None"
-msgstr "ללא"
+#: includes/class-iworks-options.php:486
+msgid "Save Changes"
+msgstr "שמור שינויים"
 
-#: upprev.php:385
+#: includes/class-iworks-upprev.php:58
+msgid "Default simple layout"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:69
+msgid "Vertical Three"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:86
+msgid "\"Bloginity\" style"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:224
+#, fuzzy
+msgid ""
+"<p>upPrev settings allows you to set the proprieties of user notification "
+"showed when reader scroll down the page.</p>"
+msgstr ""
+"<p>הגדרות upPrev מאפשרות לך להגדיר לך את ההעדפות של ההודעה שתוצג למשתמש "
+"כשהוא גולל את הדף למטה.</p>"
+
+#: includes/class-iworks-upprev.php:227
+msgid "Overview"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:236
+msgid "For more information:"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:237
+msgid ""
+"<a href=\"http://wordpress.org/extend/plugins/upprev/\" target=\"_blank"
+"\">Plugin Homepage</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:238
+msgid ""
+"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
+"Forums</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:239
+msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:299
+msgid "Settings"
+msgstr "הגדרות"
+
+#: includes/class-iworks-upprev.php:624
 msgid "More in"
 msgstr "עוד בנושא"
 
-#: upprev.php:392
+#: includes/class-iworks-upprev.php:631
 msgid "Read more:"
 msgstr "קרא עוד:"
 
-#: upprev.php:394
+#: includes/class-iworks-upprev.php:633
 msgid "Read previous post:"
 msgstr "קרא את הפוסט הקודם:"
 
-#: upprev.php:464
+#: includes/class-iworks-upprev.php:722
 msgid "Close"
 msgstr "סגור"
 
-#: upprev.php:467
+#: includes/class-iworks-upprev.php:725
 msgid ""
 "Previous posts box brought to you by <a href=\"http://iworks.pl/produkty/"
 "wordpress/wtyczki/upprev/en/\">upPrev plugin</a>."
@@ -508,19 +659,40 @@ msgstr ""
 "תיבת פוסטים קודמים מאת <a href=\"http://iworks.pl/produkty/wordpress/wtyczki/"
 "upprev/en/\">התוסף upPrev</a>."
 
-#: upprev.php:513
-msgid "Settings"
-msgstr "הגדרות"
+#: includes/class-iworks-upprev.php:864
+msgid "All positions are available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:896
+msgid "Colors setup is available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:970
+msgid "Exclude categories available in PRO version!"
+msgstr ""
+
+#: includes/class-iworks-upprev.php:1004
+msgid "Exclude tags available in PRO version!"
+msgstr ""
+
+#: includes/show_thumbnail_on_admin_post_list.php:5
+msgid "Thumbnail"
+msgstr "תמונה ממוזערת"
+
+#: includes/show_thumbnail_on_admin_post_list.php:19
+msgid "None"
+msgstr "ללא"
 
 #. Plugin URI of the plugin/theme
-msgid "http://iworks.pl/upprev/"
+#, fuzzy
+msgid "http://upprev.com/"
 msgstr "http://iworks.pl/upprev/"
 
 #. Description of the plugin/theme
+#, fuzzy
 msgid ""
-"When scrolling post down upPrev will display a flyout box with a link to the "
-"previous post from the same category. Based on upPrev Previous Post Animated "
-"Notification by Jason Pelker, Grzegorz Krzyminski"
+"When scrolling post down upPrev will display a flyout box with a link to "
+"post in chosen configuration."
 msgstr ""
 "כשהפוסט נגלל מטה upPrev יציג תיבה מרחפת עם קישור לפוסט הקודם בקטגוריה. מבוסס "
 "על upPrev Previous Post Animated Notification מאת Jason Pelker ו־Grzegorz "
@@ -533,3 +705,6 @@ msgstr "Marcin Pietrzak"
 #. Author URI of the plugin/theme
 msgid "http://iworks.pl/"
 msgstr "http://iworks.pl/"
+
+#~ msgid "Schema"
+#~ msgstr "תרשים"

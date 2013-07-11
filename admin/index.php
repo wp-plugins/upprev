@@ -52,7 +52,7 @@ if ( !preg_match( '/^(advance|simple)$/', $configuration ) ) {
                     <div class="inside">
                         <p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
                         <ul>
-                            <li><a href="http://wordpress.org/extend/plugins/upprev/"><?php _e( 'Give it a 5 star on Wordpress.org', 'upprev' ); ?></a></li>
+                            <li><a href="http://wordpress.org/support/view/plugin-reviews/upprev#postform"><?php _e( 'Give it a five stars on Wordpress.org', 'upprev' ); ?></a></li>
                             <li><a href="http://wordpress.org/extend/plugins/upprev/"><?php _e( 'Link to it so others can easily find it', 'upprev' ); ?></a></li>
                         </ul>
                     </div>
