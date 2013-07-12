@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 3.3.17
+Stable tag: 3.3.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -196,7 +196,12 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
+= 3.3.18 =
+
+* IMPROVMENT: updated Bulgarian translation by [Martin Halachev](http://wordpress.org/support/profile/mhalachev)
+
 = 3.3.17 =
+
 * BUGFIX: Move custom css after wp_enqueue_style. thx to [007me](http://wordpress.org/support/profile/007me) [Can't change font size and style and costumize close button](http://wordpress.org/support/topic/cant-change-font-size-and-style-and-costumize-close-button)
 
 = 3.3.16 =
