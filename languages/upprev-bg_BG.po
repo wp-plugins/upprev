@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: upPrev 3.3.6ru\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
 "POT-Creation-Date: 2012-12-13 20:34:01+00:00\n"
-"PO-Revision-Date: 2012-12-10 12:39+0200\n"
+"PO-Revision-Date: 2013-07-12 15:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: Bulgarian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #. #-#-#-#-#  3.3.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
@@ -77,7 +77,7 @@ msgstr "Изглед"
 
 #: includes/options.php:33
 msgid "Schema"
-msgstr ""
+msgstr "Схема"
 
 #: includes/options.php:36 includes/options.php:52
 msgid "flyout"
@@ -181,11 +181,12 @@ msgid "Number of posts to show "
 msgstr "Брой публикации за показване"
 
 #: includes/options.php:174
-#, fuzzy
 msgid ""
 "Not affected if using YARPP as choose method and YARPP version is lower than "
 "4.0."
-msgstr "Няма да бъде приложено, ако се използва YARPP като избран метод."
+msgstr ""
+"Няма да бъде приложено, ако се използва YARPP като избран метод (YARPP до "
+"версия 4.0)."
 
 #: includes/options.php:181
 msgid "Content filters"
@@ -200,8 +201,8 @@ msgid ""
 "Untick this if you have some strange things in upPrev box, but unticked have "
 "a lot of chances breaks your layout."
 msgstr ""
-"Отмаркирайте при проблеми с upPrev, но в този случай съществува вероятност "
-"да бъде засегнато оформлението."
+"Отмаркирайте при проблеми с upPrev, но в този случай е възможно да бъде "
+"засегнато оформлението."
 
 #: includes/options.php:190
 msgid "Previous entry choose method"
@@ -440,7 +441,7 @@ msgstr ""
 "представен от &lt;a href='http://iworks.pl/produkty/wordpress/wtyczki/upprev/"
 "en/'&gt;разширението upPrev&lt;/a&gt;.</code>. След като я включите и "
 "запишете настройките, ще видите пример отдясно. Ценя високо тези връзки, а "
-"също така и подаръците! Благодаря!</span>"
+"също така и подаръците!</span>"
 
 #: includes/options.php:431
 msgid ""
@@ -453,7 +454,7 @@ msgstr ""
 
 #: includes/options.php:446
 msgid "Custom post type: "
-msgstr "Потребителски тип публикация"
+msgstr "Потребителски тип публикация: "
 
 #: includes/options.php:457 includes/options.php:460
 msgid "Related Posts (YARPP)"
@@ -477,36 +478,37 @@ msgstr "Настройките на upPrev са запазени."
 
 #: admin/index.php:24
 msgid "Loved this Plugin?"
-msgstr ""
+msgstr "Харесвате това разширение?"
 
 #: admin/index.php:26
 msgid "Below are some links to help spread this plugin to other users"
 msgstr ""
+"Ето няколко връзки, съдействащи за популяризирането му сред повече "
+"потребители:"
 
 #: admin/index.php:28
 msgid "Give it a 5 star on Wordpress.org"
-msgstr ""
+msgstr "Дайте оценка 5/5 на Wordpress.org"
 
 #: admin/index.php:29
 msgid "Link to it so others can easily find it"
-msgstr ""
+msgstr "Поставете директна връзка"
 
 #: admin/index.php:34
 msgid "Need Assistance?"
-msgstr ""
+msgstr "Имате нужда от помощ?"
 
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
-msgstr ""
+msgstr "Проблеми? Връзките по-долу могат да Ви бъдат полезни:"
 
 #: admin/index.php:38
-#, fuzzy
 msgid "http://wordpress.org/tags/upprev"
-msgstr "http://iworks.pl/upprev/"
+msgstr "http://wordpress.org/tags/upprev"
 
 #: admin/index.php:38
 msgid "Wordpress Help Forum"
-msgstr ""
+msgstr "Форуми за WordPress"
 
 #. Plugin URI of the plugin/theme
 msgid "http://iworks.pl/upprev/"
@@ -524,7 +526,7 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Marcin Pietrzak"
-msgstr "Marcin Pietrzak"
+msgstr "Марцин Петржак "
 
 #. Author URI of the plugin/theme
 msgid "http://iworks.pl/"
