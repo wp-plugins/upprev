@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 3.3.18
+Stable tag: 3.3.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ in the selected configuration:
 * Czech (cs_CZ) - [Michal Bláha](http://michalblaha.cz/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
-* Hebrew (he_IL) - [עמיעד](http://hatul.info)
+* Hebrew (he_IL) - [עמיעד](http://hatul.info), [של אודי בורג](http://blog.udiburg.com)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
@@ -172,6 +172,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 == Changelog ==
 
+= 3.3.19 =
+
+* IMPROVMENT: updated Hebrew translation by [של אודי בורג](http://blog.udiburg.com)
+
 = 3.3.18 =
 
 * IMPROVMENT: updated Bulgarian translation by [Martin Halachev](http://wordpress.org/support/profile/mhalachev)
@@ -183,7 +187,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 = 3.3.16 =
 
 * BUGFIX: Excerpt number of words to show option not working for a concrete excerpt. thx to [gyalokai](http://wordpress.org/support/profile/gyalokai) [Excerpt number of words to show option not working](http://wordpress.org/support/topic/excerpt-number-of-words-to-show-option-not-working)
-* IMPROVMENT: update IworksOptionClass to 1.7.2
+* IMPROVMENT: updated IworksOptionClass to 1.7.2
 * IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 
 = 3.3.15 =

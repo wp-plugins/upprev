@@ -14,15 +14,15 @@ msgstr ""
 "Project-Id-Version: upPrev branch/3.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/upprev\n"
 "POT-Creation-Date: 2013-03-19 16:21:53+00:00\n"
-"PO-Revision-Date: 2013-03-19 16:26+0300\n"
-"Last-Translator: Amiad Bareli <amiad at hatul.info>\n"
+"PO-Revision-Date: 2013-07-20 23:07+0200\n"
+"Last-Translator: Udi's Blog <blog@udiburg.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #. #-#-#-#-#  upprev.pot (upPrev branch/3.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
@@ -36,7 +36,7 @@ msgstr "אפשרויות upPrev נשמרו."
 
 #: admin/index.php:24
 msgid "Loved this Plugin?"
-msgstr "אוהב את התוסף הזה?"
+msgstr "אוהבים את התוסף הזה?"
 
 #: admin/index.php:26
 msgid "Below are some links to help spread this plugin to other users"
@@ -48,15 +48,15 @@ msgstr "דרג אותו ב־5 כוכבים ב־Wordpress.org"
 
 #: admin/index.php:29
 msgid "Link to it so others can easily find it"
-msgstr "קשר אליו כדי שאחרים יוכלו למצוא אותו בקלות"
+msgstr "קשרו אליו כדי שאחרים יוכלו למצוא אותו בקלות"
 
 #: admin/index.php:34
 msgid "Need Assistance?"
-msgstr "צריך עזרה?"
+msgstr "צריכים עזרה?"
 
 #: admin/index.php:36
 msgid "Problems? The links bellow can be very helpful to you"
-msgstr "בעיות? הקישורים למטה יכולים לעזור לך מאוד"
+msgstr "בעיות? הקישורים למטה יכולים לעזור לכם מאוד"
 
 #: admin/index.php:38
 msgid "http://wordpress.org/tags/upprev"
@@ -71,8 +71,8 @@ msgid ""
 "<p>upPrev settings allows you to set the proprites of user notification "
 "showed when reader scroll down the page.</p>"
 msgstr ""
-"<p>הגדרות upPrev מאפשרות לך להגדיר לך את ההעדפות של ההודעה שתוצג למשתמש "
-"כשהוא גולל את הדף למטה.</p>"
+"<p>הגדרות upPrev מאפשרות לכם להגדיר את ההעדפות של ההודעה שתוצג למשתמש כשהוא "
+"גולל את הדף למטה.</p>"
 
 #: includes/iworks.options.class.php:58
 msgid "An error occurred while getting the configuration."
@@ -156,8 +156,8 @@ msgid ""
 "to use the ID or class of an existing element. Put # \"hash\" before the ID, "
 "or . \"dot\" before a class name."
 msgstr ""
-"אם ריק, כל אורך העמוד יילקח בחשבון. אם לא ריק, היה בטוח שאתה משתמש במזהה או "
-"מחלקה של אלמנט קיים. שים # סולמית לפני מזהה או . נקודה לפני שם מחלקה."
+"אם ריק, כל אורך העמוד יילקח בחשבון. אם לא ריק, היו בטוחים שאתם משתמשים במזהה "
+"או מחלקה של אלמנט קיים. שים # סולמית לפני מזהה או . נקודה לפני שם מחלקה."
 
 #: includes/options.php:118
 msgid "Box header"
@@ -191,7 +191,7 @@ msgstr "מספר פוסטים להצגה"
 msgid ""
 "Not affected if using YARPP as choose method and YARPP version is lower than "
 "4.0."
-msgstr "לא משפיע אם אתה משתמש ב־YARPP כשיטת בחירה וגרסת YARPP נמוכה מ־4.0."
+msgstr "לא משפיע אם אתם משתמשים ב־YARPP כשיטת בחירה וגרסת YARPP נמוכה מ־4.0."
 
 #: includes/options.php:181
 msgid "Content filters"
@@ -425,11 +425,11 @@ msgstr "אחר"
 
 #: includes/options.php:422
 msgid "Right-to-Left Language Support"
-msgstr ""
+msgstr "תמיכה בשפות מצד ימין לשמאל"
 
 #: includes/options.php:423
 msgid "Add support for language written in a right-to-left direction."
-msgstr ""
+msgstr "הוסיפו תמיכה לשפות הכתובות מימין לשמאל."
 
 #: includes/options.php:430
 msgid "Promote"
@@ -490,11 +490,11 @@ msgstr "עוד בנושא"
 
 #: upprev.php:392
 msgid "Read more:"
-msgstr "קרא עוד:"
+msgstr "קראו גם את:"
 
 #: upprev.php:394
 msgid "Read previous post:"
-msgstr "קרא את הפוסט הקודם:"
+msgstr "קראו את הפוסט הקודם:"
 
 #: upprev.php:464
 msgid "Close"
