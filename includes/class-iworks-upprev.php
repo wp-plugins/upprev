@@ -680,7 +680,10 @@ class IworksUpprev
                     apply_filters(
                         'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
                             get_the_ID(),
-                            array( $thumb_width, $thumb_height ),
+                            apply_filters(
+                                'iworks_upprev_thumbnail_size',
+                                array( $thumb_width, $thumb_height )
+                            ),
                             array(
                                 'title' => get_the_title(),
                                 'class' => 'iworks_upprev_thumb'

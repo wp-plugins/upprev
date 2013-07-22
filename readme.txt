@@ -182,6 +182,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVMENT: added categories exclude (only PRO version)
 * IMPROVMENT: added color chooser (only PRO version)
 * IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
+* IMPROVMENT: added filter 'iworks_upprev_thumbnail_size' for thumbnail size
 * IMPROVMENT: added free layouts: "Vertical Three"
 * IMPROVMENT: added pro layouts: "Bloginity style"
 * IMPROVMENT: added remebering usage "close" button
