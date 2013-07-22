@@ -32,7 +32,7 @@ in the selected configuration:
 * Czech (cs_CZ) - [Michal Bláha](http://michalblaha.cz/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
-* Hebrew (he_IL) - [עמיעד](http://hatul.info)
+* Hebrew (he_IL) - [עמיעד](http://hatul.info), [של אודי בורג](http://blog.udiburg.com)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
@@ -174,27 +174,31 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 4.0.0 =
 
-* IMPROVMENT: added categories exclude (only PRO version)
-* IMPROVMENT: added tags exclude (only PRO version)
-* IMPROVMENT: added settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
-* IMPROVMENT: check variable iworks_upprev in javascript before use it
-* IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
-* IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
-* IMPROVMENT: javascript & css files are minifized
-* IMPROVMENT: added remebering usage "close" button
-* IMPROVMENT: added free layouts: "Vertical Three"
-* IMPROVMENT: added pro layouts: "Bloginity style"
-* IMPROVMENT: added ajax request to load upPrevBox content
-* IMPROVMENT: rework option page to easier configuration
-* IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
-* IMPROVMENT: added color chooser (only PRO version)
-* IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
-* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.3
-* REFACTORING: moved code to class
 * BUGFIX: added version number to upprev.css
 * BUGFIX: fixed bug with removing filter name
 * BUGFIX: fixed problem with $('body').offset() by changng it to scrollTop() function
+* IMPROVMENT: added ajax request to load upPrevBox content
+* IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
+* IMPROVMENT: added categories exclude (only PRO version)
+* IMPROVMENT: added color chooser (only PRO version)
+* IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
+* IMPROVMENT: added free layouts: "Vertical Three"
+* IMPROVMENT: added pro layouts: "Bloginity style"
+* IMPROVMENT: added remebering usage "close" button
+* IMPROVMENT: added settable header text thx to [pmfox](http://wordpress.org/support/profile/pmfox) [Can we change header text?](http://wordpress.org/support/topic/plugin-upprev-can-we-change-header-text)
+* IMPROVMENT: added tags exclude (only PRO version)
+* IMPROVMENT: check variable iworks_upprev in javascript before use it
+* IMPROVMENT: javascript & css files are minifized
+* IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
+* IMPROVMENT: rework option page to easier configuration
+* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.3
+* IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
+* REFACTORING: moved code to class
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.19 =
+
+* IMPROVMENT: updated Hebrew translation by [של אודי בורג](http://blog.udiburg.com)
 
 = 3.3.18 =
 
@@ -207,7 +211,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 = 3.3.16 =
 
 * BUGFIX: Excerpt number of words to show option not working for a concrete excerpt. thx to [gyalokai](http://wordpress.org/support/profile/gyalokai) [Excerpt number of words to show option not working](http://wordpress.org/support/topic/excerpt-number-of-words-to-show-option-not-working)
-* IMPROVMENT: update IworksOptionClass to 1.7.2
+* IMPROVMENT: updated IworksOptionClass to 1.7.2
 * IMPROVMENT: added box to front page thx to [SARed](http://wordpress.org/support/profile/sared) [Using Upprev on a front page with latest posts?](http://wordpress.org/support/topic/using-upprev-on-a-front-page-with-latest-posts)
 
 = 3.3.15 =
