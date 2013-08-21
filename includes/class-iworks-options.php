@@ -45,7 +45,7 @@ class IworksOptions
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.3';
+        $this->version              = '1.7.4';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -391,7 +391,7 @@ class IworksOptions
                 break;
             case 'serialize':
                 if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
-                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
+                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ), $option['name'] );
                 }
                 else if ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
                     ob_start();
@@ -512,18 +512,6 @@ class IworksOptions
         }
     }
 
-    public function get_option( $option_name, $option_group = 'index', $default_value = null, $forece_default = false )
-    {
-        $option_value = get_option( $this->option_prefix.$option_name, null );
-        if ( $forece_default && null == $option_value ) {
-            $option_value = $this->get_default_value( $option_name, $option_group );
-        }
-        if ( null == $option_value && !empty( $default_value ) ) {
-            return $default_value;
-        }
-        return $option_value;
-    }
-
     public function get_values( $option_name, $option_group = 'index' )
     {
         $this->option_group = $option_group;
@@ -600,6 +588,47 @@ class IworksOptions
         settings_fields( $this->option_prefix . $option_name );
     }
 
+    /**
+     * admin_notices
+     */
+
+    public function admin_notices()
+    {
+        if ( empty( $this->notices ) ) {
+            return;
+        }
+        foreach( $this->notices as $notice ) {
+            printf( '<div class="error"><p>%s</p></div>', $notice );
+        }
+    }
+
+    /**
+     * options: add, get, update
+     */
+
+    public function add_option( $option_name, $option_value, $autoload = true )
+    {
+        $autoload = $autoload? 'yes':'no';
+        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
+    }
+
+    public function get_option( $option_name, $option_group = 'index', $default_value = null, $forece_default = false )
+    {
+        $option_value = get_option( $this->option_prefix.$option_name, null );
+        if ( $forece_default && null == $option_value ) {
+            $option_value = $this->get_default_value( $option_name, $option_group );
+        }
+        if ( null == $option_value && !empty( $default_value ) ) {
+            return $default_value;
+        }
+        return $option_value;
+    }
+
+    public function get_option_name( $name )
+    {
+        return sprintf( '%s%s', $this->option_prefix, $name );
+    }
+
     public function update_option( $option_name, $option_value )
     {
         /**
@@ -613,35 +642,45 @@ class IworksOptions
         update_option( $this->option_prefix.$option_name, $option_value );
     }
 
-    public function add_option( $option_name, $option_value, $autoload = true )
+    /**
+     * helpers
+     */
+
+    public function select_page_helper( $name )
     {
-        $autoload = $autoload? 'yes':'no';
-        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
+        $args = array(
+            'name' => $this->get_option_name( $name ),
+            'selected' => $this->get_option( $name ),
+            'echo' => false,
+        );
+        return wp_dropdown_pages( $args );
     }
 
-    public function admin_notices()
+    public function select_category_helper( $name, $hide_empty = false )
     {
-        if ( empty( $this->notices ) ) {
-            return;
-        }
-        foreach( $this->notices as $notice ) {
-            printf( '<div class="error"><p>%s</p></div>', $notice );
-        }
+        $args = array(
+            'name'         => $this->get_option_name( $name ),
+            'selected'     => $this->get_option( $name ),
+            'hierarchical' => true,
+            'hide_empty'   => $hide_empty
+        );
+        wp_dropdown_categories( $args );
     }
 
-    public function get_option_name( $name )
-    {
-        return sprintf( '%s%s', $this->option_prefix, $name );
-    }
 }
 
 /**
  * CHANGELOG
 
+== 1.7.4 (2013-08-07) ==
+
+* #IMPROVMENT: added helper for wp_dropdown_categories
+* #IMPROVMENT: added helper for wp_dropdown_pages
+
 == 1.7.3 (2013-06-04) ==
 
 * #BUGFIX: repair get_option, to prevent return always default if null
-* #IMPROVMENT: add force_default to get_option method
+* #IMPROVMENT: added force_default to get_option method
 
 == 1.7.2 (2013-05-23) ==
 

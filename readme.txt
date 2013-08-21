@@ -192,7 +192,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVMENT: javascript & css files are minifized
 * IMPROVMENT: replace moble detection function to [Mobile_Detect](http://mobiledetect.net)
 * IMPROVMENT: rework option page to easier configuration
-* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.3
+* IMPROVMENT: upgrade iWorks Option Class to version: 1.7.4
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: updated Hebrew translation by [של אודי בורג](http://blog.udiburg.com)
 * REFACTORING: moved code to class
