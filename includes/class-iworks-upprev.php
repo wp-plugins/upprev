@@ -29,14 +29,14 @@ if ( class_exists( 'IworksUpprev' ) ) {
 
 class IworksUpprev
 {
-    private static $version;
-    private static $dir;
-    private static $base;
-    private static $capability;
-    private static $is_pro;
-    private $options;
-    private $working_mode;
+    private $base;
+    private $capability;
     private $dev;
+    private $dir;
+    private $is_pro;
+    private $options;
+    private $version;
+    private $working_mode;
 
     public function __construct()
     {
@@ -184,7 +184,6 @@ class IworksUpprev
         add_action( 'admin_menu',                 array( &$this, 'admin_menu' ) );
         add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar' ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
-        add_action( 'wp_print_scripts',           array( &$this, 'wp_print_scripts' ) );
         add_action( 'wp_head',                    array( &$this, 'print_custom_style'), PHP_INT_MAX );
         /**
          * filters
@@ -276,6 +275,7 @@ class IworksUpprev
         }
         $file = '/scripts/upprev'.$this->dev.'.js';
         wp_enqueue_script( 'upprev-js',  plugins_url( $file, $this->base ), array( 'jquery' ), $this->get_version( $file ) );
+        wp_localize_script( 'upprev-js', 'iworks_upprev', $this->get_config_javascript() );
         $this->enqueue_style( 'upprev' );
     }
 
@@ -318,20 +318,8 @@ class IworksUpprev
         return $data;
     }
 
-    public function wp_print_scripts()
+    private function get_config_javascript()
     {
-        if ( $this->iworks_upprev_check() ) {
-            return;
-        }
-        $use_cache = $this->options->get_option( 'use_cache' );
-        if ( $use_cache ) {
-            $cache_key = IWORKS_UPPREV_PREFIX.'scripts_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
-            if ( true === ( $content = get_site_transient( $cache_key ) ) ) {
-                print $content;
-                return;
-            }
-        }
-        $data = '';
         $params = array(
             'animation',
             'color_set',
@@ -353,46 +341,17 @@ class IworksUpprev
         $defaults = $this->get_default_params();
         foreach ( $params as $key ) {
             $value = isset( $defaults[ $key ] )? $defaults[ $key ] : $this->options->get_option( $key );
-            $data .= sprintf(
-                '%s: %s, ',
-                $key,
-                is_numeric($value)? $value:(sprintf("'%s'", $value))
-            );
+            $data[$key] = $value;
         }
         $position = $this->sanitize_position( $this->options->get_option( 'position' ) );
-        $data .= ' position: { ';
         foreach( array( 'top', 'left', 'center', 'middle' ) as $key ) {
             $re = sprintf( '/%s/', $key );
-            $data .= sprintf( '%s: %d, ', $key, preg_match( $re, $position ) );
+            $data['position'][$key] = preg_match( $re, $position ); 
         }
-        $data .= sprintf( "all: '%s' }, ", $position );
-        /**
-         * print
-         */
-        $content  = '<script type="text/javascript">'."\n";
-        $content .= 'var iworks_upprev = { ';
-        $content .= $data;
-        $content .= 'title: \''.esc_attr( get_the_title() ).'\'';
-        $content .= ', url: \''. plugins_url( 'box.php', dirname( __FILE__ ) ).'?p='.get_the_ID().'\'';
-        $content .= ' };'."\n";
-        /**
-         * Google Analytics tracking code
-         */
-        $ga_account = $this->options->get_option( 'ga_account' );
-        if ( $ga_account && $this->options->get_option( 'ga_status' )) {
-            $content.= 'var _gaq = _gaq || [];'."\n";
-            $content.= '_gaq.push([\'_setAccount\', \''.$ga_account.'\']);'."\n";
-            $content.= '(function() {'."\n";
-            $content.= '    var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;'."\n";
-            $content.= '    ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';'."\n";
-            $content.= '    var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);'."\n";
-            $content.= '})();'."\n";
-        }
-        $content .= '</script>'."\n";
-        if ( $use_cache ) {
-            set_site_transient( $cache_key, $content, $this->options->get_option( 'cache_lifetime' ) );
-        }
-        echo $content;
+        $data['position']['all'] = $position;
+        $data['title'] = esc_attr( get_the_title() );
+        $data['url'] = add_query_arg( 'p', get_the_ID(), plugins_url( 'box.php', dirname( __FILE__ ) ) );
+        return $data;
     }
 
     private function get_box( $layout = false )

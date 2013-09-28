@@ -36,10 +36,10 @@ if ( class_exists( 'IworksOptions' ) ) {
 
 class IworksOptions
 {
-    private static $version;
     private $option_function_name;
     private $option_group;
     private $option_prefix;
+    private $version;
     public $notices;
 
     public function __construct()
@@ -71,9 +71,10 @@ class IworksOptions
     private function get_option_array()
     {
         if ( isset( $this->options[ $this->option_group ] ) ) {
-            return $this->options[ $this->option_group ];
+            $options = apply_filters( $this->option_function_name, $this->options );
+            return $options[ $this->option_group ];
         }
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         if ( isset( $options[ $this->option_group ] ) ) {
             $this->options[ $this->option_group ] = $options[ $this->option_group ];
             return $this->options[ $this->option_group ];
@@ -326,7 +327,7 @@ class IworksOptions
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['options'] = array_merge( $option['options'], $option['extra_options']());
                 }
-                $option['options'] = apply_filters( $filter_name.'_data', $option['options'] );
+                $option['options'] = apply_filters( $filter_name.'_data', $option['options'], $option['name'], $option_value );
 
                 $select = apply_filters( $filter_name.'_content', null, $option['options'], $html_element_name, $option['name'], $option_value );
                 if ( empty( $select ) ) {
@@ -494,7 +495,7 @@ class IworksOptions
 
     public function options_init()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             if ( isset ( $data['options'] ) && is_array( $data['options'] ) ) {
                 $option_group = $this->option_prefix.$key;
@@ -551,7 +552,7 @@ class IworksOptions
 
     public function activate()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
                 if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] or !isset( $option['default'] ) ) {
@@ -565,7 +566,7 @@ class IworksOptions
 
     public function deactivate()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
                 if ( 'heading' == $option['type'] or !isset( $option['name'] ) or !$option['name'] ) {
@@ -646,17 +647,18 @@ class IworksOptions
      * helpers
      */
 
-    public function select_page_helper( $name )
+    public function select_page_helper( $name, $show_option_none = false )
     {
         $args = array(
+            'echo' => false,
             'name' => $this->get_option_name( $name ),
             'selected' => $this->get_option( $name ),
-            'echo' => false,
+            'show_option_none' => $show_option_none,
         );
         return wp_dropdown_pages( $args );
     }
 
-    public function select_category_helper( $name, $hide_empty = false )
+    public function select_category_helper( $name, $hide_empty = null )
     {
         $args = array(
             'name'         => $this->get_option_name( $name ),
@@ -667,15 +669,21 @@ class IworksOptions
         wp_dropdown_categories( $args );
     }
 
+    public function get_option_group()
+    {
+        return $this->option_group;
+    }
 }
 
 /**
  * CHANGELOG
 
-== 1.7.4 (2013-08-07) ==
+== 1.7.4 (2013-08-27) ==
 
 * #IMPROVMENT: added helper for wp_dropdown_categories
 * #IMPROVMENT: added helper for wp_dropdown_pages
+* #IMPROVMENT: added get_option_group function
+* #IMPROVMENT: added filter to change options
 
 == 1.7.3 (2013-06-04) ==
 

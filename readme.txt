@@ -196,6 +196,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVMENT: upgrade YARPP integration, minimum YARPP version: 3.5.x
 * IMPROVMENT: updated Hebrew translation by [של אודי בורג](http://blog.udiburg.com)
 * REFACTORING: moved code to class
+# REFACTORING: rewrite on page options to use wp_localize_script
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
 = 3.3.19 =
