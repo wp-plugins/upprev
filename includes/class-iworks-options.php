@@ -58,12 +58,12 @@ class IworksOptions
         return $this->version;
     }
 
-    public function set_option_function_name( $option_function_name )
+    public function set_option_function_name($option_function_name)
     {
         $this->option_function_name = $option_function_name;
     }
 
-    public function set_option_prefix( $option_prefix )
+    public function set_option_prefix($option_prefix)
     {
         $this->option_prefix = $option_prefix;
     }
@@ -82,7 +82,7 @@ class IworksOptions
         return array();
     }
 
-    public function build_options( $option_group = 'index', $echo = true )
+    public function build_options($option_group = 'index', $echo = true)
     {
         $this->option_group = $option_group;
         $options = $this->get_option_array( $option_group );
@@ -194,9 +194,9 @@ class IworksOptions
                     $content .= '<tbody>';
                 }
                 $content .= '<tr><td colspan="2">';
-            } else if ( $option['type'] == 'subheading' ) {
+            } elseif ( $option['type'] == 'subheading' ) {
                 $content .= '<tr><td colspan="2">';
-            } else if ( $option['type'] != 'hidden' ) {
+            } elseif ( $option['type'] != 'hidden' ) {
                 $style = '';
                 if ( isset($option['related_to'] ) && isset( $related_to[ $option['related_to'] ] ) && $related_to[ $option['related_to'] ] == 0 ) {
                     $style .= 'style="display:none"';
@@ -217,6 +217,22 @@ class IworksOptions
                     );
                 break;
             case 'number':
+                $id = '';
+                if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
+                    $id = sprintf( ' id="%s"', $html_element_name );
+                }
+                $content .= sprintf (
+                    '<input type="%s" name="%s" value="%s" class="%s"%s %s %s /> %s',
+                    $option['type'],
+                    $html_element_name,
+                    $this->get_option( $option['name'], $option_group ),
+                    isset($option['class']) && $option['class']? $option['class']:'',
+                    $id,
+                    isset($option['min'])?  'min="'.$option['min'].'"':'',
+                    isset($option['max'])?  'max="'.$option['max'].'"':'',
+                    isset($option['label'])?  $option['label']:''
+                );
+                break;
             case 'password':
             case 'text':
                 $id = '';
@@ -292,7 +308,7 @@ class IworksOptions
                         $disabled = '';
                         if ( preg_match( '/\-disabled$/', $value ) ) {
                             $disabled = 'disabled="disabled"';
-                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                        } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
                             $disabled = 'disabled="disabled"';
                         }
                         $radio .= sprintf(
@@ -335,7 +351,7 @@ class IworksOptions
                         $disabled = '';
                         if ( preg_match( '/\-disabled$/', $value ) ) {
                             $disabled = 'disabled="disabled"';
-                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                        } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
                             $disabled = 'disabled="disabled"';
                         }
                         $select .= sprintf
@@ -393,8 +409,7 @@ class IworksOptions
             case 'serialize':
                 if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
                     $content .= $option['callback']( $this->get_option( $option['name'], $option_group ), $option['name'] );
-                }
-                else if ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
+                } elseif ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
                     ob_start();
                     call_user_func_array( $option[ 'call_user_func' ], $option[ 'call_user_data' ] );
                     $content .= ob_get_contents();
@@ -513,7 +528,7 @@ class IworksOptions
         }
     }
 
-    public function get_values( $option_name, $option_group = 'index' )
+    public function get_values($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
         $data = $this->get_option_array( $option_group );
@@ -532,7 +547,7 @@ class IworksOptions
         return;
     }
 
-    public function get_default_value( $option_name, $option_group = 'index' )
+    public function get_default_value($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
         $options = $this->get_option_array( $option_group );
@@ -584,7 +599,7 @@ class IworksOptions
         delete_option( $this->option_prefix.'cache_stamp' );
     }
 
-    public function settings_fields( $option_name )
+    public function settings_fields($option_name)
     {
         settings_fields( $this->option_prefix . $option_name );
     }
@@ -607,17 +622,18 @@ class IworksOptions
      * options: add, get, update
      */
 
-    public function add_option( $option_name, $option_value, $autoload = true )
+    public function add_option($option_name, $option_value, $autoload = true)
     {
         $autoload = $autoload? 'yes':'no';
         add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
     }
 
-    public function get_option( $option_name, $option_group = 'index', $default_value = null, $forece_default = false )
+    public function get_option($option_name, $option_group = 'index', $default_value = null, $forece_default = false)
     {
         $option_value = get_option( $this->option_prefix.$option_name, null );
+        $default_value = $this->get_default_value( $option_name, $option_group );
         if ( $forece_default && null == $option_value ) {
-            $option_value = $this->get_default_value( $option_name, $option_group );
+            $option_value = $default_value;
         }
         if ( null == $option_value && !empty( $default_value ) ) {
             return $default_value;
@@ -625,12 +641,12 @@ class IworksOptions
         return $option_value;
     }
 
-    public function get_option_name( $name )
+    public function get_option_name($name)
     {
         return sprintf( '%s%s', $this->option_prefix, $name );
     }
 
-    public function update_option( $option_name, $option_value )
+    public function update_option($option_name, $option_value)
     {
         /**
          * delete if option have a default value
@@ -647,18 +663,19 @@ class IworksOptions
      * helpers
      */
 
-    public function select_page_helper( $name, $show_option_none = false )
+    public function select_page_helper($name, $show_option_none = false, $post_type = 'page')
     {
         $args = array(
             'echo' => false,
             'name' => $this->get_option_name( $name ),
             'selected' => $this->get_option( $name ),
             'show_option_none' => $show_option_none,
+            'post_type' => $post_type,
         );
         return wp_dropdown_pages( $args );
     }
 
-    public function select_category_helper( $name, $hide_empty = null )
+    public function select_category_helper($name, $hide_empty = null)
     {
         $args = array(
             'name'         => $this->get_option_name( $name ),
@@ -676,23 +693,24 @@ class IworksOptions
 }
 
 /**
- * CHANGELOG
 
-== 1.7.4 (2013-08-27) ==
+== Changelog ==
 
+= 1.7.4 (2013-08-27) =
+
+* #IMPROVMENT: added filter to change options
+* #IMPROVMENT: added get_option_group function
 * #IMPROVMENT: added helper for wp_dropdown_categories
 * #IMPROVMENT: added helper for wp_dropdown_pages
-* #IMPROVMENT: added get_option_group function
-* #IMPROVMENT: added filter to change options
 
-== 1.7.3 (2013-06-04) ==
+= 1.7.3 (2013-06-04) =
 
 * #BUGFIX: repair get_option, to prevent return always default if null
 * #IMPROVMENT: added force_default to get_option method
 
-== 1.7.2 (2013-05-23) ==
+= 1.7.2 (2013-05-23) =
 
+* IMPROVMENT: add min/max attributes to filed type "number"
 * #IMPROVMENT: add get_option_name method
 
  */
-
