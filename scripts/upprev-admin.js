@@ -10,8 +10,12 @@ function iworks_upprev_tabulator_init()
     jQuery('#hasadmintabs').prepend("<ul><\/ul>");
     jQuery('#hasadmintabs > fieldset').each(function(i){
         id      = jQuery(this).attr('id');
+        rel     = jQuery(this).attr('rel');
         caption = jQuery(this).find('h3').text();
-        jQuery('#hasadmintabs > ul').append('<li><a href="#'+id+'"><span>'+caption+"<\/span><\/a><\/li>");
+        if ( rel ) {
+            rel = ' class="'+rel+'"';
+        }
+        jQuery('#hasadmintabs > ul').append('<li><a href="#'+id+'"><span'+rel+'>'+caption+"<\/span><\/a><\/li>");
         jQuery(this).find('h3').hide();
     });
     index = 0;
