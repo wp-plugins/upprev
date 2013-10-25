@@ -36,16 +36,16 @@ if ( class_exists( 'IworksOptions' ) ) {
 
 class IworksOptions
 {
-    private static $version;
     private $option_function_name;
     private $option_group;
     private $option_prefix;
+    private $version;
     public $notices;
 
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.2';
+        $this->version              = '1.7.4';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -58,12 +58,12 @@ class IworksOptions
         return $this->version;
     }
 
-    public function set_option_function_name( $option_function_name )
+    public function set_option_function_name($option_function_name)
     {
         $this->option_function_name = $option_function_name;
     }
 
-    public function set_option_prefix( $option_prefix )
+    public function set_option_prefix($option_prefix)
     {
         $this->option_prefix = $option_prefix;
     }
@@ -71,9 +71,10 @@ class IworksOptions
     private function get_option_array()
     {
         if ( isset( $this->options[ $this->option_group ] ) ) {
-            return $this->options[ $this->option_group ];
+            $options = apply_filters( $this->option_function_name, $this->options );
+            return $options[ $this->option_group ];
         }
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         if ( isset( $options[ $this->option_group ] ) ) {
             $this->options[ $this->option_group ] = $options[ $this->option_group ];
             return $this->options[ $this->option_group ];
@@ -81,7 +82,7 @@ class IworksOptions
         return array();
     }
 
-    public function build_options( $option_group = 'index', $echo = true )
+    public function build_options($option_group = 'index', $echo = true)
     {
         $this->option_group = $option_group;
         $options = $this->get_option_array( $option_group );
@@ -193,9 +194,9 @@ class IworksOptions
                     $content .= '<tbody>';
                 }
                 $content .= '<tr><td colspan="2">';
-            } else if ( $option['type'] == 'subheading' ) {
+            } elseif ( $option['type'] == 'subheading' ) {
                 $content .= '<tr><td colspan="2">';
-            } else if ( $option['type'] != 'hidden' ) {
+            } elseif ( $option['type'] != 'hidden' ) {
                 $style = '';
                 if ( isset($option['related_to'] ) && isset( $related_to[ $option['related_to'] ] ) && $related_to[ $option['related_to'] ] == 0 ) {
                     $style .= 'style="display:none"';
@@ -245,7 +246,7 @@ class IworksOptions
                     $this->get_option( $option['name'], $option_group ),
                     isset($option['class']) && $option['class']? $option['class']:'',
                     $id,
-                    isset($option['label'])?  $option['label']:''
+                    isset($option['label'])? $option['label']:''
                 );
                 break;
             case 'checkbox':
@@ -307,7 +308,7 @@ class IworksOptions
                         $disabled = '';
                         if ( preg_match( '/\-disabled$/', $value ) ) {
                             $disabled = 'disabled="disabled"';
-                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                        } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
                             $disabled = 'disabled="disabled"';
                         }
                         $radio .= sprintf(
@@ -342,7 +343,7 @@ class IworksOptions
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['options'] = array_merge( $option['options'], $option['extra_options']());
                 }
-                $option['options'] = apply_filters( $filter_name.'_data', $option['options'] );
+                $option['options'] = apply_filters( $filter_name.'_data', $option['options'], $option['name'], $option_value );
 
                 $select = apply_filters( $filter_name.'_content', null, $option['options'], $html_element_name, $option['name'], $option_value );
                 if ( empty( $select ) ) {
@@ -350,7 +351,7 @@ class IworksOptions
                         $disabled = '';
                         if ( preg_match( '/\-disabled$/', $value ) ) {
                             $disabled = 'disabled="disabled"';
-                        } else if ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                        } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
                             $disabled = 'disabled="disabled"';
                         }
                         $select .= sprintf
@@ -407,9 +408,8 @@ class IworksOptions
                 break;
             case 'serialize':
                 if ( isset( $option['callback'] ) && is_callable( $option['callback'] ) ) {
-                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ) );
-                }
-                else if ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
+                    $content .= $option['callback']( $this->get_option( $option['name'], $option_group ), $option['name'] );
+                } elseif ( isset( $option[ 'call_user_func' ] ) && isset( $option[ 'call_user_data' ] ) && is_callable( $option[ 'call_user_func' ] ) ) {
                     ob_start();
                     call_user_func_array( $option[ 'call_user_func' ], $option[ 'call_user_data' ] );
                     $content .= ob_get_contents();
@@ -510,7 +510,7 @@ class IworksOptions
 
     public function options_init()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             if ( isset ( $data['options'] ) && is_array( $data['options'] ) ) {
                 $option_group = $this->option_prefix.$key;
@@ -528,19 +528,7 @@ class IworksOptions
         }
     }
 
-    public function get_option( $option_name, $option_group = 'index', $default_value = null )
-    {
-        $option_value = get_option( $this->option_prefix.$option_name, null );
-        if ( null == $option_value ) {
-            $option_value = $this->get_default_value( $option_name, $option_group );
-        }
-        if ( null == $option_value && !empty( $default_value ) ) {
-            return $default_value;
-        }
-        return $option_value;
-    }
-
-    public function get_values( $option_name, $option_group = 'index' )
+    public function get_values($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
         $data = $this->get_option_array( $option_group );
@@ -559,7 +547,7 @@ class IworksOptions
         return;
     }
 
-    public function get_default_value( $option_name, $option_group = 'index' )
+    public function get_default_value($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
         $options = $this->get_option_array( $option_group );
@@ -579,7 +567,7 @@ class IworksOptions
 
     public function activate()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
                 if ( $option['type'] == 'heading' or !isset( $option['name'] ) or !$option['name'] or !isset( $option['default'] ) ) {
@@ -593,7 +581,7 @@ class IworksOptions
 
     public function deactivate()
     {
-        $options = call_user_func( $this->option_function_name );
+        $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         foreach( $options as $key => $data ) {
             foreach ( $data['options'] as $option ) {
                 if ( 'heading' == $option['type'] or !isset( $option['name'] ) or !$option['name'] ) {
@@ -611,12 +599,54 @@ class IworksOptions
         delete_option( $this->option_prefix.'cache_stamp' );
     }
 
-    public function settings_fields( $option_name )
+    public function settings_fields($option_name)
     {
         settings_fields( $this->option_prefix . $option_name );
     }
 
-    public function update_option( $option_name, $option_value )
+    /**
+     * admin_notices
+     */
+
+    public function admin_notices()
+    {
+        if ( empty( $this->notices ) ) {
+            return;
+        }
+        foreach( $this->notices as $notice ) {
+            printf( '<div class="error"><p>%s</p></div>', $notice );
+        }
+    }
+
+    /**
+     * options: add, get, update
+     */
+
+    public function add_option($option_name, $option_value, $autoload = true)
+    {
+        $autoload = $autoload? 'yes':'no';
+        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
+    }
+
+    public function get_option($option_name, $option_group = 'index', $default_value = null, $forece_default = false)
+    {
+        $option_value = get_option( $this->option_prefix.$option_name, null );
+        $default_value = $this->get_default_value( $option_name, $option_group );
+        if ( $forece_default && null == $option_value ) {
+            $option_value = $default_value;
+        }
+        if ( null == $option_value && !empty( $default_value ) ) {
+            return $default_value;
+        }
+        return $option_value;
+    }
+
+    public function get_option_name($name)
+    {
+        return sprintf( '%s%s', $this->option_prefix, $name );
+    }
+
+    public function update_option($option_name, $option_value)
     {
         /**
          * delete if option have a default value
@@ -629,32 +659,58 @@ class IworksOptions
         update_option( $this->option_prefix.$option_name, $option_value );
     }
 
-    public function add_option( $option_name, $option_value, $autoload = true )
+    /**
+     * helpers
+     */
+
+    public function select_page_helper($name, $show_option_none = false, $post_type = 'page')
     {
-        $autoload = $autoload? 'yes':'no';
-        add_option( $this->option_prefix.$option_name, $option_value, null, $autoload );
+        $args = array(
+            'echo' => false,
+            'name' => $this->get_option_name( $name ),
+            'selected' => $this->get_option( $name ),
+            'show_option_none' => $show_option_none,
+            'post_type' => $post_type,
+        );
+        return wp_dropdown_pages( $args );
     }
 
-    public function admin_notices()
+    public function select_category_helper($name, $hide_empty = null)
     {
-        if ( empty( $this->notices ) ) {
-            return;
-        }
-        foreach( $this->notices as $notice ) {
-            printf( '<div class="error"><p>%s</p></div>', $notice );
-        }
+        $args = array(
+            'name'         => $this->get_option_name( $name ),
+            'selected'     => $this->get_option( $name ),
+            'hierarchical' => true,
+            'hide_empty'   => $hide_empty
+        );
+        wp_dropdown_categories( $args );
     }
 
+    public function get_option_group()
+    {
+        return $this->option_group;
+    }
 }
+
 /**
 
 == Changelog ==
 
-= 1.7.2  (2013-05-31) =
+= 1.7.4 (2013-08-27) =
+
+* #IMPROVMENT: added filter to change options
+* #IMPROVMENT: added get_option_group function
+* #IMPROVMENT: added helper for wp_dropdown_categories
+* #IMPROVMENT: added helper for wp_dropdown_pages
+
+= 1.7.3 (2013-06-04) =
+
+* #BUGFIX: repair get_option, to prevent return always default if null
+* #IMPROVMENT: added force_default to get_option method
+
+= 1.7.2 (2013-05-23) =
 
 * IMPROVMENT: add min/max attributes to filed type "number"
+* #IMPROVMENT: add get_option_name method
 
-*/
-
-
-
+ */
