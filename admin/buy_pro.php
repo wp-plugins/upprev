@@ -12,24 +12,25 @@ ob_start();
     </dl>
     <p><?php _e( 'Attention! Before buying Social Slider Pro, check if the basic version of the plugin works correctly on your blog.', 'iworks_upprev' ) ?></p>
     <p><?php _e( 'To gain access to all the features of <strong>upPrev Pro</strong>, simply buy a lifetime license using <a href="http://paypal.com/" title="PayPal">PayPal</a>.', 'iworks_upprev') ?></p>
-    <form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank">
-        <input type="hidden" name="amount" value="40" />
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="no_note" value="1" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="hidden" name="notify_url" value="http://iworks.pl/paypal.index.php" />
-        <input type="hidden" name="business" value="paypal@iworks.pl" />
-        <input type="hidden" name="item_name" value="upPrev" />
-        <input type="hidden" name="item_number" value="" />
-        <input type="hidden" name="quantity" value="1" />
-        <input type="hidden" name="lc" value="US" />
-        <input type="hidden" name="custom" value="<?php echo $custom; ?>" />
-        <input type="hidden" name="return" value="http://iworks.pl" />
-        <input type="hidden" name="cancel_return" value="http://iworks.pl" />
-        <input type="image" style="display: block;margin: 20px auto;" src="http://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
-    </form>
-
+    <div id="iworks_upprev_paypal">
+        <form name="f" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin: 0 0 20px 20px;" target="_blank">
+            <input type="hidden" name="amount" value="40" />
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="no_note" value="1" />
+            <input type="hidden" name="no_shipping" value="1" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <input type="hidden" name="notify_url" value="http://iworks.pl/paypal.index.php" />
+            <input type="hidden" name="business" value="paypal@iworks.pl" />
+            <input type="hidden" name="item_name" value="upPrev" />
+            <input type="hidden" name="item_number" value="" />
+            <input type="hidden" name="quantity" value="1" />
+            <input type="hidden" name="lc" value="US" />
+            <input type="hidden" name="custom" value="<?php echo $custom; ?>" />
+            <input type="hidden" name="return" value="http://iworks.pl" />
+            <input type="hidden" name="cancel_return" value="http://iworks.pl" />
+            <input type="image" style="display: block;margin: 20px auto;" src="http://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+        </form>
+    </div>
     <p><?php _e("Your license will be automatically activated just after the transaction.", 'iworks_upprev') ?></p>
     <h4><?php _e( 'Multiple sites licence', 'iworks_upprev' ); ?></h4>
     <p><?php _e("If you would like to purchase licenses for more of your blogs, please send an e-mail to <a href='mailto:marcin@iworks.pl'>marcin@iworks.pl</a>. You can get a discount when purchasing multiple licenses at one time.", 'iworks_upprev') ?></p>

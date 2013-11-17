@@ -32,7 +32,6 @@ function iworks_upprev_tabulator_init()
 }
 
 jQuery( document ).ready( function( $ ) {
-
     /**
      * configuration
      */
@@ -43,5 +42,12 @@ jQuery( document ).ready( function( $ ) {
      * color
      */
     $('.wpColorPicker').wpColorPicker();
+    /**
+     * paypal
+     */
+    $('#iworks_upprev_paypal input[name=submit]').bind('click', function() {
+        $('#iworks_upprev_paypal form').submit();
+        return false;
+    });
 });
 

@@ -1,9 +1,13 @@
 <?php
+
+$base = dirname(dirname(__FILE__));
+$vendor = $base.'/vendor';
+
 /**
  * require: IworksUpprev Class
  */
 if ( !class_exists( 'IworksUpprev' ) ) {
-    require_once dirname( __FILE__ ).'/class-iworks-upprev.php';
+    require_once $vendor.'/iworks/upprev.php';
 }
 /**
  * configuration
@@ -48,4 +52,3 @@ function iworks_upprev_deactivate()
     global $iworks_upprev_options;
     $iworks_upprev_options->deactivate();
 }
-

@@ -44,7 +44,7 @@ class IworksUpprev
          * static settings
          */
         $this->version           = '2.0';
-        $this->base              = dirname( __FILE__ );
+        $this->base              = dirname( dirname( __FILE__ ) );
         $this->dir               = basename( dirname( $this->base ) );
         $this->capability        = apply_filters( 'iworks_upprev_capability', 'manage_options' );
         $this->is_pro            = $this->is_pro();
@@ -131,7 +131,7 @@ class IworksUpprev
          * check mobile devices
          */
         if ( 1 == $this->options->get_option( 'mobile_hide' ) || 1 == $this->options->get_option( 'mobile_tablets' ) ) {
-            require_once 'Mobile_Detect.php';
+            require_once $this->base.'/mobile/detect.php';
             $detect = new Mobile_Detect;
             if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->options->get_option( 'mobile_hide' ) ) {
                 return true;
@@ -164,7 +164,7 @@ class IworksUpprev
         return false;
     }
 
-    public function get_version( $file = null )
+    public function get_version($file = null)
     {
         if ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) {
             if ( null != $file ) {
@@ -292,7 +292,7 @@ class IworksUpprev
         add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
     }
 
-    public function plugin_row_meta( $links, $file )
+    public function plugin_row_meta($links, $file)
     {
         if ( $this->dir.'/upprev.php' == $file ) {
             if ( !is_multisite() && current_user_can( $this->capability ) ) {
@@ -305,7 +305,7 @@ class IworksUpprev
         return $links;
     }
 
-    public function index_iworks_upprev_position_data( $data )
+    public function index_iworks_upprev_position_data($data)
     {
         if ( $this->is_pro ) {
             return $data;
@@ -346,7 +346,7 @@ class IworksUpprev
         $position = $this->sanitize_position( $this->options->get_option( 'position' ) );
         foreach( array( 'top', 'left', 'center', 'middle' ) as $key ) {
             $re = sprintf( '/%s/', $key );
-            $data['position'][$key] = preg_match( $re, $position ); 
+            $data['position'][$key] = preg_match( $re, $position );
         }
         $data['position']['all'] = $position;
         $data['title'] = esc_attr( get_the_title() );
@@ -354,7 +354,7 @@ class IworksUpprev
         return $data;
     }
 
-    private function get_box( $layout = false )
+    private function get_box($layout = false)
     {
         if ( 'site' == $this->working_mode ) {
             $use_cache = $this->options->get_option( 'use_cache' );
@@ -579,14 +579,14 @@ class IworksUpprev
             $header_text = $this->options->get_option( 'header_text' );
             if ( !empty( $header_text ) ) {
                 $title .= $header_text;
-            } else if ( count( $siblings ) ) {
+            } elseif ( count( $siblings ) ) {
                 $title .= sprintf ( '%s ', __( 'More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
                     $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
                 }
                 $title .= implode( ', ', $a);
-            } else if ( preg_match( '/^(random|yarpp)$/', $compare ) or 'vertical 3' == $layout ) {
+            } elseif ( preg_match( '/^(random|yarpp)$/', $compare ) or 'vertical 3' == $layout ) {
                 $title .= __( 'Read more:', 'upprev' );
             } else {
                 $title .= __( 'Read previous post:', 'upprev' );
@@ -673,7 +673,7 @@ class IworksUpprev
             );
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
                 $item .= sprintf( '<p>%s</p>', wp_trim_words( get_the_excerpt(), $this->options->get_option( 'excerpt_length' ), '...' ) );
-            } else if ( $image && $make_break ) {
+            } elseif ( $image && $make_break ) {
                 $item .= '<br />';
             }
             $item .= '</div>';
@@ -702,7 +702,7 @@ class IworksUpprev
         return apply_filters( 'iworks_upprev_box', $value );
     }
 
-    public function posts_where( $where = '' )
+    public function posts_where($where = '')
     {
         if ( !is_singular() ) {
             return $where;
@@ -726,7 +726,7 @@ class IworksUpprev
         }
     }
 
-    private function sanitize_layout( $layout )
+    private function sanitize_layout($layout)
     {
         if ( array_key_exists( $layout, $this->available_layouts ) ) {
             if ( $this->is_pro ) {
@@ -743,7 +743,7 @@ class IworksUpprev
     /**
      * callback: layout
      */
-    public function build_layout_chooser( $layout )
+    public function build_layout_chooser($layout)
     {
         $this->working_mode = 'admin';
         $options = array();
@@ -797,7 +797,7 @@ class IworksUpprev
         }
     }
 
-    private function position_one_radio( $value, $input, $html_element_name, $option_name, $option_value )
+    private function position_one_radio($value, $input, $html_element_name, $option_name, $option_value)
     {
         $option_value = $this->sanitize_position( $option_value );
         $id = $option_name.'-'.$value;
@@ -819,7 +819,7 @@ class IworksUpprev
         );
     }
 
-    public function index_iworks_upprev_position_content( $content, $data, $html_element_name, $option_name, $option_value )
+    public function index_iworks_upprev_position_content($content, $data, $html_element_name, $option_name, $option_value)
     {
         $content = '';
         if ( !$this->is_pro ) {
@@ -844,7 +844,7 @@ class IworksUpprev
         return $content;
     }
 
-    public function index_iworks_upprev_colors( $content )
+    public function index_iworks_upprev_colors($content)
     {
         if ( !$this->is_pro ) {
             return $content;
@@ -852,7 +852,7 @@ class IworksUpprev
         return preg_replace( '/ disabled="disabled"/', '', $content );
     }
 
-    public function index_iworks_upprev_color_set( $content )
+    public function index_iworks_upprev_color_set($content)
     {
         if ( !$this->is_pro ) {
             return '<p class="error-message">'.__( 'Colors setup is available in PRO version!', 'upprev' ).'</p>'.$content;
@@ -871,7 +871,7 @@ class IworksUpprev
         echo $content;
     }
 
-    private function get_default_params( $layout = null )
+    private function get_default_params($layout = null)
     {
         if ( null == $layout ) {
             $layout = $this->sanitize_layout( $this->options->get_option( 'layout' ) );
@@ -882,13 +882,13 @@ class IworksUpprev
         return array();
     }
 
-    private function enqueue_style( $name, $deps = null )
+    private function enqueue_style($name, $deps = null)
     {
         $file = '/styles/'.$name.$this->dev.'.css';
         wp_enqueue_style ( $name, plugins_url( $file, $this->base ), $deps, $this->get_version( $file ) );
     }
 
-    private function sanitize_position( $position )
+    private function sanitize_position($position)
     {
         $positions = $this->options->get_values( 'position' );
         if ( $this->is_pro && array_key_exists( $position, $positions ) ) {
@@ -903,7 +903,7 @@ class IworksUpprev
     /**
      * sanitize_compare
      */
-    private function sanitize_compare( $compare )
+    private function sanitize_compare($compare)
     {
         if ( !preg_match( '/^(simple|category|tag|random|yarpp|simple_or_yarpp)$/', $compare ) ) {
             return 'simple';
@@ -920,7 +920,7 @@ class IworksUpprev
     /**
      * exclude categories
      */
-    public function build_exclude_categories( $values )
+    public function build_exclude_categories($values)
     {
         $args = array(
             'hide_empty'   => false,
@@ -954,7 +954,7 @@ class IworksUpprev
     /**
      * exclude tags
      */
-    public function build_exclude_tags( $values )
+    public function build_exclude_tags($values)
     {
         $args = array(
             'hide_empty'   => false,
@@ -988,7 +988,7 @@ class IworksUpprev
     /**
      * Buy PRO page
      */
-    public function buy_pro_page( $content = '' )
+    public function buy_pro_page($content = '')
     {
         if ( $this->is_pro ) {
             return;
@@ -999,7 +999,7 @@ class IworksUpprev
     /**
      * Buy PRO link
      */
-    public function link_buy( $type = 'this-site' )
+    public function link_buy($type = 'this-site')
     {
         $params = array();
         $link = 'http://upprev.com/buy/';
@@ -1014,4 +1014,3 @@ class IworksUpprev
         echo add_query_arg( 'iworks_upprev', urlencode( base64_encode( gzcompress( serialize( $params ) ) ) ), $link );
     }
 }
-
