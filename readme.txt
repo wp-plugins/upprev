@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.3
-Tested up to: 3.7
-Stable tag: 3.3.20
+Tested up to: 3.7.1
+Stable tag: 3.3.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,6 +198,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * REFACTORING: moved code to class
 # REFACTORING: rewrite on page options to use wp_localize_script
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.21 =
+
+* BUGFIX: replace WP_PLUGIN_URL with plugins_url() thx to [tigr](http://wordpress.org/support/profile/tigr) [SSL compatibility](http://wordpress.org/support/topic/ssl-compatibility)
 
 = 3.3.20 =
 
