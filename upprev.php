@@ -68,13 +68,13 @@ function iworks_upprev_init()
 function iworks_upprev_check()
 {
     if ( !is_singular() && 'page' != get_option( 'show_on_front' ) ) {
-        return true;
+        return apply_filters( 'iworks_upprev_check', true );
     }
     /**
      * check mobile devices
      */
     if ( iworks_upprev_check_mobile_device() ) {
-        return true;
+        return apply_filters( 'iworks_upprev_check', true );
     }
     /**
      * global option object
@@ -85,12 +85,15 @@ function iworks_upprev_check()
      */
     $post_types = $iworks_upprev_options->get_option( 'post_type' );
     if ( is_page() && $iworks_upprev_options->get_option( 'match_post_type' ) ) {
-        return !array_key_exists( 'page', $post_types );
+        $value = !array_key_exists( 'page', $post_types );
+        return apply_filters( 'iworks_upprev_check', $value );
     } else if ( is_singular() && $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
         global $post;
-        return !array_key_exists( get_post_type( $post ), $post_types );
+        $value = !array_key_exists( get_post_type( $post ), $post_types );
+        return apply_filters( 'iworks_upprev_check', $value );
     }
-    return !is_singular();
+    $value = !is_singular();
+    return apply_filters( 'iworks_upprev_check', $value );
 }
 
 function iworks_upprev_enqueue_scripts()
