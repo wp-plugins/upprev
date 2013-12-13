@@ -125,7 +125,8 @@ class IworksUpprev
          * check base and exclude streams
          */
         if ( !is_singular() && 'page' != get_option( 'show_on_front' ) ) {
-            return true;
+            $value = true;
+            return apply_filters( 'iworks_upprev_check', $value );
         }
         /**
          * check mobile devices
@@ -134,10 +135,12 @@ class IworksUpprev
             require_once $this->base.'/mobile/detect.php';
             $detect = new Mobile_Detect;
             if ( $detect->isMobile() && !$detect->isTablet() && 1 == $this->options->get_option( 'mobile_hide' ) ) {
-                return true;
+                $value = true;
+                return apply_filters( 'iworks_upprev_check', $value );
             }
             if ( $detect->isTablet() && 1 == $this->options->get_option( 'mobile_tablets' ) ) {
-                return true;
+                $value = true;
+                return apply_filters( 'iworks_upprev_check', $value );
             }
         }
         /**
@@ -148,15 +151,18 @@ class IworksUpprev
          * check front page
          */
         if ( is_front_page() && $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
-            return !in_array( 'post', $post_types );
+            $value = !in_array( 'post', $post_types );
+            return apply_filters( 'iworks_upprev_check', $value );
         }
         /**
          * check post types
          */
         if ( $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
-            return !is_singular( $post_types );
+            $value = !is_singular( $post_types );
+            return apply_filters( 'iworks_upprev_check', $value );
         }
-        return !is_single();
+        $value = !is_single();
+        return apply_filters( 'iworks_upprev_check', $value );
     }
 
     public function is_pro()

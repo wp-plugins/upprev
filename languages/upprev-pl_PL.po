@@ -620,8 +620,8 @@ msgid ""
 "<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Support "
 "Forums</a>"
 msgstr ""
-"<a href=\"http://wordpress.org/tags/upprev\" target=\"_blank\">Forum "
-"wsparcia (en)</a>"
+"<a href=\"http://pl.forums.wordpress.org/tags/upprev\" target=\"_blank\">Forum "
+"wsparcia</a>"
 
 #: includes/class-iworks-upprev.php:239
 msgid "<a href=\"http://iworks.pl/en/\" target=\"_blank\">break the web</a>"
