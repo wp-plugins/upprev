@@ -3,7 +3,7 @@
 Class Name: iWorks Options
 Class URI: http://iworks.pl/
 Description: Option class to manage opsions.
-Version: trunk
+Version: 1.7.7
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv2 or later
@@ -45,7 +45,7 @@ class IworksOptions
     public function __construct()
     {
         $this->notices              = array();
-        $this->version              = '1.7.4';
+        $this->version              = '1.7.7';
         $this->option_group         = 'index';
         $this->option_function_name = null;
         $this->option_prefix        = null;
@@ -300,42 +300,46 @@ class IworksOptions
                 if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
                     $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
-                $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
-                $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option['name'], $option_value );
-                if ( empty( $radio ) ) {
-                    foreach ($option['radio'] as $value => $input) {
-                        $id = $option['name'].$i++;
-                        $disabled = '';
-                        if ( preg_match( '/\-disabled$/', $value ) ) {
-                            $disabled = 'disabled="disabled"';
-                        } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
-                            $disabled = 'disabled="disabled"';
-                        }
-                        $radio .= sprintf(
-                            '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label>',
-                            sanitize_title( $value ),
-                            $disabled? ' disabled':'',
-                            $id,
-                            $html_element_name,
-                            $value,
-                            ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
-                            $id,
-                            $disabled,
-                            $input['label']
-                        );
-                        if ( isset( $input['description'] ) ) {
+                if ( array_key_exists( 'radio', $option ) ) {
+                    $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
+                    $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option['name'], $option_value );
+                    if ( empty( $radio ) ) {
+                        foreach ($option['radio'] as $value => $input) {
+                            $id = $option['name'].$i++;
+                            $disabled = '';
+                            if ( preg_match( '/\-disabled$/', $value ) ) {
+                                $disabled = 'disabled="disabled"';
+                            } elseif ( isset( $input['disabled'] ) && $input['disabled'] ) {
+                                $disabled = 'disabled="disabled"';
+                            }
                             $radio .= sprintf(
-                                '<br /><span class="description">%s</span>',
-                                $input['description']
+                                '<li class="%s%s"><label for="%s"><input type="radio" name="%s" value="%s"%s id="%s" %s/> %s</label>',
+                                sanitize_title( $value ),
+                                $disabled? ' disabled':'',
+                                $id,
+                                $html_element_name,
+                                $value,
+                                ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
+                                $id,
+                                $disabled,
+                                $input['label']
                             );
+                            if ( isset( $input['description'] ) ) {
+                                $radio .= sprintf(
+                                    '<br /><span class="description">%s</span>',
+                                    $input['description']
+                                );
+                            }
+                            $radio .= '</li>';
                         }
-                        $radio .= '</li>';
+                        if ( $radio ) {
+                            $radio = '<ul>'.$radio.'</ul>';
+                        }
                     }
-                    if ( $radio ) {
-                        $radio = '<ul>'.$radio.'</ul>';
-                    }
+                    $content .= apply_filters( $filter_name, $radio );
+                } else {
+                    $content .= sprintf( '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>', $option['name'] );
                 }
-                $content .= apply_filters( $filter_name, $radio );
                 break;
             case 'select':
                 $option_value = $this->get_option( $option['name'], $option_group );
@@ -554,7 +558,7 @@ class IworksOptions
         /**
          * check options exists?
          */
-        if ( !is_array( $options['options'] ) ) {
+        if ( !array_key_exists( 'options', $options ) or !is_array( $options['options'] ) ) {
             return null;
         }
         foreach ( $options['options'] as $option ) {
@@ -597,6 +601,8 @@ class IworksOptions
             }
         }
         delete_option( $this->option_prefix.'cache_stamp' );
+        delete_option( $this->option_prefix.'version' );
+        delete_option( $this->option_prefix.'flush_rules' );
     }
 
     public function settings_fields($option_name)
@@ -632,11 +638,8 @@ class IworksOptions
     {
         $option_value = get_option( $this->option_prefix.$option_name, null );
         $default_value = $this->get_default_value( $option_name, $option_group );
-        if ( $forece_default && null == $option_value ) {
+        if ( ( $default_value || $forece_default ) && is_null( $option_value ) ) {
             $option_value = $default_value;
-        }
-        if ( null == $option_value && !empty( $default_value ) ) {
-            return $default_value;
         }
         return $option_value;
     }
@@ -691,26 +694,3 @@ class IworksOptions
         return $this->option_group;
     }
 }
-
-/**
-
-== Changelog ==
-
-= 1.7.4 (2013-08-27) =
-
-* #IMPROVMENT: added filter to change options
-* #IMPROVMENT: added get_option_group function
-* #IMPROVMENT: added helper for wp_dropdown_categories
-* #IMPROVMENT: added helper for wp_dropdown_pages
-
-= 1.7.3 (2013-06-04) =
-
-* #BUGFIX: repair get_option, to prevent return always default if null
-* #IMPROVMENT: added force_default to get_option method
-
-= 1.7.2 (2013-05-23) =
-
-* IMPROVMENT: add min/max attributes to filed type "number"
-* #IMPROVMENT: add get_option_name method
-
- */

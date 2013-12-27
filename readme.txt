@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 3.3.22
+Stable tag: 3.3.23
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,6 +171,11 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.23 =
+
+* BUGFIX: default value only when is need thx to [Jeff](http://wordpress.org/support/profile/lambje) [Offset Not Working](http://wordpress.org/support/topic/offset-not-working)
+* IMPROVMENT: updated IworksOptionClass to 1.7.7
 
 = 3.3.22 =
 
