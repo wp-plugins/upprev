@@ -172,6 +172,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 == Changelog ==
 
+= 3.3.24 =
+
+* IMPROVMENT: updated IworksOptionClass to 2.0.0
+
 = 3.3.23 =
 
 * BUGFIX: default value only when is need thx to [Jeff](http://wordpress.org/support/profile/lambje) [Offset Not Working](http://wordpress.org/support/topic/offset-not-working)
