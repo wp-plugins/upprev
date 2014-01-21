@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 3.3.23
+Stable tag: 3.3.24
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -174,6 +174,8 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.3.24 =
 
+* BUGFIX: prevent to display upPrev box on attachment page thx to [Swaps4](http://wordpress.org/support/profile/swaps4) [Upprev displaying on attachment pages with no styling](http://wordpress.org/support/topic/upprev-displaying-on-attachment-pages-with-no-styling)
+* BUGFIX: remove add_contextual_help function (deprecated from 3.3).
 * IMPROVMENT: updated IworksOptionClass to 2.0.0
 
 = 3.3.23 =

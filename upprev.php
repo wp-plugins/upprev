@@ -84,6 +84,10 @@ function iworks_upprev_check()
      * check post types
      */
     $post_types = $iworks_upprev_options->get_option( 'post_type' );
+    if ( empty( $post_types ) ) {
+        $post_types['post'] = 'post';
+    }
+
     if ( is_page() && $iworks_upprev_options->get_option( 'match_post_type' ) ) {
         $value = !array_key_exists( 'page', $post_types );
         return apply_filters( 'iworks_upprev_check', $value );
@@ -209,14 +213,12 @@ function iworks_upprev_add_pages()
 {
     $dir = explode('/', dirname(__FILE__));
     $dir = $dir[ count( $dir ) - 1 ];
-    if (current_user_can( 'manage_options' ) && function_exists('add_theme_page') ) {
-        add_theme_page(
-            __('upPrev', 'upprev'),
-            __('upPrev', 'upprev'),
-            'manage_options',
-            $dir.'/admin/index.php'
-        );
-    }
+    add_theme_page(
+        __('upPrev', 'upprev'),
+        __('upPrev', 'upprev'),
+        'manage_options',
+        $dir.'/admin/index.php'
+    );
 }
 
 function iworks_upprev_admin_enqueue_scripts()

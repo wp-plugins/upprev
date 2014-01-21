@@ -15,8 +15,6 @@ function iworks_upprev_options_init()
     global $iworks_upprev_options;
     $iworks_upprev_options->options_init();
     add_filter( 'plugin_row_meta', 'iworks_upprev_plugin_links', 10, 2 );
-    $text = __("<p>upPrev settings allows you to set the proprites of user notification showed when reader scroll down the page.</p>");
-    add_contextual_help( 'upprev/admin/index', $text );
 }
 
 function iworks_upprev_activate()
