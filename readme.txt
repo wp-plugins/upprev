@@ -36,6 +36,7 @@ in the selected configuration:
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
+* Simplified Chinese - [Leo](http://smallseotips.com/)
 * Spanish (er_ES) - [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
@@ -67,6 +68,7 @@ upPrev plugin will work on websites in the following languages:
 * Polish
 * Romanian
 * Russian
+* Simplified Chinese
 * Spanish
 * Turkish
 * Vietnamese
