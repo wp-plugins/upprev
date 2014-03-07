@@ -4,7 +4,7 @@ Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 3.3.24
+Stable tag: 3.3.25
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -181,7 +181,6 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVMENT: added capability filter *iworks_upprev_capability* - now you can easy change capability (default is manage_options)
 * IMPROVMENT: added categories exclude (only PRO version)
 * IMPROVMENT: added color chooser (only PRO version)
-* IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
 * IMPROVMENT: added filter 'iworks_upprev_thumbnail_size' for thumbnail size
 * IMPROVMENT: added free layouts: "Vertical Three"
 * IMPROVMENT: added pro layouts: "Bloginity style"
@@ -198,6 +197,17 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * REFACTORING: moved code to class
 # REFACTORING: rewrite on page options to use wp_localize_script
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.25 =
+
+* IMPROVMENT: updated Simplified Chinese translation by [Leo](http://smallseotips.com/)
+* IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
+
+= 3.3.24 =
+
+* BUGFIX: prevent to display upPrev box on attachment page thx to [Swaps4](http://wordpress.org/support/profile/swaps4) [Upprev displaying on attachment pages with no styling](http://wordpress.org/support/topic/upprev-displaying-on-attachment-pages-with-no-styling)
+* BUGFIX: remove add_contextual_help function (deprecated from 3.3).
+* IMPROVMENT: updated IworksOptionClass to 2.0.0
 
 = 3.3.23 =
 
