@@ -93,8 +93,11 @@ function iworks_upprev_check()
         return apply_filters( 'iworks_upprev_check', $value );
     } else if ( is_singular() && $iworks_upprev_options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
         global $post;
-        $value = !array_key_exists( get_post_type( $post ), $post_types );
-        return apply_filters( 'iworks_upprev_check', $value );
+        $post_type = get_post_type($post);
+        if ( !empty( $post_type ) ) {
+            $value = !array_key_exists( get_post_type( $post ), $post_types );
+            return apply_filters( 'iworks_upprev_check', $value );
+        }
     }
     $value = !is_singular();
     return apply_filters( 'iworks_upprev_check', $value );
