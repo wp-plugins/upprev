@@ -33,6 +33,7 @@ in the selected configuration:
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Hebrew (he_IL) - [עמיעד](http://hatul.info), [של אודי בורג](http://blog.udiburg.com)
+* Italian (it_IT) - [Francesco Giossi](http://www.giossi.com)
 * Polish (pl_PL) - [Marcin Pietrzak](http://iworks.pl/)
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
@@ -65,6 +66,7 @@ upPrev plugin will work on websites in the following languages:
 * French
 * German
 * Hebrew
+* Italian
 * Polish
 * Romanian
 * Russian
@@ -173,6 +175,11 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 5. upPrev options: cache
 
 == Changelog ==
+
+= 3.3.26 =
+
+* BUGFIX: fixed empty post_type value thx to [Zeus](http://wordpress.org/support/profile/prabhakaraan) [UpPrev error - array_key_exists()!](http://wordpress.org/support/topic/upprev-error-array_key_exists)
+* IMPROVMENT: added Italian translation by [Francesco Giossi](http://www.giossi.com)
 
 = 3.3.25 =
 
