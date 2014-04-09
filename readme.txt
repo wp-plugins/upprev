@@ -210,7 +210,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 = 3.3.25 =
 
 * IMPROVMENT: updated Simplified Chinese translation by [Leo](http://smallseotips.com/)
-* IMPROVMENT: added filter 'iworks_upprev_box_title' for box title, return false to remove title
+* IMPROVMENT: added filter '[iworks_upprev_box_title](http://upprev.com/documentation/filter-reference/iworks_upprev_box_title)' for box title, return false to remove title
 
 = 3.3.24 =
 
@@ -225,7 +225,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.3.22 =
 
-* IMPROVMENT: add iworks_upprev_check filter, see documentation: [Filter Reference – iworks_upprev_check](http://upprev.com/fiter_reference_iworks_upprev_check.html)
+* IMPROVMENT: add [iworks_upprev_check filter](http://upprev.com/documentation/filter-reference/iworks_upprev_check), see documentation: [Filter Reference – iworks_upprev_check](http://upprev.com/fiter_reference_iworks_upprev_check.html)
 
 = 3.3.21 =
 
@@ -326,7 +326,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.2 =
 
-* IMPROVMENT: added action *iworks_upprev_image* - you can add own code to produce icon, when them don't support post-thumbnails
+* IMPROVMENT: added action *[iworks_upprev_image](http://upprev.com/documentation/action-reference/iworks_upprev_image)* - you can add own code to produce icon, when them don't support post-thumbnails
 * IMPROVMENT: added thumbnail filter *iworks_upprev_get_the_post_thumbnail* - now you can easy change thumbnail
 * IMPROVMENT: added purging transient cache entries from $wpdb->options table when turn off this cache [forum](http://wordpress.org/support/topic/plugin-upprev-crazy-number-of-wp-options-database-entries)
 * IMPROVMENT: add check _gaq object exist
@@ -353,7 +353,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * BUGFIX: fixed problem with unchecking 'Excerpts'. [forum](http://wordpress.org/support/topic/plugin-upprev-bugs-no-box-in-firefox-6-offset-doesnt-work-disable-excerpts-doesnt-work) thx [benjamin](http://wordpress.org/support/profile/kbenjamin)
 * BUGFIX: fixed sticky posts display loop
 * BUGFIX: fixed thumbnail display problem
-* IMPROVMENT: added filter 'iworks_upprev_box_item' for any item excerpt YARPPs
+* IMPROVMENT: added filter '[iworks_upprev_box_item](http://upprev.com/documentation/filter-reference/iworks-upprev-box-item)' for any item excerpt YARPPs
 * IMPROVMENT: added GA track: view box and click link
 * IMPROVMENT: added option *ignore sticky posts*
 * IMPROVMENT: added sanitize function for offset
