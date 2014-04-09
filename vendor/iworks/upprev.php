@@ -158,7 +158,7 @@ class IworksUpprev
          * check post types
          */
         if ( $this->options->get_option( 'match_post_type' ) && is_array( $post_types ) ) {
-            $value = !is_singular( $post_types );
+            $value = !is_singular( array_values( $post_types ) );
             return apply_filters( 'iworks_upprev_check', $value );
         }
         $value = !is_single();
