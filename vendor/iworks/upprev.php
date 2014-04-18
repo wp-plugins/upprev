@@ -175,7 +175,9 @@ class IworksUpprev
         if ( defined( 'IWORKS_DEV_MODE' ) && IWORKS_DEV_MODE ) {
             if ( null != $file ) {
                 $file = dirname( dirname ( __FILE__ ) ) . $file;
-                return md5_file( $file );
+                if ( is_file( $file ) ) {
+                    return md5_file( $file );
+                }
             }
             return rand( 0, 99999 );
         }
@@ -188,7 +190,6 @@ class IworksUpprev
         add_action( 'admin_init',                 array( &$this, 'admin_init' ) );
         add_action( 'admin_init',                 'iworks_upprev_options_init' );
         add_action( 'admin_menu',                 array( &$this, 'admin_menu' ) );
-        add_action( 'wp_before_admin_bar_render', array( &$this, 'admin_bar' ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
         add_action( 'wp_head',                    array( &$this, 'print_custom_style'), PHP_INT_MAX );
         /**
@@ -256,22 +257,6 @@ class IworksUpprev
             $this->enqueue_style( 'upprev-admin' );
             $this->enqueue_style( 'upprev' );
         }
-    }
-
-    public function admin_bar()
-    {
-        if ( !current_user_can( $this->capability ) ) {
-            return;
-        }
-        global $wp_admin_bar;
-        $wp_admin_bar->add_menu(
-            array(
-                'parent' => 'appearance',
-                'id'     => 'upprev',
-                'title'  => __( 'upPrev', 'upprev' ),
-                'href'   => admin_url( 'themes.php?page=' . $this->dir . '/admin/index.php' )
-            )
-        );
     }
 
     public function wp_enqueue_scripts()
@@ -356,7 +341,7 @@ class IworksUpprev
         }
         $data['position']['all'] = $position;
         $data['title'] = esc_attr( get_the_title() );
-        $data['url'] = add_query_arg( 'p', get_the_ID(), plugins_url( 'box.php', dirname( __FILE__ ) ) );
+        $data['url'] = add_query_arg( 'p', get_the_ID(), plugins_url( 'box.php', $this->base ) );
         return $data;
     }
 
@@ -440,8 +425,9 @@ class IworksUpprev
         /**
          * exclude one id if singular
          */
+        $post_ID = 0;
         if( isset( $_GET['p'] ) && preg_match( '/^\d+$/', $_GET['p'] ) ) {
-            $args['post__not_in'] = array( $_GET['p'] );
+            $post_ID = $args['post__not_in'] = array( $_GET['p'] );
         }
         /**
          * check & set post type
@@ -482,7 +468,7 @@ class IworksUpprev
          * category
          */
         case 'category':
-            $categories = get_the_category();
+            $categories = get_the_category($post_ID);
             if ( !$categories ) {
                 break;
             }
