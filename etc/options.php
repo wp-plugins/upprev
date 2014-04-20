@@ -10,9 +10,6 @@ function iworks_upprev_options()
     $iworks_upprev_options['index'] = array(
         'use_tabs' => true,
         'version'  => '0.0',
-        'page_title' => __('upPrev configuration', 'upprev'),
-        'menu_title' => __('upPrev', 'upprev'),
-        'menu' => 'comments',
         'options'  => array(
             array(
                 'name'              => 'last_used_tab',
@@ -553,7 +550,7 @@ function iworks_upprev_options()
             ),
             /**
              * buy pro version
-             * /
+             */
             array(
                 'type'              => 'page',
                 'label'             => __( 'Buy PRO!', 'upprev' ),
@@ -561,15 +558,6 @@ function iworks_upprev_options()
                 'class'             => 'error-message',
                 'filter'            => 'iworks_upprev_buy_pro',
                 'callback_to_show'  => 'iworks_upprev_callback_is_pro'
-            ),
-             */
-        ),
-        'metaboxes' => array(
-            'foo' => array(
-                'title' => 'title',
-                'callback' => 'callback',
-                'context' => 'side',
-                'priority' => 'core',
             ),
         ),
     );

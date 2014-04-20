@@ -40,7 +40,6 @@ class iworks_options
     private $option_group;
     private $option_prefix;
     private $version;
-    private $pagehooks = array();
     public $notices;
 
     public function __construct()
@@ -52,44 +51,6 @@ class iworks_options
         $this->option_prefix        = null;
 
         add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
-        add_action( 'admin_menu', array($this, 'admin_menu' ) );
-    }
-
-    public function admin_menu()
-    {
-        foreach( $this->options as $key => $data ) {
-            if ( !array_key_exists( 'menu', $data ) ) {
-                $data['menu'] = '';
-            }
-            switch( $data['menu'] ) 
-            {
-            case 'comments':
-            case 'dashboard':
-            case 'links':
-            case 'management':
-            case 'media':
-            case 'options':
-            case 'pages':
-            case 'plugins':
-            case 'posts':
-            case 'posts':
-            case 'theme':
-            case 'users':
-                $function = sprintf( 'add_%s_page', $data['menu'] );
-                break;
-            default:
-                $function = 'add_menu_page';
-                break;
-            }
-            $this->pagehooks[$key] = $function(
-                $data['page_title'],
-                $data['menu_title'],
-                'manage_options',
-                $this->get_option_name( $key ),
-                array( $this, 'show_page' )
-            );
-            add_action( 'load-'.$this->pagehooks[$key], array( $this, 'load_page' ) );
-        }
     }
 
     public function get_version()
@@ -895,74 +856,4 @@ class iworks_options
     {
         return $this->option_group;
     }
-
-    private function get_option_index_from_screen()
-    {
-        $screen = get_current_screen();
-        $key = explode( $this->option_prefix, $screen->id );
-        if ( 2 != count( $key ) ) {
-            return false;
-        }
-        return $key[1];
-    }
-
-    public function show_page()
-    {
-        $option_name = $this->get_option_index_from_screen();
-        if ( !$option_name ) {
-            return;
-        }
-        $options = $this->options[$option_name];
-?>
-<div class="wrap">
-    <h2><?php echo $options['page_title']; ?></h2>
-<?php
-$this->settings_fields( $option_name );
-$this->build_options( $option_name );
-?>
-</div>
-<?php
-    }
-
-    public function load_page()
-    {
-        $key = $this->get_option_index_from_screen();
-        if ( !$key ) {
-            return;
-        }
-        /**
-         * check options for key
-         */
-        if ( !array_key_exists( $key, $this->options ) ) {
-            return;
-        }
-        /**
-         * check metaboxes for key
-         */
-        if ( !array_key_exists( 'metaboxes', $this->options[$key] ) ) {
-            return;
-        }
-        if ( !count( $this->options[$key]['metaboxes'] ) ) {
-            return;
-        }
-        /**
-         * ensure, that the needed javascripts been loaded to allow drag/drop, 
-         * expand/collapse and hide/show of boxes
-         */
-        wp_enqueue_script('common');
-        wp_enqueue_script('wp-lists');
-        wp_enqueue_script('postbox');
-
-        foreach( $this->options[$key]['metaboxes'] as $id => $data ) {
-            add_meta_box(
-                $id,
-                $data['title'],
-                $data['callback'],
-                $this->pagehooks[$key],
-                $data['context'],
-                $data['priority']
-            );
-        }
-    }
-
 }
