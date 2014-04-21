@@ -10,6 +10,9 @@ function iworks_upprev_options()
     $iworks_upprev_options['index'] = array(
         'use_tabs' => true,
         'version'  => '0.0',
+        'page_title' => __('upPrev configuration', 'upprev'),
+        'menu_title' => __('upPrev', 'upprev'),
+        'menu' => 'comments',
         'options'  => array(
             array(
                 'name'              => 'last_used_tab',
@@ -550,7 +553,7 @@ function iworks_upprev_options()
             ),
             /**
              * buy pro version
-             */
+             * /
             array(
                 'type'              => 'page',
                 'label'             => __( 'Buy PRO!', 'upprev' ),
@@ -558,6 +561,27 @@ function iworks_upprev_options()
                 'class'             => 'error-message',
                 'filter'            => 'iworks_upprev_buy_pro',
                 'callback_to_show'  => 'iworks_upprev_callback_is_pro'
+            ),
+             */
+        ),
+        'metaboxes' => array(
+            'configuration_mode' => array(
+                'title' => __( 'Choose configuration mode', 'upprev' ),
+                'callback' => 'iworks_upprev_options_choose_configuration_mode',
+                'context' => 'side',
+                'priority' => 'core',
+            ),
+            'loved_this_plugin' => array(
+                'title' => __( 'Loved this Plugin?', 'upprev' ),
+                'callback' => 'iworks_upprev_options_loved_this_plugin',
+                'context' => 'side',
+                'priority' => 'core',
+            ),
+            'need_assistance' => array(
+                'title' => __( 'Need Assistance?', 'upprev' ),
+                'callback' => 'iworks_upprev_options_need_assistance',
+                'context' => 'side',
+                'priority' => 'core',
             ),
         ),
     );
@@ -708,3 +732,38 @@ function iworks_upprev_callback_is_pro()
     return !$iworks_upprev->is_pro();
 }
 
+function iworks_upprev_options_choose_configuration_mode()
+{
+    $configuration = get_option( 'iworks_upprev_configuration', 'simple' );
+    if ( !preg_match( '/^(advance|simple)$/', $configuration ) ) {
+        $configuration = 'simple';
+    }
+?>
+<p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
+<ul>
+    <li><input type="radio" name="iworks_upprev_configuration" value="simple" id="iworks_upprev_configuration_simple"   <?php checked( $configuration, 'simple' ); ?>/> <label for="iworks_upprev_configuration_simple"><?php _e( 'simple', 'upprev' ); ?></label></li>
+    <li><input type="radio" name="iworks_upprev_configuration" value="advance" id="iworks_upprev_configuration_advance" <?php checked( $configuration, 'advance' ); ?>/> <label for="iworks_upprev_configuration_advance"><?php _e( 'advance', 'upprev' ); ?></label></li>
+</ul>
+<?php
+}
+
+function iworks_upprev_options_loved_this_plugin()
+{
+?>
+<p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
+<ul>
+    <li><a href="http://wordpress.org/support/view/plugin-reviews/upprev#postform"><?php _e( 'Give it a five stars on Wordpress.org', 'upprev' ); ?></a></li>
+    <li><a href="http://wordpress.org/extend/plugins/upprev/"><?php _e( 'Link to it so others can easily find it', 'upprev' ); ?></a></li>
+</ul>
+<?php
+}
+
+function iworks_upprev_options_need_assistance()
+{
+?>
+<p><?php _e( 'Problems? The links bellow can be very helpful to you', 'upprev' ); ?></p>
+<ul>
+    <li><a href="<?php _e( 'http://wordpress.org/tags/upprev', 'upprev' ); ?>"><?php _e( 'Wordpress Help Forum', 'upprev' ); ?></a></li>
+</ul>
+<?php
+}
