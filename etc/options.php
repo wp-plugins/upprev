@@ -12,7 +12,14 @@ function iworks_upprev_options()
         'version'  => '0.0',
         'page_title' => __('upPrev configuration', 'upprev'),
         'menu_title' => __('upPrev', 'upprev'),
-        'menu' => 'comments',
+        'menu' => 'theme',
+        'enqueue_scripts' => array(
+            'upprev-admin-js',
+        ),
+        'enqueue_styles' => array(
+            'upprev-admin',
+            'upprev',
+        ),
         'options'  => array(
             array(
                 'name'              => 'last_used_tab',
@@ -732,12 +739,9 @@ function iworks_upprev_callback_is_pro()
     return !$iworks_upprev->is_pro();
 }
 
-function iworks_upprev_options_choose_configuration_mode()
+function iworks_upprev_options_choose_configuration_mode( $iworks_upprev )
 {
-    $configuration = get_option( 'iworks_upprev_configuration', 'simple' );
-    if ( !preg_match( '/^(advance|simple)$/', $configuration ) ) {
-        $configuration = 'simple';
-    }
+    $configuration = $iworks_upprev->get_option( 'configuration' );
 ?>
 <p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
 <ul>
@@ -747,7 +751,7 @@ function iworks_upprev_options_choose_configuration_mode()
 <?php
 }
 
-function iworks_upprev_options_loved_this_plugin()
+function iworks_upprev_options_loved_this_plugin($iworks_upprev)
 {
 ?>
 <p><?php _e( 'Below are some links to help spread this plugin to other users', 'upprev' ); ?></p>
@@ -758,7 +762,7 @@ function iworks_upprev_options_loved_this_plugin()
 <?php
 }
 
-function iworks_upprev_options_need_assistance()
+function iworks_upprev_options_need_assistance($iworks_upprev)
 {
 ?>
 <p><?php _e( 'Problems? The links bellow can be very helpful to you', 'upprev' ); ?></p>

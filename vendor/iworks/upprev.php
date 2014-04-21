@@ -1,8 +1,7 @@
 <?php
-
 /*
 
-Copyright 2011-2012 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2011-2014 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -43,7 +42,7 @@ class IworksUpprev
         /**
          * static settings
          */
-        $this->version           = '2.0';
+        $this->version           = '4.0';
         $this->base              = dirname( dirname( __FILE__ ) );
         $this->dir               = basename( dirname( $this->base ) );
         $this->capability        = apply_filters( 'iworks_upprev_capability', 'manage_options' );
@@ -186,10 +185,8 @@ class IworksUpprev
 
     public function init()
     {
-        add_action( 'admin_enqueue_scripts',      array( &$this, 'admin_enqueue_scripts' ) );
         add_action( 'admin_init',                 array( &$this, 'admin_init' ) );
         add_action( 'admin_init',                 'iworks_upprev_options_init' );
-        add_action( 'admin_menu',                 array( &$this, 'admin_menu' ) );
         add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
         add_action( 'wp_head',                    array( &$this, 'print_custom_style'), PHP_INT_MAX );
         /**
@@ -220,45 +217,6 @@ class IworksUpprev
         }
     }
 
-    public function admin_enqueue_scripts()
-    {
-        $screen = get_current_screen();
-        if ( isset( $screen->id ) && $this->dir.'/admin/index' == $screen->id ) {
-            /**
-             * make help
-             */
-            $help = '<p>' .  __( '<p>upPrev settings allows you to set the proprieties of user notification showed when reader scroll down the page.</p>', 'upprev' ) . '</p>';
-            $screen->add_help_tab( array(
-                'id'      => 'overview',
-                'title'   => __( 'Overview', 'upprev' ),
-                'content' => $help,
-            ) );
-            unset( $help );
-
-            /**
-             * make sidebar help
-             */
-            $screen->set_help_sidebar(
-                '<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
-                '<p>' . __( '<a href="http://wordpress.org/extend/plugins/upprev/" target="_blank">Plugin Homepage</a>', 'upprev' ) . '</p>' .
-                '<p>' . __( '<a href="http://wordpress.org/tags/upprev" target="_blank">Support Forums</a>', 'upprev' ) . '</p>' .
-                '<p>' . __( '<a href="http://iworks.pl/en/" target="_blank">break the web</a>', 'upprev' ) . '</p>'
-            );
-
-            /**
-             * enqueue resources
-             */
-            $scripts = array( 'jquery-ui-tabs' );
-            if ( $this->is_pro ) {
-                wp_enqueue_style( 'farbtastic' );
-                $scripts[] = 'farbtastic';
-            }
-            wp_enqueue_script( 'upprev-admin-js',  plugins_url( '/scripts/upprev-admin.js', $this->base ), $scripts, $this->get_version() );
-            $this->enqueue_style( 'upprev-admin' );
-            $this->enqueue_style( 'upprev' );
-        }
-    }
-
     public function wp_enqueue_scripts()
     {
         if ( $this->iworks_upprev_check() ) {
@@ -270,17 +228,22 @@ class IworksUpprev
         $this->enqueue_style( 'upprev' );
     }
 
-    /**
-     * Add page to theme menu
-     */
-    public function admin_menu()
-    {
-        add_theme_page( __( 'upPrev', 'upprev' ), __( 'upPrev', 'upprev' ), $this->capability, $this->dir.'/admin/index.php' );
-    }
-
     public function admin_init()
     {
+        $this->update();
         add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
+
+        $scripts = array( 'jquery-ui-tabs', 'farbtastic' );
+        wp_register_script(
+            'upprev-admin-js',
+            plugins_url( '/scripts/upprev-admin.js', $this->base ),
+            $scripts,
+            $this->get_version()
+        );
+        $file = '/styles/upprev'.$this->dev.'.css';
+        wp_enqueue_style ( 'upprev', plugins_url( $file, $this->base ), array(), $this->get_version( $file ) );
+        $file = '/styles/upprev-admin'.$this->dev.'.css';
+        wp_enqueue_style ( 'upprev-admin', plugins_url( $file, $this->base ), array('farbtastic'), $this->get_version( $file ) );
     }
 
     public function plugin_row_meta($links, $file)

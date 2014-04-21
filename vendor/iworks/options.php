@@ -915,6 +915,7 @@ class iworks_options
         }
         $options = $this->options[$option_name];
         global $screen_layout_columns;
+        $data = array();
 ?>
 <div class="wrap">
     <h2><?php echo $options['page_title']; ?></h2>
@@ -924,7 +925,7 @@ class iworks_options
         <input type="hidden" name="action" value="save_howto_metaboxes_general" />
         <div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
             <div id="side-info-column" class="inner-sidebar">
-                <?php do_meta_boxes($this->pagehooks[$option_name], 'side', $data); ?>
+                <?php do_meta_boxes($this->pagehooks[$option_name], 'side', $this); ?>
             </div>
             <div id="post-body" class="has-sidebar">
                 <div id="post-body-content" class="has-sidebar-content">
@@ -946,6 +947,44 @@ jQuery(document).ready( function($) {
     // postboxes setup
     postboxes.add_postbox_toggles('<?php echo $this->pagehooks[$option_name]; ?>');
 });
+<?php
+        if ( array_key_exists('use_tabs', $this->options[$option_name] ) && $this->options[$option_name]['use_tabs'] ) {
+?>
+jQuery(function(){iworks_options_tabulator_init();});
+/**
+ * Tabulator Bootup
+ */
+function iworks_options_tabulator_init()
+{
+    if (!jQuery("#hasadmintabs").length) {
+        return;
+    }
+    jQuery('#hasadmintabs').prepend("<ul><\/ul>");
+    jQuery('#hasadmintabs > fieldset').each(function(i){
+        id      = jQuery(this).attr('id');
+        rel     = jQuery(this).attr('rel');
+        caption = jQuery(this).find('h3').text();
+        if ( rel ) {
+            rel = ' class="'+rel+'"';
+        }
+        jQuery('#hasadmintabs > ul').append('<li><a href="#'+id+'"><span'+rel+'>'+caption+"<\/span><\/a><\/li>");
+        jQuery(this).find('h3').hide();
+    });
+    index = 0;
+    jQuery('#hasadmintabs h3').each(function(i){
+        if ( jQuery(this).hasClass( 'selected' ) ) {
+            index = i;
+        }
+    });
+    if ( index < 0 ) index = 0;
+    jQuery("#hasadmintabs").tabs({ active: index });
+    jQuery('#hasadmintabs ul a').click(function(i){
+        jQuery('#hasadmintabs input[name=<?php echo $this->get_option_name('last_used_tab'); ?>]').val(jQuery(this).parent().index());
+    });
+}
+<?php
+        }
+?>
 //]]>
 </script>
 <?php
@@ -953,23 +992,23 @@ jQuery(document).ready( function($) {
 
     public function load_page()
     {
-        $key = $this->get_option_index_from_screen();
-        if ( !$key ) {
+        $option_name = $this->get_option_index_from_screen();
+        if ( !$option_name ) {
             return;
         }
         /**
          * check options for key
          */
-        if ( !array_key_exists( $key, $this->options ) ) {
+        if ( !array_key_exists( $option_name, $this->options ) ) {
             return;
         }
         /**
          * check metaboxes for key
          */
-        if ( !array_key_exists( 'metaboxes', $this->options[$key] ) ) {
+        if ( !array_key_exists( 'metaboxes', $this->options[$option_name] ) ) {
             return;
         }
-        if ( !count( $this->options[$key]['metaboxes'] ) ) {
+        if ( !count( $this->options[$option_name]['metaboxes'] ) ) {
             return;
         }
         /**
@@ -980,15 +1019,31 @@ jQuery(document).ready( function($) {
         wp_enqueue_script('wp-lists');
         wp_enqueue_script('postbox');
 
-        foreach( $this->options[$key]['metaboxes'] as $id => $data ) {
+        foreach( $this->options[$option_name]['metaboxes'] as $id => $data ) {
             add_meta_box(
                 $id,
                 $data['title'],
                 $data['callback'],
-                $this->pagehooks[$key],
+                $this->pagehooks[$option_name],
                 $data['context'],
                 $data['priority']
             );
+        }
+        /**
+         * wp_enqueue_script
+         */
+        if ( array_key_exists( 'enqueue_scripts', $this->options[$option_name] ) ) {
+            foreach( $this->options[$option_name]['enqueue_scripts'] as $script ) {
+                wp_enqueue_script( $script );
+            }
+        }
+        /**
+         * wp_enqueue_style
+         */
+        if ( array_key_exists( 'enqueue_styles', $this->options[$option_name] ) ) {
+            foreach( $this->options[$option_name]['enqueue_styles'] as $style ) {
+                wp_enqueue_style( $style );
+            }
         }
     }
 
@@ -1001,4 +1056,5 @@ jQuery(document).ready( function($) {
         }
         return $columns;
     }
+
 }
