@@ -310,16 +310,6 @@ class IworksUpprev
 
     private function get_box($layout = false)
     {
-        if ( 'site' == $this->working_mode ) {
-            $use_cache = $this->options->get_option( 'use_cache' );
-            if ( $use_cache ) {
-                $cache_key = IWORKS_UPPREV_PREFIX.'box_'.get_the_ID().'_'.$this->options->get_option( 'cache_stamp' );
-                if ( true === ( $value = get_site_transient( $cache_key ) ) ) {
-                    print $value;
-                    return;
-                }
-            }
-        }
         /**
          * get current post title and convert special characters to HTML entities
          */
@@ -648,12 +638,6 @@ class IworksUpprev
         $value .= '</div>';
         wp_reset_postdata();
         remove_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
-        /**
-         * cache
-         */
-        if ( 'site' == $this->working_mode && $use_cache && $compare != 'random' ) {
-            set_site_transient( $cache_key, $value, $this->options->get_option( 'cache_lifetime' ) );
-        }
         return apply_filters( 'iworks_upprev_box', $value );
     }
 
@@ -747,6 +731,12 @@ class IworksUpprev
         if ( version_compare( $this->version, $version, '>' ) ) {
             if ( version_compare( $version, '2.0', '<' ) ) {
                 $this->options->add_option( 'salt', wp_generate_password( 256, false, false ), false );
+            }
+            if ( version_compare( $version, '4.0', '<' ) ) {
+                foreach( array( 'use_cache', 'cache_stamp', 'cache_lifetime' ) as $key ) {
+                    delete_option( $this->options->get_option_name($key));
+                }
+                $this->options->update_option( 'configuration', 'simple' );
             }
             $this->options->update_option( 'version', $this->version );
         }

@@ -443,7 +443,7 @@ function iworks_upprev_options()
                 'sanitize_callback' => 'absint'
             ),
             /**
-             * Advance: css, cache, mobile devices
+             * Advance: css, mobile devices
              */
             array(
                 'type'              => 'heading',
@@ -488,30 +488,6 @@ function iworks_upprev_options()
                 'th'                => __( 'Custom CSS', 'upprev' ),
                 'sanitize_callback' => 'esc_html',
                 'rows'              => 10,
-            /**
-             * Advance: cache
-             */
-            ),
-            array(
-                'type'              => 'subheading',
-                'label'             => __( 'Cache', 'upprev' ),
-            ),
-            array(
-                'name'              => 'use_cache',
-                'type'              => 'checkbox',
-                'th'                => __( 'Cache', 'upprev' ),
-                'label'             => __( 'Use Transient Cache.', 'upprev' ),
-                'description'       => __( 'Using on large site (more than 1000 posts) may crash website.', 'upprev' ),
-                'default'           => 0,
-                'sanitize_callback' => 'iworks_upprev_sanitize_callback_use_cache'
-            ),
-            array(
-                'name'              => 'cache_lifetime',
-                'type'              => 'number',
-                'label'             => __( 'Transients Cache Lifetime.', 'upprev' ),
-                'description'       => __( 'In seconds, default one hour (3600s).', 'upprev' ),
-                'default'           => 3600,
-                'sanitize_callback' => 'absint'
             ),
             /**
              * promotion
@@ -644,22 +620,6 @@ function iworks_upprev_sanitize_callback_ga_account( $value = 'UA-XXXXX-X' )
         return strtoupper( $value );
     }
     return null;
-}
-
-/**
- * sanitize use_cache
- */
-function iworks_upprev_sanitize_callback_use_cache( $value = 0 )
-{
-    if ( !preg_match( '/^(0|1)$/', $value ) ) {
-        $value = 0;
-    }
-    if ( empty( $value ) ) {
-        global $wpdb;
-        $query = 'DELETE FROM '.$wpdb->options.' WHERE option_name LIKE \'_site_transient%iworks_upprev_%\'';
-        $wpdb->query( $query );
-    }
-    return $value;
 }
 
 /**
