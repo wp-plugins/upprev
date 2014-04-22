@@ -923,7 +923,7 @@ class iworks_options
         <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false ); ?>
         <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false ); ?>
         <input type="hidden" name="action" value="save_howto_metaboxes_general" />
-        <div id="poststuff" class="metabox-holder<?php echo 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
+        <div id="poststuff" class="metabox-holder<?php echo empty($screen_layout_columns) || 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
             <div id="side-info-column" class="inner-sidebar">
                 <?php do_meta_boxes($this->pagehooks[$option_name], 'side', $this); ?>
             </div>
