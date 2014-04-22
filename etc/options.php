@@ -560,7 +560,7 @@ function iworks_upprev_options()
             ),
             /**
              * buy pro version
-             * /
+             */
             array(
                 'type'              => 'page',
                 'label'             => __( 'Buy PRO!', 'upprev' ),
@@ -569,7 +569,6 @@ function iworks_upprev_options()
                 'filter'            => 'iworks_upprev_buy_pro',
                 'callback_to_show'  => 'iworks_upprev_callback_is_pro'
             ),
-             */
         ),
         'metaboxes' => array(
             'configuration_mode' => array(

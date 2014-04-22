@@ -222,7 +222,7 @@ class iworks_options
             /**
              * heading
              */
-            if ( 'heading' == $option['type'] ) {
+            if ( preg_match( '/^(heading|page)$/', $option['type'] ) ) {
                 if ( isset( $option['configuration'] ) ) {
                     $configuration = $option['configuration'];
                 } else {
