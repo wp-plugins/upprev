@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, featured, flyout, links, new york times, next post, notification, NYTimes, previous post, related, related content, seo, rtl
 Requires at least: 3.3
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 3.3.26
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,7 @@ in the selected configuration:
 * Brazilian Portuguese (pt_BR) - [Leonardo Antonioli](http://www.tobeguarany.com/)
 * Bulgarian (bg_BG) - [Martin Halachev](http://wordpress.org/support/profile/mhalachev)
 * Czech (cs_CZ) - [Michal Bláha](http://michalblaha.cz/)
+* Dutch (nl_NL) - [Ruud Kok](http://www.ruudkok.nl/)
 * French (fr_FR) - Eva, [Agence web - My Client is Rich](http://myclientisrich-leblog.com/)
 * German (de_DE) - [Mario Wolf](http://wolfmedien.de/)
 * Hebrew (he_IL) - [עמיעד](http://hatul.info), [של אודי בורג](http://blog.udiburg.com)
@@ -63,6 +64,7 @@ upPrev plugin will work on websites in the following languages:
 * Brazilian Portuguese
 * Bulgarian
 * Czech
+* Dutch
 * French
 * German
 * Hebrew
@@ -160,7 +162,6 @@ Example:
 {
     opacity: .7;
 }
-`
 
 = Need more snippets? =
 
@@ -202,6 +203,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * REFACTORING: moved code to class
 # REFACTORING: rewrite on page options to use wp_localize_script
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
+
+= 3.3.27 =
+
+* IMPROVMENT: added Dutch translation by [Ruud Kok](http://www.ruudkok.nl/)
 
 = 3.3.26 =
 
