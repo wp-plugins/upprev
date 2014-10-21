@@ -58,6 +58,9 @@ class iworks_options
 
     public function admin_menu()
     {
+        if ( !isset($this->options ) ) {
+            return;
+        }
         foreach( $this->options as $key => $data ) {
             if ( !array_key_exists( 'menu', $data ) ) {
                 $data['menu'] = '';
@@ -177,6 +180,12 @@ class iworks_options
                 }
             }
             /**
+                * add default type
+                */
+            if ( !array_key_exists('type', $option ) ) {
+                $option['type'] = 'text';
+            }
+            /**
              * check show option
              */
             $show_option = true;
@@ -235,6 +244,7 @@ class iworks_options
                 }
                 if( in_array( $option['type'], array(
                     'checkbox',
+                    'email',
                     'image',
                     'number',
                     'radio',
@@ -316,6 +326,7 @@ class iworks_options
                     isset($option['label'])?  $option['label']:''
                 );
                 break;
+            case 'email':
             case 'password':
             case 'text':
                 $id = '';
@@ -380,14 +391,28 @@ class iworks_options
             case 'radio':
                 $option_value = $this->get_option( $option_name, $option_group );
                 $i = 0;
-                if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
-                    $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
+                /**
+                 * check user add "radio" or "options".
+                 */
+                $radio_options = array();
+                if ( array_key_exists('options', $option) ) {
+                    $radio_options = $option['options'];
+                } else if ( array_key_exists('radio', $option) ) {
+                    $radio_options = $option['radio'];
                 }
-                if ( array_key_exists( 'radio', $option ) ) {
-                    $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
-                    $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option_name, $option_value );
+                if ( empty($radio_options) ) {
+                    $content .= sprintf(
+                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
+                        $option_name
+                    );
+                } else {
+                    /**
+                     * add extra options, maybe dynamic?
+                     */
+                    $radio_options = apply_filters( $filter_name.'_data', $radio_options );
+                    $radio = apply_filters( $filter_name.'_content', null, $radio_options, $html_element_name, $option_name, $option_value );
                     if ( empty( $radio ) ) {
-                        foreach ($option['radio'] as $value => $input) {
+                        foreach ($radio_options as $value => $input) {
                             $id = sprintf( '%s%d', $option_name, $i++ );
                             $disabled = '';
                             if ( preg_match( '/\-disabled$/', $value ) ) {
@@ -420,11 +445,6 @@ class iworks_options
                         }
                     }
                     $content .= apply_filters( $filter_name, $radio );
-                } else {
-                    $content .= sprintf(
-                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
-                        $option_name
-                    );
                 }
                 break;
             case 'select':
