@@ -177,6 +177,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 == Changelog ==
 
+= 3.3.28 =
+
+* IMPROVMENT: added Slovak translation by Daniel Schmidt
+
 = 3.3.27 =
 
 * IMPROVMENT: added Dutch translation by [Ruud Kok](http://www.ruudkok.nl/)
