@@ -204,6 +204,10 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 # REFACTORING: rewrite on page options to use wp_localize_script
 * TYPO: "Anlalitics" should be "Analytics" thx to Knut Sparhell
 
+= 3.3.28 =
+
+* IMPROVMENT: added Slovak translation by Daniel Schmidt
+
 = 3.3.27 =
 
 * IMPROVMENT: added Dutch translation by [Ruud Kok](http://www.ruudkok.nl/)
