@@ -108,62 +108,7 @@ Yes. Just select post types on `Appearance -> upPrev -> Content` page in `Select
 
 = How I can customize with my own styles? =
 
-Switch settings to **Advance** and go to '*Other*' tab to fill "**Custom CSS**" field.
-
-Example:
-
-`
-/* header */
-#upprev_box h6 a
-{
-    color: red;
-}
-/* header link: mouse over */
-#upprev_box h6 a:hover
-{
-    color: black;
-}
-/* headera link: visited */
-#upprev_box h6 a:visited
-{
-    color: gray;
-}
-/* container for title, thumbnail and excerpt */
-#upprev_box .upprev_excerpt
-{
-    font-size: 8px;
-}
-/* excerpt */
-#upprev_box .upprev_excerpt p
-{
-    line-height: 1em;
-}
-/* previous post link */
-#upprev_box .upprev_excerpt p a
-{
-    text-transform: uppercase;
-}
-/* previous post link: mouse over */
-#upprev_box .upprev_excerpt p a:hover
-{
-    text-decoration: underline;
-}
-/* previous post link: visited */
-#upprev_box .upprev_excerpt p a:visited
-{
-    color: gray;
-}
-/* thumbnail image */
-#upprev_box .upprev_thumb
-{
-    padding: 1px;
-    border: 1px dotted red;
-}
-/* close button */
-#upprev_close
-{
-    opacity: .7;
-}
+See here: [How I can customize with my own styles?](http://upprev.com/faq/how-i-can-customize-with-my-own-styles.html)
 
 = Need more snippets? =
 
