@@ -3,7 +3,7 @@
 Class Name: iWorks Options
 Class URI: http://iworks.pl/
 Description: Option class to manage options.
-Version: 2.2.0
+Version: 2.3.0
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv2 or later
@@ -56,6 +56,11 @@ class iworks_options
         add_filter( 'screen_layout_columns', array($this, 'screen_layout_columns'), 10, 2);
     }
 
+    public function init()
+    {
+        $this->get_option_array();
+    }
+
     public function admin_menu()
     {
         if ( !isset($this->options ) ) {
@@ -85,14 +90,16 @@ class iworks_options
                 $function = 'add_menu_page';
                 break;
             }
-            $this->pagehooks[$key] = $function(
-                $data['page_title'],
-                $data['menu_title'],
-                'manage_options',
-                $this->get_option_name( $key ),
-                array( $this, 'show_page' )
-            );
-            add_action( 'load-'.$this->pagehooks[$key], array( $this, 'load_page' ) );
+            if ( isset($data['page_title']) ) {
+                $this->pagehooks[$key] = $function(
+                    $data['page_title'],
+                    isset($data['menu_title'])? $data['menu_title']:$data['page_title'],
+                    'manage_options',
+                    $this->get_option_name( $key ),
+                    array( $this, 'show_page' )
+                );
+                add_action( 'load-'.$this->pagehooks[$key], array( $this, 'load_page' ) );
+            }
         }
     }
 
@@ -115,23 +122,23 @@ class iworks_options
     {
         $options = array();
         if ( array_key_exists( $this->option_group, $options ) && !empty( $options[ $this->option_group ] ) ) {
-            $options = apply_filters( $this->option_function_name, $this->options );
+            $options = apply_filters( 'iworks_theme_options', $this->options );
             return $options[ $this->option_group ];
         }
         if ( is_callable( $this->option_function_name ) ) {
-            $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
+            $options = call_user_func( $this->option_function_name );
         }
         if ( array_key_exists( $this->option_group, $options ) && !empty( $options[ $this->option_group ] ) ) {
             $this->options[ $this->option_group ] = $options[ $this->option_group ];
-            return apply_filters( $this->option_function_name, $this->options[ $this->option_group ] );
+            return $this->options[ $this->option_group ];
         }
-        return apply_filters( $this->option_function_name, array() );
+        return apply_filters( 'iworks_theme_options', array() );
     }
 
     public function build_options($option_group = 'index', $echo = true, $term_id = false)
     {
         $this->option_group = $option_group;
-        $options = $this->get_option_array( $option_group );
+        $options = $this->get_option_array();
         /**
          * add some defaults
          */
@@ -154,6 +161,10 @@ class iworks_options
             echo '<div class="below-h2 error"><p><strong>'.__('An error occurred while getting the configuration.', 'iworks_options').'</strong></p></div>';
             return;
         }
+
+        /**
+         * proceder
+         */
         $is_simple = 'simple' == $this->get_option( 'configuration', 'index', 'advance' );
         $content   = '';
         $hidden    = '';
@@ -250,6 +261,7 @@ class iworks_options
                     'radio',
                     'text',
                     'textarea',
+                    'url',
                 ) ) ) {
                     $html_element_name = $option_name? $this->option_prefix.$option_name:'';
                     $content .= sprintf (
@@ -296,7 +308,11 @@ class iworks_options
                     $style .= 'style="display:none"';
                 }
                 $content .= sprintf( '<tr valign="top" id="tr_%s"%s>', $option_name? $option_name:'', $style );
-                $content .= sprintf( '<th scope="row">%s</th>', isset($option['th']) && $option['th']? $option['th']:'&nbsp;' );
+                $content .= sprintf(
+                    '<th scope="row">%s%s</th>',
+                    isset($option['dashicon']) && $option['dashicon']? sprintf('<span class="dashicons dashicons-%s"></span>&nbsp;', $option['dashicon']):'',
+                    isset($option['th']) && $option['th']? $option['th']:'&nbsp;'
+                );
                 $content .= '<td>';
             }
             $html_element_name = $option_name? $this->option_prefix.$option_name:'';
@@ -329,6 +345,7 @@ class iworks_options
             case 'email':
             case 'password':
             case 'text':
+            case 'url':
                 $id = '';
                 if ( isset($option['use_name_as_id']) && $option['use_name_as_id']) {
                     $id = sprintf( ' id="%s"', $html_element_name );
@@ -391,28 +408,14 @@ class iworks_options
             case 'radio':
                 $option_value = $this->get_option( $option_name, $option_group );
                 $i = 0;
-                /**
-                 * check user add "radio" or "options".
-                 */
-                $radio_options = array();
-                if ( array_key_exists('options', $option) ) {
-                    $radio_options = $option['options'];
-                } else if ( array_key_exists('radio', $option) ) {
-                    $radio_options = $option['radio'];
+                if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
+                    $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
                 }
-                if ( empty($radio_options) ) {
-                    $content .= sprintf(
-                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
-                        $option_name
-                    );
-                } else {
-                    /**
-                     * add extra options, maybe dynamic?
-                     */
-                    $radio_options = apply_filters( $filter_name.'_data', $radio_options );
-                    $radio = apply_filters( $filter_name.'_content', null, $radio_options, $html_element_name, $option_name, $option_value );
+                if ( array_key_exists( 'radio', $option ) ) {
+                    $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
+                    $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option_name, $option_value );
                     if ( empty( $radio ) ) {
-                        foreach ($radio_options as $value => $input) {
+                        foreach ($option['radio'] as $value => $input) {
                             $id = sprintf( '%s%d', $option_name, $i++ );
                             $disabled = '';
                             if ( preg_match( '/\-disabled$/', $value ) ) {
@@ -445,6 +448,11 @@ class iworks_options
                         }
                     }
                     $content .= apply_filters( $filter_name, $radio );
+                } else {
+                    $content .= sprintf(
+                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
+                        $option_name
+                    );
                 }
                 break;
             case 'select':
@@ -456,6 +464,7 @@ class iworks_options
                 $option['options'] = apply_filters( $filter_name.'_data', $option['options'], $option_name, $option_value );
 
                 $select = apply_filters( $filter_name.'_content', null, $option['options'], $html_element_name, $option_name, $option_value );
+                $select = apply_filters( 'iworks_options_'.$option_name.'_content', null, $option['options'], $html_element_name, $option_name, $option_value );
                 if ( empty( $select ) ) {
                     foreach ($option['options'] as $key => $value ) {
                         $disabled = '';
@@ -702,7 +711,7 @@ class iworks_options
     public function get_values($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
-        $data = $this->get_option_array( $option_group );
+        $data = $this->get_option_array();
         $data = $data['options'];
         foreach( $data as $one ) {
             if ( isset( $one[ 'name' ] ) && $one[ 'name' ] != $option_name ) {
@@ -721,7 +730,7 @@ class iworks_options
     public function get_default_value($option_name, $option_group = 'index')
     {
         $this->option_group = $option_group;
-        $options = $this->get_option_array( $option_group );
+        $options = $this->get_option_array();
         /**
          * check options exists?
          */
@@ -826,6 +835,19 @@ class iworks_options
         return $option_value;
     }
 
+    public function get_all_options()
+    {
+        $data = array();
+        $options = $this->get_option_array();
+        foreach ($options['options'] as $option) {
+            if ( !array_key_exists( 'name', $option ) || !$option['name'] ) {
+                continue;
+            }
+            $data[$option['name']] = $this->get_option($option['name']);
+        }
+        return $data;
+    }
+
     public function get_option_name($name)
     {
         return sprintf( '%s%s', $this->option_prefix, $name );
@@ -851,7 +873,7 @@ class iworks_options
     public function update_taxonomy_options($option_group, $term_id)
     {
         $this->option_group = $option_group;
-        $options = $this->get_option_array( $option_group );
+        $options = $this->get_option_array();
         /**
          * only for taxonomies
          */
@@ -901,15 +923,19 @@ class iworks_options
         return wp_dropdown_pages( $args );
     }
 
-    public function select_category_helper($name, $hide_empty = null)
+    public function select_category_helper($name, $hide_empty = null, $show_option_none = false )
     {
         $args = array(
+            'echo' => false,
             'name'         => $this->get_option_name( $name ),
             'selected'     => $this->get_option( $name ),
             'hierarchical' => true,
             'hide_empty'   => $hide_empty
         );
-        wp_dropdown_categories( $args );
+        if ( $show_option_none ) {
+            $args['show_option_none'] = true;
+        }
+        return wp_dropdown_categories( $args );
     }
 
     public function get_option_group()
@@ -944,9 +970,16 @@ class iworks_options
         <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false ); ?>
         <input type="hidden" name="action" value="save_howto_metaboxes_general" />
         <div id="poststuff" class="metabox-holder<?php echo empty($screen_layout_columns) || 2 == $screen_layout_columns ? ' has-right-sidebar' : ''; ?>">
+<?php
+        /**
+         * check metaboxes for key
+         */
+        if ( array_key_exists( 'metaboxes', $this->options[$option_name] ) ) {
+?>
             <div id="side-info-column" class="inner-sidebar">
                 <?php do_meta_boxes($this->pagehooks[$option_name], 'side', $this); ?>
             </div>
+<?php } ?>
             <div id="post-body" class="has-sidebar">
                 <div id="post-body-content" class="has-sidebar-content">
 <?php
@@ -961,6 +994,12 @@ class iworks_options
 </div>
 <script type="text/javascript">
 //<![CDATA[
+<?php
+        /**
+         * check metaboxes for key
+         */
+        if ( array_key_exists( 'metaboxes', $this->options[$option_name] ) ) {
+?>
 jQuery(document).ready( function($) {
     // close postboxes that should be closed
     $('.if-js-closed').removeClass('if-js-closed').addClass('closed');
@@ -968,6 +1007,7 @@ jQuery(document).ready( function($) {
     postboxes.add_postbox_toggles('<?php echo $this->pagehooks[$option_name]; ?>');
 });
 <?php
+    }
         if ( array_key_exists('use_tabs', $this->options[$option_name] ) && $this->options[$option_name]['use_tabs'] ) {
 ?>
 jQuery(function(){iworks_options_tabulator_init();});
@@ -1077,4 +1117,22 @@ function iworks_options_tabulator_init()
         return $columns;
     }
 
+    public function get_options_by_group($group)
+    {
+        $opts = array();
+        $options = $this->get_option_array();
+        if ( !isset($options['options']) || empty($options['options']) ) {
+            return $options;
+        }
+        foreach ( $options['options'] as $one ) {
+            if ( !isset($one['name']) || !isset($one['type']) ) {
+                continue;
+            }
+            if ( !isset($one['group']) || $group != $one['group'] ) {
+                continue;
+            }
+            $opts[] = $one;
+        }
+        return $opts;
+    }
 }

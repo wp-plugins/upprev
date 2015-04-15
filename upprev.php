@@ -8,9 +8,6 @@ Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
-/*
 
 Copyright 2011-2015 Marcin Pietrzak (marcin@iworks.pl)
 
