@@ -3,7 +3,7 @@ Contributors: iworks
 Donate link: http://iworks.pl/donate/upprev.php
 Tags: animated, animation, box, fade, featured, featured, flyout, fly-out, links, new york times, notification, NYTimes, post, posts, previous post, previous posts, related, related content, rtl, seo, slider, thumbnail
 Requires at least: 3.3
-Tested up to: 4.1.1
+Tested up to: 4.3
 Stable tag: 3.3.28
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,7 @@ in the selected configuration:
 * Simplified Chinese - [Leo](http://smallseotips.com/)
 * Slovak (sk_SK) - Daniel Schmidt
 * Spanish (er_ES) - [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
+* Tagalog (tl_TL) - [Kel DC](https://profiles.wordpress.org/kel-dc)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
 
