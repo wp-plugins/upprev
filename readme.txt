@@ -125,6 +125,11 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 == Changelog ==
 
+= 3.3.29 =
+
+* Release date: 2015-09-01
+* IMPROVMENT: added Tagalog translation by [Kel DC](https://profiles.wordpress.org/kel-dc)
+
 = 3.3.28 =
 
 * IMPROVMENT: added Slovak translation by Daniel Schmidt
