@@ -428,10 +428,10 @@ function iworks_upprev_box()
                 $item_class .= ' upprev_thumbnail';
                 $image = sprintf(
                     '<a href="%s" title="%s" class="upprev_thumbnail"%s rel="%s">%s</a>',
-                    $permalink,
-                    wptexturize(get_the_title()),
+                    esc_url($permalink),
+                    esc_attr(strip_tags(get_the_title())),
                     $ga_click_track,
-                    $current_post_title,
+                    esc_attr(strip_tags($current_post_title)),
                     apply_filters(
                         'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
                             get_the_ID(),
