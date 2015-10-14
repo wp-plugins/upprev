@@ -490,7 +490,7 @@ class IworksUpprev
         default:
             $show_taxonomy = false;
         }
-        $value = sprintf( '<div id="upprev_box" class="%s">', implode( ' ', $box_classes ) ) ;
+        $value = sprintf( '<div id="upprev_box" class="%s">', esc_attr(implode( ' ', $box_classes ) ));
         if ( !preg_match( '/^(yarpp|random)$/', $compare ) ) {
             add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
         }
@@ -528,7 +528,12 @@ class IworksUpprev
                 $title .= sprintf ( '%s ', __( 'More in', 'upprev' ) );
                 $a = array();
                 foreach ( $siblings as $url => $name ) {
-                    $a[] = sprintf( '<a href="%s" rel="%s">%s</a>', $url, $current_post_title, $name );
+                    $a[] = sprintf(
+                        '<a href="%s" rel="%s">%s</a>',
+                        esc_url($url),
+                        esc_attr($current_post_title),
+                        $name
+                    );
                 }
                 $title .= implode( ', ', $a);
             } elseif ( preg_match( '/^(random|yarpp)$/', $compare ) or 'vertical 3' == $layout ) {
@@ -576,11 +581,11 @@ class IworksUpprev
                 }
                 $image = sprintf(
                     '<a href="%s" title="%s" class="%s"%s rel="%s">%s</a>',
-                    $permalink,
-                    wptexturize(get_the_title()),
-                    $a_class,
+                    esc_url($permalink),
+                    esc_attr(strip_tags(get_the_title())),
+                    esc_attr($a_class),
                     $ga_click_track,
-                    $current_post_title,
+                    esc_attr(strip_tags($current_post_title)),
                     apply_filters(
                         'iworks_upprev_get_the_post_thumbnail', get_the_post_thumbnail(
                             get_the_ID(),
@@ -605,15 +610,15 @@ class IworksUpprev
             }
             $item .= '<div';
             if ( count( $item ) ) {
-                $item .= sprintf( ' class="%s"', implode( ' ', $item_class ) );
+                $item .= sprintf( ' class="%s"', esc_attr(implode( ' ', $item_class )));
             }
             $item .= '>';
             $item .= $image;
             $item .= sprintf(
                 '<h5><a href="%s"%s rel="%s">%s</a></h5>',
-                $permalink,
+                esc_url($permalink),
                 $ga_click_track,
-                $current_post_title,
+                esc_attr(strip_tags($current_post_title)),
                 get_the_title()
             );
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
@@ -711,11 +716,11 @@ class IworksUpprev
             $id = 'iworks_upprev_'.crc32( $key );
             $content .= sprintf(
                 '<li><input type="radio" name="iworks_upprev_layout" value="%s"%s%s id="%s"><label for="%s"> %s</label>',
-                $key,
+                esc_attr($key),
                 $one['checked']? ' checked="checked"':'',
                 $one['disabled']? ' disabled="disabled"':'',
-                $id,
-                $id,
+                esc_attr($id),
+                esc_attr($id),
                 $one['name']
             );
             $content .= $one['value'];
@@ -752,13 +757,13 @@ class IworksUpprev
         }
         return sprintf (
             '<td class="%s%s"><label for="%s" class="imgedit-group"><input type="radio" name="%s" value="%s"%s id="%s" %s/> <span>%s</span></label></td>',
-            sanitize_title( $value ),
+            esc_attr(sanitize_title( $value )),
             $disabled? ' disabled':'',
             $id,
-            $html_element_name,
-            $value,
+            esc_attr($html_element_name),
+            esc_attr($value),
             ($option_value == $value or ( empty($option_value) and isset($option['default']) and $value == $option['default'] ) )? ' checked="checked"':'',
-            $id,
+            esc_attr($id),
             $disabled,
             $input['label']
         );
@@ -770,7 +775,7 @@ class IworksUpprev
         if ( !$this->is_pro ) {
             $content .= '<p class="error-message">'.__( 'All positions are available in PRO version!', 'upprev' ).'</p>';
         }
-        $content .= sprintf( '<table id="%s"><tbody><tr>', $html_element_name );
+        $content .= sprintf( '<table id="%s"><tbody><tr>', esc_attr($html_element_name));
         foreach( array( 'left-top', 'top', 'right-top' ) as $key ) {
             $content .= $this->position_one_radio( $key, $data[$key], $html_element_name, $option_name, $option_value );
         }
@@ -881,11 +886,11 @@ class IworksUpprev
             $id = sprintf( 'category_%04d', $category->term_id );
             $content .= sprintf(
                 '<li><input type="checkbox" name="iworks_upprev_exclude_categories[%d]" id="%s"%s%s /><label for="%s"> %s <small>(%d)</small></label></li>',
-                $category->term_id,
-                $id,
+                esc_attr($category->term_id),
+                esc_attr($id),
                 is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
                 $this->is_pro? '':' disabled="disabled"',
-                $id,
+                esc_attr($id),
                 $category->name,
                 $category->count
             );
@@ -915,11 +920,11 @@ class IworksUpprev
             $id = sprintf( 'category_%04d', $category->term_id );
             $content .= sprintf(
                 '<li><input type="checkbox" name="iworks_upprev_exclude_tags[%d]" id="%s"%s%s /><label for="%s"> %s <small>(%d)</small></label></li>',
-                $category->term_id,
-                $id,
+                esc_attr($category->term_id),
+                esc_attr($id),
                 is_array( $values ) && in_array( $category->term_id, $values )? ' checked="checked"':'',
                 $this->is_pro? '':' disabled="disabled"',
-                $id,
+                esc_attr($id),
                 $category->name,
                 $category->count
             );
