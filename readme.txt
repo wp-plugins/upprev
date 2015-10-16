@@ -63,22 +63,22 @@ First of all, check your template. To proper work plugin requires function `wp_h
 
 upPrev plugin will work on websites in the following languages:
 
-* Brazilian Portuguese
-* Bulgarian
-* Czech
-* Dutch
-* French
-* German
-* Hebrew
-* Italian
-* Polish
-* Romanian
-* Russian
-* Simplified Chinese
-* Slovak
-* Spanish
-* Turkish
-* Vietnamese
+* Deutsch
+* Español
+* Français
+* Italiano
+* Nederlandse
+* Polski
+* Português do Brasil
+* Română
+* Slovenský
+* Tiếng Việt
+* Türkçe
+* Čeština
+* Български
+* Русский
+* עברית
+* 简体中文
 
 = How to add default image to post without thumbnail? =
 
