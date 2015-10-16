@@ -39,8 +39,8 @@ in the selected configuration:
 * Romanian (ro_RO) - [Florin Arjocu](http://drumliber.ro/)
 * Russian (ru_RU) - [Вадим Сохин](http://webbizreshenie.ru/)
 * Simplified Chinese - [Leo](http://smallseotips.com/)
-* Slovak (sk_SK) - Daniel Schmidt
-* Spanish (er_ES) - [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
+* Slovak (sk_SK) - [Daniel Schmidt](http://wordpress.org/support/profile/danielschmidtsk)
+* Spanish (es_ES) - [Apasionados del Marketing](http://www.apasionadosdelmarketing.es)
 * Tagalog (tl_TL) - [Kel DC](https://profiles.wordpress.org/kel-dc)
 * Turkish (tr_TR) - [wpdestek](http://wordpress.org/support/profile/wpdestek/)
 * Vietnamese (vi_VI) - [Xman](http://thegioimanguon.com/)
