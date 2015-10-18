@@ -103,7 +103,7 @@ upPrev plugin will work on websites in the following languages:
 Use the `iworks_upprev_image` action, read more:
 
 [How to add default image to post without thumbnail?](http://upprev.com/faq/how-to-add-default-image-to-post-without-thumbnail.html)
-`
+
 = How to change post thumbnail to other image? =
 
 Use the `iworks_upprev_get_the_post_thumbnail` filter, read more:
