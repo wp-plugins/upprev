@@ -49,9 +49,27 @@ If you have created your own language pack, or have an update of an existing one
 
 == Installation ==
 
-1. Upload upPrev to your plugins directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Configure upPrev plugin using Appearance -> upPrev
+There are 3 ways to install this plugin:
+
+= 1. The super easy way =
+1. In your Admin, go to menu Plugins > Add
+1. Search for `upPrev`
+1. Click to install
+1. Activate the plugin
+1. A new menu `upPrev` in `Appearance` will appear in your Admin
+
+= 2. The easy way =
+1. Download the plugin (.zip file) on the right column of this page
+1. In your Admin, go to menu Plugins > Add
+1. Select the tab "Upload"
+1. Upload the .zip file you just downloaded
+1. Activate the plugin
+1. A new menu `upPrev` in `Appearance` will appear in your Admin
+
+= 3. The old and reliable way (FTP) =
+1. Upload `upprev` folder to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. A new menu `upPrev` in `Appearance` will appear in your Admin
 
 == Frequently Asked Questions ==
 
@@ -63,45 +81,34 @@ First of all, check your template. To proper work plugin requires function `wp_h
 
 upPrev plugin will work on websites in the following languages:
 
-* Brazilian Portuguese
-* Bulgarian
-* Czech
-* Dutch
-* French
-* German
-* Hebrew
-* Italian
-* Polish
-* Romanian
-* Russian
-* Simplified Chinese
-* Slovak
-* Spanish
-* Turkish
-* Vietnamese
+* Deutsch
+* Español
+* Français
+* Italiano
+* Nederlandse
+* Polski
+* Português do Brasil
+* Română
+* Slovenský
+* Tiếng Việt
+* Türkçe
+* Čeština
+* Български
+* Русский
+* עברית
+* 简体中文
 
 = How to add default image to post without thumbnail? =
 
-Use the `iworks_upprev_image` action:
-`
-<?php
-add_action( 'iworks_upprev_image' , 'default_image' );
-function default_image()
-{
-    return '<img src="image.png" alt="" />';
-}
-`
-= How to change post thubnail to other image? =
+Use the `iworks_upprev_image` action, read more:
 
-Use the `iworks_upprev_get_the_post_thumbnail` filter:
+[How to add default image to post without thumbnail?](http://upprev.com/faq/how-to-add-default-image-to-post-without-thumbnail.html)
 `
-<?php
-add_filter( 'iworks_upprev_get_the_post_thumbnail' , 'change_thumbnail' );
-function change_thumbnail( $image )
-{
-    return '<img src="image.png" alt="" />';
-}
-`
+= How to change post thumbnail to other image? =
+
+Use the `iworks_upprev_get_the_post_thumbnail` filter, read more:
+
+[How to change post thumbnail to other image?](http://upprev.com/faq/how-to-change-post-thubnail-to-other-image.html)
 
 = How to add upPrev for pages or custom post types? =
 
@@ -155,7 +162,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.3.24 =
 
-* BUGFIX: prevent to display upPrev box on attachment page thx to [Swaps4](http://wordpress.org/support/profile/swaps4) [Upprev displaying on attachment pages with no styling](http://wordpress.org/support/topic/upprev-displaying-on-attachment-pages-with-no-styling)
+* BUGFIX: prevent to display upPrev box on attachment page thx to [Swaps4](http://wordpress.org/support/profile/swaps4) [upPrev displaying on attachment pages with no styling](http://wordpress.org/support/topic/upprev-displaying-on-attachment-pages-with-no-styling)
 * BUGFIX: remove add_contextual_help function (deprecated from 3.3).
 * IMPROVEMENT: updated IworksOptionClass to 2.0.0
 
@@ -175,7 +182,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 = 3.3.20 =
 
 * IMPROVEMENT: updated IworksOptionClass to 1.7.4
-* IMPROVEMENT: check upPrev compatybility with WordPress 3.7
+* IMPROVEMENT: check upPrev compatibility with WordPress 3.7
 * BUGFIX: fixed "last selected tab"
 
 = 3.3.19 =
@@ -210,9 +217,9 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.3.12 =
 
-* BUGFIX: fixed compatybility errors with YARPP 4.x version thx to [adamdport](http://wordpress.org/support/profile/adamdport)
+* BUGFIX: fixed compatibility errors with YARPP 4.x version thx to [adamdport](http://wordpress.org/support/profile/adamdport)
 * IMPROVEMENT: add css to changed tabs class in WordPress 3.5
-* IMPROVEMENT: check upPrev compatybility with WordPress 3.5
+* IMPROVEMENT: check upPrev compatibility with WordPress 3.5
 
 = 3.3.11 =
 
@@ -263,7 +270,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 
 = 3.3 =
 
-* IMPROVEMENT: added option to hide upPrevBox on mobile devices, matching imlemented from [WP Mobile Detector](http://wordpress.org/extend/plugins/wp-mobile-detector/) ticket from [forum](http://wordpress.org/support/topic/plugin-upprev-mobile-themes)
+* IMPROVEMENT: added option to hide upPrevBox on mobile devices, matching implemented from [WP Mobile Detector](http://wordpress.org/extend/plugins/wp-mobile-detector/) ticket from [forum](http://wordpress.org/support/topic/plugin-upprev-mobile-themes)
 
 = 3.2 =
 
@@ -271,7 +278,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVEMENT: added thumbnail filter *iworks_upprev_get_the_post_thumbnail* - now you can easy change thumbnail
 * IMPROVEMENT: added purging transient cache entries from $wpdb->options table when turn off this cache [forum](http://wordpress.org/support/topic/plugin-upprev-crazy-number-of-wp-options-database-entries)
 * IMPROVEMENT: add check _gaq object exist
-* CHECK: checked compatybility to WordPress 3.3
+* CHECK: checked compatibility to WordPress 3.3
 * IMPROVEMENT: updated IworksOptionClass to version 1.0.1
 
 = 3.1.1 =
@@ -300,7 +307,7 @@ Visit: [upPrev: snippet archive](http://upprev.com/tag/snippet)
 * IMPROVEMENT: added sanitize function for offset
 * IMPROVEMENT: added thumbnail preview on posts/pages list
 * IMPROVEMENT: cleaning empty styles from custom css field
-* REFACTORING: option managment
+* REFACTORING: option management
 
 = 2.3.7 =
 
