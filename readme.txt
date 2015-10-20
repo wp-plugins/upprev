@@ -8,11 +8,11 @@ Stable tag: 3.3.30
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display cool, animated flyout or fade box with related content. Just like New York Times.
+Display cool, animated fly-out or fade box with related content. Just like New York Times.
 
 == Description ==
 
-Display cool, animated flyout or fade box with related content. Just like New York Times.
+Display cool, animated fly-out or fade box with related content. Just like New York Times.
 
 When a reader scrolls to the bottom of a single post, page or custom post
 type, a button animates in the page’s bottom right or left corner,
