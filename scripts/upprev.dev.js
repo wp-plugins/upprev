@@ -1,3 +1,4 @@
+console.log('init');
 jQuery( function($) {
     if ( 'undefined' == typeof( iworks_upprev ) ) {
         return;
@@ -12,16 +13,17 @@ jQuery( function($) {
 
     function upprev_show_box() {
         var upprev_last_screen = false;
-        if ( iworks_upprev.offset_element && $(iworks_upprev.offset_element) ) {
-            if ( $(iworks_upprev.offset_element).length > 0 ) {
-                upprev_last_screen = $(window).scrollTop() + $(window).height() > $(iworks_upprev.offset_element).offset().top;
+        var iworks_upprev_offset_element = '#upprev-trigger';
+console.log(1);
+        if ( iworks_upprev_offset_element && $(iworks_upprev_offset_element) ) {
+            if ( $(iworks_upprev_offset_element).length > 0 ) {
+                upprev_last_screen = $(window).scrollTop() + $(window).height() > $(iworks_upprev_offset_element).offset().top;
             } else {
                 upprev_last_screen = $(window).scrollTop() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100;
             }
         } else {
-            upprev_last_screen = ( $(window).scrollTop() + $(window).height() >= $(document).height() * iworks_upprev.offset_percent / 100 );
+            return;
         }
-        console.log( 'upprev_last_screen: '+upprev_last_screen );
         box = $('#upprev_box');
         if ( upprev_last_screen && !upprev_closed ) {
             if ( 'fade' == iworks_upprev.animation ) {
@@ -124,15 +126,14 @@ jQuery( function($) {
                 });
             }
             /**
+             * default
+             */
+            upprev_horizontal = iworks_upprev_get_horizontal( box );
+            upprev_vertical = iworks_upprev_get_vertical( box );
+            /**
              * out, is fade
              */
-            if ( iworks_upprev.animation == 'flyout' ) {
-                /**
-                 * setup init animation
-                 */
-                upprev_horizontal = iworks_upprev_get_horizontal( box );
-                upprev_vertical = iworks_upprev_get_vertical( box );
-            } else if ( 'fade' == iworks_upprev.animation ) {
+            if ( 'fade' == iworks_upprev.animation ) {
                 upprev_vertical   = iworks_upprev.css_side;
                 upprev_horizontal = iworks_upprev.css_bottom;
                 box.css( { display: 'none' } );

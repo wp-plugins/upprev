@@ -537,6 +537,13 @@ function iworks_upprev_options()
             /**
              * buy pro version
              */
+            /**
+             * Advance: css, mobile devices
+             */
+            array(
+                'type'              => 'heading',
+                'label'             => __( 'Buy Pro', 'upprev' ),
+            ),
             array(
                 'type'              => 'page',
                 'label'             => __( 'Buy PRO!', 'upprev' ),

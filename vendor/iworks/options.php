@@ -3,13 +3,13 @@
 Class Name: iWorks Options
 Class URI: http://iworks.pl/
 Description: Option class to manage options.
-Version: 2.3.0
+Version: 2.4.0
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2011-2014 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2011-2015 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -122,17 +122,17 @@ class iworks_options
     {
         $options = array();
         if ( array_key_exists( $this->option_group, $options ) && !empty( $options[ $this->option_group ] ) ) {
-            $options = apply_filters( 'iworks_theme_options', $this->options );
+            $options = apply_filters( $this->option_function_name, $this->options );
             return $options[ $this->option_group ];
         }
         if ( is_callable( $this->option_function_name ) ) {
-            $options = call_user_func( $this->option_function_name );
+            $options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
         }
         if ( array_key_exists( $this->option_group, $options ) && !empty( $options[ $this->option_group ] ) ) {
             $this->options[ $this->option_group ] = $options[ $this->option_group ];
-            return $this->options[ $this->option_group ];
+            return apply_filters( $this->option_function_name, $this->options[ $this->option_group ] );
         }
-        return apply_filters( 'iworks_theme_options', array() );
+        return apply_filters( $this->option_function_name, array() );
     }
 
     public function build_options($option_group = 'index', $echo = true, $term_id = false)
@@ -408,14 +408,28 @@ class iworks_options
             case 'radio':
                 $option_value = $this->get_option( $option_name, $option_group );
                 $i = 0;
-                if ( isset( $option['extra_options'] ) && is_callable( $option['extra_options'] ) ) {
-                    $option['radio'] = array_merge( $option['radio'], $option['extra_options']());
+                /**
+                 * check user add "radio" or "options".
+                 */
+                $radio_options = array();
+                if ( array_key_exists('options', $option) ) {
+                    $radio_options = $option['options'];
+                } else if ( array_key_exists('radio', $option) ) {
+                    $radio_options = $option['radio'];
                 }
-                if ( array_key_exists( 'radio', $option ) ) {
-                    $option['radio'] = apply_filters( $filter_name.'_data', $option['radio'] );
-                    $radio = apply_filters( $filter_name.'_content', null, $option['radio'], $html_element_name, $option_name, $option_value );
+                if ( empty($radio_options) ) {
+                    $content .= sprintf(
+                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
+                        $option_name
+                    );
+                } else {
+                    /**
+                     * add extra options, maybe dynamic?
+                     */
+                    $radio_options = apply_filters( $filter_name.'_data', $radio_options );
+                    $radio = apply_filters( $filter_name.'_content', null, $radio_options, $html_element_name, $option_name, $option_value );
                     if ( empty( $radio ) ) {
-                        foreach ($option['radio'] as $value => $input) {
+                        foreach ($radio_options as $value => $input) {
                             $id = sprintf( '%s%d', $option_name, $i++ );
                             $disabled = '';
                             if ( preg_match( '/\-disabled$/', $value ) ) {
@@ -446,13 +460,17 @@ class iworks_options
                         if ( $radio ) {
                             $radio = sprintf('<ul>%s</ul>', $radio);
                         }
+                    } else {
+                        $radio = apply_filters( $filter_name, $radio );
+                        if ( empty( $radio ) ) {
+                            $content .= sprintf(
+                                '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
+                                $option_name
+                            );
+                        } else {
+                            $content .= $radio;
+                        }
                     }
-                    $content .= apply_filters( $filter_name, $radio );
-                } else {
-                    $content .= sprintf(
-                        '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
-                        $option_name
-                    );
                 }
                 break;
             case 'select':

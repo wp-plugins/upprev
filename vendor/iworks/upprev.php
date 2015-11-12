@@ -104,9 +104,10 @@ class IworksUpprev
         /**
          * generate
          */
-        add_action( 'init',                  array( &$this, 'init' ) );
-        add_action( 'after_setup_theme',     array( &$this, 'after_setup_theme'  ) );
-        add_filter( 'iworks_upprev_buy_pro', array( &$this, 'buy_pro_page' ) );
+        add_action( 'after_setup_theme',     array( $this, 'after_setup_theme'  ) );
+        add_action( 'init',                  array( $this, 'init' ) );
+        add_action( 'the_content',           array( $this, 'the_content' ), PHP_INT_MAX );
+        add_filter( 'iworks_upprev_buy_pro', array( $this, 'buy_pro_page' ) );
         /**
          * global option object
          */
@@ -185,20 +186,20 @@ class IworksUpprev
 
     public function init()
     {
-        add_action( 'admin_init',                 array( &$this, 'admin_init' ) );
+        add_action( 'admin_init',                 array( $this, 'admin_init' ) );
         add_action( 'admin_init',                 'iworks_upprev_options_init' );
-        add_action( 'wp_enqueue_scripts',         array( &$this, 'wp_enqueue_scripts' ) );
-        add_action( 'wp_head',                    array( &$this, 'print_custom_style'), PHP_INT_MAX );
+        add_action( 'wp_enqueue_scripts',         array( $this, 'wp_enqueue_scripts' ) );
+        add_action( 'wp_head',                    array( $this, 'print_custom_style'), PHP_INT_MAX );
         /**
          * filters
          */
-        add_filter( 'index_iworks_upprev_color_background', array( &$this, 'index_iworks_upprev_colors'    ) );
-        add_filter( 'index_iworks_upprev_color_border',     array( &$this, 'index_iworks_upprev_colors'    ) );
-        add_filter( 'index_iworks_upprev_color_link',       array( &$this, 'index_iworks_upprev_colors'    ) );
-        add_filter( 'index_iworks_upprev_color_set',        array( &$this, 'index_iworks_upprev_color_set' ) );
-        add_filter( 'index_iworks_upprev_color',            array( &$this, 'index_iworks_upprev_colors'    ) );
-        add_filter( 'index_iworks_upprev_position_content', array( &$this, 'index_iworks_upprev_position_content' ), 10, 5 );
-        add_filter( 'index_iworks_upprev_position_data',    array( &$this, 'index_iworks_upprev_position_data'    )        );
+        add_filter( 'index_iworks_upprev_color_background', array( $this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_border',     array( $this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_link',       array( $this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_color_set',        array( $this, 'index_iworks_upprev_color_set' ) );
+        add_filter( 'index_iworks_upprev_color',            array( $this, 'index_iworks_upprev_colors'    ) );
+        add_filter( 'index_iworks_upprev_position_content', array( $this, 'index_iworks_upprev_position_content' ), 10, 5 );
+        add_filter( 'index_iworks_upprev_position_data',    array( $this, 'index_iworks_upprev_position_data'    )        );
     }
 
     public function after_setup_theme()
@@ -231,7 +232,7 @@ class IworksUpprev
     public function admin_init()
     {
         $this->update();
-        add_filter( 'plugin_row_meta', array( &$this, 'plugin_row_meta' ), 10, 2 );
+        add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 
         $scripts = array( 'jquery-ui-tabs', 'farbtastic' );
         wp_register_script(
@@ -492,7 +493,7 @@ class IworksUpprev
         }
         $value = sprintf( '<div id="upprev_box" class="%s">', esc_attr(implode( ' ', $box_classes ) ));
         if ( !preg_match( '/^(yarpp|random)$/', $compare ) ) {
-            add_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
+            add_filter( 'posts_where', array( $this, 'posts_where' ), 72, 1 );
         }
         /**
          * YARPP
@@ -642,7 +643,7 @@ class IworksUpprev
         $value .= ob_get_flush();
         $value .= '</div>';
         wp_reset_postdata();
-        remove_filter( 'posts_where', array( &$this, 'posts_where' ), 72, 1 );
+        remove_filter( 'posts_where', array( $this, 'posts_where' ), 72, 1 );
         return apply_filters( 'iworks_upprev_box', $value );
     }
 
@@ -963,4 +964,30 @@ class IworksUpprev
         $params['version']     = get_option( 'version' );
         echo add_query_arg( 'iworks_upprev', urlencode( base64_encode( gzcompress( serialize( $params ) ) ) ), $link );
     }
+
+    /**
+     * Add upPrev trigger to the contentn
+     *
+     * Description.
+     *
+     * @since x.x.x
+     * @access (for functions: only use if private)
+     *
+     * @see Function/method/class relied on
+     * @link URL
+     * @global type $varname Description.
+     * @global type $varname Description.
+     *
+     * @param type $var Description.
+     * @param type $var Optional. Description.
+     * @return type Description.
+     */
+    public function the_content($content)
+    {
+        if ( is_singular() ) {
+            $content .= '<div id="upprev-trigger"></div>';
+        }
+        return $content;
+    }
+
 }
