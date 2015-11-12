@@ -36,6 +36,7 @@ class IworksUpprev
     private $options;
     private $version;
     private $working_mode;
+    private $current_post = null;
 
     public function __construct()
     {
@@ -382,6 +383,7 @@ class IworksUpprev
         $post_ID = 0;
         if( isset( $_GET['p'] ) && preg_match( '/^\d+$/', $_GET['p'] ) ) {
             $post_ID = $args['post__not_in'] = array( $_GET['p'] );
+            $this->current_post = get_post(intval($_GET['p']));
         }
         /**
          * check & set post type
@@ -418,9 +420,15 @@ class IworksUpprev
          * comparation method
          */
         switch ( $compare ) {
-        /**
-         * category
-         */
+            /**
+             * simple previous
+             */
+        case 'simple':
+            $show_taxonomy = false;
+            break;
+            /**
+             * category
+             */
         case 'category':
             $categories = get_the_category($post_ID);
             if ( !$categories ) {
@@ -437,9 +445,9 @@ class IworksUpprev
             }
             $args['cat'] = implode( ',',$ids );
             break;
-        /**
-         * tag
-         */
+            /**
+             * tag
+             */
         case 'tag':
             $tags = get_the_tags();
             if ( !$tags ) {
@@ -465,15 +473,15 @@ class IworksUpprev
                 $args['tag__in'] = $ids;
             }
             break;
-        /**
-         * random
-         */
+            /**
+             * random
+             */
         case 'random':
             $args['orderby'] = 'rand';
             unset($args['order']);
-        /**
-         * YARPP
-         */
+            /**
+             * YARPP
+             */
         case 'yarpp':
             if ( !yarpp_related_exist( $args ) ) {
                 return;
@@ -615,15 +623,33 @@ class IworksUpprev
             }
             $item .= '>';
             $item .= $image;
-            $item .= sprintf(
-                '<h5><a href="%s"%s rel="%s">%s</a></h5>',
-                esc_url($permalink),
-                $ga_click_track,
-                esc_attr(strip_tags($current_post_title)),
-                get_the_title()
-            );
+
+            $title = get_the_title();
+            if ( !empty( $title ) ) {
+                $item .= sprintf(
+                    '<h5><a href="%s"%s rel="%s">%s</a></h5>',
+                    esc_url($permalink),
+                    $ga_click_track,
+                    esc_attr(strip_tags($current_post_title)),
+                    $title
+                );
+            }
             if ( $excerpt_show != 0 && $excerpt_length > 0 ) {
-                $item .= sprintf( '<p>%s</p>', wp_trim_words( get_the_excerpt(), $this->options->get_option( 'excerpt_length' ), '...' ) );
+                $excerpt = wp_trim_words(
+                    strip_shortcodes(get_the_excerpt()),
+                    $this->options->get_option( 'excerpt_length' ),
+                    '...'
+                );
+                if ( empty($title) ) {
+                    $excerpt = sprintf(
+                        '<a href="%s"%s rel="%s">%s</a>',
+                        esc_url($permalink),
+                        $ga_click_track,
+                        esc_attr(strip_tags($current_post_title)),
+                        $excerpt
+                    );
+                }
+                $item .= wpautop($excerpt);
             } elseif ( $image && $make_break ) {
                 $item .= '<br />';
             }
@@ -649,12 +675,12 @@ class IworksUpprev
 
     public function posts_where($where = '')
     {
-        if ( !is_singular() ) {
-            return $where;
-        }
-        global $post;
-        if ( $post->post_date ) {
-            $where .= " AND post_date < '" . $post->post_date . "'";
+        if ( is_object($this->current_post) ) {
+            global $wpdb;
+            $where .= $wpdb->prepare(
+                ' AND post_date < %s ',
+                $this->current_post->post_date
+            );
         }
         return $where;
     }

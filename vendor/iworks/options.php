@@ -467,10 +467,9 @@ class iworks_options
                                 '<p>Error: no <strong>radio</strong> array key for option: <em>%s</em>.</p>',
                                 $option_name
                             );
-                        } else {
-                            $content .= $radio;
                         }
                     }
+                    $content .= $radio;
                 }
                 break;
             case 'select':
